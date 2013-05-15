@@ -14,14 +14,7 @@
             http://www.springframework.org/schema/context   http://www.springframework.org/schema/context/spring-context-3.0.xsd"
        default-autowire="byName">
 
-    <context:annotation-config />
+       <bean id="initializer" class="it.geosolutions.nrl.init.Initializer" lazy-init="false"> 
 
-    <bean id="geostoreInitializer" class="it.geosolutions.geostore.init.GeoStoreInit" lazy-init="false">
-        <!-- Site specific initialization. Please specify a path in the ovr file-->
-        <!--<property name="userListInitFile"><null/></property>-->
-        <property name="userListInitFile" value="classpath:sample_users.xml"/>
-        <!-- Site specific initialization. Please specify a path in the ovr file-->
-        <property name="categoryListInitFile" value="classpath:sample_categories.xml" />
     </bean>
-
 </beans>
