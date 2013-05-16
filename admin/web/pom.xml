@@ -1,32 +1,32 @@
-<project 
-    xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>it.geosolutions.nrl</groupId>
-    <artifactId>web</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    
-    <packaging>war</packaging>
-    <properties><spring.version>3.0.5.RELEASE</spring.version></properties>
-    <parent>
-            <groupId>it.geosolutions.nrl</groupId>
-            <artifactId>nrl</artifactId>
-            <version>1.0-SNAPSHOT</version>
-    </parent>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <name>Crop Information Portal - Admin Webapp</name>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>it.geosolutions.nrl</groupId>
+	<artifactId>web</artifactId>
+	<version>1.0-SNAPSHOT</version>
 
-	
-    <dependencies>
-        <!-- jsp etc... -->
-        
-        <dependency>
-        <groupId>jstl</groupId>
-            <artifactId>jstl</artifactId>
-        </dependency>
-       <!-- Spring 3 dependencies -->
+	<packaging>war</packaging>
+	<properties>
+		<spring.version>3.0.5.RELEASE</spring.version>
+	</properties>
+	<parent>
+		<groupId>it.geosolutions.nrl</groupId>
+		<artifactId>nrl</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+
+	<name>Crop Information Portal - Admin Webapp</name>
+
+
+	<dependencies>
+		<!-- jsp etc... -->
+
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
+		<!-- Spring 3 dependencies -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
@@ -44,76 +44,107 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-        <dependency>
-            <groupId>it.geosolutions.geostore</groupId>
-            <artifactId>geostore-rest-client</artifactId>
-            <version>${geostore.version}</version>
-         </dependency>
-         <!-- Logging -->
-          <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-        </dependency>
-         <!-- Test  -->
-         <!-- Jetty server -->
-         <dependency>
+		<dependency>
+			<groupId>it.geosolutions.geostore</groupId>
+			<artifactId>geostore-rest-client</artifactId>
+			<version>${geostore.version}</version>
+		</dependency>
+		
+		<!-- Logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+		</dependency>
+		
+		 <!-- Spring Security -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+		</dependency>
+ 
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+		</dependency>
+ 
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+		</dependency>
+		<!-- Test -->
+		<!-- Jetty server -->
+		<dependency>
 			<groupId>org.mortbay.jetty</groupId>
 			<artifactId>jetty</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!--  Junit  -->
 		<dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
+			<groupId>org.mortbay.jetty</groupId>
+			<artifactId>jsp-api-2.1</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mortbay.jetty</groupId>
+			<artifactId>jsp-2.1</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>jstl</groupId>
+				<artifactId>jstl</artifactId>
+				<version>1.2</version>
+			</dependency>
+		<!-- Junit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
 
-        </dependency>
-    </dependencies>
+	<build>
+		<finalName>admin</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<encoding>utf8</encoding>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
 
-    <build>
-        <finalName>admin</finalName>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <encoding>utf8</encoding>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                </configuration>
-            </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+				</configuration>
+			</plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>2.3</version>
-                <configuration>
-                </configuration>
-            </plugin>
+			<!-- Run the application using "mvn jetty:run" -->
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>maven-jetty-plugin</artifactId>
+				<version>6.1.26</version>
+				<configuration>
+					<!-- <webAppSourceDirectory>${basedir}/war</webAppSourceDirectory> -->
+					<webAppConfig>
+						<contextPath>/admin</contextPath>
+					</webAppConfig>
+					<connectors>
+						<connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+							<port>9191</port>
+							<maxIdleTime>60000</maxIdleTime>
+						</connector>
+					</connectors>
+					<reload>manual</reload>
+				</configuration>
+			</plugin>
 
-            <!-- Run the application using "mvn jetty:run" -->
-            <plugin>
-                <groupId>org.mortbay.jetty</groupId>
-                <artifactId>maven-jetty-plugin</artifactId>
-                <version>6.1.26</version>
-                <configuration>
-                    <!--					<webAppSourceDirectory>${basedir}/war</webAppSourceDirectory>-->
-                    <webAppConfig>
-                        <contextPath>/admin</contextPath>
-                    </webAppConfig>
-                    <connectors>
-                        <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
-                            <port>9191</port>
-                            <maxIdleTime>60000</maxIdleTime>
-                        </connector>
-                    </connectors>
-                    <reload>manual</reload>
-                </configuration>
-            </plugin>
+		</plugins>
 
-        </plugins>
+	</build>
 
-    </build>
-	
 
 </project>
