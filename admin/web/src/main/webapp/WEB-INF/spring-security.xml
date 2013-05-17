@@ -17,7 +17,12 @@
 		
 
     <beans:bean id="geoStoreAuthenticationProvider" class="it.geosolutions.nrl.security.GeoStoreAuthenticationProvider">
-    	<beans:property name="geoStoreRestURL" value="http://84.33.2.24/geostore/rest/"></beans:property><!-- TODO external. this string -->
+    	<beans:property name="geoStoreRestURL" value="${geostore.resturl}"></beans:property><!-- TODO external. this string -->
+    	<beans:property name="allowedRoles">
+    			<beans:list>
+					<beans:value>ADMIN</beans:value>
+				</beans:list>
+    	</beans:property>
     </beans:bean>
  
     <authentication-manager>
