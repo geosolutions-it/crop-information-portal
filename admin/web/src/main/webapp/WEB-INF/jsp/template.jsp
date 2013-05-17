@@ -2,9 +2,9 @@
 <!DOCTYPE html>
 <html>
 <title>Login Page</title>
-<link href="css/bootstrap.min.css" media="all" type="text/css"
+<link href="<c:url value="/css/bootstrap.min.css"/>" media="all" type="text/css"
 	rel="stylesheet">
-<link href="css/nrl.css" media="all" type="text/css"
+<link href="<c:url value="/css/nrl.css"/>" media="all" type="text/css"
 	rel="stylesheet">
 <script src="<c:url value="/js/jquery.js"/>"></script>
 <script src="<c:url value="/js/bootstrap.min.js"/>"></script>
