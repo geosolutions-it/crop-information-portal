@@ -15,7 +15,7 @@ public class WelcomePage {
  
 		String name = principal.getName();
 		model.addAttribute("username", name);
-		model.addAttribute("message", "Spring Security Custom Form example");
+		model.addAttribute("context", "home");
 		return "template";
  
 	}

@@ -14,6 +14,7 @@
 	<div class="container-flow">
 	
 	<%@ include file="common/navbar.jsp"%>
+	<jsp:include page="context/${context}.jsp" />
 
 	</div>
 </body>

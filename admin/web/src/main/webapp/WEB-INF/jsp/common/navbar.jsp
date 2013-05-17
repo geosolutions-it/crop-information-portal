@@ -35,9 +35,9 @@
          <ul class="nav pull-right">
 
            <li class="dropdown">
-             <a href="#" class="dropdown-toggle" data-toggle="dropdown">User: ${username}<b class="caret"></b></a>
+             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user"></i> ${username} <b class="caret"></b></a>
              <ul class="dropdown-menu">
-               <li><a href="<c:url value="/j_spring_security_logout" />" >Logout</a></li>
+               <li><a href="<c:url value="/j_spring_security_logout" />" ><i class=" icon-off"></i> Logout</a></li>
              </ul>
            </li>
          </ul>
