@@ -54,5 +54,6 @@
 			<property name="username" value="${geostore.user}"></property>
 			<property name="password" value="${geostore.password}"></property>
 		</bean> 
-		
+		<!-- Imports -->
+		<import resource="fileBrowsers.xml"/>
 </beans>
