@@ -4,31 +4,33 @@
 <title>Login Page</title>
 <link href="css/bootstrap.min.css" media="all" type="text/css"
 	rel="stylesheet">
-
+<link href="css/nrl.css" media="all" type="text/css"
+	rel="stylesheet">
 </head>
 <body onload='document.f.j_username.focus();'>
 	<%@ include file="common/banner.jsp"%>
 
-	<div class="container">
+	<div class="container" style="width:700px;">
 		<div class="" id="loginModal">
 		
 			<div class="modal-header"><h1>Administation page</h1></div>
 			<div class="modal-body">
 				<div class="well">
-
-					<div class="tab-pane active in" id="login">
+				
+					<div class="" id="login">
 						<form name='f' class="form-horizontal"
 							action="<c:url value='j_spring_security_check' />" method="POST">
 							<fieldset>
 								<div id="legend">
 									<legend class="">Login</legend>
 								</div>
+								<div class="login-form-controls">
 								<div class="control-group">
 									<!-- Username -->
 									<label class="control-label" for="j_username">Username</label>
 									<div class="controls">
 										<input type="text" name='j_username' placeholder=""
-											class="input-xlarge">
+											class="input-block-level">
 									</div>
 								</div>
 
@@ -37,16 +39,17 @@
 									<label class="control-label" for="j_password">Password</label>
 									<div class="controls">
 										<input type="password" name='j_password' placeholder=""
-											class="input-xlarge">
+											class="input-block-level">
 									</div>
 								</div>
 
 
 								<div class="control-group">
 									<!-- Button -->
-									<div class="controls">
-										<button class="btn btn-success" type="submit">Login</button>
+									<div class="controls pull-right">
+										<button class="btn btn-large btn-success" type="submit">Login</button>
 									</div>
+								</div>
 								</div>
 							</fieldset>
 						</form>
