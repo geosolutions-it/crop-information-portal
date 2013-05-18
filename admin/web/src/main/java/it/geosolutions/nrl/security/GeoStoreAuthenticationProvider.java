@@ -3,6 +3,7 @@ package it.geosolutions.nrl.security;
 import it.geosolutions.geostore.core.model.User;
 import it.geosolutions.geostore.core.model.enums.Role;
 import it.geosolutions.geostore.services.rest.AdministratorGeoStoreClient;
+import it.geosolutions.geostore.services.rest.model.RESTUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +42,7 @@ public class GeoStoreAuthenticationProvider implements AuthenticationProvider {
 		gsc.setUsername(us);
 		gsc.setPassword(pw);
 		gsc.setGeostoreRestUrl(geoStoreRestURL);
-		User user = null;
+		RESTUser user = null;
 		try {
 			user = gsc.getUserDetails();
 		} catch (Exception e) {

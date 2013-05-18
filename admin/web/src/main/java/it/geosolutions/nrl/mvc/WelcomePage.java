@@ -1,5 +1,7 @@
 package it.geosolutions.nrl.mvc;
 
+import it.geosolutions.nrl.utils.ControllerUtils;
+
 import java.security.Principal;
 
 import org.springframework.stereotype.Controller;
@@ -14,7 +16,7 @@ public class WelcomePage {
 	public String printWelcome(ModelMap model, Principal principal ) {
  
 		String name = principal.getName();
-		model.addAttribute("username", name);
+		ControllerUtils.setCommonModel(model);
 		model.addAttribute("context", "home");
 		return "template";
  
