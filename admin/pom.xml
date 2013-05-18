@@ -23,7 +23,7 @@
     <!-- properties -->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <geostore.version>1.0</geostore.version>
+        <geostore.version>1.2-SNAPSHOT</geostore.version>
         <nrl.version>1.0-SNAPSHOT</nrl.version>
         <jetty.version>6.1.14</jetty.version>
         <spring-version>3.0.4.RELEASE</spring-version>
@@ -44,7 +44,7 @@
      <dependencyManagement>
         <dependencies>
             <!-- =========================================================== -->
-            <!--     JAVAX SERVLET & JSP                                          -->
+            <!--     JAVAX SERVLET & JSP                                     -->
             <!-- =========================================================== -->
             <dependency>
                 <groupId>javax.servlet</groupId>
@@ -57,8 +57,8 @@
 				<version>1.2</version>
 			</dependency>
              <!-- =========================================================== -->
-            <!--     SPRING SECURITY                                         -->
-            <!-- =========================================================== -->
+            <!--     SPRING SECURITY                                          -->
+            <!-- ===========================================================  -->
             <dependency>
                 <groupId>org.springframework.security</groupId>
                 <artifactId>spring-security-core</artifactId>
