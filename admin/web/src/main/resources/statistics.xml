@@ -14,19 +14,11 @@
             http://www.springframework.org/schema/context   http://www.springframework.org/schema/context/spring-context-3.0.xsd"
        default-autowire="byName">
 
-		<bean id="ndviBrowser" class="it.geosolutions.nrl.file.FileBrowser">
-			<property name="baseDir" value="ndvi"></property>
-			
-		</bean> 
-		<bean id="csvBrowser" class="it.geosolutions.nrl.file.FileBrowser">
-			<property name="baseDir" value="csv"></property>
-			
-		</bean> 
-		<bean id="fileBrowserManager" class="it.geosolutions.nrl.file.FileBrowserManager">
+		
+		<bean id="fileBrowserManager" class="it.geosolutions.nrl.statistics.FileBrowserManager">
 			<property name="baseDirs">
 				<map>
-					<entry key="ndvi" value="ndvi"></entry>
-					<entry key="csv"  value="csv"></entry>
+
 				</map>
 			</property>
 

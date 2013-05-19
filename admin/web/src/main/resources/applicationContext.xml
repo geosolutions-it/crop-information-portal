@@ -55,5 +55,5 @@
 			<property name="password" value="${geostore.password}"></property>
 		</bean> 
 		<!-- Imports -->
-		<import resource="fileBrowsers.xml"/>
+		<import resource="statistics.xml"/>
 </beans>

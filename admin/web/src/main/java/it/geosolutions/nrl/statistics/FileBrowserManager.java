@@ -1,4 +1,4 @@
-package it.geosolutions.nrl.file;
+package it.geosolutions.nrl.statistics;
 
 import java.util.HashMap;
 import java.util.Map;
