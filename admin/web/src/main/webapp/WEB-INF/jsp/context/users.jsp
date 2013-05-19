@@ -82,6 +82,14 @@
 		</div>
 	</form:form>
 </div>
+<ul class="pager">
+	<c:if test="${page>0}">
+	  <li><a href="${page-1}">Previous</a></li>
+   	</c:if>
+   	<c:if test="${nextPage}">
+	  <li><a href="${nextPage}">Next</a></li>
+	  </c:if>
+</ul>
 <script>
 	$(function() {
 

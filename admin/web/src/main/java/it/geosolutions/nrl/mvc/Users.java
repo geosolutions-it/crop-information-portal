@@ -30,6 +30,10 @@ public class Users {
 	public String userList(@PathVariable(value = "page") Integer page,
 			ModelMap model) {
 		UserList ul = geoStoreClient.getUsers(page, pageSize);
+		UserList ul1 = geoStoreClient.getUsers(page + 1, pageSize);
+		if(ul.getList().size()>0){
+			model.addAttribute("next",page+1);
+		}
 		if (ul != null) {
 			List<RESTUser> users = ul.getList();
 			model.addAttribute("users", users);
