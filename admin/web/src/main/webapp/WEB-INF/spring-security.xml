@@ -9,8 +9,9 @@
 	<http auto-config="true">
 		
 		<intercept-url pattern="/admin/*" access="ROLE_ADMIN" />
-		<intercept-url pattern="/welcome*" access="ROLE_ADMIN" />
-		<form-login login-page="/login" default-target-url="/welcome"
+		<intercept-url pattern="/home*" access="ROLE_ADMIN" />
+		<intercept-url pattern="/users*" access="ROLE_ADMIN" />
+		<form-login login-page="/login" default-target-url="/users"
 			authentication-failure-url="/loginfailed" />
 		<logout logout-success-url="/logout" />
 	</http>

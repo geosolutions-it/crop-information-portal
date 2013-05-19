@@ -1,13 +1,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-<title>Login Page</title>
+<title>Crop Informational Portal ${PageTitle}</title>
 <link href="<c:url value="/css/bootstrap.min.css"/>" media="all" type="text/css"
 	rel="stylesheet">
 <link href="<c:url value="/css/nrl.css"/>" media="all" type="text/css"
 	rel="stylesheet">
 <script src="<c:url value="/js/jquery.js"/>"></script>
+<script src="<c:url value="/js/jquery-validate.min.js"/>"></script>
 <script src="<c:url value="/js/bootstrap.min.js"/>"></script>
+<script src="<c:url value="/js/form.js"/>"></script>
+
 </head>
 <body>
 	<%@ include file="common/banner.jsp"%>
@@ -17,5 +20,6 @@
 	<jsp:include page="context/${context}.jsp" />
 
 	</div>
+	
 </body>
 </html>

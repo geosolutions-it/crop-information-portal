@@ -18,9 +18,11 @@
      <div class="container">
        <div class="nav-collapse collapse navbar-responsive-collapse">
          <ul class="nav">
-           <li><a href="#">Home</a></li>
+         
+           <li class="${context=='home'?'active':'' }"><a href="<c:url value="/home"/>">Home</a></li>
+           <!-- 
            <li><a href="#">Publish data</a></li>
-           
+           	
            <li class="dropdown">
              <a href="#" class="dropdown-toggle" data-toggle="dropdown">NDVI <b class="caret"></b></a>
              <ul class="dropdown-menu">
@@ -29,7 +31,8 @@
   
              </ul>
            </li>
-           <li><a href="#">Users</a></li>
+            -->
+           <li class="${context=='users'?'active':'' }"><a href="<c:url value="/users/"/>">Users</a></li>
          </ul>
    
          <ul class="nav pull-right">

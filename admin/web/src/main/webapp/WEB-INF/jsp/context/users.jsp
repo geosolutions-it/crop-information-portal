@@ -22,9 +22,11 @@
 					<td>${user.role}</td>
 
 					<td><c:if test="${user.name != 'admin'}">
-							<a data-toggle="modal" class="btn" href="remote.html"
-								data-target="#create">Edit</a>
-							<a class="btn disabled" href="">Delete</a>
+							<a data-toggle="modal" class="btn edit-user" data-target="#edit"
+								data-userid="${user.id}" href="edit/${user.id}">Edit</a>
+							<a data-toggle="modal" data-target="#delete"
+								class="btn delete-user" data-userid="${user.id}"
+								href="delete/${user.id}">Delete</a>
 						</c:if></td>
 
 				</tr>
@@ -40,12 +42,60 @@
 		<h3 id="myModalLabel">Create User</h3>
 	</div>
 	<form:form method="post" action="create" class="form-horizontal">
-	<div class="modal-body">
-		<p>One fine body</p>
-	</div>
-	<div class="modal-footer">
-		<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-		<button  type="submit" class="btn btn-primary">Create</button>
-	</div>
+		<div class="modal-body">
+		</div>
+		<div class="modal-footer">
+			<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+			<button id="createsubmit" class="btn btn-primary">Create</button>
+		</div>
 	</form:form>
 </div>
+<div id="edit" class="modal hide fade" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal"
+			aria-hidden="true">x</button>
+		<h3 id="myModalLabel">Edit User</h3>
+	</div>
+	<form:form method="post" class="form-horizontal">
+		<div class="modal-body">
+		</div>
+		<div class="modal-footer">
+			<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+			<button id="createsubmit" class="btn btn-primary">Save</button>
+		</div>
+	</form:form>
+</div>
+<div id="delete" class="modal hide fade" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal"
+			aria-hidden="true">x</button>
+		<h3 id="myModalLabel">Delete User</h3>
+	</div>
+	<form:form method="post" class="form-horizontal">
+		<div class="modal-body">
+		</div>
+		<div class="modal-footer">
+			<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+			<button id="createsubmit" class="btn btn-primary">Delete</button>
+		</div>
+	</form:form>
+</div>
+<script>
+	$(function() {
+
+		formUtils.initModalForm('#create');
+		formUtils.initModalForm('#edit');
+		formUtils.initModalForm('#delete');
+		$('.delete-user').on('click', function() {
+			var userId = $(this).data('userid');
+			formUtils.changeAction('#delete', 'delete/' + userId);
+		})
+		$('.edit-user').on('click', function() {
+			var userId = $(this).data('userid');
+			formUtils.changeAction('#edit', 'edit/' + userId);
+		})
+
+	});
+</script>
