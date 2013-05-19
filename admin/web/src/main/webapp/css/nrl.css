@@ -8,6 +8,12 @@ div.login-form-controls{
 	width:700px;
 }
 
+.width700{
+	width:700px;
+}
+.modal form {
+	margin:0px;
+}
 body{
 	background-color:#FAFAFA;
 }
