@@ -13,13 +13,15 @@
 
 </head>
 <body>
-	<%@ include file="common/banner.jsp"%>
-	<div class="container-flow">
+	<div id="#holder">
+		<%@ include file="common/banner.jsp"%>
+		<div class="container-flow">
+		
+		<%@ include file="common/navbar.jsp"%>
+		<jsp:include page="context/${context}.jsp" />
 	
-	<%@ include file="common/navbar.jsp"%>
-	<jsp:include page="context/${context}.jsp" />
-
+		</div>
+		<%@ include file="common/footer.jsp"%>
 	</div>
-	
 </body>
 </html>
