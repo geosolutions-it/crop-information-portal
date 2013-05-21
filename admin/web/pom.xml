@@ -72,6 +72,14 @@
 			<artifactId>spring-security-config</artifactId>
 		</dependency>
 		<!-- Test -->
+		<dependency>
+                <groupId>javax.xml.bind</groupId>
+                <artifactId>jaxb-api</artifactId>     
+            </dependency>
+            <dependency>
+                <groupId>com.sun.xml.bind</groupId>
+                <artifactId>jaxb-impl</artifactId>
+            </dependency>
 		<!-- Jetty server -->
 		<dependency>
 			<groupId>org.mortbay.jetty</groupId>
