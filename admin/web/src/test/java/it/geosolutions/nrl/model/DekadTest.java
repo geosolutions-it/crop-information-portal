@@ -20,7 +20,10 @@ public class DekadTest {
 		assertEquals(1,d5.getAbsoluteDekad());
 		Dekad d6 = new Dekad("2013052");
 		assertEquals(72482,d6.getAbsoluteDekad());
-
+		Dekad d7 = new Dekad("1492092");
+		assertEquals(53738,d7.getAbsoluteDekad());
+		Dekad d8 = new Dekad("2000011");
+		assertEquals(72001,d8.getAbsoluteDekad());
 
 	}
 	
