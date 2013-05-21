@@ -1,6 +1,5 @@
 package it.geosolutions.nrl.mvc.model.statistics;
 
-import it.geosolutions.nrl.model.FileBrowser;
 import it.geosolutions.nrl.mvc.model.statistics.InputSelectorElement;
 
 import java.util.List;
