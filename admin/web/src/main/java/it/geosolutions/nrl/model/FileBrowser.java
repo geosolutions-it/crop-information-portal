@@ -14,6 +14,7 @@ public class FileBrowser {
 	private String baseDir="";
 	private String regex;
 	
+	@XmlElement
 	public String getRegex() {
 		return regex;
 	}

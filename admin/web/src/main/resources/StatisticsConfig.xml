@@ -3,6 +3,7 @@
 		<id>regions</id>
 		<fileBrowser>
 			<baseDir>.</baseDir>
+			<regex><![CDATA[.*\.shp]]></regex>
 		</fileBrowser>
 		<element>
 			<id>districts</id>
@@ -19,6 +20,8 @@
 		<id>masks</id>
 		<fileBrowser>
 			<baseDir>.</baseDir>
+			<regex><![CDATA[.*\.shp]]></regex>
+			
 		</fileBrowser>
 		<element>
 				<id>cropMask</id>
