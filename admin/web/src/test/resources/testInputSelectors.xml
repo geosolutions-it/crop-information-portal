@@ -3,6 +3,7 @@
 		<id>Test</id>
 		<fileBrowser>
 			<baseDir>.</baseDir>
+			<regex></regex>
 		</fileBrowser>
 		<element>
 			<id>districts</id>
@@ -14,11 +15,16 @@
 			<label>province</label>
 			<value>default:province</value>
 		</element>
+		<granule>
+			<infoFile>src/test/resources/info.xml</infoFile>
+		</granule>
 	</config>
 	<config>
 		<id>Test1</id>
 		<fileBrowser>
 			<baseDir>.</baseDir>
+			<regex></regex>
+			
 		</fileBrowser>
 		<element>
 				<id>districts</id>
@@ -30,6 +36,8 @@
 			<label>province</label>
 			<value>default:province</value>
 		</element>
+		<granule>
+			<infoFile>src/test/resources/info.xml</infoFile>
+		</granule>
 	</config>
-
 </statisticsConfigList>

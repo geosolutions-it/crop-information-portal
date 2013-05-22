@@ -16,7 +16,10 @@ public class InputSelectorConfig{
 	private FileBrowser fileBrowser;
 	
 	private String id;
-
+	
+	private GranuleConfig granule;
+	
+	
 	@XmlElement
 	public String getId() {
 		return id;
@@ -43,5 +46,15 @@ public class InputSelectorConfig{
 	public void setFileBrowser(FileBrowser fb) {
 		this.fileBrowser = fb;
 	}
+	
+	@XmlElement
+	public GranuleConfig getGranule() {
+		return granule;
+	}
+
+	public void setGranule(GranuleConfig granule) {
+		this.granule = granule;
+	}
+
 
 }

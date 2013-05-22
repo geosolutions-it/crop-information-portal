@@ -16,7 +16,7 @@ public class GranuleConfigTest {
 	}
 	
 	@Test
-	public void TestGranules(){
+	public void GranulesTest(){
 		GranuleConfig gf = new GranuleConfig();
 		gf.setInfoFile(infoFile);
 		String[] ts = gf.getTimeSeries();
