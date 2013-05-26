@@ -34,20 +34,7 @@ public class Statistics {
 	
 	@RequestMapping(value="/statistics/{regions}/{mask}/{granule}", method = RequestMethod.GET)
 	public String printWelcome(@PathVariable(value = "regions") String regions,@PathVariable(value = "mask") String mask,@PathVariable(value = "granule") String granule, ModelMap model, Principal principal ) {
-		/*
-		FileBrowser fbregions = fileBrowserManager.getFileBrowser(regions);
-		FileBrowser fbmask =fileBrowserManager.getFileBrowser(mask);
 		
-		if(fbregions != null && fbmask != null){
-			Map<String,List<String>> files = new HashMap<String,List<String>>();
-			files.put("regions",fbregions.getFiles(".*\\.shp"));
-			files.put("masks",fbmask.getFiles(".*\\.shp"));
-			
-			model.addAllAttributes(files);
-			
-		}else{
-			
-		} */
 		setRegions(regions,model);
 		setMask(mask,model);
 		setGranule(granule,model);
@@ -55,11 +42,6 @@ public class Statistics {
 		model.addAttribute("context", "statistics");
 		return "template";
  
-	}
-
-	private void setGranule(String granule, ModelMap model) {
-		
-		
 	}
 
 	private void setMask(String mask, ModelMap model) {
@@ -87,6 +69,21 @@ public class Statistics {
 			}
 		}
 		LOGGER.warn("Statistics config not found: " + regions);
+
+		
+	}
+	private void setGranule(String granule, ModelMap model) {
+		if (statisticsConfigs.getConfigs()== null ){
+			LOGGER.error("couldn't find statistics configs");
+			return ;
+		}
+		for(InputSelectorConfig config : statisticsConfigs.getConfigs()){
+			if(granule.equals(config.getId())){
+				model.addAttribute("granule",config);	
+				return;
+			}
+		}
+		LOGGER.warn("Statistics config not found: " + granule);
 
 		
 	}
