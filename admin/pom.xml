@@ -57,6 +57,67 @@
 				<version>1.2</version>
 			</dependency>
              <!-- =========================================================== -->
+            <!--     HIBERNATE-GENERIC-DAO                                   -->
+            <!-- =========================================================== -->
+            <dependency>
+                <groupId>com.googlecode.genericdao</groupId>
+                <artifactId>dao</artifactId>
+                <version>1.1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.googlecode.genericdao</groupId>
+                <artifactId>search-jpa-hibernate</artifactId>
+                <version>1.1.0</version>
+            </dependency>
+            <!-- =========================================================== -->
+            <!--     HIBERNATE                                               -->
+            <!-- =========================================================== -->
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-annotations</artifactId>
+                <version>3.3.1.GA</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-commons-annotations</artifactId>
+                <version>3.3.0.ga</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-entitymanager</artifactId>
+                <version>3.3.2.GA</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>3.0.0.ga</version>
+            </dependency>
+
+            <!-- =========================================================== -->
+            <!--     HIBERNATE-SPATIAL                                       -->
+            <!-- =========================================================== -->
+            <dependency>
+                <groupId>org.hibernatespatial</groupId>
+                <artifactId>hibernate-spatial-postgis</artifactId>
+                <version>1.0</version>
+            </dependency>
+
+            <!-- =========================================================== -->
+            <!--     POSTGRES- POSTGIS                                       -->
+            <!-- =========================================================== -->
+
+            <dependency>
+                <groupId>postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>9.1-901-1.jdbc4</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.hsqldb</groupId>
+                <artifactId>hsqldb</artifactId>
+                <version>2.2.9</version>
+            </dependency>
+             <!-- =========================================================== -->
             <!--     SPRING SECURITY                                          -->
             <!-- ===========================================================  -->
             <dependency>
@@ -180,5 +241,8 @@
      </dependencyManagement>
     <modules>
         <module>web</module>
-    </modules>
+        <module>persistence</module>
+        <module>model</module>
+        <module>service</module>
+  </modules>
 </project>

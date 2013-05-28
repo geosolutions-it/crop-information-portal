@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>nrl</artifactId>
+    <groupId>it.geosolutions.nrl</groupId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <groupId>it.geosolutions.nrl.core</groupId>
+  <artifactId>persistence</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <name>persistence</name>
+  <url>http://maven.apache.org</url>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+     <!-- =========================================================== -->
+     <!--     HIBERNATE-GENERIC-DAO                                   -->
+     <!-- =========================================================== -->
+    <dependency>
+       <groupId>com.googlecode.genericdao</groupId>
+       <artifactId>dao</artifactId>
+   </dependency>
+   <dependency>
+       <groupId>com.googlecode.genericdao</groupId>
+       <artifactId>search-jpa-hibernate</artifactId>
+   </dependency>
+   <!-- =========================================================== -->
+   <!--     HIBERNATE                                               -->
+   <!-- =========================================================== -->
+   <dependency>
+       <groupId>org.hibernate</groupId>
+       <artifactId>hibernate-annotations</artifactId>
+   </dependency>
+   <dependency>
+       <groupId>org.hibernate</groupId>
+       <artifactId>hibernate-commons-annotations</artifactId>
+   </dependency>
+   <dependency>
+       <groupId>org.hibernate</groupId>
+       <artifactId>hibernate-entitymanager</artifactId>
+   </dependency>
+   <dependency>
+       <groupId>org.hibernate</groupId>
+       <artifactId>hibernate-validator</artifactId>
+   </dependency>
+   <dependency>
+        <groupId>postgresql</groupId>
+        <artifactId>postgresql</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.hsqldb</groupId>
+        <artifactId>hsqldb</artifactId>
+    </dependency>
+  </dependencies>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+</project>
