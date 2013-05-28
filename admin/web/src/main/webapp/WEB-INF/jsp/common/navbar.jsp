@@ -17,12 +17,15 @@
    <div class="navbar-inner">
      <div class="container">
        <div class="nav-collapse collapse navbar-responsive-collapse">
+       	<c:if test="${not empty PageTitle}">
+       		<a class="brand" href="#">${PageTitle}</a>
+       	</c:if>
          <ul class="nav">
          
-           <li class="${context=='home'?'active':'' }"><a href="<c:url value="/home"/>">Home</a></li>
-           <!-- 
-           <li><a href="#">Publish data</a></li>
-           	-->
+  <!--           <li class="${context=='home'?'active':'' }"><a href="<c:url value="/home"/>">Home</a></li> -->
+           
+           <li><a href="<c:url value="/crops/"/>">Crops</a></li>
+           	
            <li class="dropdown">
              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Statistics<b class="caret"></b></a>
              <ul class="dropdown-menu">
