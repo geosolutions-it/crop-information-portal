@@ -13,7 +13,7 @@
 	<div class="container" style="width:700px;">
 		<div class="" id="loginModal">
 		
-			<div class="modal-header"><h1>Administation page</h1></div>
+			<div class="modal-header"><h1>Administration page</h1></div>
 			<div class="modal-body">
 				<div class="well">
 				
