@@ -1,4 +1,4 @@
-package it.geosolutions.nrl.model;
+package it.geosolutions.nrl.persistence.model;
 
 public class CropData {
 	  Long rowid ;
