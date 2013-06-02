@@ -8,3 +8,31 @@
 			http://www.springframework.org/schema/context   http://www.springframework.org/schema/context/spring-context-2.5.xsd
 			http://www.springframework.org/schema/aop       http://www.springframework.org/schema/aop/spring-aop-2.5.xsd"
        default-autowire="byName">
+        <context:annotation-config />
+	
+    <!--	<aop:aspectj-autoproxy proxy-target-class="true"/>	-->
+
+    <!--=====================================================================-->
+    <!-- DB related stuff -->
+    <!--=====================================================================-->
+
+    <import resource="applicationContext-datasource.xml"/>
+    <!--**** Hibernate Generic DAO Setup ****-->
+     <!--
+             Need one search processor and one metadata util per persistence unit
+             (i.e. EntityManagerFactory). We're wiring these to the Generic DAOs
+             using an autowire annotation in BaseDAO.
+     -->
+     <bean id="searchProcessor" class="com.googlecode.genericdao.search.jpa.JPASearchProcessor">
+             <constructor-arg ref="metadataUtil" />
+     </bean>
+
+     <bean id="metadataUtil" class="com.googlecode.genericdao.search.jpa.hibernate.HibernateMetadataUtil"
+             factory-method="getInstanceForEntityManagerFactory">
+             <constructor-arg ref="entityManagerFactory" />
+     </bean>
+     <!--  DAO  -->
+      <bean id="cropDescriptorDao" class="it.geosolutions.nrl.persistence.dao.impl.CropDescriptorDAOImpl" >
+        <property name="searchProcessor" ref="searchProcessor" />
+    </bean>
+</beans>
