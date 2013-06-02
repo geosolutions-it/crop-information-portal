@@ -1,5 +1,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <div class="container">
 	<h2>Crops</h2>
 
@@ -8,7 +10,7 @@
 	<table class="table table-hover">
 		<thead>
 			<tr>
-				<th>#</th>
+			
 				<th>id</th>
 				<th>Label</th>
 				<th>Season(s)</th>
@@ -16,19 +18,19 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${users}" var="user">
+			<c:forEach items="${crops}" var="crop">
 				<tr>
-					<td>${crop.name}</td>
+					<td>${crop.id}</td>
 					<td>${crop.label}</td>
-					<td>${crop.seasons}</td>
+					<td>${fn:join(crop.seasons, ", ")}</td>
 
-					<td><c:if test="${user.name != 'admin'}">
+					<td>
 							<a data-toggle="modal" class="btn edit-user" data-target="#edit"
-								data-userid="${user.id}" href="edit/${user.id}">Edit</a>
+								data-userid="${crop.id}" href="edit/${crop.id}">Edit</a>
 							<a data-toggle="modal" data-target="#delete"
-								class="btn delete-user" data-userid="${user.id}"
-								href="delete/${user.id}">Delete</a>
-						</c:if></td>
+								class="btn delete-user" data-userid="${crop.id}"
+								href="delete/${crop.id}">Delete</a>
+					</td>
 
 				</tr>
 			</c:forEach>
