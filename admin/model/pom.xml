@@ -7,11 +7,11 @@
     <groupId>it.geosolutions.nrl</groupId>
     <version>1.0-SNAPSHOT</version>
   </parent>
-  <groupId>it.geosolutions.nrl.model</groupId>
+  <groupId>it.geosolutions.nrl</groupId>
   <artifactId>model</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <name>model</name>
-  <url>http://maven.apache.org</url>
+  <name>Crop Information Portal - model Tier</name>
+  <packaging>jar</packaging> 
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -19,6 +19,26 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+     <!-- =========================================================== -->
+     <!--     HIBERNATE                                               -->
+     <!-- =========================================================== -->
+     <dependency>
+         <groupId>org.hibernate</groupId>
+         <artifactId>hibernate-annotations</artifactId>
+     </dependency>
+     <dependency>
+         <groupId>org.hibernate</groupId>
+         <artifactId>hibernate-commons-annotations</artifactId>
+     </dependency>
+     <dependency>
+         <groupId>org.hibernate</groupId>
+         <artifactId>hibernate-entitymanager</artifactId>
+     </dependency>
+     <dependency>
+         <groupId>org.hibernate</groupId>
+         <artifactId>hibernate-validator</artifactId>
+     </dependency>
+    
   </dependencies>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
