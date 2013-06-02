@@ -75,6 +75,8 @@ public class Users {
 		} catch (Exception e) {
 			model.addAttribute("messageType", "error");
 			model.addAttribute("notLocalizedMessage", "Couldn't save User");
+			return "common/messages";
+
 		}
 		model.addAttribute("messageType", "success");
 		model.addAttribute("notLocalizedMessage", "User Saved successfully");
@@ -103,6 +105,8 @@ public class Users {
 		} catch (Exception e) {
 			model.addAttribute("messageType", "error");
 			model.addAttribute("notLocalizedMessage", "Couldn't save User");
+			return "common/messages";
+
 		}
 		model.addAttribute("messageType", "success");
 		model.addAttribute("notLocalizedMessage", "User Saved successfully");
@@ -131,6 +135,8 @@ public class Users {
 		} catch (Exception e) {
 			model.addAttribute("messageType", "error");
 			model.addAttribute("notLocalizedMessage", "Couldn't delete User");
+			return "common/messages";
+
 		}
 		model.addAttribute("messageType", "success");
 		model.addAttribute("notLocalizedMessage", "User Saved successfully");
