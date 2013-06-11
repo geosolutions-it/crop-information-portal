@@ -3,15 +3,18 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <artifactId>nrl</artifactId>
     <groupId>it.geosolutions.nrl</groupId>
+    <artifactId>portal-root</artifactId>
     <version>1.0-SNAPSHOT</version>
   </parent>
+  
   <groupId>it.geosolutions.nrl</groupId>
   <artifactId>model</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <name>Crop Information Portal - model Tier</name>
   <packaging>jar</packaging> 
+  
+  <name>Crop Information Portal - model Tier</name>
+  
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
