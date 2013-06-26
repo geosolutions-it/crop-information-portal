@@ -1,7 +1,7 @@
 /*
  *  nrl Crop Information Portal
  *  https://github.com/geosolutions-it/crop-information-portal
- *  Copyright (C) 2007-2013 GeoSolutions S.A.S.
+ *  Copyright (C) 2013 GeoSolutions S.A.S.
  *  http://www.geo-solutions.it
  *
  *  GPLv3 + Classpath exception
@@ -22,13 +22,15 @@
 
 package it.geosolutions.nrl.persistence.dao.impl;
 
+import it.geosolutions.nrl.model.CropDescriptor;
 import it.geosolutions.nrl.persistence.dao.CropDescriptorDAO;
-import it.geosolutions.nrl.persistence.model.CropDescriptor;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author Lorenzo Natali
  *
  */
+@Transactional(value = "NRLTransactionManager")
 public class CropDescriptorDAOImpl extends BaseDAO<CropDescriptor, String> implements CropDescriptorDAO {
 
 }

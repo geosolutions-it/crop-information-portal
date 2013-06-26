@@ -55,17 +55,17 @@
         	<!-- MODULES  -->
   	        <dependency>
                 <groupId>it.geosolutions.nrl</groupId>
-                <artifactId>model</artifactId>
+                <artifactId>nrl-model</artifactId>
                 <version>${nrl.version}</version>
             </dependency>
             <dependency>
                 <groupId>it.geosolutions.nrl</groupId>
-                <artifactId>persistence</artifactId>
+                <artifactId>nrl-persistence</artifactId>
                 <version>${nrl.version}</version>
             </dependency>
             <dependency>
                 <groupId>it.geosolutions.nrl</groupId>
-                <artifactId>service</artifactId>
+                <artifactId>nrl-service</artifactId>
                 <version>${nrl.version}</version>
             </dependency>
 	

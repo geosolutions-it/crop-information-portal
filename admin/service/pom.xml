@@ -9,21 +9,22 @@
     </parent>
 
     <groupId>it.geosolutions.nrl</groupId>
-    <artifactId>service</artifactId>
+    <artifactId>nrl-service</artifactId>
     <packaging>jar</packaging>
 
-    <name>Crop Informational Portal - service Tier</name>
+    <name>Crop Information Portal - service Tier</name>
   
     <dependencies>
+        <dependency>
+            <groupId>it.geosolutions.nrl</groupId>
+            <artifactId>nrl-persistence</artifactId>
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>it.geosolutions.nrl</groupId>
-            <artifactId>persistence</artifactId>
-        </dependency>
+
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

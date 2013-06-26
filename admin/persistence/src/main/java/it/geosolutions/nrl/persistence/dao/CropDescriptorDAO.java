@@ -21,9 +21,8 @@
  */
 package it.geosolutions.nrl.persistence.dao;
 
-import it.geosolutions.nrl.persistence.model.CropDescriptor;
-
 import com.googlecode.genericdao.dao.jpa.GenericDAO;
+import it.geosolutions.nrl.model.CropDescriptor;
 
 
 

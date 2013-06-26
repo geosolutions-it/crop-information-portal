@@ -1,6 +1,6 @@
 package it.geosolutions.nrl.mvc;
 
-import it.geosolutions.nrl.persistence.model.CropDescriptor;
+import it.geosolutions.nrl.model.CropDescriptor;
 import it.geosolutions.nrl.service.CropDescriptorService;
 import it.geosolutions.nrl.utils.ControllerUtils;
 
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class Crop {
+public class CropController {
 	@Autowired
 	CropDescriptorService cropDescriptorService;
 	
@@ -90,7 +90,7 @@ public class Crop {
 
 	}
 	@RequestMapping(value = "/crops/delete/{id}", method = RequestMethod.POST)
-	public String delete(@PathVariable(value = "id") String  id,@ModelAttribute("crop") Crop crop, ModelMap model) {
+	public String delete(@PathVariable(value = "id") String  id,@ModelAttribute("crop") CropController crop, ModelMap model) {
 
 		
 		try {
