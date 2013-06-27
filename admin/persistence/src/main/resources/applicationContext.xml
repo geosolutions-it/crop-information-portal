@@ -29,10 +29,15 @@
 
      <bean id="metadataUtil" class="com.googlecode.genericdao.search.jpa.hibernate.HibernateMetadataUtil"
              factory-method="getInstanceForEntityManagerFactory">
-             <constructor-arg ref="entityManagerFactory" />
+             <constructor-arg ref="nrlEntityManagerFactory" />
      </bean>
      <!--  DAO  -->
       <bean id="cropDescriptorDao" class="it.geosolutions.nrl.persistence.dao.impl.CropDescriptorDAOImpl" >
         <property name="searchProcessor" ref="searchProcessor" />
     </bean>
+
+      <bean id="cropDataDao" class="it.geosolutions.nrl.persistence.dao.impl.CropDataDAOImpl" >
+        <property name="searchProcessor" ref="searchProcessor" />
+    </bean>
+
 </beans>

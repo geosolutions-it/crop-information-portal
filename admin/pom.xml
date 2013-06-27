@@ -30,11 +30,11 @@
         <nrl.version>1.0-SNAPSHOT</nrl.version>
         <jetty.version>6.1.14</jetty.version>
         <spring.version>3.0.5.RELEASE</spring.version>
-        <hibernate.version>3.3.2.GA</hibernate.version>
+<!--        <hibernate.version>3.3.2.GA</hibernate.version>
         <hibernate-spatial.version>1.0</hibernate-spatial.version>
         <hibernate-annotations.version>3.4.0.GA</hibernate-annotations.version>
         <hibernate-commons-annotations.version>3.3.0.ga</hibernate-commons-annotations.version>
-        <hibernate-validator.version>3.1.0.GA</hibernate-validator.version>
+        <hibernate-validator.version>3.1.0.GA</hibernate-validator.version>-->
         <hibernate-generic-dao.version>1.1.0</hibernate-generic-dao.version>
     </properties>
     
@@ -210,7 +210,7 @@
             <!-- =========================================================== -->
             <!--     HIBERNATE                                               -->
             <!-- =========================================================== -->
-             <dependency>
+<!--             <dependency>
                 <groupId>org.hibernate</groupId>
                 <artifactId>hibernate-annotations</artifactId>
                 <version>${hibernate-annotations.version}</version>
@@ -229,7 +229,60 @@
                 <groupId>org.hibernate</groupId>
                 <artifactId>hibernate-validator</artifactId>
                 <version>${hibernate-validator.version}</version>
+            </dependency>-->
+
+            <dependency>
+                <groupId>cglib</groupId>
+                <artifactId>cglib</artifactId>
+                <version>2.2</version>
             </dependency>
+<!--            <dependency>
+                <groupId>commons-lang</groupId>
+                <artifactId>commons-lang</artifactId>
+                <version>2.3</version>
+            </dependency>-->
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-annotations</artifactId>
+                <version>3.4.0.GA</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-commons-annotations</artifactId>
+                <version>3.3.0.ga</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.hibernate</groupId>
+                        <artifactId>hibernate</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-core</artifactId>
+                <version>3.3.1.GA</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>3.1.0.GA</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-entitymanager</artifactId>
+                <version>3.4.0.GA</version>
+            </dependency>
+
+<!--            <dependency>
+                <groupId>commons-lang</groupId>
+                <artifactId>commons-lang</artifactId>
+                <version>2.3</version>
+            </dependency> -->
+<!--            <dependency>
+                <groupId>commons-collections</groupId>
+                <artifactId>commons-collections</artifactId>
+                <version>3.2.1</version>
+            </dependency>-->
 
             <!-- =========================================================== -->
             <!--     HIBERNATE-SPATIAL                                       -->

@@ -12,7 +12,7 @@
     <artifactId>nrl-service</artifactId>
     <packaging>jar</packaging>
 
-    <name>Crop Information Portal - service Tier</name>
+    <name>Crop Information Portal - services</name>
   
     <dependencies>
         <dependency>

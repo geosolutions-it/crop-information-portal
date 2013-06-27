@@ -22,6 +22,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   <persistence-unit name="NRL" transaction-type="RESOURCE_LOCAL">
     <!-- when adding/removing classes, please also keep aligned the src/test/resource/hibernate.cfg.xml file -->
     
-    <class>it.geosolutions.nrl.persistence.model.CropDescriptor</class>
+    <class>it.geosolutions.nrl.model.CropDescriptor</class>
+    <class>it.geosolutions.nrl.model.CropData</class>
   </persistence-unit>
 </persistence>
