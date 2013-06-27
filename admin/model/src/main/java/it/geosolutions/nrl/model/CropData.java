@@ -42,7 +42,15 @@ public class CropData {
 
     @Column
     private Double yield;// double precision,
+
     //CONSTRAINT cropdata_pkey PRIMARY KEY (crop , district , province , year )
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getCrop() {
         return crop;

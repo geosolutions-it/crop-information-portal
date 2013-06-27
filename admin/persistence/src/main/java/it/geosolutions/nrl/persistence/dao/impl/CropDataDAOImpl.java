@@ -22,34 +22,35 @@
 
 package it.geosolutions.nrl.persistence.dao.impl;
 
-import it.geosolutions.nrl.model.CropDescriptor;
-import it.geosolutions.nrl.persistence.dao.CropDescriptorDAO;
+import it.geosolutions.nrl.model.CropData;
+import it.geosolutions.nrl.persistence.dao.CropDataDAO;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * @author Lorenzo Natali
- * @author ETj
+ *
+ * @author ETj (etj at geo-solutions.it)
  */
 @Transactional(value = "nrlTransactionManager")
-public class CropDescriptorDAOImpl extends BaseDAO<CropDescriptor, String> implements CropDescriptorDAO {
+public class CropDataDAOImpl extends BaseDAO<CropData, Long> implements CropDataDAO {
 
     @Override
-    public void persist(CropDescriptor... entities) {
+    public void persist(CropData... entities) {
         super.persist(entities);
     }
 
     @Override
-    public CropDescriptor merge(CropDescriptor entity) {
-        return super.merge(entity); 
+    public CropData merge(CropData entity) {
+        return super.merge(entity);
     }
 
     @Override
-    public boolean remove(CropDescriptor entity) {
+    public boolean remove(CropData entity) {
         return super.remove(entity);
     }
 
     @Override
-    public boolean removeById(String id) {
-        return super.removeById(id); //To change body of generated methods, choose Tools | Templates.
+    public boolean removeById(Long id) {
+        return super.removeById(id);
     }
+
 }

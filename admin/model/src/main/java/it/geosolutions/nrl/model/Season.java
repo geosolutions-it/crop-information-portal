@@ -27,15 +27,23 @@ import java.util.Map;
  * @author ETj (etj at geo-solutions.it)
  */
 public enum Season {
-    NONE(""),
-    RABI("RABI"),
-    KHARIF("KHARIF"),
-    RABI_KHARIF("RABI,KHARIF");
+    NONE("", new String[]{}),
+    RABI(Names.RABI, new String[]{Names.RABI}),
+    KHARIF(Names.KHARIF, new String[]{Names.KHARIF}),
+    RABI_KHARIF("RABI,KHARIF", new String[]{Names.RABI,Names.KHARIF});
+
+    public static class Names {
+        public final static String RABI = "RABI";
+        public final static String KHARIF = "KHARIF";
+    }
 
     private String representation;
+    private String[] arrayRepresentation;
 
-    private Season(String representation) {
+
+    private Season(String representation, String []arr) {
         this.representation = representation;
+        this.arrayRepresentation = arr;
     }    
 
     private static final Map<Season, Map<Season, Season>> addTable = new EnumMap<Season, Map<Season, Season>>(Season.class);
@@ -78,10 +86,10 @@ public enum Season {
         Season season = NONE;
         if(s != null) {
             if(s.toLowerCase().contains("rabi")) {
-                season.add(RABI);
+                season = season.add(RABI);
             }
             if(s.toLowerCase().contains("kharif")) {
-                season.add(KHARIF);
+                season = season.add(KHARIF);
             }
         }
         return season;
@@ -96,5 +104,8 @@ public enum Season {
         return representation;
     }
 
+    public String[] toArray() {
+        return arrayRepresentation;
+    }
 
 }

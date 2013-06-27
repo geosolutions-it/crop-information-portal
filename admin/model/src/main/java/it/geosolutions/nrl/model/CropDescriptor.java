@@ -43,5 +43,9 @@ public class CropDescriptor {
 	public void setSeasons(String[] seasons) {
 		this.seasons = seasons;
 	}
+
+	public void setSeasons(Season seasons) {
+		this.seasons = seasons.toArray();
+	}
 	
 }
