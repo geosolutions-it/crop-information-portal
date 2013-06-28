@@ -4,7 +4,7 @@
 package it.geosolutions.nrl.service;
 
 import it.geosolutions.nrl.model.CropDescriptor;
-import it.geosolutions.nrl.persistence.dao.impl.CropDescriptorDAOImpl;
+import it.geosolutions.nrl.persistence.dao.CropDescriptorDAO;
 
 import java.util.List;
 
@@ -18,9 +18,17 @@ import org.springframework.transaction.annotation.Transactional;
 public class CropDescriptorService {
 
     @Autowired
-    private CropDescriptorDAOImpl cropDescriptorDao;
+    private CropDescriptorDAO cropDescriptorDao;
 
-    public List<CropDescriptor> getAll() {
+    public CropDescriptorDAO getCropDescriptorDao() {
+		return cropDescriptorDao;
+	}
+
+	public void setCropDescriptorDao(CropDescriptorDAO cropDescriptorDao) {
+		this.cropDescriptorDao = cropDescriptorDao;
+	}
+
+	public List<CropDescriptor> getAll() {
         return cropDescriptorDao.findAll();
     }
 
