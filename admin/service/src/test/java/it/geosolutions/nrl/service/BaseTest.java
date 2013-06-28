@@ -17,9 +17,8 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package it.geosolutions.nrl.persistence.dao.impl;
+package it.geosolutions.nrl.service;
 
-import it.geosolutions.nrl.persistence.dao.CropDescriptorDAO;
 import java.io.File;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -57,7 +56,7 @@ public abstract class BaseTest {
         synchronized (BaseTest.class) {
             if (ctx == null) {
                 String[] paths = {
-                    "applicationContext.xml"
+                    "classpath*:applicationContext.xml"
                          ,"applicationContext-test.xml"
                 };
                 ctx = new ClassPathXmlApplicationContext(paths);
