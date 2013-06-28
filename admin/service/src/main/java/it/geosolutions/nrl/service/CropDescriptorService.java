@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  *
  */
-@Transactional(value = "NRLTransactionManager")
+@Transactional(value = "nrlTransactionManager")
 public class CropDescriptorService {
 
     @Autowired
