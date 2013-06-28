@@ -33,7 +33,7 @@ public class CropDescriptorServiceTest extends BaseTest{
 	    }
 
 	@Test
-	public void crationTest(){
+	public void creationTest(){
 		
 		new CropDescriptorService();
 		

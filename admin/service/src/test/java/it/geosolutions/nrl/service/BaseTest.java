@@ -22,7 +22,6 @@ package it.geosolutions.nrl.service;
 import java.io.File;
 import java.net.URISyntaxException;
 import java.net.URL;
-import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -74,20 +73,8 @@ public abstract class BaseTest {
         LOGGER.info("---------- RUNNING TEST " + getClass().getSimpleName() + " :: " + _testName.getMethodName());
         LOGGER.info("---------- ");
 
-        String className = this.getClass().getSimpleName();
-        testClassDir = new File(getTestDataDir(), className);
-        if (!testClassDir.exists()) {
-            if (LOGGER.isDebugEnabled()) {
-                LOGGER.debug("Using test class dir " + testClassDir);
-            }
-            testClassDir.mkdir();
-        }
-
-        String testName = _testName.getMethodName();
-        tempDir = new File(testClassDir, testName);
-        if (LOGGER.isDebugEnabled()) {
-            LOGGER.debug("Using test case dir " + tempDir);
-        }
+        
+       
     }
 
     protected synchronized File getTempDir() {
@@ -98,42 +85,7 @@ public abstract class BaseTest {
         return tempDir;
     }
 
-    private synchronized File getTestDataDir() {
-
-        if (testDataDir != null) {
-            return testDataDir;
-        }
-
-        String startDir = System.getProperty("buildDirectory");
-        if (startDir == null) {
-            LOGGER.warn("Property 'buildDirectory' is not defined");
-
-            File f = loadFile(".");
-            if (f == null || !f.exists()) {
-                LOGGER.warn("Undefined current directory");
-
-                throw new IllegalStateException("Could not find a valid current dir");
-            }
-
-            String fa = f.getParentFile().getAbsolutePath();
-
-            if (!"target".equals(FilenameUtils.getBaseName(fa))) {
-                LOGGER.warn("Can't use current dir " + fa);
-                throw new IllegalStateException("Could not find a valid current dir");
-            }
-
-            startDir = fa;
-        }
-
-        testDataDir = new File(startDir, "test-data-" + System.currentTimeMillis());
-
-        if (LOGGER.isDebugEnabled()) {
-            LOGGER.debug("Using test dir " + testDataDir);
-        }
-
-        testDataDir.mkdir();
-        return testDataDir;
-    }
+    
 
     protected File loadFile(String name) {
         try {
