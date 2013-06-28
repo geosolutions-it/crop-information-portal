@@ -56,10 +56,12 @@ public class CropDescriptorDAOImplTest extends BaseDAOTest {
     @Test
     public void testPersistAndMerge() {
 
+        String ID = "TEST00";
         String id;
 
         {
             CropDescriptor cd = new CropDescriptor();
+            cd.setId(ID);
             cd.setSeasons(Season.RABI_KHARIF);
             cd.setLabel("test descriptor");
 
@@ -68,6 +70,8 @@ public class CropDescriptorDAOImplTest extends BaseDAOTest {
         }
 
         assertNotNull(id);
+        assertEquals(ID, id);
+
         LOGGER.info("Saved cropdescriptor " + id);
 
         {
