@@ -79,7 +79,11 @@
             <groupId>commons-dbcp</groupId>
             <artifactId>commons-dbcp</artifactId>
         </dependency>
-
+         <!-- GCLIB -->
+		<dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+        </dependency>
         <!-- =========================================================== -->
         <!--     JDBC                                                    -->
         <!-- =========================================================== -->
