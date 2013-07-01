@@ -25,6 +25,7 @@
   <!--           <li class="${context=='home'?'active':'' }"><a href="<c:url value="/home"/>">Home</a></li> -->
            
            <li><a href="<c:url value="/crops/"/>">Crops</a></li>
+           <li><a href="<c:url value="/agromet/"/>">Agromet Factors</a></li>
            	
            <li class="dropdown">
              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Statistics<b class="caret"></b></a>
