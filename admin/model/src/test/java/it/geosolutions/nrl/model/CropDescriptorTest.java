@@ -42,10 +42,10 @@ public class CropDescriptorTest {
         
         String[] sr = r.toArray();
         cd.setSeasons(sr);
-        assertEquals(r.toString(), cd.getSeasons()[0]);
+        assertEquals("RABI", cd.getSeasons()[0]);
         String[] sk = k.toArray();
         cd.setSeasons(sk);
-        assertEquals(k.toString(), cd.getSeasons()[0]);
+        assertEquals("KHARIF", cd.getSeasons()[0]);
 
     }
 
