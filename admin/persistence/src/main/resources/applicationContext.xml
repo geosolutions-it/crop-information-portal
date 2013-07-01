@@ -35,9 +35,13 @@
       <bean id="cropDescriptorDao" class="it.geosolutions.nrl.persistence.dao.impl.CropDescriptorDAOImpl" >
         <property name="searchProcessor" ref="searchProcessor" />
     </bean>
+     <bean id="agrometDescriptorDao" class="it.geosolutions.nrl.persistence.dao.impl.AgrometDescriptorDAOImpl" >
+        <property name="searchProcessor" ref="searchProcessor" />
+    </bean>
 
       <bean id="cropDataDao" class="it.geosolutions.nrl.persistence.dao.impl.CropDataDAOImpl" >
         <property name="searchProcessor" ref="searchProcessor" />
     </bean>
+    
 
 </beans>
