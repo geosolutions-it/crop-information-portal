@@ -13,4 +13,6 @@
       <!--  SERVICES  -->
       <bean id="cropDescriptorService" class="it.geosolutions.nrl.service.CropDescriptorService">
     </bean>
+     <bean id="agrometDescriptorService" class="it.geosolutions.nrl.service.AgrometDescriptorService">
+    </bean>
 </beans>
