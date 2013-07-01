@@ -35,6 +35,7 @@ public class CropDescriptor {
 		this.label = label;
 	}
 	public String[] getSeasons() {
+	    if(seasons=="") return new String[0];
 		return seasons.split(",");
 	}
 	public void setSeasons(String seasons) {
@@ -45,6 +46,7 @@ public class CropDescriptor {
 	    String[] arr = seasons;
         String res = "";
         for(int i = 0; i<arr.length;i++){
+            if(arr[i] == Season.RABI.toString() || arr[i] == Season.KHARIF.toString())
             res += arr[i];
             if(i!=arr.length-1){
                 res+=",";
