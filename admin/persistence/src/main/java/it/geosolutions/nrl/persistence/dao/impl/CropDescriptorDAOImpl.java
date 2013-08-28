@@ -50,6 +50,6 @@ public class CropDescriptorDAOImpl extends BaseDAO<CropDescriptor, String> imple
 
     @Override
     public boolean removeById(String id) {
-        return super.removeById(id); //To change body of generated methods, choose Tools | Templates.
+        return super.removeById(id); 
     }
 }

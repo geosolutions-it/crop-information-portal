@@ -21,6 +21,7 @@ package it.geosolutions.nrl.persistence.dao.impl;
 
 import it.geosolutions.nrl.model.CropData;
 import it.geosolutions.nrl.model.CropDescriptor;
+import it.geosolutions.nrl.model.Season;
 import static it.geosolutions.nrl.persistence.dao.impl.BaseDAOTest.cropDataDAO;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -30,6 +31,8 @@ import static org.junit.Assert.*;
  * @author ETj (etj at geo-solutions.it)
  */
 public class CropDataDAOImplTest extends BaseDAOTest {
+
+    private static final String CROPNAME = "crop0";
 
     public CropDataDAOImplTest() {
     }
@@ -41,7 +44,7 @@ public class CropDataDAOImplTest extends BaseDAOTest {
 
         {
             CropData cd = new CropData();
-            cd.setCrop("crop");
+            cd.setCropDescriptor(createCropDescriptor());
             cd.setDistrict("distr");
             cd.setProvince("prov");
             cd.setYear(2013);
@@ -62,7 +65,7 @@ public class CropDataDAOImplTest extends BaseDAOTest {
             // test insert
             CropData loaded = cropDataDAO.find(id);
             assertNotNull(loaded);
-            assertEquals("crop", loaded.getCrop());
+            assertEquals(CROPNAME, loaded.getCropDescriptor().getId());
             assertEquals(Double.valueOf(100d), loaded.getArea());
 
             // and modify
@@ -86,7 +89,7 @@ public class CropDataDAOImplTest extends BaseDAOTest {
 
         {
             CropData cd = new CropData();
-            cd.setCrop("crop");
+            cd.setCropDescriptor(createCropDescriptor());
             cd.setDistrict("distr");
             cd.setProvince("prov");
             cd.setYear(2013);
@@ -109,7 +112,8 @@ public class CropDataDAOImplTest extends BaseDAOTest {
             assertNotNull(loaded);
 
             // and modify
-            loaded.setCrop("anUpdateShouldNotBeAllowed");
+            CropDescriptor anotherCrop = createCropDescriptor("anotherDescriptor");
+            loaded.setCropDescriptor(anotherCrop);
             try {
                 cropDataDAO.merge(loaded);
 //                fail("Update should not be allowed for crop field");
@@ -123,7 +127,7 @@ public class CropDataDAOImplTest extends BaseDAOTest {
             // test insert
             CropData loaded = cropDataDAO.find(id);
             assertNotNull(loaded);
-            assertEquals("crop", loaded.getCrop());
+            assertEquals(CROPNAME, loaded.getCropDescriptor().getId());
         }
     }
 
@@ -131,10 +135,11 @@ public class CropDataDAOImplTest extends BaseDAOTest {
     public void testUniqueness() {
 
         Long id;
+        CropDescriptor cropDescriptor = createCropDescriptor();
 
         {
             CropData cd = new CropData();
-            cd.setCrop("crop");
+            cd.setCropDescriptor(cropDescriptor);
             cd.setDistrict("distr");
             cd.setProvince("prov");
             cd.setYear(2013);
@@ -159,7 +164,7 @@ public class CropDataDAOImplTest extends BaseDAOTest {
             // insert Crop with same data
             try {
                 CropData cd = new CropData();
-                cd.setCrop("crop");
+                cd.setCropDescriptor(cropDescriptor);
                 cd.setDistrict("distr");
                 cd.setProvince("prov");
                 cd.setYear(2013);
@@ -176,5 +181,87 @@ public class CropDataDAOImplTest extends BaseDAOTest {
                 LOGGER.info("Expected exception thrown : " + e.getMessage());
             }
         }
+    }
+
+//    @Test
+//    public void testPersistProvOnly() {
+//
+//        Long id;
+//
+//        {
+//            CropData cd = new CropData();
+//            cd.setCropDescriptor(createCropDescriptor());
+//            cd.setDistrict(null);
+//            cd.setProvince("prov");
+//            cd.setYear(2013);
+//
+//            cd.setArea(100d);
+//            cd.setProduction(200d);
+//            cd.setYears("2000-2013");
+//            cd.setYield(300d);
+//
+//            cropDataDAO.persist(cd);
+//            id = cd.getId();
+//        }
+//        assertNotNull(id);
+//    }
+
+//    @Test
+//    public void testPersistDistrOnly() {
+//
+//        Long id;
+//
+//        {
+//            CropData cd = new CropData();
+//            cd.setCropDescriptor(createCropDescriptor());
+//            cd.setDistrict("distr");
+//            cd.setProvince(null);
+//            cd.setYear(2013);
+//
+//            cd.setArea(100d);
+//            cd.setProduction(200d);
+//            cd.setYears("2000-2013");
+//            cd.setYield(300d);
+//
+//            cropDataDAO.persist(cd);
+//            id = cd.getId();
+//        }
+//        assertNotNull(id);
+//    }
+
+    @Test
+    public void testPersistNoProvDistr() {
+
+        CropData cd = new CropData();
+        cd.setCropDescriptor(createCropDescriptor());
+        cd.setDistrict(null);
+        cd.setProvince(null);
+        cd.setYear(2013);
+
+        cd.setArea(100d);
+        cd.setProduction(200d);
+        cd.setYears("2000-2013");
+        cd.setYield(300d);
+
+        try {
+            cropDataDAO.persist(cd);
+            fail("Null fields not recognized");
+        } catch(Exception e) {
+            LOGGER.info("Bad use case properly trapped: " + e.getMessage());
+        }
+    }
+
+    protected CropDescriptor createCropDescriptor(String id) {
+        // create base cropdescriptor
+        CropDescriptor descriptor = new CropDescriptor();
+        descriptor.setId(id);
+        descriptor.setLabel(id);
+        descriptor.setSeasons(Season.RABI_KHARIF);
+        cropDescriptorDAO.persist(descriptor);
+        return descriptor;
+    }
+
+    protected CropDescriptor createCropDescriptor() {
+        return createCropDescriptor(CROPNAME);
     }
 }

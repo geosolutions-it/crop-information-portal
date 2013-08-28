@@ -21,7 +21,22 @@ public class CropDescriptor {
     
     @Column(updatable=true,nullable=false)
 	String seasons; // ???
-	
+
+    public CropDescriptor() {
+    }
+
+    public CropDescriptor(String id, String label, String seasons) {
+        this.id = id;
+        this.label = label;
+        setSeasons(seasons);
+    }
+
+    public CropDescriptor(String id, String label, Season season) {
+        this.id = id;
+        this.label = label;
+        setSeasons(season);
+    }
+
 	public String getId() {
 		return id;
 	}
@@ -48,8 +63,8 @@ public class CropDescriptor {
 	    this.seasons="";
 	}
 	
-	public void setSeasons(String[] seasons) {
-	    String[] arr = seasons;
+	public void setSeasons(String[] arr) {
+
         String res = "";
         for(int i = 0; i<arr.length;i++){
             if(Season.RABI.toString().equals(arr[i]) ||Season.KHARIF.toString().equals(arr[i])){
@@ -74,5 +89,9 @@ public class CropDescriptor {
 		 }
 		 this.seasons = res;
 	}
-	
+
+    @Override
+    public String toString() {
+        return "CropDescriptor[id=" + id + ", label=" + label + ", seasons=" + seasons + ']';
+    }
 }

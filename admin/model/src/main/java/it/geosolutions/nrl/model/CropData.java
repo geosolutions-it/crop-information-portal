@@ -2,17 +2,24 @@ package it.geosolutions.nrl.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.xml.bind.annotation.XmlRootElement;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.ForeignKey;
+import org.hibernate.annotations.Index;
 
 @Entity(name = "CropData")
 @Table(name = "cropdata", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"crop" , "district" , "province" , "year"})})
+    @UniqueConstraint(columnNames = {"cropdescriptor" , "district" , "province" , "year"})})
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "cropdata")
 @XmlRootElement(name = "CropData")
 public class CropData {
@@ -21,14 +28,17 @@ public class CropData {
     @Id
     private Long id;
 
-//    private Long rowid ;
-    @Column(nullable = false, updatable = false)
-    private String crop;// character varying(255) //NOT NULL,
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name="cropdescriptor", nullable = false, updatable = false)
+    @ForeignKey(name = "crop_type")
+    private CropDescriptor cropDescriptor;
+
     @Column(nullable = false, updatable = false)
     private String district; //district character varying(255) NOT NULL,
     @Column(nullable = false, updatable = false)
     private String province;// character varying(255) NOT NULL,
     @Column(nullable = false, updatable = false)
+    @Index(name = "idx_cropdata_year")
     private int year;//; integer NOT NULL,
 
     @Column
@@ -43,6 +53,13 @@ public class CropData {
     @Column
     private Double yield;// double precision,
 
+    @PrePersist
+    @PreUpdate
+    public void checkConstraints() {
+        if(district == null && province == null)
+            throw new IllegalStateException("Both district and province are null");
+    }
+
     //CONSTRAINT cropdata_pkey PRIMARY KEY (crop , district , province , year )
     public Long getId() {
         return id;
@@ -52,12 +69,12 @@ public class CropData {
         this.id = id;
     }
 
-    public String getCrop() {
-        return crop;
+    public CropDescriptor getCropDescriptor() {
+        return cropDescriptor;
     }
 
-    public void setCrop(String crop) {
-        this.crop = crop;
+    public void setCropDescriptor(CropDescriptor cropDescriptor) {
+        this.cropDescriptor = cropDescriptor;
     }
 
     public String getDistrict() {
@@ -115,4 +132,10 @@ public class CropData {
     public void setYield(Double yield) {
         this.yield = yield;
     }
+
+    @Override
+    public String toString() {
+        return "CropData[descr=" + cropDescriptor + ", district=" + district + ", province=" + province + ", year=" + year + ", years=" + years + ", area=" + area + ", production=" + production + ", yield=" + yield + ']';
+    }
+    
 }
