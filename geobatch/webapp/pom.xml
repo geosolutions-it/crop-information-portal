@@ -6,8 +6,8 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>it.geosolutions.geobatch</groupId>
-    <artifactId>gb-web</artifactId>
+    <groupId>it.geosolutions.nrl</groupId>
+    <artifactId>geobatch-root</artifactId>
     <version>1.4-SNAPSHOT</version>
   </parent>
   
