@@ -76,14 +76,16 @@ public class CSVIngestAction extends BaseAction<EventObject> implements Initiali
     @Override
     @CheckConfiguration
     public boolean checkConfiguration() {
+        return true;
+    }
+
+    private void checkInit() {
         if(cropDataDao == null)
             throw new IllegalStateException("cropDataDao is null");
         if(cropDescriptorDao == null)
             throw new IllegalStateException("cropDescriptorDao is null");
         if(agrometDao == null)
             throw new IllegalStateException("agrometDao is null");
-        
-        return true;
     }
 
     /**
@@ -92,6 +94,10 @@ public class CSVIngestAction extends BaseAction<EventObject> implements Initiali
     public Queue<EventObject> execute(Queue<EventObject> events) throws ActionException {
 
         listenerForwarder.setTask("Check config");
+        
+        // @autowired fields are injected *after* the checkConfiguration() is called
+        checkInit();
+
         listenerForwarder.started();
 
         CSVIngestConfiguration configuration = getConfiguration();
