@@ -19,7 +19,6 @@
  */
 package it.geosolutions.nrl.persistence.dao.impl;
 
-import it.geosolutions.nrl.persistence.dao.CropDescriptorDAO;
 import java.io.File;
 import java.net.URISyntaxException;
 import java.net.URL;

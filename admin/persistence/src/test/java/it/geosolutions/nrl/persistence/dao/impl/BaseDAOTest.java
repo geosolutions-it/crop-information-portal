@@ -19,7 +19,10 @@
  */
 package it.geosolutions.nrl.persistence.dao.impl;
 
+import it.geosolutions.nrl.model.AgroMet;
 import it.geosolutions.nrl.model.CropData;
+import it.geosolutions.nrl.model.CropDescriptor;
+import it.geosolutions.nrl.persistence.dao.AgrometDAO;
 import it.geosolutions.nrl.persistence.dao.CropDataDAO;
 import it.geosolutions.nrl.persistence.dao.CropDescriptorDAO;
 import java.util.List;
@@ -41,10 +44,13 @@ public abstract class BaseDAOTest extends BaseTest {
     protected static CropDescriptorDAO cropDescriptorDAO;
     protected static CropDataDAO cropDataDAO;
 
+    protected static AgrometDAO agrometDAO;
+
     public BaseDAOTest() {
 
         cropDescriptorDAO = ctx.getBean("cropDescriptorDao", CropDescriptorDAO.class);
         cropDataDAO = ctx.getBean("cropDataDao", CropDataDAO.class);
+        agrometDAO = ctx.getBean("agrometDao", AgrometDAO.class);
     }
 
     @Before
@@ -55,6 +61,8 @@ public abstract class BaseDAOTest extends BaseTest {
     
     protected void removeAll() {
         removeAllCropData();
+        removeAllCropDescriptor();
+        removeAllAgromet();
     }
 
     protected void removeAllCropData() {
@@ -68,11 +76,34 @@ public abstract class BaseDAOTest extends BaseTest {
         assertEquals("CropData has not been properly deleted", 0, cropDataDAO.count(null));
     }
 
+    protected void removeAllAgromet() {
+        List<AgroMet> list = agrometDAO.findAll();
+        for (AgroMet item : list) {
+            LOGGER.info("Removing " + item);
+            boolean ret = agrometDAO.remove(item);
+            assertTrue("AgroMet not removed", ret);
+        }
+
+        assertEquals("AgroMet has not been properly deleted", 0, agrometDAO.count(null));
+    }
+
+    protected void removeAllCropDescriptor() {
+        List<CropDescriptor> list = cropDescriptorDAO.findAll();
+        for (CropDescriptor item : list) {
+            LOGGER.info("Removing " + item);
+            boolean ret = cropDescriptorDAO.remove(item);
+            assertTrue("CropDescriptor not removed", ret);
+        }
+
+        assertEquals("CropDescriptor has not been properly deleted", 0, cropDescriptorDAO.count(null));
+    }
+
     @Test
     public void testCheckDAOs() {
 
         assertNotNull(cropDescriptorDAO);
         assertNotNull(cropDataDAO);
+        assertNotNull(agrometDAO);
     }
 
 //    protected final static String MULTIPOLYGONWKT = "MULTIPOLYGON(((48.6894038 62.33877482, 48.7014874 62.33877482, 48.7014874 62.33968662, 48.6894038 62.33968662, 48.6894038 62.33877482)))";

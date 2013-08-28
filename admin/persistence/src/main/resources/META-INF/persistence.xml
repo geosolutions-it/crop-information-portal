@@ -24,5 +24,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <class>it.geosolutions.nrl.model.CropDescriptor</class>
     <class>it.geosolutions.nrl.model.CropData</class> 
     <class>it.geosolutions.nrl.model.AgrometDescriptor</class>
+    <class>it.geosolutions.nrl.model.AgroMet</class>
   </persistence-unit>
 </persistence>

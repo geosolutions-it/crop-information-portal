@@ -125,5 +125,15 @@ public class AgroMet {
 
     public void setS_dec(int s_dec) {
         this.s_dec = s_dec;
-    }   
+    }
+
+    @Override
+    public String toString() {
+        return "AgroMet{" + "id=" + id + ", dist=" + district + ", prov=" + province 
+                + ", yr=" + year + ", mn=" + month + ", dk=" + dek
+                + ", factor=" + factor + ", value=" + value
+                + ", s_yr=" + s_yr + ", s_dec=" + s_dec + '}';
+    }
+
+
 }

@@ -21,6 +21,7 @@
         <property name="properties">
             <props>
                 <prop key="nrlEntityManagerFactory.jpaPropertyMap[hibernate.hbm2ddl.auto]">create-drop</prop>
+                <prop key="nrlVendorAdapter.showSql">true</prop>
             </props>
         </property>
         <!--<property name="ignoreResourceNotFound" value="true"/>-->
