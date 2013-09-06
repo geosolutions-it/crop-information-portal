@@ -22,6 +22,7 @@
 
     <name>GeoBatch action: CSV ingest</name>
     <description></description>
+
     <properties>
     </properties>
     <!-- =========================================================== -->
@@ -69,20 +70,14 @@
         <dependency>
             <groupId>it.geosolutions.geobatch</groupId>
             <artifactId>gb-fsm-core</artifactId>
-            <version>1.4-SNAPSHOT</version>
-            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>it.geosolutions.geobatch</groupId>
             <artifactId>gb-core-model</artifactId>
-            <version>1.4-SNAPSHOT</version>
-            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>it.geosolutions.geobatch</groupId>
             <artifactId>gb-alias-registry</artifactId>
-            <version>1.4-SNAPSHOT</version>
-            <type>jar</type>
         </dependency>
 
         <!-- forcing hibernate versions -->

@@ -1,7 +1,7 @@
 /*
  *  GeoBatch - Open Source geospatial batch processing system
  *  http://geobatch.geo-solutions.it/
- *  Copyright (C) 2007-2012 GeoSolutions S.A.S.
+ *  Copyright (C) 2007-2008-2012 GeoSolutions S.A.S.
  *  http://www.geo-solutions.it
  *
  *  GPLv3 + Classpath exception
@@ -19,22 +19,33 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+package it.geosolutions.geobatch.nrl.ndvi;
 
-package it.geosolutions.geobatch.nrl.csvingest;
 
-import it.geosolutions.geobatch.registry.AliasRegistrar;
-import it.geosolutions.geobatch.registry.AliasRegistry;
+import it.geosolutions.geobatch.configuration.event.action.ActionConfiguration;
+import java.io.File;
 
 /**
- * Register XStream aliases for the relevant services we ship in this class.
- * 
- * @author ETj <etj at geo-solutions.it>
  */
-public class CSVIngestAliasRegistrar extends AliasRegistrar {
+public class NDVIIngestConfiguration extends ActionConfiguration {	
 
-    public CSVIngestAliasRegistrar(AliasRegistry registry) {
-        if (LOGGER.isInfoEnabled())
-            LOGGER.info(getClass().getSimpleName() + ": registering alias.");
-        registry.putAlias("CSVIngestConfiguration", CSVIngestConfiguration.class);
+    private File destinationDir;
+
+	public NDVIIngestConfiguration(String id, String name, String description) {
+		super(id, name, description);
+	}
+
+    public File getDestinationDir() {
+        return destinationDir;
+    }
+
+    public void setDestinationDir(File destinationDir) {
+        this.destinationDir = destinationDir;
+    }
+	
+    @Override
+    public NDVIIngestConfiguration clone() {
+        final NDVIIngestConfiguration configuration = (NDVIIngestConfiguration) super.clone();
+        return configuration;
     }
 }
