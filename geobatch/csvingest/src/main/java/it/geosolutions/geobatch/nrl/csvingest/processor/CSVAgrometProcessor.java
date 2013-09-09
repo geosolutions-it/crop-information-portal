@@ -69,6 +69,7 @@ public class CSVAgrometProcessor extends CSVProcessor {
                 agromet.setMonth(nextLine[idx++]);
                 agromet.setDek(Integer.parseInt(nextLine[idx++]));
                 agromet.setFactor(nextLine[idx++]);
+                setSVars(agromet);
 
                 String valS = nextLine[idx++];
                 if(valS == null || valS.isEmpty()) {
@@ -98,6 +99,53 @@ public class CSVAgrometProcessor extends CSVProcessor {
         }
 
         LOGGER.info("Agromet ingestion -- persisted "+ line + " entries");
+    }
+
+    private void setSVars(AgroMet agromet) {
+        Month3 emon = Month3.valueOf(agromet.getMonth().toUpperCase());
+
+        agromet.setS_yr( agromet.getYear()+ emon.getAdd());
+        agromet.setS_dec(agromet.getDek() + emon.getPos()*3);
+    }
+
+
+    static enum Month3 {
+        JAN("Jan", 2, 0),
+        FEB("Feb", 3, 0),
+        MAR("Mar", 4, 0),
+        APR("Apr", 5, 0),
+        MAY("May", 6, 0),
+        JUN("Jun", 7, 0),
+        JUL("Jul", 8, 0),
+        AUG("Aug", 9, 0),
+        SEP("Sep", 10, 0),
+        OCT("Oct", 11, 0),
+        NOV("Nov", 0, 1),
+        DEC("Dec", 1, 1);
+
+
+        private String lit;
+        private int pos;
+        private int add;
+
+        private Month3(String lit, int pos, int add) {
+            this.lit = lit;
+            this.pos = pos;
+            this.add = add;
+        }
+
+        public String getLit() {
+            return lit;
+        }
+
+        public int getPos() {
+            return pos;
+        }
+
+        public int getAdd() {
+            return add;
+        }
+
     }
 
 }
