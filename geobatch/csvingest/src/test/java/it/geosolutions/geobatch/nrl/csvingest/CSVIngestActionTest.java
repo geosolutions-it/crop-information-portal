@@ -44,39 +44,8 @@ public class CSVIngestActionTest extends BaseDAOTest {
     public CSVIngestActionTest() {
     }
 
-    /**
-     * Test of execute method, of class CSVIngestAction.
-     */
-//    @Test
-    public void testExecute() throws Exception {
-
-        Queue<EventObject> events = new LinkedList<EventObject>();
-        File cropFile = loadFile("testdata/cropdistr.csv");
-        assertNotNull(cropFile);
-
-        { // create FK crop descriptor
-            CropDescriptor cd = new CropDescriptor();
-            cd.setId("crop0");
-            cd.setLabel("label0");
-            cd.setSeasons(Season.KHARIF);
-            cropDescriptorDAO.persist(cd);
-        }
-
-        FileSystemEvent event = new FileSystemEvent(cropFile, FileSystemEventType.FILE_ADDED);
-        events.add(event);
-
-        CSVIngestAction action = new CSVIngestAction(new CSVIngestConfiguration(null, null, null));
-        action.setCropDataDao(cropDataDAO);
-        action.setCropDescriptorDao(cropDescriptorDAO);
-        action.afterPropertiesSet();
-
-        Queue result = action.execute(events);
-
-        assertEquals(1, cropDataDAO.count(null));
-    }
-
     @Test
-    public void laodAll() throws Exception {
+    public void loadAll() throws Exception {
 
         createCropDescriptors();
 
@@ -93,6 +62,7 @@ public class CSVIngestActionTest extends BaseDAOTest {
 
 
         for(File file : FileUtils.listFiles(dir, new String[]{"csv"}, true)) {
+            LOGGER.info("Loading " + file);
             FileSystemEvent event = new FileSystemEvent(file, FileSystemEventType.FILE_ADDED);
             events.add(event);
             Queue result = action.execute(events);

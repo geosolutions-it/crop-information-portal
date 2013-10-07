@@ -89,12 +89,12 @@ public class CSVIngestAction extends BaseAction<EventObject> implements Initiali
     }
 
     /**
-     * 
+     *
      */
     public Queue<EventObject> execute(Queue<EventObject> events) throws ActionException {
 
         listenerForwarder.setTask("Check config");
-        
+
         // @autowired fields are injected *after* the checkConfiguration() is called
         checkInit();
 
@@ -116,7 +116,7 @@ public class CSVIngestAction extends BaseAction<EventObject> implements Initiali
                 throw new ActionException(this, "EventObject not handled " + event);
             }
         }
-        
+
         return new LinkedList<EventObject>();
     }
 
@@ -128,13 +128,13 @@ public class CSVIngestAction extends BaseAction<EventObject> implements Initiali
         String[] headers = null;
         CSVReader reader = null;
         try {
-            reader = new CSVReader(new FileReader(file), ';');
+            reader = new CSVReader(new FileReader(file), ',');
             headers = reader.readNext();
         } catch (IOException e) {
             throw new ActionException(this, "Error in reading CSV file", e);
         }
 
-        List<String> headersList = Arrays.asList(headers);
+        List<String> headersList = sanitizeHeaders(headers);
 
         CSVProcessor processor = null;
         for (CSVProcessor p : processors) {
@@ -182,6 +182,26 @@ public class CSVIngestAction extends BaseAction<EventObject> implements Initiali
 
     public void setAgrometDao(AgrometDAO agrometDAO) {
         this.agrometDao = agrometDAO;
+    }
+
+    private List<String> sanitizeHeaders(String[] headers) throws ActionException {
+
+        List<String> ret = new ArrayList<String>();
+
+        boolean emptyFound = false;
+
+        for (String h : headers) {
+            if(h == null || h.isEmpty()) {
+                emptyFound = true;
+            } else {
+                if(emptyFound) {
+                    throw new ActionException(this, "Header value found after blank header");
+                }
+                ret.add(h);
+            }
+        }
+
+        return ret;
     }
 
 }

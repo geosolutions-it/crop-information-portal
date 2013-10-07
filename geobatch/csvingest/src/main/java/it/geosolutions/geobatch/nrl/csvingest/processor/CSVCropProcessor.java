@@ -39,7 +39,7 @@ public class CSVCropProcessor extends CSVProcessor {
     private final static Logger LOGGER = LoggerFactory.getLogger(CSVCropProcessor.class);
 
     private final static List<String> HEADERS =
-            Collections.unmodifiableList(Arrays.asList("*","crop","distr","prov","year","years","area_mHa","prod_mTo","yield_kgHa"));
+            Collections.unmodifiableList(Arrays.asList("*","crop","distr","prov","year","years","area","prod","yield"));
 
     public CSVCropProcessor() {
     }
