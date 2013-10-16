@@ -23,12 +23,7 @@
             <groupId>it.geosolutions.nrl</groupId>
             <artifactId>nrl-service</artifactId>
         </dependency>
-        <!-- jsp etc... -->
 
-        <dependency>
-            <groupId>jstl</groupId>
-            <artifactId>jstl</artifactId>
-        </dependency>
         <!-- Spring 3 dependencies -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -44,11 +39,11 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
         </dependency>
+ 
         <!-- Geostore Client -->
         <dependency>
             <groupId>it.geosolutions.geostore</groupId>
             <artifactId>geostore-rest-client</artifactId>
-            <version>${geostore.version}</version>
         </dependency>
 		<!-- GeoBatch Client  -->
 		 <dependency>
@@ -111,11 +106,21 @@
             <artifactId>jsp-2.1</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!-- jsp etc... -->
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+        </dependency>
+
         <dependency>
             <groupId>jstl</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
+
         <!-- Junit -->
         <dependency>
             <groupId>junit</groupId>
