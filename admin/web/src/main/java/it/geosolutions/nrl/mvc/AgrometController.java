@@ -1,9 +1,7 @@
 package it.geosolutions.nrl.mvc;
 
 import it.geosolutions.nrl.model.AgrometDescriptor;
-import it.geosolutions.nrl.model.CropDescriptor;
 import it.geosolutions.nrl.service.AgrometDescriptorService;
-import it.geosolutions.nrl.service.CropDescriptorService;
 import it.geosolutions.nrl.utils.ControllerUtils;
 
 import java.util.List;
@@ -21,12 +19,12 @@ public class AgrometController {
 	@Autowired
 	AgrometDescriptorService agrometDescriptorService;
 	
-	@RequestMapping(value="/agromet/", method = RequestMethod.GET)
+	@RequestMapping(value="/agromet", method = RequestMethod.GET)
 	public String handleGet(ModelMap model) {
 		List<AgrometDescriptor> cds =agrometDescriptorService.getAll();
 		model.addAttribute("factors",cds);
 		ControllerUtils.setCommonModel(model);
-		model.addAttribute("context", "factors");
+		model.addAttribute("context", "context/factors");
 		return "template";
  
 	}

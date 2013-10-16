@@ -26,7 +26,7 @@
 	})
 </script>
 <div class="container width700">
-	<form class="form-horizontal span6 ">
+	<form class="form-horizontal span6 " method="post" action="../operation/NDVIStatistics">
 		<div class="control-group">
 			<label class="control-label">Regions</label>
 			<div class="controls">
@@ -41,14 +41,13 @@
 					</label>
 					<select name="region_file" id="region_file"
 						class="input-block-level" disabled>
-						<c:forEach items="${regions.fileBrowser.files}" var="file">
+						<c:forEach items="${regions.fileBrowser.fileNames}" var="file">
 							<option value="${file}">${file}</option>
 						</c:forEach>
 					</select>
 				</c:if>
 			</div>
 		</div>
-
 		<div class="control-group">
 			<label class="control-label">Mask</label>
 			<div class="controls">
@@ -63,7 +62,7 @@
 					</label>
 					<select name="mask_file" id="mask_file" class="input-block-level"
 						disabled>
-						<c:forEach items="${masks.fileBrowser.files}" var="file">
+						<c:forEach items="${masks.fileBrowser.fileNames}" var="file">
 							<option value="${file}">${file}</option>
 						</c:forEach>
 					</select>
@@ -75,18 +74,17 @@
 			<div class="controls">
 
 				<span class="input-append " data-date-format="yyyy mm">
-					<input id="granule_mounth" class="span2" size="16" type="text">
+					<input id="granule_mounth" class="span2" size="16" type="text" name="month">
 					<span class="add-on"><i class="icon-calendar"></i></span>
-				</span> <select class="input-small" name="dekad" id="dekad">
+				</span>
+				<select class="input-small" name="dekad" id="dekad">
 					<option>1</option>
 					<option>2</option>
 					<option>3</option>
-
 				</select>
 			</div>
 		</div>
-		<button class="btn pull-right" type="submit">Generate
-			Statistics</button>
+		<button class="btn pull-right" type="submit">Generate Statistics</button>
 	</form>
 </div>
 

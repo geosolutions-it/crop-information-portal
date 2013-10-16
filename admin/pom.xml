@@ -21,6 +21,11 @@
             <id>offtherailz</id>
             <organization>GeoSolutions</organization>
         </developer>
+        <developer>
+            <name>Lorenzo Pini</name>
+            <id>Gnafu</id>
+            <organization>GeoSolutions</organization>
+        </developer>
     </developers>
     
     <!-- properties -->
@@ -29,7 +34,10 @@
         <geostore.version>1.2-SNAPSHOT</geostore.version>
         <nrl.version>1.0-SNAPSHOT</nrl.version>
         <jetty.version>6.1.14</jetty.version>
-        <spring.version>3.0.5.RELEASE</spring.version>
+        <spring.version>3.2.4.RELEASE</spring.version>
+        <spring.security.version>3.1.4.RELEASE</spring.security.version>
+        <geobatch.version>1.4-SNAPSHOT</geobatch.version>   
+        <slf4j.version>1.7.2</slf4j.version>   
 <!--        <hibernate.version>3.3.2.GA</hibernate.version>
         <hibernate-spatial.version>1.0</hibernate-spatial.version>
         <hibernate-annotations.version>3.4.0.GA</hibernate-annotations.version>
@@ -49,6 +57,7 @@
         </repository>
         
     </repositories>
+    
     <!-- Dependencies -->
      <dependencyManagement>
         <dependencies>
@@ -308,34 +317,58 @@
                 <artifactId>hsqldb</artifactId>
                 <version>2.2.9</version>
             </dependency>
+             <dependency>
+             <!-- =========================================================== -->
+             <!--   REST CLIENTS                                              -->
+             <!-- =========================================================== -->
+            <groupId>it.geosolutions.geostore</groupId>
+                <artifactId>geostore-rest-client</artifactId>
+                <version>${geostore.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>it.geosolutions.geobatch</groupId>
+                <artifactId>gb-rest-client</artifactId>
+                <version>${geobatch.version}</version>
+                
+                <exclusions>
+				  <exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>jcl-over-slf4j</artifactId>
+				  </exclusion>
+				  <exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-simple</artifactId>
+				  </exclusion>
+				</exclusions>
+            </dependency>
              <!-- =========================================================== -->
             <!--     SPRING SECURITY                                          -->
             <!-- ===========================================================  -->
             <dependency>
                 <groupId>org.springframework.security</groupId>
                 <artifactId>spring-security-core</artifactId>
-                <version>${spring.version}</version>
+                <version>${spring.security.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework.security</groupId>
                 <artifactId>spring-security-taglibs</artifactId>
-                <version>${spring.version}</version>
+                <version>${spring.security.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework.security</groupId>
                 <artifactId>spring-security-acl</artifactId>
-                <version>${spring.version}</version>
+                <version>${spring.security.version}</version>
             </dependency>
  
             <dependency>
                 <groupId>org.springframework.security</groupId>
                 <artifactId>spring-security-web</artifactId>
-                <version>${spring.version}</version>
+                <version>${spring.security.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework.security</groupId>
                 <artifactId>spring-security-config</artifactId>
-                <version>${spring.version}</version>
+                <version>${spring.security.version}</version>
             </dependency>
             <!-- =========================================================== -->
             <!--     TEST                                                    -->
@@ -401,7 +434,7 @@
 				<exclusions>
 				  <exclusion>
 					<groupId>org.slf4j</groupId>
-					<artifactId>jcl104-over-slf4j</artifactId>
+					<artifactId>jcl-over-slf4j</artifactId>
 				  </exclusion>
 				  <exclusion>
 					<groupId>org.slf4j</groupId>
@@ -426,12 +459,18 @@
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-log4j12</artifactId>
-                <version>1.7.2</version>
+                <version>${slf4j.version}</version>
             </dependency>
              <dependency>
                 <groupId>org.slf4j</groupId>
+                <artifactId>jcl-over-slf4j</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            
+             <dependency>
+                <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
-                <version>1.7.2</version>
+                <version>${slf4j.version}</version>
             </dependency>
         </dependencies>
      </dependencyManagement>

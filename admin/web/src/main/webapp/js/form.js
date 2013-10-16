@@ -3,20 +3,22 @@ var formUtils = {
         var modal = $(selector);
         var form = modal.find('form');
         form.attr('action', action);
+		return form;
     },
     initModalForm : function(selector) {
-        $(selector).on('shown', function() {
+		$(selector).on( 'shown',
+						function() {
             $modal = $(this);
             $form = $(this).find('form');
             $form.validate({
                 onKeyup : false,
                 sendForm : false,
                         eachValidField : function() {
-
-                            $(this).closest('.control-group').removeClass('error').addClass('success');
+											$(this).closest('.control-group')
+													.removeClass('error')
+													.addClass('success');
                         },
                         eachInvalidField : function() {
-
                             $(this).closest('.control-group')
                                     .removeClass('success')
                                     .addClass('error');
@@ -24,23 +26,22 @@ var formUtils = {
                         valid : function() {
                             $.ajax({
                                 type : 'POST',
-                                url : $($form).attr(
-                                        'action'),
-                                data : $($form)
-                                        .serialize(),
+														url : $($form).attr('action'),
+														data : $($form).serialize(),
                                 success : function(response) {
                                     $form.validateDestroy();
                                     $modal.modal('hide');
                                     var $msg = $('<div class="modal modal-in"></div>');
                                     $('#message').remove();
                                     $('body').append(response);
-                                    $('#message').modal( 'show');
-                                    $('#message').on('hide', function() {
+															$('#message').modal('show');
+															$('#message').on(
+																			'hide',
+																			function() {
                                         window.location.reload()
                                     })
                                 },
-                                error: function(response){
-                                	
+														error : function(response) {
                                 	
                                 }
 
@@ -66,3 +67,19 @@ $(function() {
 	    });
 
 });
+
+function postData(targetId){
+	var options = {
+			
+			target: '#'+targetId
+			/*
+			success: function(html) {
+				//  the next server response could not have the same id
+				$("#${containerId}").replaceWith($('#${containerId}', $(html)));
+				//$("#${containerId}").html(html);
+			}*/
+		};
+
+	$(this).ajaxSubmit(options);
+	return false;   
+}

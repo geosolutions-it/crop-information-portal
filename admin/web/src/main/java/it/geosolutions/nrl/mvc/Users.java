@@ -7,7 +7,6 @@ import it.geosolutions.geostore.services.rest.model.RESTUser;
 import it.geosolutions.geostore.services.rest.model.UserList;
 import it.geosolutions.nrl.utils.ControllerUtils;
 
-import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +29,7 @@ public class Users {
 	public String userList(@PathVariable(value = "page") Integer page,
 			ModelMap model) {
 		UserList ul = geoStoreClient.getUsers(page, pageSize);
-		UserList ul1 = geoStoreClient.getUsers(page + 1, pageSize);
+		//UserList ul1 = geoStoreClient.getUsers(page + 1, pageSize);
 		if(ul.getList().size()>0){
 			model.addAttribute("next",page+1);
 		}
@@ -39,7 +38,7 @@ public class Users {
 			model.addAttribute("users", users);
 		}
 		ControllerUtils.setCommonModel(model);
-		model.addAttribute("context", "users");
+		model.addAttribute("context", "context/users");
 		model.addAttribute("pagesize", pageSize);
 		model.addAttribute("page", page);
 
@@ -47,7 +46,7 @@ public class Users {
 
 	}
 
-	@RequestMapping(value = "/users/", method = RequestMethod.GET)
+	@RequestMapping(value = "/users", method = RequestMethod.GET)
 	public String userList(ModelMap model) {
 		return "redirect:/users/0";
 	}
@@ -97,8 +96,8 @@ public class Users {
 	@RequestMapping(value = "/users/edit/{id}", method = RequestMethod.POST)
 	public String editUser(@PathVariable(value = "id") Long id,@ModelAttribute("user") User user, ModelMap model) {
 
-		List<UserAttribute> attrs = new ArrayList<UserAttribute>();
-		UserAttribute email = new UserAttribute();
+		//List<UserAttribute> attrs = new ArrayList<UserAttribute>();
+		//UserAttribute email = new UserAttribute();
 
 		try {
 			geoStoreClient.update(id,user);
@@ -127,8 +126,8 @@ public class Users {
 	@RequestMapping(value = "/users/delete/{id}", method = RequestMethod.POST)
 	public String deleteUser(@PathVariable(value = "id") Long id,@ModelAttribute("user") User user, ModelMap model) {
 
-		List<UserAttribute> attrs = new ArrayList<UserAttribute>();
-		UserAttribute email = new UserAttribute();
+		//List<UserAttribute> attrs = new ArrayList<UserAttribute>();
+		//UserAttribute email = new UserAttribute();
 
 		try {
 			geoStoreClient.deleteUser(id);
