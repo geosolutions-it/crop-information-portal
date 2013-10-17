@@ -41,7 +41,7 @@ public class WelcomePage {
 	@RequestMapping(value="/", method = RequestMethod.GET)
 	public String landingPage(ModelMap model, Principal principal ) {
 		
-		return printWelcome(model, principal);
+		return "redirect:login";
  
 	}
 	
