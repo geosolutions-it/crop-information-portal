@@ -15,14 +15,14 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:if test="${not empty directory }">
+			<c:if test="${not empty directory && directory!='/'}">
 				<tr>
 					<td><a href="?d=${directoryBack}">.. /</a></td>
 					<td>Folder</td>
 					<td></td>
 					<td>
 						<a class="btn" href="?d=${directoryBack}">Up one folder</a>
-					</td>
+					</td><td></td>
 				</tr>				
 			</c:if>
 			<c:if test="${not empty fileBrowser.files }">
