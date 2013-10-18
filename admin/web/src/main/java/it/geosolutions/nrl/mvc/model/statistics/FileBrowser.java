@@ -40,6 +40,7 @@ public class FileBrowser {
 		if(children == null) {
 			return dirList;
 		}
+		
 		List<JSPFile> fileList = new LinkedList<JSPFile>();
 		for (int i=0;i<children.length;i++){
 			String name = children[i].getName();
