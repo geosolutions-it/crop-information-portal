@@ -65,6 +65,9 @@ public class FileBrowserOperationController implements ApplicationContextAware, 
 	
 	private UUID uniqueKey;
 		
+	private String accept;
+	
+    private List<String> visible;
 	public FileBrowserOperationController() {
 		setDefaultBaseDir("G:/OpenSDIManager/test_shapes/");
 		uniqueKey = UUID.randomUUID();   
@@ -104,7 +107,7 @@ public class FileBrowserOperationController implements ApplicationContextAware, 
         }
          
         model.addAttribute("uploadedFiles", fileNames);
-        
+        model.addAttribute("accept",accept);
 		FileBrowser fb = new FileBrowser();
 		fb.setBaseDir(getDefaultBaseDir());
 		fb.setRegex(null);
@@ -241,6 +244,7 @@ public class FileBrowserOperationController implements ApplicationContextAware, 
 	        	dirString = dirString.concat("/");
 	        	baseDir = baseDir + dirString;
 	        	model.addAttribute("directory", dirString);
+	        	
 	        }
 	    }
 		
@@ -291,7 +295,7 @@ public class FileBrowserOperationController implements ApplicationContextAware, 
 		
 		model.addAttribute("containerId", uniqueKey.toString().substring(0, 8));
 		model.addAttribute("formId", uniqueKey.toString().substring(27, 36));
-		
+		model.addAttribute("accept",accept);
 		return operationJSP ;
 	}
 
@@ -371,4 +375,26 @@ public class FileBrowserOperationController implements ApplicationContextAware, 
 	public void setCanDelete(Boolean canDelete) {
 		this.canDelete = canDelete;
 	}
+	
+	/**
+	 * a (optional) list of comma separated mi accepted MIME types
+	 * allowed to be uploaded (GUI only)
+     * e.g. "image/*,application/zip"
+	 * @param accept the accept string
+	 */
+	public String getAccept() {
+        return accept;
+    }
+
+	/**
+	 * set the accept string
+	 * a (optional) list of comma separated mi accepted MIME types
+     * allowed to be uploaded (GUI only)
+	 * 
+	 * e.g. "image/*,application/zip"
+	 * @param accept
+	 */
+    public void setAccept(String accept) {
+        this.accept = accept;
+    }
 }

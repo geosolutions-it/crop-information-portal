@@ -75,7 +75,7 @@
 	    <table id="fileTable">
 	    	<tr>
 	            <td><div class="input-append">
-					<input  name="files[0]" type="file" />
+					<input  name="files[0]" type="file" accept="${not empty accept ?accept :''}" />
 					</div>
 				</td>
 	        </tr>
@@ -134,7 +134,7 @@
 	        //$(".remrow").hide();
 	        $('#fileTable').append(
 	                '<tr id="row_'+ fileIndex +'"><td>'+
-	                '<div class="input-append">' + 
+	                '<div class="input-append" accept="${not empty accept ?accept :''}>' + 
 	                '    <input type="file" name="files['+ fileIndex +']" /> <input id="rembtn_'+ fileIndex +'" type="button" value="Remove" class="remrow btn btn-danger" name="clear'+ fileIndex +'" onClick="remrow('+ fileIndex +')"/>'+
 	            	'</div>'    + 
                 '</td></tr>');
