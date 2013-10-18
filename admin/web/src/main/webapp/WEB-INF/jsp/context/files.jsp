@@ -43,7 +43,7 @@
 								<c:if test="${fn:endsWith(file.name, fileext)}">
 								<c:forEach items="${entry.value}" var="op">
 									<a data-toggle="modal" class="btn ${fn:toLowerCase(op.name)}" data-target="#${fn:toLowerCase(op.name)}"
-										data-fileid="${file.name}" href="../../operation/${op.RESTPath}/${file.name}">${op.name}</a>
+										data-fileid="${file.name}" href="../../operation/${op.RESTPath}/${file.name}?d=${directory == '/'?'': directory}">${op.name}</a>
 									</c:forEach>
 								</c:if>
 							</c:forEach>
@@ -74,8 +74,9 @@
 	    <p>Select files to upload. Press Add button to add more file inputs.</p>
 	    <table id="fileTable">
 	    	<tr>
-	            <td>
+	            <td><div class="input-append">
 					<input  name="files[0]" type="file" />
+					</div>
 				</td>
 	        </tr>
 	    </table>
@@ -126,14 +127,17 @@
 	
 	$(document).ready(function() {
 	    $(":file").filestyle();
+	    var fileIndex =$('#fileTable tr').children().length;
 	    //add more file components if Add is clicked
 	    $('#addFile').click(function() {
-	        var fileIndex = $('#fileTable tr').children().length;
-	        $(".remrow").hide();
+	        fileIndex++;
+	        //$(".remrow").hide();
 	        $('#fileTable').append(
 	                '<tr id="row_'+ fileIndex +'"><td>'+
-	                '   <input type="file" name="files['+ fileIndex +']" /> <input id="rembtn_'+ fileIndex +'" type="button" value="Remove" class="remrow btn btn-danger" name="clear'+ fileIndex +'" onClick="remrow('+ fileIndex +')"/>'+
-	                '</td></tr>');
+	                '<div class="input-append">' + 
+	                '    <input type="file" name="files['+ fileIndex +']" /> <input id="rembtn_'+ fileIndex +'" type="button" value="Remove" class="remrow btn btn-danger" name="clear'+ fileIndex +'" onClick="remrow('+ fileIndex +')"/>'+
+	            	'</div>'    + 
+                '</td></tr>');
 		    $(":file").filestyle();
 	    });
 	    
