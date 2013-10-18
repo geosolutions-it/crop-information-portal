@@ -53,13 +53,13 @@ public class FlowStatusOperation implements GeoBatchOperation {
 	/**
 	 * Directory where to scan for files
 	 */
-	private String basedirString = "G:/OpenSDIManager/test_shapes/";
+	private String basedirString ;
 
-	private String geobatchRestUrl = "http://localhost:8081/geobatch/rest/";
+	private String geobatchRestUrl ;
 
-	private String geobatchUsername = "admin";
+	private String geobatchUsername ;
 
-	private String geobatchPassword = "admin";
+	private String geobatchPassword ;
 
 	/**
 	 * Getter
