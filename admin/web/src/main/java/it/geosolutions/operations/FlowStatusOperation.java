@@ -182,7 +182,7 @@ public class FlowStatusOperation implements GeoBatchOperation {
 	}
 
 	@Override
-	public Object getBlob(Object inputParam) {
+	public Object getBlob(Object inputParam,HttpServletRequest postRequest) {
 		
 		// TODO: refactor this
 		RESTFlowService service = (RESTFlowService) ((Object[])inputParam)[0];

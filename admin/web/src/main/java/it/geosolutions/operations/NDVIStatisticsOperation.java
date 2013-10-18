@@ -92,7 +92,7 @@ public class NDVIStatisticsOperation implements LocalOperation {
 	}
 
 	@Override
-	public Object getBlob(Object inputParam) {
+	public Object getBlob(Object inputParam,HttpServletRequest request) {
 
 		@SuppressWarnings("unchecked")
 		Map<String, String[]> parameters = (Map<String, String[]>) inputParam;

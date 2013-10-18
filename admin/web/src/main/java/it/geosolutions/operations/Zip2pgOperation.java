@@ -20,18 +20,13 @@
  */
 package it.geosolutions.operations;
 
-import it.geosolutions.geobatch.services.rest.model.RESTRunInfo;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.multipart.MultipartFile;
 
 @Controller
-public class Zip2pgOperation implements LocalOperation {
+public class Zip2pgOperation extends SingleFileLocalOperation {
 	
 	/**
 	 * The name of this Operation
@@ -110,11 +105,7 @@ public class Zip2pgOperation implements LocalOperation {
 	}
 
 	// TODO: This jsp should be placed in a common folder, set in the OperationManager (OperationMapping)
-	@Override
-	public String getJsp() {
-		return "zip2pg";
-	}
-
+	
 	/**
 	 * @param path the path to set
 	 */
@@ -162,35 +153,6 @@ public class Zip2pgOperation implements LocalOperation {
 	 */
 	public void setGeobatchPassword(String geobatchPassword) {
 		this.geobatchPassword = geobatchPassword;
-	}
-
-	@Override
-	public String getJsp(ModelMap model, HttpServletRequest request, List<MultipartFile> files) {
-		
-		System.out.println("getJSP di zip2pg");
-		
-		if(model.containsKey("gotParam"))
-			model.addAttribute("fileName", model.get("gotParam"));
-		else {
-			model.addAttribute("fileName", "Insert File Name");
-		}
-		
-		return "zip2pg";
-
-	}
-
-	@Override
-	public Object getBlob(Object inputParam) {
-		
-		// TODO: look for a HttpServletRequest
-		String fileName = (String)inputParam;
-        RESTRunInfo runInfo = new RESTRunInfo();
-        List<String> flist = new ArrayList<String>();
-		// TODO: more flexible
-        flist.add(basedirString+fileName);
-        runInfo.setFileList(flist);
-        
-		return runInfo;
 	}
 
 	@Override

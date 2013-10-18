@@ -26,6 +26,8 @@ package it.geosolutions.operations;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * @author Lorenzo Pini
  *
@@ -70,9 +72,10 @@ public interface GeoBatchOperation extends Operation {
 	
 	/**
 	 * Create Object to be sent to GeoBatchRESTClient
+	 * @param request TODO
 	 * @return Object 
 	 */
-	public Object getBlob(Object inputParam);
+	public Object getBlob(Object inputParam, HttpServletRequest request);
 	
 	/**
 	 * List of Strings representing all the extensions this Operation can work on.

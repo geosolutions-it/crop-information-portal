@@ -20,18 +20,13 @@
  */
 package it.geosolutions.operations;
 
-import it.geosolutions.geobatch.services.rest.model.RESTRunInfo;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.multipart.MultipartFile;
 
 @Controller
-public class GeotiffPublishOperation implements LocalOperation {
+public class GeotiffPublishOperation extends SingleFileLocalOperation {
 	
 	/**
 	 * The name of this Operation
@@ -52,7 +47,7 @@ public class GeotiffPublishOperation implements LocalOperation {
 	/**
 	 * Directory where to scan for files
 	 */
-	private String basedirString;
+
 
 	private String geobatchRestUrl;
 
@@ -61,23 +56,7 @@ public class GeotiffPublishOperation implements LocalOperation {
 	private String geobatchPassword;
 
 	private String flowID;
-
-	/**
-	 * Getter
-	 * @return the basedirString
-	 */
-	public String getBasedirString() {
-		return basedirString;
-	}
-
-	/**
-	 * Setter
-	 * @param basedirString the basedirString to set
-	 */
-	public void setBasedirString(String basedirString) {
-		this.basedirString = basedirString;
-	}
-
+	
 	/**
 	 * @return the name
 	 */
@@ -166,34 +145,6 @@ public class GeotiffPublishOperation implements LocalOperation {
 		this.geobatchPassword = geobatchPassword;
 	}
 
-	@Override
-	public String getJsp(ModelMap model, HttpServletRequest request, List<MultipartFile> files) {
-		
-		System.out.println("getJSP di "+GeotiffPublishOperation.name);
-		
-		if(model.containsKey("gotParam"))
-			model.addAttribute("fileName", model.get("gotParam"));
-		else {
-			model.addAttribute("fileName", "Insert File Name");
-		}
-		
-		return "geotiffpublish";
-
-	}
-
-	@Override
-	public Object getBlob(Object inputParam) {
-		
-		// TODO: look for a HttpServletRequest
-		String fileName = (String)inputParam;
-        RESTRunInfo runInfo = new RESTRunInfo();
-        List<String> flist = new ArrayList<String>();
-		// TODO: more flexible
-        flist.add(basedirString+fileName);
-        runInfo.setFileList(flist);
-        
-		return runInfo;
-	}
 
 	@Override
 	public String getFlowID() {

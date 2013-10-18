@@ -194,7 +194,7 @@ public class OperationEngineController implements ApplicationContextAware{
 			        
 					if(operation instanceof RemoteOperation) {
 						// TODO: better implementation
-					   byte[] blob = (byte[]) ((RemoteOperation)operation).getBlob(uploadFile.getFiles().get(0));
+					   byte[] blob = (byte[]) ((RemoteOperation)operation).getBlob(uploadFile.getFiles().get(0), null);
 				       // TODO: fastFail or not?
 					   // TODO: move fastfail to interfaces
 				       response = service.run(((RemoteOperation)operation).getFlowID(), true, blob);
@@ -204,12 +204,12 @@ public class OperationEngineController implements ApplicationContextAware{
 						// TODO: implement request parameters instead of gotParam
 						RESTRunInfo runInfo;
 						if(gotParam != null) {
-							runInfo = (RESTRunInfo) ((LocalOperation)operation).getBlob(gotParam);
+							runInfo = (RESTRunInfo) ((LocalOperation)operation).getBlob(gotParam,request);
 						}else {
 						
 							@SuppressWarnings("unchecked")
 							Map<String, String[]> parameters = request.getParameterMap();
-							runInfo = (RESTRunInfo) ((LocalOperation)operation).getBlob(parameters);
+							runInfo = (RESTRunInfo) ((LocalOperation)operation).getBlob(parameters, null);
 						}
 
 					    // TODO: fastFail or not?
@@ -225,7 +225,7 @@ public class OperationEngineController implements ApplicationContextAware{
 						obj[1] = request;
 						obj[2] = model;
 
-						response = (String) ((GeoBatchOperation) operation).getBlob(obj);
+						response = (String) ((GeoBatchOperation) operation).getBlob(obj, null);
 						return response;
 
 					}
@@ -271,7 +271,11 @@ public class OperationEngineController implements ApplicationContextAware{
 		    
 	        if(null != files && files.size() > 0) {
 	            for (MultipartFile multipartFile : files) {
+	                if(multipartFile==null){
+	                    continue;
+	                }
 	                String fileName = multipartFile.getOriginalFilename();
+	                System.out.println("File Name: "+fileName);
 	 /*
 	                if(!"".equalsIgnoreCase(fileName)){
 	                    //Handle file content - multipartFile.getInputStream()
@@ -284,7 +288,7 @@ public class OperationEngineController implements ApplicationContextAware{
 						}
 	                    fileNames.add(fileName);
 	                }*/
-	                System.out.println("File Name: "+fileName);
+	                
 	 
 	            }
 	        }

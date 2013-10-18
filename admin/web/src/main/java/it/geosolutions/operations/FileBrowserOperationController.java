@@ -34,6 +34,7 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -44,6 +45,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class FileBrowserOperationController implements ApplicationContextAware, Operation{
+    private final static Logger LOGGER = Logger.getLogger(FileBrowserOperationController.class);
 	
 	private ApplicationContext applicationContext;
 
@@ -96,7 +98,7 @@ public class FileBrowserOperationController implements ApplicationContextAware, 
 					}
                     fileNames.add(fileName);
                 }
-                System.out.println(fileName);
+                LOGGER.debug(fileName);
  
             }
         }
@@ -196,7 +198,7 @@ public class FileBrowserOperationController implements ApplicationContextAware, 
 	@Override
 	public String getJsp(ModelMap model, HttpServletRequest request, List<MultipartFile> files) {
 		
-		System.out.println("getJSP di FileBrowser");
+		LOGGER.debug("getJSP di FileBrowser");
 
 		String baseDir = getDefaultBaseDir();
 		FileBrowser fb = new FileBrowser();
@@ -207,18 +209,14 @@ public class FileBrowserOperationController implements ApplicationContextAware, 
 		Map<String, String[]> parameters = request.getParameterMap();
 
 	    for(String key : parameters.keySet()) {
-	        System.out.println(key);  // debug
+	        LOGGER.debug(key);  // debug
 	        String[] vals = parameters.get(key);
 	        for(String val : vals)  // debug
-	            System.out.println(" -> " + val);  // debug
+	            LOGGER.debug(" -> " + val);  // debug
 	        if(key.equalsIgnoreCase("d")) {
 	        	String dirString = parameters.get(key)[0].trim();
 
-	        	// prevent directory traversing
-	        	dirString = dirString.replace("..", "");
-	        	// clean path
-	        	dirString = dirString.replace("/./", "/");
-	        	dirString = dirString.replaceAll("/{2,}", "/");
+	        	dirString = ControllerUtils.preventDirectoryTrasversing(dirString);
 	        	
 	        	if(dirString.startsWith("/")) {
 	        		dirString = dirString.substring(1);
@@ -228,7 +226,7 @@ public class FileBrowserOperationController implements ApplicationContextAware, 
 	        	
 	        	if(dirString.lastIndexOf("/")>=0 && 
 	        			dirString.lastIndexOf("/")==(dirString.length()-1)){
-	        		System.out.println("stripping last slash"); // debug
+	        		LOGGER.debug("stripping last slash"); // debug
 	        		dirString = dirString.substring(0, dirString.length()-1);
 	        	}
 	        	
@@ -247,7 +245,7 @@ public class FileBrowserOperationController implements ApplicationContextAware, 
 	    }
 		
 		if(gotParam != null) {
-			System.out.println(gotParam);  // debug
+			LOGGER.debug(gotParam);  // debug
 		}
 		String gotAction = request.getParameter("action");
 		String fileToDel = request.getParameter("toDel");
@@ -255,7 +253,7 @@ public class FileBrowserOperationController implements ApplicationContextAware, 
 				&& fileToDel != null ) {
 			String deleteFileString = baseDir + fileToDel;
 			boolean res = deleteFile(deleteFileString);
-			System.out.println("Deletted "+deleteFileString+": "+res);  // debug
+			LOGGER.debug("Deletted "+deleteFileString+": "+res);  // debug
 		}
 		
 		model.addAttribute("operationName", this.operationName);	
@@ -268,7 +266,7 @@ public class FileBrowserOperationController implements ApplicationContextAware, 
         if(null != files && files.size() > 0) {
         	List<String> fileNames = new ArrayList<String>();
             for (MultipartFile multipartFile : files) {
- 
+                if(multipartFile == null) continue;
                 String fileName = multipartFile.getOriginalFilename();
                 if(!"".equalsIgnoreCase(fileName)){
                     try {
@@ -280,7 +278,7 @@ public class FileBrowserOperationController implements ApplicationContextAware, 
 					}
                     fileNames.add(fileName);
                 }
-                System.out.println("filename: "+fileName); // debug
+                LOGGER.debug("filename: "+fileName); // debug
             }
         }
 		
@@ -297,6 +295,9 @@ public class FileBrowserOperationController implements ApplicationContextAware, 
 		return operationJSP ;
 	}
 
+
+    
+
 	/**
 	 * @return the defaultBaseDir
 	 */
@@ -309,7 +310,7 @@ public class FileBrowserOperationController implements ApplicationContextAware, 
 	 */
 	public void setDefaultBaseDir(String defaultBaseDir) {
 		if(!defaultBaseDir.endsWith("/")) {
-			System.out.println("[WARN] defaultBaseDir not ending with slash \"\\\", appending one");
+			LOGGER.debug("[WARN] defaultBaseDir not ending with slash \"\\\", appending one");
 			defaultBaseDir = defaultBaseDir.concat("/");
 		}
 		this.defaultBaseDir = defaultBaseDir;
