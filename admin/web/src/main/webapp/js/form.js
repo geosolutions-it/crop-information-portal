@@ -26,8 +26,8 @@ var formUtils = {
                         valid : function() {
                             $.ajax({
                                 type : 'POST',
-														url : $($form).attr('action'),
-														data : $($form).serialize(),
+								url : $($form).attr('action'),
+								data : $($form).serialize(),
                                 success : function(response) {
                                     $form.validateDestroy();
                                     $modal.modal('hide');
@@ -80,6 +80,6 @@ function postData(targetId){
 			}*/
 		};
 
-	$(this).ajaxSubmit(options);
+	$(this).submit(options);
 	return false;   
 }
