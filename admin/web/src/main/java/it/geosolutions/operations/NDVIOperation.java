@@ -55,23 +55,7 @@ public class NDVIOperation extends SingleFileLocalOperation {
 
 	private String geobatchPassword;
 	
-	private String flowID;
-
-	/**
-	 * Getter
-	 * @return the basedirString
-	 */
-	public String getBasedirString() {
-		return basedirString;
-	}
-
-	/**
-	 * Setter
-	 * @param basedirString the basedirString to set
-	 */
-	public void setBasedirString(String basedirString) {
-		this.basedirString = basedirString;
-	}
+	
 
 	/**
 	 * @return the name
@@ -158,16 +142,6 @@ public class NDVIOperation extends SingleFileLocalOperation {
 		this.geobatchPassword = geobatchPassword;
 	}
 
-	@Override
-	public String getFlowID() {
-		return this.flowID;
-	}
-
-	/**
-	 * @param flowID the flowID to set
-	 */
-	public void setFlowID(String flowID) {
-		this.flowID = flowID;
-	}
+	
 
 }

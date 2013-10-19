@@ -55,7 +55,6 @@ public class GeotiffPublishOperation extends SingleFileLocalOperation {
 
 	private String geobatchPassword;
 
-	private String flowID;
 	
 	/**
 	 * @return the name
@@ -146,16 +145,5 @@ public class GeotiffPublishOperation extends SingleFileLocalOperation {
 	}
 
 
-	@Override
-	public String getFlowID() {
-		return flowID;
-	}
-
-	/**
-	 * @param flowID the flowID to set
-	 */
-	public void setFlowID(String flowID) {
-		this.flowID = flowID;
-	}
-
+	
 }

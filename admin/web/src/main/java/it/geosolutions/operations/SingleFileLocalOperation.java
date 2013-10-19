@@ -24,35 +24,24 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
- * @author Admin
+ * @author Lorenzo Natali 
+ * an abstract implementation of <LocalOperation> that contains all
+ * the common methods for local GeoBatch Operations that needs a single file
  *
  */
 public abstract class SingleFileLocalOperation implements LocalOperation {
+   private final static Logger LOGGER = Logger.getLogger(SingleFileLocalOperation.class);
+
+    protected String jspName="singlefileoperation";
+    protected String flowID ;
     protected String basedirString;
-
-    protected String jspName="singleFile";
     
-    public String getBasedirString() {
-        return basedirString;
-    }
-    public void setBasedirString(String basedirString) {
-        this.basedirString = basedirString;
-    }
-    public String getJspName() {
-        return jspName;
-    }
-    public void setJspName(String jspName) {
-        this.jspName = jspName;
-    }
-
-    @Override
-    public String getJsp() {
-        return jspName;
-    }
+    
     
     @Override
     public Object getBlob(Object inputParam, HttpServletRequest request) {
@@ -66,7 +55,9 @@ public abstract class SingleFileLocalOperation implements LocalOperation {
         RESTRunInfo runInfo = new RESTRunInfo();
         List<String> flist = new ArrayList<String>();
         // TODO: more flexible
-        flist.add(basedirString+fileName);
+        String fullPath = basedirString+fileName;
+        flist.add(fullPath);
+        LOGGER.info("request full path:"+fullPath);
         runInfo.setFileList(flist);
         return runInfo;
     }
@@ -88,5 +79,35 @@ public abstract class SingleFileLocalOperation implements LocalOperation {
         
         return jspName;
 
+    }
+    
+    
+    @Override
+    public String getFlowID() {
+        return this.flowID;
+    }
+    /**
+     * @param flowID the flowID to set
+     */
+    public void setFlowID(String flowID) {
+        this.flowID = flowID;
+    }
+    
+    public String getBasedirString() {
+        return basedirString;
+    }
+    public void setBasedirString(String basedirString) {
+        this.basedirString = basedirString;
+    }
+    public String getJspName() {
+        return jspName;
+    }
+    public void setJspName(String jspName) {
+        this.jspName = jspName;
+    }
+
+    @Override
+    public String getJsp() {
+        return jspName;
     }
 }

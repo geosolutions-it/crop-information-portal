@@ -155,10 +155,6 @@ public class Zip2pgOperation extends SingleFileLocalOperation {
 		this.geobatchPassword = geobatchPassword;
 	}
 
-	@Override
-	public String getFlowID() {
-		// TODO: parametric!!!
-		return "ds2ds_zip2pg";
-	}
+	
 
 }

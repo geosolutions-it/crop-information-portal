@@ -31,6 +31,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -48,6 +49,8 @@ import org.springframework.web.multipart.MultipartFile;
 public class OperationEngineController implements ApplicationContextAware{
 	
 	private ApplicationContext applicationContext;
+   private final static Logger LOGGER = Logger.getLogger(OperationEngineController.class);
+
 	
 	/**
 	 * Encapsulate operation Jsp into the template
@@ -99,10 +102,11 @@ public class OperationEngineController implements ApplicationContextAware{
 										@PathVariable(value = "gotParam") String gotParam,
 										HttpServletRequest request,
 										ModelMap model) {
-		
-		System.out.println("Handling by issueGetToOperation : OperationEngine GET");		
-		System.out.println(operationId);
-	    
+		if(LOGGER.isInfoEnabled()){
+    		LOGGER.info("Handling by issueGetToOperation : OperationEngine GET");		
+    		LOGGER.info("Operation:"+operationId);
+    		LOGGER.info("Path parameter:" + gotParam);
+		}
 		// TODO: check gotParam for security
 		
 		if(applicationContext.containsBean(operationId) && applicationContext.isTypeMatch(operationId, Operation.class)) {
@@ -122,6 +126,7 @@ public class OperationEngineController implements ApplicationContextAware{
 			return "context/"+operationJsp;
 		
 		}else {
+		    LOGGER.error("Operation:"+operationId+" not found");
 			model.addAttribute("messageType", "error");
 			model.addAttribute("operationMessage", "Operation not found");
 			return "common/messages";
@@ -171,7 +176,7 @@ public class OperationEngineController implements ApplicationContextAware{
 										HttpServletRequest request,
 										ModelMap model) {
 		
-		System.out.println("Handling by issuePostToOperation : OperationEngine POST");
+		LOGGER.info("Handling by issuePostToOperation : OperationEngine POST");
 
 		
 		if(applicationContext.containsBean(operationId) && applicationContext.isTypeMatch(operationId, Operation.class)) {
@@ -232,16 +237,21 @@ public class OperationEngineController implements ApplicationContextAware{
 					
 					
 				} catch (Exception e) {
-					e.printStackTrace();
+                   LOGGER.error(e.getMessage());
 					model.addAttribute("messageType", "error");
 					model.addAttribute("operationMessage", "Couldn't run "+operation.getName());
 					return "common/messages";
 
 				}
-				
-				model.addAttribute("messageType", "success");
-				model.addAttribute("operationMessage", response);
+				if(response ==null){
+				    LOGGER.error("the run operation retourned null");
+				    model.addAttribute("messageType", "error");
+                    model.addAttribute("operationMessage", "Couldn't run "+operation.getName());
 
+				}else{
+    				model.addAttribute("messageType", "success");
+    				model.addAttribute("operationMessage", response);
+				}
 				return "common/messages";
 
 			}
@@ -257,25 +267,13 @@ public class OperationEngineController implements ApplicationContextAware{
 		        for(String val : vals)
 		            System.out.println(" -> " + val);
 		    }
-	/*
-		    System.out.println("-- HEADERS --");
-		    for( Object o : gotHeaders.keySet()) {
-	        	
-	        	//System.out.println( o.getClass().getName() );
-	        	System.out.println( o );
-	        	//System.out.println( gotHeaders.get(o).getClass().getName() );
-	        	System.out.println( " -> "+ gotHeaders.get(o) );
-	        	
-	        }
-	        */
+	
 		    
 	        if(null != files && files.size() > 0) {
 	            for (MultipartFile multipartFile : files) {
 	                if(multipartFile==null){
 	                    continue;
 	                }
-	                String fileName = multipartFile.getOriginalFilename();
-	                System.out.println("File Name: "+fileName);
 	 /*
 	                if(!"".equalsIgnoreCase(fileName)){
 	                    //Handle file content - multipartFile.getInputStream()

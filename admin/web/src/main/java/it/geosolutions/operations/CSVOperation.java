@@ -53,7 +53,6 @@ public class CSVOperation extends SingleFileLocalOperation {
 	private String geobatchPassword;
 
 	
-	private String flowID;
 
 	/**
 	 * @return the name
@@ -143,16 +142,5 @@ public class CSVOperation extends SingleFileLocalOperation {
 		this.geobatchPassword = geobatchPassword;
 	}
 
-	@Override
-	public String getFlowID() {
-		return this.flowID;
-	}
-
-	/**
-	 * @param flowID the flowID to set
-	 */
-	public void setFlowID(String flowID) {
-		this.flowID = flowID;
-	}
-
+	
 }
