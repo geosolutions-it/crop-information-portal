@@ -67,7 +67,11 @@ public class FileBrowserOperationController implements ApplicationContextAware, 
 		
 	private String accept;
 	
-	private String fileRegex;
+	
+
+    private String fileRegex;
+	
+	private List<String> allowedOperations;
 	
 	public FileBrowserOperationController() {
 		setDefaultBaseDir("G:/OpenSDIManager/test_shapes/");
@@ -132,9 +136,15 @@ public class FileBrowserOperationController implements ApplicationContextAware, 
         
         HashMap<String, List<Operation>> ocontrollersHashMap = new HashMap<String, List<Operation>>();
         
-		String[] lista = applicationContext.getBeanNamesForType(LocalOperation.class);
-		for (String s : lista) {
-			LocalOperation fo = (LocalOperation)applicationContext.getBean(s);
+		String[] operationBeanNames = applicationContext.getBeanNamesForType(LocalOperation.class);
+		for (String opearationBeanName : operationBeanNames) {
+			LocalOperation fo = (LocalOperation)applicationContext.getBean(opearationBeanName);
+			//skip operation not allowed for the file browser
+			if(allowedOperations !=null){
+			    if(!allowedOperations.contains(opearationBeanName)){
+			        continue;
+			    }
+			}
 			if(!fo.isMultiple()) {
 				List<String> exts = fo.getExtensions();
 				for (String extString : exts) {
@@ -401,6 +411,7 @@ public class FileBrowserOperationController implements ApplicationContextAware, 
 
 
     /**
+     * Optional file regex to filter file names
      * @return the fileRegex
      */
     public String getFileRegex() {
@@ -414,4 +425,21 @@ public class FileBrowserOperationController implements ApplicationContextAware, 
     public void setFileRegex(String fileRegex) {
         this.fileRegex = fileRegex;
     }
+    
+    /**
+     * Optional allowedOperations list
+     * @return the allowedOperations
+     */
+    public List<String> getAllowedOperations() {
+        return allowedOperations;
+    }
+
+    /**
+     * The allowed operations for this file browser
+     * @param allowedOperations a list of bean Id of the operations
+     */
+    public void setAllowedOperations(List<String> allowedOperations) {
+        this.allowedOperations = allowedOperations;
+    }
+
 }
