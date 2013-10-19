@@ -47,7 +47,6 @@ public class NDVIOperation extends SingleFileLocalOperation {
 	/**
 	 * Directory where to scan for files
 	 */
-	private String basedirString;
 
 	private String geobatchRestUrl;
 

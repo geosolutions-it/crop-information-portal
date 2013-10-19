@@ -87,12 +87,7 @@ public class CSVOperation extends SingleFileLocalOperation {
 		return false;
 	}
 
-	// TODO: This jsp should be placed in a common folder, set in the OperationManager (OperationMapping)
-	@Override
-	public String getJsp() {
-		return jspName;
-	}
-
+	
 	/**
 	 * @param path the path to set
 	 */
