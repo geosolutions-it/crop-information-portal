@@ -67,7 +67,8 @@ public class FileBrowserOperationController implements ApplicationContextAware, 
 		
 	private String accept;
 	
-    private List<String> visible;
+	private String fileRegex;
+	
 	public FileBrowserOperationController() {
 		setDefaultBaseDir("G:/OpenSDIManager/test_shapes/");
 		uniqueKey = UUID.randomUUID();   
@@ -110,7 +111,7 @@ public class FileBrowserOperationController implements ApplicationContextAware, 
         model.addAttribute("accept",accept);
 		FileBrowser fb = new FileBrowser();
 		fb.setBaseDir(getDefaultBaseDir());
-		fb.setRegex(null);
+		fb.setRegex(fileRegex);
 		fb.setScanDiretories(canNavigate);
 		model.addAttribute("fileBrowser", fb);	
 
@@ -264,7 +265,7 @@ public class FileBrowserOperationController implements ApplicationContextAware, 
 		model.addAttribute("operationRESTPath", this.getRESTPath());
 		
 		fb.setBaseDir(baseDir);			
-		fb.setRegex(null);
+		fb.setRegex(fileRegex);
 		fb.setScanDiretories(canNavigate);
         
         if(null != files && files.size() > 0) {
@@ -276,7 +277,7 @@ public class FileBrowserOperationController implements ApplicationContextAware, 
                     try {
 						multipartFile.transferTo(new File(baseDir + fileName));
 					} catch (IllegalStateException e) {
-						e.printStackTrace();
+						LOGGER.error(e.getMessage());
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
@@ -396,5 +397,21 @@ public class FileBrowserOperationController implements ApplicationContextAware, 
 	 */
     public void setAccept(String accept) {
         this.accept = accept;
+    }
+
+
+    /**
+     * @return the fileRegex
+     */
+    public String getFileRegex() {
+        return fileRegex;
+    }
+
+
+    /**
+     * @param fileRegex the fileRegex to set
+     */
+    public void setFileRegex(String fileRegex) {
+        this.fileRegex = fileRegex;
     }
 }
