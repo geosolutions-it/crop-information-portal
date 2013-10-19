@@ -54,8 +54,8 @@ public abstract class SingleFileLocalOperation implements LocalOperation {
         fileName=ControllerUtils.preventDirectoryTrasversing(fileName);
         RESTRunInfo runInfo = new RESTRunInfo();
         List<String> flist = new ArrayList<String>();
-        // TODO: more flexible
-        String fullPath = basedirString+fileName;
+        
+        String fullPath = basedirString + fileName;
         flist.add(fullPath);
         LOGGER.info("request full path:"+fullPath);
         runInfo.setFileList(flist);
@@ -81,7 +81,6 @@ public abstract class SingleFileLocalOperation implements LocalOperation {
 
     }
     
-    
     @Override
     public String getFlowID() {
         return this.flowID;
@@ -97,6 +96,10 @@ public abstract class SingleFileLocalOperation implements LocalOperation {
         return basedirString;
     }
     public void setBasedirString(String basedirString) {
+        if(!basedirString.endsWith("/")) {
+            LOGGER.warn("basedirString not ending with slash \"/\", appending one");
+            basedirString = basedirString.concat("/");
+        }
         this.basedirString = basedirString;
     }
     public String getJspName() {
