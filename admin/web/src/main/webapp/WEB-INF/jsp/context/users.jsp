@@ -96,6 +96,7 @@
 		formUtils.initModalForm('#create');
 		formUtils.initModalForm('#edit');
 		formUtils.initModalForm('#delete');
+		
 		$('.delete-user').on('click', function() {
 			var userId = $(this).data('userid');
 			formUtils.changeAction('#delete', 'delete/' + userId);

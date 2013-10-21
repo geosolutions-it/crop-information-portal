@@ -54,11 +54,7 @@ public class Users {
 	@RequestMapping(value = "/users/create", method = RequestMethod.GET)
 	public String createUser(ModelMap model) {
 		User user = new User();
-		List<UserAttribute> attrs = new ArrayList<UserAttribute>();
-		UserAttribute email = new UserAttribute();
-		email.setName("email");
-		attrs.add(email);
-		user.setAttribute(attrs);
+		addDefaultUserAttributes(user);
 		model.addAttribute("user", user);
 		model.addAttribute("context", "create");
 
@@ -66,9 +62,35 @@ public class Users {
 
 	}
 
+    /**
+     * @param user
+     */
+    private void addDefaultUserAttributes(User user) {
+        List<UserAttribute> attrs =user.getAttribute();
+        
+        if(attrs == null){
+            attrs  = new ArrayList<UserAttribute>();
+        }
+        boolean missing = true;
+		for(UserAttribute att : attrs){
+		    if("email".equals(att.getName())){
+		        missing =false;
+		    }
+		    
+		}
+		//check if email is missing
+		if(missing){
+		    UserAttribute email = new UserAttribute();
+	        email.setName("email");
+	        attrs.add(email);
+	        user.setAttribute(attrs);
+		}
+        
+    }
+
 	@RequestMapping(value = "/users/create", method = RequestMethod.POST)
 	public String createUser(@ModelAttribute("user") User user, ModelMap model) {
-
+	   
 		try {
 			geoStoreClient.insert(user);
 		} catch (Exception e) {
@@ -86,9 +108,9 @@ public class Users {
 
 	@RequestMapping(value = "/users/edit/{id}", method = RequestMethod.GET)
 	public String editUser(@PathVariable(value = "id") Long id, ModelMap model) {
-		RESTUser user = geoStoreClient.getUser(id);
+		User user = geoStoreClient.getUser(id,true);
 		model.addAttribute("user", user);
-
+		addDefaultUserAttributes(user);
 		return "snipplets/modal/createuser";
 
 	}
@@ -116,7 +138,7 @@ public class Users {
 
 	@RequestMapping(value = "/users/delete/{id}", method = RequestMethod.GET)
 	public String deleteUser(@PathVariable(value = "id") Long id, ModelMap model) {
-		RESTUser user = geoStoreClient.getUser(id);
+		User user = geoStoreClient.getUser(id);
 		model.addAttribute("user", user);
 		model.addAttribute("resource",user.getName());
 

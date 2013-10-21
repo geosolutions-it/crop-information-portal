@@ -6,6 +6,16 @@ var formUtils = {
 		return form;
     },
     initModalForm : function(selector) {
+    	var preventSubmit = function(event) {
+	        if(event.keyCode == 13) {
+	            
+	            event.preventDefault();
+	            //event.stopPropagation();
+	            return false;
+	        }
+	    }
+		
+	    $(selector).keypress(preventSubmit);
 		$(selector).on( 'shown',
 						function() {
             $modal = $(this);

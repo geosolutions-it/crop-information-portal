@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 	<div class="control-group">
 		 <label class="control-label" for="inputEmail">User</label>
@@ -27,5 +28,13 @@
 			<input type="password" ${context=='create' ? 'data-required':''} data-equalTo="#newPassword" data-validate="equalTo"></input>
 		</div>
 	</div>
-
+	 <c:forEach var="attribute" items="${user.attribute}" varStatus="status">
+        <div class="control-group">
+		 <label class="control-label">${attribute.name}</label>
+		 <div class="controls">
+		 	<input type="hidden" name="attribute[${status.index}].name"   value="${attribute.name}"></input>
+			<input type="text"   name="attribute[${status.index}].value"  value="${attribute.value}"></input>
+		</div>
+      </c:forEach>
+	
  
