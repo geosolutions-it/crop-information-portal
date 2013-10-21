@@ -54,7 +54,7 @@
 						<td>${file.lastModified}</td>
 						<td>
 							<c:if test="${(not file.isDirectory) and canDelete }">
-								<button class="btn btn-mini btn-danger" onClick="delFile('${file.name}')">Delete</button> 
+								<button class="btn btn-mini btn-danger" data-confirm="are you sure to delete the file '${file.name}'" data-filename="${file.name}" onClick="confirmDelete('${file.name}')">Delete</button> 
 							</c:if>
 						</td>
 					</tr>
@@ -119,12 +119,6 @@
 
 	});
 
-	function remrow(id){
-		$('#row_'+ id).remove();
-		if(id>1){
-			$('#rembtn_'+ (id-1)).show();
-		}
-	}
 	
 	$(document).ready(function() {
 	    $(":file").filestyle();
@@ -137,7 +131,7 @@
 	                '<tr id="row_'+ fileIndex +'"><td>'+
 	                '<div class="input-append" >' + 
 	                '    <input type="file" name="files['+ fileIndex +']" id="files['+ fileIndex +']" accept="${not empty accept ?accept :''}" /> '+
-	                '<input id="rembtn_'+ fileIndex +'" type="button" value="Remove" class="remrow btn btn-danger" name="clear'+ fileIndex +'" onClick="remrow('+ fileIndex +')"/>'+
+	                '<input id="rembtn_'+ fileIndex +'" type="button" value="Remove" class="remrow btn btn-danger" name="clear'+ fileIndex +'" onclick="delete('+ fileIndex +')"/>'+
 	            	'</div>'    + 
                 '</td></tr>');
 		    $(":file").filestyle();
@@ -180,5 +174,19 @@
 		});
 	}
 </c:if>
+
+	function confirmDelete(filename) {
+		if (!$('#deleteFileConfirmModal').length) {
+			$('body').append('<div id="deleteFileConfirmModal" class="modal" role="dialog" aria-labelledby="dataConfirmLabel" aria-hidden="true"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button><h3 id="dataConfirmLabel">Please Confirm</h3></div><div class="modal-body"></div><div class="modal-footer"><button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button><a class="btn btn-primary" data-dismiss="modal" id="dataConfirmOK">OK</a></div></div>');
+		} 
+		$('#deleteFileConfirmModal').find('.modal-body').text("Are you sure that you want to delete '"+filename+"'?");
+		
+		$('#dataConfirmOK').on('click', function(){
+			delFile(filename);
+		} );
+		$('#deleteFileConfirmModal').modal({show:true});
+		return false;
+	}
+
 </script>
 </div>
