@@ -110,6 +110,7 @@ public class Users {
 	public String editUser(@PathVariable(value = "id") Long id, ModelMap model) {
 		User user = geoStoreClient.getUser(id,true);
 		model.addAttribute("user", user);
+		model.addAttribute("username", geoStoreClient.getUsername());
 		addDefaultUserAttributes(user);
 		return "snipplets/modal/createuser";
 
@@ -122,7 +123,16 @@ public class Users {
 		//UserAttribute email = new UserAttribute();
 
 		try {
-			geoStoreClient.update(id,user);
+			if(user.getNewPassword() != null){ // we're changing the password
+				User userUpdated = geoStoreClient.getUser(id,true);
+				geoStoreClient.update(id,user);
+				if(userUpdated.getName().equals(geoStoreClient.getUsername())){ // of the logged user
+					// Change GeoStore client credentials!!
+					geoStoreClient.setPassword(user.getNewPassword());
+				}
+			}else{
+				geoStoreClient.update(id,user);
+			}
 		} catch (Exception e) {
 			model.addAttribute("messageType", "error");
 			model.addAttribute("notLocalizedMessage", "Couldn't save User");

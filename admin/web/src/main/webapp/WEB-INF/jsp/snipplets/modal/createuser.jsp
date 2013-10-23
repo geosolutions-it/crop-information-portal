@@ -10,10 +10,21 @@
 	<div class="control-group">
 		 <label class="control-label">Role</label>
 		 <div class="controls">
+		 	<c:choose>
+		 	<c:when test="${(user.name != null) && (username == user.name)}">
+		 	<select id="role" name="role" disabled="true" data-required>
+				<option value="ADMIN" selected>Admin</option>
+			</select>
+		 	</c:when><c:when test="${user.role == 'ADMIN'}">
+			<select id="role" name="role" data-required>
+				<option value="ADMIN" selected>Admin</option>
+				<option value="USER">User</option>
+			</select></c:when><c:otherwise>
 			<select  id="role" name="role" data-required>
 				<option value="ADMIN">Admin</option>
 				<option value="USER" selected>User</option>
-			</select>
+			</select></c:otherwise>
+			</c:choose>
 		</div>
 	</div>
 	<div class="control-group">
