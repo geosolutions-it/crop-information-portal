@@ -6,6 +6,7 @@ import it.geosolutions.geostore.services.rest.model.RESTUser;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -26,6 +27,12 @@ public class GeoStoreAuthenticationProvider implements AuthenticationProvider {
 	 * a list of allowed Roles
 	 */
 	List<String> allowedRoles;
+	
+	/**
+	 * GeoStoreClient in the applicationContext 
+	 */
+	@Autowired
+	AdministratorGeoStoreClient geoStoreClient;
 
 	@Override
 	public boolean supports(Class<? extends Object> authentication) {
@@ -36,13 +43,13 @@ public class GeoStoreAuthenticationProvider implements AuthenticationProvider {
 	public Authentication authenticate(Authentication authentication) {
 		String pw = (String) authentication.getCredentials();
 		String us = (String) authentication.getPrincipal();
-		AdministratorGeoStoreClient gsc = new AdministratorGeoStoreClient();
-		gsc.setUsername(us);
-		gsc.setPassword(pw);
-		gsc.setGeostoreRestUrl(geoStoreRestURL);
+		// We use the credentials for all the session in the GeoStore client
+		geoStoreClient.setUsername(us);
+		geoStoreClient.setPassword(pw);
+		geoStoreClient.setGeostoreRestUrl(geoStoreRestURL);
 		RESTUser user = null;
 		try {
-			user = gsc.getUserDetails();
+			user = geoStoreClient.getUserDetails();
 		} catch (Exception e) {
 			return null;
 		}

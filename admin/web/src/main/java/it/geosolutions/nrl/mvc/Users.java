@@ -101,6 +101,11 @@ public class Users {
 
 		try {
 			geoStoreClient.update(id,user);
+			if(user.getNewPassword() != null // we're changing the password
+					&& user.getName().equals(geoStoreClient.getUsername())){ // of the logged user
+				// Change GeoStore client credentials!!
+				geoStoreClient.setPassword(user.getNewPassword());
+			}
 		} catch (Exception e) {
 			model.addAttribute("messageType", "error");
 			model.addAttribute("notLocalizedMessage", "Couldn't save User");
