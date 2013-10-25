@@ -21,25 +21,25 @@
  */
 package it.geosolutions.geobatch.nrl.csvingest;
 
-import au.com.bytecode.opencsv.CSVReader;
-import it.geosolutions.geobatch.annotations.Action;
 import it.geosolutions.filesystemmonitor.monitor.FileSystemEvent;
+import it.geosolutions.geobatch.annotations.Action;
 import it.geosolutions.geobatch.annotations.CheckConfiguration;
 import it.geosolutions.geobatch.flow.event.action.ActionException;
 import it.geosolutions.geobatch.flow.event.action.BaseAction;
+import it.geosolutions.geobatch.nrl.csvingest.processor.CSVAgrometProcessor;
 import it.geosolutions.geobatch.nrl.csvingest.processor.CSVCropProcessor;
+import it.geosolutions.geobatch.nrl.csvingest.processor.CSVCropStatusProcessor;
 import it.geosolutions.geobatch.nrl.csvingest.processor.CSVProcessException;
 import it.geosolutions.geobatch.nrl.csvingest.processor.CSVProcessor;
-import it.geosolutions.geobatch.nrl.csvingest.processor.CSVAgrometProcessor;
 import it.geosolutions.nrl.persistence.dao.AgrometDAO;
 import it.geosolutions.nrl.persistence.dao.CropDataDAO;
 import it.geosolutions.nrl.persistence.dao.CropDescriptorDAO;
+import it.geosolutions.nrl.persistence.dao.CropStatusDAO;
 
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.EventObject;
 import java.util.LinkedList;
 import java.util.List;
@@ -49,8 +49,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.transaction.annotation.Transactional;
+
+import au.com.bytecode.opencsv.CSVReader;
 
 
 @Action(configurationClass=CSVIngestConfiguration.class)
@@ -66,6 +67,9 @@ public class CSVIngestAction extends BaseAction<EventObject> implements Initiali
 
     @Autowired
     private AgrometDAO agrometDao;
+
+    @Autowired
+    private CropStatusDAO cropStatusDao;
 
     private List<CSVProcessor> processors;
 
@@ -86,6 +90,8 @@ public class CSVIngestAction extends BaseAction<EventObject> implements Initiali
             throw new IllegalStateException("cropDescriptorDao is null");
         if(agrometDao == null)
             throw new IllegalStateException("agrometDao is null");
+        if(cropStatusDao == null)
+            throw new IllegalStateException("cropStatusDao is null");
     }
 
     /**
@@ -161,14 +167,17 @@ public class CSVIngestAction extends BaseAction<EventObject> implements Initiali
     public void afterPropertiesSet() throws Exception {
         processors = new ArrayList<CSVProcessor>();
 
+        //TODO: Inject with spring
         addProcessor(new CSVCropProcessor());
         addProcessor(new CSVAgrometProcessor());
+        addProcessor(new CSVCropStatusProcessor());
     }
 
     private void addProcessor(CSVProcessor proc) {
         proc.setCropDataDAO(cropDataDao);
         proc.setCropDescriptorDAO(cropDescriptorDao);
         proc.setAgrometDAO(agrometDao);
+        proc.setCropStatusDAO(cropStatusDao);
         processors.add(proc);
     }
 
