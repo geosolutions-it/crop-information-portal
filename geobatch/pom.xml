@@ -1935,6 +1935,7 @@
   <modules>
     <module>csvingest</module>
     <module>ndviingest</module>
+    <module>ndvistats</module>
     <module>webapp</module>
   </modules>
 </project>

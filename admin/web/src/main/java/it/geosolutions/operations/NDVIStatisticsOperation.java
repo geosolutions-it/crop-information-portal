@@ -24,9 +24,12 @@ import it.geosolutions.geobatch.services.rest.model.RESTRunInfo;
 import it.geosolutions.nrl.dto.StatsBean;
 import it.geosolutions.nrl.mvc.model.statistics.InputSelectorConfig;
 import it.geosolutions.nrl.mvc.model.statistics.StatisticsConfigList;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
 
@@ -71,6 +74,8 @@ public class NDVIStatisticsOperation implements LocalOperation {
 	private String geobatchUsername = "admin";
 
 	private String geobatchPassword = "admin";
+	
+	private String flowID = "ndvistats";
 
 	@Autowired
 	StatisticsConfigList statisticsConfigs;
@@ -126,8 +131,8 @@ public class NDVIStatisticsOperation implements LocalOperation {
 		        	}else if(vals[0].equalsIgnoreCase("default:Districts")) {
 		    	        sb.setClassifier(StatsBean.CLASSIFIER_TYPE.DISTRICT);
 		        	}else if(vals[0].equalsIgnoreCase("file")) {
-		    	        sb.setClassifier(StatsBean.CLASSIFIER_TYPE.CUSTOM);
 		    	        // TODO: get the file from the values
+		    	        sb.setClassifier(StatsBean.CLASSIFIER_TYPE.CUSTOM);
 		    	        sb.setClassifierFullPath("/this/is/a/full/path");
 		        	}
 		        }else if(key.equalsIgnoreCase("mask")){
@@ -137,6 +142,8 @@ public class NDVIStatisticsOperation implements LocalOperation {
 		    	        sb.setForestMask(StatsBean.MASK_TYPE.CUSTOM);
 		    	        // TODO: get the file from the values
 		    	        sb.setForestMaskFullPath("/a/full/path/for/forest/mask");
+		        	}else{
+		    	        sb.setForestMask(StatsBean.MASK_TYPE.DISABLED);
 		        	}
 				}else if(key.equalsIgnoreCase("month")) {
 					// TODO: do this filtering client side
@@ -147,7 +154,7 @@ public class NDVIStatisticsOperation implements LocalOperation {
 		    }
 			
 			if(granule_month.length() == 4 && granule_dekad.length() == 1) {
-				sb.setNdviFileName(granule_month.concat(granule_dekad));
+				sb.setNdviFileName(getNDVIFileName(granule_month.concat(granule_dekad)));
 			}else {
 				// TODO throw catch exception
 				sb.setNdviFileName("00000");
@@ -180,6 +187,53 @@ public class NDVIStatisticsOperation implements LocalOperation {
 		//runInfo.setFileList( List 1,2,3 );
 		
         return runInfo; 
+	}
+	
+	public static final String NDVI_FILE_NAME_PREFIX = "dv_";
+	public static final String NDVI_FILE_NAME_EXTENSION = ".tif";
+	
+	/**
+	 * Obtain file name for a NDVI for a String formatted as 'yyMmDecad'.<br />
+	 * For example, for the input String <code>13011</code> the result it's <code>dv_20130101_20130110.tiff</code>  
+	 * 
+	 * @param yyMmDekad String with year in the positions (0,1), month in the positions 2 and 3 and dekad in the last position
+	 * 
+	 * @return NDVI file name for the parameters
+	 */
+	private String getNDVIFileName(String yyMmDekad){
+		Integer year = 2000 + Integer.decode(yyMmDekad.substring(0, 2));
+		String mm = yyMmDekad.substring(2, 4);
+		Integer month = Integer.decode(mm);
+		String dekadS = yyMmDekad.substring(4);
+		Dekad dekad = dekadS.equals("2") ? 
+				Dekad.SECOND : dekadS.equals("3") 
+				? Dekad.THIRD : Dekad.FIRST;
+		// First day: can be 01, 11 or 21
+		String ddStart = ((dekad.ordinal() * 10) + 1) + "";
+		if(ddStart.length() == 1){
+			ddStart = "01";
+		}
+		// End day: can be: 11, 21 or the last day of the month
+		Integer endDay = (((dekad.ordinal() + 1) * 10));
+		if(endDay > 29){
+			// last day of the month
+			Calendar cal = new GregorianCalendar(year, month, 1);
+			endDay = cal.getActualMaximum(GregorianCalendar.DAY_OF_MONTH);
+		}
+		String ddEnd = endDay.toString();
+		
+		// Final name dv_20130101_20130110.tiff  
+		return NDVI_FILE_NAME_PREFIX + year + mm +  ddStart + "_" + year + mm + ddEnd + NDVI_FILE_NAME_EXTENSION;
+	}
+	
+	/**
+	 * Simple enum for dekads in a month
+	 * 
+	 * @author adiaz
+	 *
+	 */
+	private enum Dekad{
+		FIRST, SECOND, THIRD
 	}
 
 
@@ -335,8 +389,11 @@ public class NDVIStatisticsOperation implements LocalOperation {
 
 	@Override
 	public String getFlowID() {
-		// TODO: parametric!!!
-		return "NDVIStats";
+		return flowID;
+	}
+
+	public void setFlowID(String flowID) {
+		this.flowID = flowID;
 	}
 
 	/**

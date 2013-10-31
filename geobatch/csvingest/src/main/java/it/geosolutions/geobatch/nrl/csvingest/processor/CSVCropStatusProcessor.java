@@ -75,41 +75,6 @@ public class CSVCropStatusProcessor extends CSVProcessor {
         		Integer sDec = CSVIngestUtils.getDecad(month, dec);
 
                 try {
-//                	// looking for old record 
-//                	Search search = new Search(CropStatus.class);
-//                	search.addFilterEqual("crop", crop);
-//                	search.addFilterEqual("month", month);
-//                	search.addFilterEqual("factor", factor);
-//                	search.addFilterEqual("dec", dec);
-//                	CropStatus oldCropStatus = cropStatusDAO.searchUnique(search);
-//                	
-//                	if(oldCropStatus != null){
-//                		if(max == null && min == null && opt == null){
-//                			// we need to remove it!!
-//                			cropStatusDAO.remove(oldCropStatus);
-//                		}else {
-//                			// update!!
-//                			oldCropStatus.setMax(max);
-//                    		oldCropStatus.setMin(min);
-//                    		oldCropStatus.setOpt(opt);
-//                    		oldCropStatus.setS_dec(sDec);
-//                            cropStatusDAO.save(oldCropStatus);
-//                		}
-//                	}else{
-//                		// it's a new record
-//                        CropStatus cropStatus = new CropStatus();
-//                		// pk
-//                        cropStatus.setFactor(factor);
-//                        cropStatus.setCrop(crop);
-//                        cropStatus.setMonth(month);
-//                        cropStatus.setDec(dec);
-//                        // data
-//                        cropStatus.setMax(max);
-//                        cropStatus.setMin(min);
-//                        cropStatus.setOpt(opt);
-//                        cropStatus.setS_dec(sDec);
-//                        cropStatusDAO.persist(cropStatus);
-//                	}
 
             		if(max == null && min == null && opt == null){
             			// we need to remove it!!
@@ -145,11 +110,9 @@ public class CSVCropStatusProcessor extends CSVProcessor {
 	                        cropStatusDAO.persist(cropStatus);
                     	}
                 	}
-                	
-                	
+
                     ok++;
                 } catch (Exception e) {
-//                    LOGGER.warn("Could not persist " + cropData, e);
                     throw new CSVProcessException("Could not persist #" + ok + " CropStatus", e);
                 }
             }

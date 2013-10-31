@@ -4,9 +4,7 @@
 package it.geosolutions.nrl.service;
 
 import it.geosolutions.nrl.model.AgrometDescriptor;
-import it.geosolutions.nrl.model.CropDescriptor;
 import it.geosolutions.nrl.persistence.dao.AgrometDescriptorDAO;
-import it.geosolutions.nrl.persistence.dao.CropDescriptorDAO;
 
 import java.util.List;
 
