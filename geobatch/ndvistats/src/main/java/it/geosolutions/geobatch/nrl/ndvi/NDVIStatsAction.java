@@ -409,7 +409,7 @@ private void generateCSV(GridCoverage2D coverage, SimpleFeatureCollection fc,
     }
 
     RenderedOp op = ZonalStatsDescriptor.create(coverage.getRenderedImage(),
-            null, null, zonesROI, null, maskROI, true, bands, stats, null,
+            null, null, zonesROI, null, maskROI, false, bands, stats, null,
             null, null, null, false, null);
 
     @SuppressWarnings("unchecked")
