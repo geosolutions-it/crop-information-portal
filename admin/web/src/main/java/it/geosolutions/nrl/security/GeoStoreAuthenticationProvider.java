@@ -8,16 +8,21 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
+import com.sun.jersey.api.client.ClientHandlerException;
 /**
  * Wrap geostore Rest Services to allow Authentication using Geostore Users
  * @author Lorenzo Natali
  *
  */
 public class GeoStoreAuthenticationProvider implements AuthenticationProvider {
+
 	/**
 	 * The rest service 
 	 */
@@ -33,6 +38,24 @@ public class GeoStoreAuthenticationProvider implements AuthenticationProvider {
 	 */
 	@Autowired
 	AdministratorGeoStoreClient geoStoreClient;
+	
+	/**
+	 * Message shown if the user logged haven't got an allowed role.
+	 * TODO: Localize it
+	 */
+        public static final String UNAUTHORIZED_MSG = "This user have not enougth permissions to access to the Admin GUI";
+        
+        /**
+         * Message shown if the user it's not found.
+         * TODO: Localize it
+         */
+        public static final String USER_NOT_FOUND_MSG = "User not found. Please check your credentials";
+        
+        /**
+         * Message shown if GeoStore it's unavailable.
+         * TODO: Localize it
+         */
+        public static final String GEOSTORE_UNAVAILABLE = "GeoStore it's not availabile. Please contact with the administrator";
 
 	@Override
 	public boolean supports(Class<? extends Object> authentication) {
@@ -50,13 +73,19 @@ public class GeoStoreAuthenticationProvider implements AuthenticationProvider {
 		User user = null;
 		try {
 			user = geoStoreClient.getUserDetails();
-		} catch (Exception e) {
-			return null;
-		}
+		} catch (ClientHandlerException che) {
+		    throw new UsernameNotFoundException(GEOSTORE_UNAVAILABLE);
+                } catch (Exception e){
+                    // user not found generic response.
+                    user = null;
+                }
+		
 		if (user != null) {
 			String role = user.getRole().toString();
-			if (!roleAllowed(role))
-				return null;
+			if (!roleAllowed(role)){
+			    throw new BadCredentialsException(UNAUTHORIZED_MSG);
+			}
+//				return null;
 			List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 			authorities.add(new SimpleGrantedAuthority("ROLE_" + role));
 			Authentication a = new UsernamePasswordAuthenticationToken(us, pw,
@@ -64,7 +93,7 @@ public class GeoStoreAuthenticationProvider implements AuthenticationProvider {
 			// a.setAuthenticated(true);
 			return a;
 		} else {
-			return null;
+                    throw new UsernameNotFoundException(USER_NOT_FOUND_MSG);
 		}
 
 	}
