@@ -24,9 +24,11 @@
 					<td>
 							<a data-toggle="modal" class="btn edit-user" data-target="#edit"
 								data-userid="${user.id}" href="edit/${user.id}">Edit</a>
+						 	<c:if test="${(user.name != null) && (username != user.name)}">
 							<a data-toggle="modal" data-target="#delete"
 								class="btn delete-user" data-userid="${user.id}"
 								href="delete/${user.id}">Delete</a>
+							</c:if>
 					</td>
 
 				</tr>
