@@ -81,7 +81,6 @@
 	<div class="modal-body">
 	</div>
 </div>
-<div id="hiddenDiv"></div>
 
 	
 <script type="text/javascript">

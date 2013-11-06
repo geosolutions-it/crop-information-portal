@@ -6,6 +6,7 @@
 	rel="stylesheet">
 <link href="css/nrl.css" media="all" type="text/css"
 	rel="stylesheet">
+<script src="<c:url value="/js/jquery-1.10.2.min.js"/>"></script>
 </head>
 <body onload='document.f.j_username.focus();'>
 	<%@ include file="common/banner.jsp"%>

@@ -29,5 +29,15 @@ public class DefaultLandingPageController {
 		return "redirect:login";
  
 	}
+
+        /**
+         * Proxy to the real about
+         * 
+         * @return about page
+         */
+        @RequestMapping(value="/about", method = RequestMethod.GET)
+        public String aboudPage() {
+                return "about";
+        }
 	
 }

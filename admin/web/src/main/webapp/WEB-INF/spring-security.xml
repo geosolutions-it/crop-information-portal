@@ -14,6 +14,7 @@
 		<intercept-url pattern="/js/**"  access="IS_AUTHENTICATED_ANONYMOUSLY"  />
 		<intercept-url pattern="/css/**" access="IS_AUTHENTICATED_ANONYMOUSLY"  />
 		<intercept-url pattern="/img/**" access="IS_AUTHENTICATED_ANONYMOUSLY"  />
+		<intercept-url pattern="/about" access="IS_AUTHENTICATED_ANONYMOUSLY"  />
 		<form-login login-page="/login" default-target-url="/users/"
 			authentication-failure-url="/loginfailed" />
 		<logout logout-success-url="/logout" />
