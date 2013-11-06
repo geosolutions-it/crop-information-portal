@@ -48,7 +48,7 @@
          </ul>
    
          <ul class="nav pull-right">
-
+           <li><button id="helpOpener" class="icon-help" title="Help">Help</button></li>
            <li class="dropdown">
              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user"></i> ${username} <b class="caret"></b></a>
              <ul class="dropdown-menu">
@@ -61,3 +61,5 @@
    </div><!-- /navbar-inner -->
  </div>
 
+<!-- help file-->
+<%@ include file="help.jsp"%>

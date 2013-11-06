@@ -19,10 +19,73 @@
  */
 
 /**
- *  Create a footer for the application
+ *  JQuery simple plugin to show a footer like the Mapstore one
  *
  * @author Alejandro Diaz
  */
+
+/**
+ *	api: method[jqueryDialogAndBackDrop]
+ * 	Show a dialog with an id when you push in the opener
+ *  idDialog ´´String´´ dialog to show with a fade in
+ *  idOpener ´´String´´ button to handle the dialog open
+ *  idCloser ´´String´´ button to handle the dialog close
+ *  idBackDrop ´´String´´ div to show modal backrop
+ **/
+$.fn.jqueryDialogAndBackDrop = function(idDialog, idOpener, idCloser, idBackDrop){
+
+	$(idOpener).click(function() {
+      var creditsDialog = $(idDialog)[0];
+	  creditsDialog.className = creditsDialog.className.replace("hide fade", "fade in");
+	  creditsDialog.className = creditsDialog.className.replace("fade out", "fade in");
+	  $(idBackDrop)[0].className = "modal-backdrop";
+    });
+    
+	$(idCloser).on("click", function() {
+		var creditsDialog = $(idDialog)[0];
+		creditsDialog.className = creditsDialog.className.replace("fade in", "fade out");
+		if($(idBackDrop) && $(idBackDrop)[0]){
+			$(idBackDrop)[0].className = "";
+		}
+	});
+}
+
+/**
+ *	api: method[jqueryMapstoreFooter]
+ * 	Create a footer like mapstore with a 'Credits' button
+ *  idFooter ´´String´´ footer div to put at the end of the page
+ *  idDialog ´´String´´ dialog to show with a fade in
+ *  idOpener ´´String´´ button to handle the dialog open
+ *  idCloser ´´String´´ button to handle the dialog close
+ *  idBackDrop ´´String´´ div to show modal backrop
+ **/
+$.fn.jqueryMapstoreFooter = function(idFooter, idDialog, idOpener, idCloser, idBackDrop){
+
+	$().jqueryDialogAndBackDrop(idDialog, idOpener, idCloser, idBackDrop);
+
+	function changeFooterMargin(idFooter){
+		var footer = $(idFooter);
+		var pos = footer.position();
+		var height = $(window).height();
+		height = height - pos.top;
+		height = height - footer.height();
+		    if (height > 0) {
+			  footer.css({'margin-top' : height-2+'px'});
+		  }
+	}
+
+	// we need to calculate twice to put in correct position
+	changeFooterMargin(idFooter);
+	changeFooterMargin(idFooter);
+
+	$(window).bind("resize", function() {
+		changeFooterMargin(idFooter);
+	});
+}
+
+/**
+ * Call with our parameters
+ **/
 $(function() {
 
 	var idFooter = "#footer";
@@ -31,50 +94,6 @@ $(function() {
 	var idCloser = "#creditsDialog button";
 	var idBackDrop = "#hiddenDiv";
 
-	/**
-	 *	api: method[jqueryMapstorFooter]
-	 * 	Create a footer like mapstore with a 'Credits' button
-	 *  idFooter ´´String´´ footer div to put at the end of the page
-	 *  idDialog ´´String´´ dialog to show with a fade in
-	 *  idOpener ´´String´´ button to handle the dialog open
-	 *  idCloser ´´String´´ button to handle the dialog close
-	 *  idBackDrop ´´String´´ div to show modal backrop
-	 **/
-	function jqueryMapstorFooter(idFooter, idDialog, idOpener, idCloser, idBackDrop){
-
-		function changeFooterMargin(idFooter){
-			var footer = $(idFooter);
-			var pos = footer.position();
-			var height = $(window).height();
-			height = height - pos.top;
-			height = height - footer.height();
-			    if (height > 0) {
-				  footer.css({'margin-top' : height-2+'px'});
-			  }
-		}
-
-		$(idOpener).click(function() {
-	      var creditsDialog = $(idDialog)[0];
-		  creditsDialog.className = creditsDialog.className.replace("hide fade", "fade in");
-		  creditsDialog.className = creditsDialog.className.replace("fade out", "fade in");
-		  $(idBackDrop)[0].className = "modal-backdrop";
-	    });
-	    
-		$(idCloser).on("click", function() {
-			var creditsDialog = $(idDialog)[0];
-			creditsDialog.className = creditsDialog.className.replace("fade in", "fade out");
-			$(idBackDrop)[0].className = "";
-		});
-
-		// we need to calculate twice to put in correct position
-		changeFooterMargin(idFooter);
-		changeFooterMargin(idFooter);
-
-		$(window).bind("resize", function() {
-			changeFooterMargin(idFooter);
-		});
-	}
-
 	// Create footer
-	jqueryMapstorFooter(idFooter, idDialog, idOpener, idCloser, idBackDrop);
+	$().jqueryMapstoreFooter(idFooter, idDialog, idOpener, idCloser, idBackDrop);
 });
