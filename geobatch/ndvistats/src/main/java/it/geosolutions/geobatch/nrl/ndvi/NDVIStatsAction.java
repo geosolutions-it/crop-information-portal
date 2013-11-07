@@ -38,6 +38,7 @@ import it.geosolutions.tools.commons.writer.CSVWriter;
 import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -64,6 +65,7 @@ import org.geotools.coverage.processing.utils.FeatureAggregation;
 import org.geotools.data.DataStore;
 import org.geotools.data.DataStoreFinder;
 import org.geotools.data.FeatureSource;
+import org.geotools.data.shapefile.ShapefileDataStore;
 import org.geotools.data.simple.SimpleFeatureCollection;
 import org.geotools.data.simple.SimpleFeatureIterator;
 import org.geotools.factory.Hints;
@@ -72,6 +74,8 @@ import org.geotools.gce.geotiff.GeoTiffReader;
 import org.geotools.geometry.jts.JTS;
 import org.geotools.image.jai.Registry;
 import org.geotools.process.vector.CollectGeometries;
+import org.geotools.process.vector.ReprojectProcess;
+import org.geotools.referencing.CRS;
 import org.geotools.resources.image.ImageUtilities;
 import org.jaitools.imageutils.ROIGeometry;
 import org.jaitools.media.jai.vectorbinarize.VectorBinarizeDescriptor;
@@ -79,7 +83,7 @@ import org.jaitools.media.jai.vectorbinarize.VectorBinarizeRIF;
 import org.opengis.coverage.grid.GridCoverage;
 import org.opengis.feature.simple.SimpleFeature;
 import org.opengis.geometry.MismatchedDimensionException;
-import org.opengis.referencing.FactoryException;
+import org.opengis.referencing.crs.CoordinateReferenceSystem;
 import org.opengis.referencing.datum.PixelInCell;
 import org.opengis.referencing.operation.MathTransform;
 import org.opengis.referencing.operation.TransformException;
@@ -207,14 +211,12 @@ public boolean checkConfiguration() {
  * @throws IOException
  */
 @SuppressWarnings("rawtypes")
-public FeatureCollection getDefaultMaskFeaturecollection() throws IOException {
+public SimpleFeatureCollection getDefaultMaskFeaturecollection() throws IOException {
 
     try {
         if (defaultMaskFeaturecollection == null) { // only need to load once
-            Map<String, Object> defaultCropProps = new HashMap<String, Object>();
-            defaultCropProps.put("url", configuration.getDefaultMaskUrl());
-            defaultCropMaskStore = DataStoreFinder
-                    .getDataStore(defaultCropProps);
+            final URL url= new URL(configuration.getDefaultMaskUrl());
+            defaultCropMaskStore = new ShapefileDataStore(url);
             String typeName = defaultCropMaskStore.getTypeNames()[0];
 
             FeatureSource source = defaultCropMaskStore
@@ -227,7 +229,7 @@ public FeatureCollection getDefaultMaskFeaturecollection() throws IOException {
             defaultCropMaskStore.dispose();
     }
 
-    return defaultMaskFeaturecollection;
+    return (SimpleFeatureCollection)defaultMaskFeaturecollection;
 }
 
 /**
@@ -313,16 +315,11 @@ private String getCSVFullPath(CLASSIFIER_TYPE classifier, MASK_TYPE mask,
  * @param ndviFileName
  * @param csvSeparator
  * 
- * @throws IllegalArgumentException
- * @throws IOException
- * @throws ActionException
- * @throws TransformException
- * @throws FactoryException
+ * @throws Exception
  */
 private void generateCSV(GridCoverage2D coverage, SimpleFeatureCollection fc,
         CLASSIFIER_TYPE classifier, MASK_TYPE mask, String ndviFileName,
-        String csvSeparator) throws IllegalArgumentException, IOException,
-        ActionException, TransformException, FactoryException {
+        String csvSeparator) throws Exception {
 
     // Prepare for CSV generation
     String csvPath = getCSVFullPath(classifier, mask, ndviFileName);
@@ -363,21 +360,45 @@ private void generateCSV(GridCoverage2D coverage, SimpleFeatureCollection fc,
     final GridGeometry2D gg2D = coverage.getGridGeometry();
     final MathTransform worldToGrid = gg2D
             .getGridToCRS(PixelInCell.CELL_CORNER).inverse();
+    final CoordinateReferenceSystem rasterCRS=gg2D.getCoordinateReferenceSystem(); 
 
+    
     // ROI for the MASK in raster space
-    final ROIGeometry maskROI = getROIMask(mask, worldToGrid);
+    final ROIGeometry maskROI = getROIMask(mask, worldToGrid,rasterCRS);
 
     // getting the ROI in raster space for the zones
     final List<ROI> zonesROI = new ArrayList<ROI>();
     SimpleFeatureIterator iterator = null;
 
+    // Selection of the FeatureCollection CoordinateReferenceSystem
+    final CoordinateReferenceSystem featureCollectionCRS=fc.getSchema().getCoordinateReferenceSystem();
+    if(featureCollectionCRS==null){
+        throw new IllegalArgumentException("The input features need a CRS");
+    }
+    // do we need to reproject?
+    if(!CRS.equalsIgnoreMetadata(rasterCRS, featureCollectionCRS)){
+        // create a transformation
+        final MathTransform transform = CRS.findMathTransform(featureCollectionCRS, rasterCRS,true);// lenient tranformation
+        if(!transform.isIdentity()){
+            // reproject
+            fc= new ReprojectProcess().execute(
+                    fc, 
+                    featureCollectionCRS, 
+                    rasterCRS);
+            
+        }
+    }
+    // Cycle on the features for creating a list of geometries
     try {
         iterator = fc.features();
         while (iterator.hasNext()) {
-            SimpleFeature feature = iterator.next();
+            SimpleFeature feature = iterator.next();        
+            
             // zones ROI
-            zonesROI.add(new ROIGeometry(JTS.transform(
-                    (Geometry) feature.getDefaultGeometry(), worldToGrid)));
+            ROI transformedROI = new ROIGeometry(JTS.transform(
+                    (Geometry) feature.getDefaultGeometry(), worldToGrid));
+            
+            zonesROI.add(transformedROI);
 
             // CSV Data
             if (CLASSIFIER_TYPE.DISTRICT.equals(classifier)
@@ -407,11 +428,11 @@ private void generateCSV(GridCoverage2D coverage, SimpleFeatureCollection fc,
             dbStore.dispose();
         }
     }
-
+    // Definition of the ZonalStats operation
     RenderedOp op = ZonalStatsDescriptor.create(coverage.getRenderedImage(),
             null, null, zonesROI, null, maskROI, false, bands, stats, null,
             null, null, null, false, null);
-
+    // Calculation of the ZonalStats property
     @SuppressWarnings("unchecked")
     List<ZoneGeometry> statsResult = (List<ZoneGeometry>) op
             .getProperty(ZonalStatsDescriptor.ZS_PROPERTY);
@@ -420,10 +441,13 @@ private void generateCSV(GridCoverage2D coverage, SimpleFeatureCollection fc,
         FeatureAggregation featureAgregation = result.get(index++);
         Double ndvi = (Double) statResult.getStatsPerBandNoClassifierNoRange(0)[0]
                 .getResult();
-        // apply NDVI: Physical value = pixel value*0.004 - 0.1
-        ndvi = (ndvi * 0.004) - 0.1;
-        featureAgregation.getProperties().put("NDVI_avg", ndvi.toString());
-        data.add(featureAgregation.toRow());
+        // If the mean is 0, then no calculations are performed
+        if (ndvi != 0.0){
+            // apply NDVI: Physical value = pixel value*0.004 - 0.1
+            ndvi = (ndvi * 0.004) - 0.1;
+            featureAgregation.getProperties().put("NDVI_avg", ndvi.toString());
+            data.add(featureAgregation.toRow());
+        }
     }
 
     File csv = new File(csvPath);
@@ -435,16 +459,17 @@ private void generateCSV(GridCoverage2D coverage, SimpleFeatureCollection fc,
  * 
  * @param mask
  * @param worldToGrid
+ * @param rasterCRS 
  * @return
  * @throws MismatchedDimensionException
  * @throws TransformException
- * @throws IOException
+ * @throws Exception
  */
-private ROIGeometry getROIMask(MASK_TYPE mask, MathTransform worldToGrid)
-        throws MismatchedDimensionException, TransformException, IOException {
+private ROIGeometry getROIMask(MASK_TYPE mask, MathTransform worldToGrid, CoordinateReferenceSystem rasterCRS)
+        throws Exception {
 
     if (MASK_TYPE.STANDARD.equals(mask)) {
-        return getDefaultROIMask(worldToGrid);
+        return getDefaultROIMask(worldToGrid,rasterCRS);
     } else if (MASK_TYPE.CUSTOM.equals(mask)) {
         // TODO: CUSTOM MASK
     }
@@ -457,17 +482,38 @@ private ROIGeometry getROIMask(MASK_TYPE mask, MathTransform worldToGrid)
  * Obtain the default ROIGeometry
  * 
  * @param worldToGrid
+ * @param rasterCRS 
  * @return
- * @throws MismatchedDimensionException
- * @throws TransformException
- * @throws IOException
+ * @throws Exception
  */
-private ROIGeometry getDefaultROIMask(MathTransform worldToGrid)
-        throws MismatchedDimensionException, TransformException, IOException {
+private ROIGeometry getDefaultROIMask(MathTransform worldToGrid, CoordinateReferenceSystem rasterCRS)
+        throws Exception {
     if (defaultROIMask == null) {
-        defaultROIMask = new ROIGeometry(JTS.transform(
-                collectGeometries(getDefaultMaskFeaturecollection()),
-                worldToGrid));
+        // get the feature collection
+        SimpleFeatureCollection defaultMaskFeaturecollection = getDefaultMaskFeaturecollection();
+        final CoordinateReferenceSystem featureCollectionCRS=defaultMaskFeaturecollection.getSchema().getCoordinateReferenceSystem();
+        if(featureCollectionCRS==null){
+            throw new IllegalArgumentException(" The input ROI needs a CRS");
+        }
+        // do we need to reproject?
+        if(!CRS.equalsIgnoreMetadata(rasterCRS, featureCollectionCRS)){
+            // create a transformation
+            final MathTransform transform = CRS.findMathTransform(featureCollectionCRS, rasterCRS,true);// lenient tranformation
+            if(!transform.isIdentity()){
+                // reproject
+                defaultMaskFeaturecollection= new ReprojectProcess().execute(
+                        defaultMaskFeaturecollection, 
+                        featureCollectionCRS, 
+                        rasterCRS);
+                
+            }
+        }
+        
+        // Transformation from the Model space to the Raster space
+        defaultROIMask = new ROIGeometry(
+                JTS.transform(
+                        collectGeometries(defaultMaskFeaturecollection),
+                        worldToGrid));
     }
     return defaultROIMask;
 }

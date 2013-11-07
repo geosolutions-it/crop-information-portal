@@ -30,17 +30,16 @@ import it.geosolutions.geobatch.configuration.event.action.ActionConfiguration;
  */
 public class NDVIStatsConfiguration extends ActionConfiguration {
 
-// TODO: Load from the xml file
-private String defaultMaskUrl = "file:/home/alediator/CROP_MASKS/agri_merge_erase.shp";
-private String dbType = "postgis";
-private String dbHost = "localhost";
-private String dbPort = "5432";
-private String dbSchema = "public";
-private String dbName = "NRL_db";
-private String dbUser = "geosolutions";
-private String dbPasswd = "geosolutions";
-private String tiffDirectory = "/home/alediator/test_tiff/ndvi";
-private String outputDirectory = "/home/alediator/test_csv";
+private String defaultMaskUrl;
+private String dbType;
+private String dbHost;
+private String dbPort;
+private String dbSchema;
+private String dbName;
+private String dbUser;
+private String dbPasswd;
+private String tiffDirectory;
+private String outputDirectory;
 private String csvSeparator = ",";
 
 public NDVIStatsConfiguration(String id, String name, String description) {
@@ -49,8 +48,7 @@ public NDVIStatsConfiguration(String id, String name, String description) {
 
 @Override
 public NDVIStatsConfiguration clone() {
-    final NDVIStatsConfiguration configuration = (NDVIStatsConfiguration) super
-            .clone();
+    final NDVIStatsConfiguration configuration = (NDVIStatsConfiguration) super.clone();
     return configuration;
 }
 

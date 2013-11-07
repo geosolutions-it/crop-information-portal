@@ -30,8 +30,7 @@
 
         <performBackup>false</performBackup>
         <preserveInput>true</preserveInput>
-
-
+        
         <NDVIStatsConfiguration>
             <id>NDVIIngestConfiguration</id>
             <name>NDVI CSV stats preparation</name>
@@ -47,26 +46,19 @@
 			<tiffDirectory>/home/alediator/test_tiff/ndvi</tiffDirectory>
 			<outputDirectory>/home/alediator/test_csv</outputDirectory>
 			<csvSeparator>,</csvSeparator>
-            
         </NDVIStatsConfiguration>
-        
-        <!-- Here CSV generation -->
 
     </EventConsumerConfiguration>
 
     <ListenerConfigurations>
 		<LoggingProgressListener>
 			<serviceID>loggingListenerService</serviceID>
-			<id>ConsumerLogger1</id>
+			<id>ConsumerLogger0</id>
 			<loggerName>it.geosolutions.ConsLogger</loggerName>
 		</LoggingProgressListener>
-        <CumulatingProgressListener>
-            <serviceID>cumulatingListenerService</serviceID>
-            <id>CumulatingListener1</id>
-        </CumulatingProgressListener>
-        <StatusProgressListener>
-            <serviceID>statusListenerService</serviceID>
-            <id>StatusListener1</id>
-        </StatusProgressListener>
+		<CumulatingProgressListener>
+			<serviceID>cumulatingListenerService</serviceID>
+			<id>Cumulator</id>
+		</CumulatingProgressListener>
     </ListenerConfigurations>
 </FlowConfiguration>
