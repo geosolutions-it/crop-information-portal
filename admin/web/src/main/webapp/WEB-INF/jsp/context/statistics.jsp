@@ -14,6 +14,7 @@
 						value="${elem.value}">${elem.label}
 					</label>
 				</c:forEach>
+				<!-- Disable custom region
 				<c:if test="${not empty regions.fileBrowser }">
 					<label class="radio"> <input class="custom-selector"
 						type="radio" name="region" value="file">Custom
@@ -24,7 +25,7 @@
 							<option value="${file}">${file}</option>
 						</c:forEach>
 					</select>
-				</c:if>
+				</c:if>-->
 			</div>
 		</div>
 		<div class="control-group">
@@ -56,10 +57,16 @@
 			<label class="control-label">Dekad</label>
 			<div class="controls">
 
-				<span class="input-append " data-date-format="yyyy mm">
+				<select class="input-small" name="year" id="year">
+					<option></option>
+				</select>
+				<select class="input-small" name="month" id="month">
+					<option></option>
+				</select>
+				<!-- <span class="input-append " data-date-format="yyyy mm">
 					<input id="granule_mounth" class="span2" size="16" type="text" name="month">
 					<span class="add-on"><i class="icon-calendar"></i></span>
-				</span>
+				</span> -->
 				<select class="input-small" name="dekad" id="dekad">
 					<option>1</option>
 					<option>2</option>
@@ -82,7 +89,7 @@
 	</div>
 </div>
 
-	
+<script type="text/javascript" src="<c:url value="/js/jquery-mapstore-ndvi-selector.js"/>"></script>
 <script type="text/javascript">
 	$(function() {
 
@@ -145,5 +152,20 @@
 		ndvi.className = ndvi.className.replace("fade in", "fade out");
 		$('#hiddenDiv')[0].className = "";
 	});
+
+	/**
+	 * Call do jquery plugin with our paramaters
+	 **/
+	$(function() {
+
+		//TODO
+		var idYear = "#year";
+		var idMonth = "#month";
+		var idDekad = "#dekad";
+
+		// Create NDVI selector
+		$().jqueryNDVISelector(idYear, idMonth, idDekad);
+	});
+
 
 </script>

@@ -24,9 +24,10 @@
 
     <EventConsumerConfiguration>
         <id>ndvistats_consumer</id>
-		
-        <listenerId>LoggingListener</listenerId>
-        <listenerId>CumulatingListener</listenerId>
+        
+		<listenerId>Logger</listenerId>
+        <listenerId>Cumulator</listenerId>
+        <listenerId>Status</listenerId>
 
         <performBackup>false</performBackup>
         <preserveInput>true</preserveInput>
@@ -51,14 +52,18 @@
     </EventConsumerConfiguration>
 
     <ListenerConfigurations>
-		<LoggingProgressListener>
-			<serviceID>loggingListenerService</serviceID>
-			<id>ConsumerLogger0</id>
-			<loggerName>it.geosolutions.ConsLogger</loggerName>
-		</LoggingProgressListener>
-		<CumulatingProgressListener>
-			<serviceID>cumulatingListenerService</serviceID>
-			<id>Cumulator</id>
-		</CumulatingProgressListener>
+        <LoggingProgressListener>
+            <serviceID>loggingListenerService</serviceID>
+            <id>Logger</id>
+            <loggerName>it.geosolutions.geobatch</loggerName>
+        </LoggingProgressListener>
+        <CumulatingProgressListener>
+            <serviceID>cumulatingListenerService</serviceID>
+            <id>Cumulator</id>
+        </CumulatingProgressListener>
+        <StatusProgressListener>
+            <serviceID>statusListenerService</serviceID>
+            <id>Status</id>
+        </StatusProgressListener>
     </ListenerConfigurations>
 </FlowConfiguration>

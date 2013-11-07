@@ -87,8 +87,6 @@ import org.opengis.referencing.crs.CoordinateReferenceSystem;
 import org.opengis.referencing.datum.PixelInCell;
 import org.opengis.referencing.operation.MathTransform;
 import org.opengis.referencing.operation.TransformException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.vividsolutions.jts.geom.Geometry;
 
@@ -100,8 +98,6 @@ import com.vividsolutions.jts.geom.Geometry;
 @Action(configurationClass = NDVIStatsConfiguration.class)
 public class NDVIStatsAction extends BaseAction<EventObject> {
 
-private final static Logger LOGGER = LoggerFactory
-        .getLogger(NDVIStatsAction.class);
 private static DateFormat MONTH_FORMAT = new SimpleDateFormat("MMM");
 private static ROIGeometry defaultROIMask;
 
@@ -266,7 +262,7 @@ private void processXMLFile(File file) throws Exception {
     StatsBean sb = JAXB.unmarshal(file, StatsBean.class);
 
     if (LOGGER.isTraceEnabled()) {
-        LOGGER.trace("Working NDVI action : " + sb.toString());
+        LOGGER.trace( "Working NDVI action : " + sb.toString());
     }
 
     CLASSIFIER_TYPE classifier = sb.getClassifier();
@@ -340,7 +336,7 @@ private void generateCSV(GridCoverage2D coverage, SimpleFeatureCollection fc,
     year = ndviFileName.substring(3, 7);
     month = ndviFileName.substring(7, 9);
     Calendar cal = new GregorianCalendar(Integer.decode(year),
-            Integer.decode(month), 1);
+            Integer.decode(month) - 1, 1);
     month = MONTH_FORMAT.format(cal.getTime());
     dekad = ndviFileName.substring(9, 11);
     dekad = dekad.equals("01") ? "1" : dekad.equals("11") ? "2" : "3";
