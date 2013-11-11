@@ -2,6 +2,9 @@
 <!DOCTYPE html>
 <html>
 <title>Login Page</title>
+<!--[if IE ]>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<![endif]-->
 <link href="css/bootstrap.min.css" media="all" type="text/css"
 	rel="stylesheet">
 <link href="css/nrl.css" media="all" type="text/css"

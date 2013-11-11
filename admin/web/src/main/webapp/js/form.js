@@ -93,3 +93,49 @@ function postData(targetId){
 	$(this).submit(options);
 	return false;   
 }
+
+/**
+ * It send ajax request for an URL (default method it's POST) and 
+ * put response on targetID replacing string parsed as arguments  
+ * (default replacement is remove 'modal hide fade' because it's 
+ * usally launched inside a modal window @see csv.jsp)
+ **/
+function ajaxRequest(targetId, url, method, oldString, replaceWith){
+
+    if(url){
+        // default str to replace
+        var strToReplace = oldString ? oldString : "modal hide fade ";
+        var newStr = replaceWith ? replaceWith : "";
+
+        var targetUrl = url ? url : location.href;
+
+         var config = {
+            async: true,
+            type: method ? method: "POST",
+            url: targetUrl,
+            processData: false,
+            data: null,
+            timeout: 70000,
+            cache: false
+        };
+
+        $.ajax(config)
+            .done(function(html) {
+                if(html){
+                    $("#"+targetId).replaceWith(html.replace(strToReplace, newStr));
+                }else{
+                    //console.error("Error in ajax request");
+                }
+            }).fail(function(response) {
+                if(response && response.status == 200 && response.responseText){
+                    $("#"+targetId).replaceWith(response.responseText.replace(strToReplace, newStr));
+                }else{
+                    //console.error("Error in ajax request");
+                }
+            });
+
+        return true;
+    }
+
+    return false;   
+}
