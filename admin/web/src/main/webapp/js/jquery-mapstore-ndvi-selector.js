@@ -32,13 +32,44 @@
 	 *  idMonth ´´String´´ button to handle the dialog open
 	 *  idDekad ´´String´´ button to handle the dialog close
 	 **/
-	$.fn.jqueryNDVISelector = function(idYear, idMonth, idDekad){
+	$.fn.jqueryNDVISelector = function(idYear, idMonth, idDekad, serverUrl, selectedName){
 
-		// TODO: load from getCapabilities!!! Now we need to change with each ndvi update!!
-		var dimensions = ["1998-04-11T02:00:00.000Z/1998-04-20T02:00:00.000Z/PT1S", "1998-04-21T02:00:00.000Z/1998-04-30T02:00:00.000Z/PT1S", "1998-05-01T02:00:00.000Z/1998-05-10T02:00:00.000Z/PT1S", "1998-06-11T02:00:00.000Z/1998-06-20T02:00:00.000Z/PT1S", "2000-01-11T01:00:00.000Z/2000-01-20T01:00:00.000Z/PT1S", "2004-01-01T01:00:00.000Z/2004-01-10T01:00:00.000Z/PT1S", "2008-02-01T01:00:00.000Z/2008-02-10T01:00:00.000Z/PT1S", "2010-03-21T01:00:00.000Z/2010-03-31T02:00:00.000Z/PT1S", "2013-01-01T00:00:00.000Z/2013-01-10T00:00:00.000Z/PT1S", "2013-01-11T01:00:00.000Z/2013-01-20T01:00:00.000Z/PT1S", "2013-01-21T01:00:00.000Z/2013-01-31T01:00:00.000Z/PT1S"];
+		var capabilitiesUrl = serverUrl ? serverUrl : "/geoserver/ows?service=WMS&request=getCapabilities";
+		var layerName = selectedName ? selectedName: "ndvi:ndvi";
+
+		var dimensions = [];
 		var monthShortNames = {01: 'Jan', 02: 'Feb', 03: 'Mar', 04: 'Apr', 05: 'May', 06: 'Jun', 07: 'Jul', 08: 'Aug', 09: 'Sep', 10: 'Oct', 11: 'Nov', 12: 'Dec'};
 	    var dekadsNames = {0: 'First', 1: 'Second', 2: 'Third'};
 		var thisValues = {};
+
+		/**
+		 * Load array of dimensions for the selected layer in dimensions array and load it
+		 **/
+		function loadDimensionsFromCapabilities(url, layerName){
+			var config = {
+	            async: true,
+	            type: "GET",
+	            url: url,
+	            dataType: "xml",
+	            timeout: 70000,
+	            cache: true
+	        };
+
+	        $.ajax(config)
+	            .done(function(xml) {
+	            	// Get dimmensions from the selected layer
+	            	var layers = $(xml).find('Layer');
+	            	for (var i = 0; i < layers.length; i++){
+	            		var layer = layers[i];
+	            		var name = $(layer).children("Name").text();;
+	            		if(layerName == name){
+	            			dimensions = $(layer).find('Dimension').text().split(",");
+	            			break;
+	            		}
+	            	}
+					loadDimensions(dimensions);
+	            });
+		}
 
 
 		/**
@@ -145,7 +176,7 @@
 			loadData(idDekad);
 		});
 
-		loadDimensions(dimensions);
+		loadDimensionsFromCapabilities(capabilitiesUrl, layerName);
 	};
 })(jQuery, window);
 
