@@ -141,7 +141,12 @@
 	            var max="0";min = "9999";
 	            for(var i=0;i<values.length;i++){
 	                var year = parseInt(values[i].substring(0,4));
-	                var month = parseInt(values[i].substring(5,7));
+	                var monthStr = values[i].substring(5,7);
+	                // fix IE 8 problem when a number starts with 0
+	                if(monthStr.indexOf("0") == 0){
+	                    monthStr = monthStr.replace("0", "");
+	                }
+	                var month = parseInt(monthStr);
 	                var dek = parseInt(values[i].substring(8,9));
 	                var dateString = values[i].substring(0,10);
 	                if(!thisValues[year]){
