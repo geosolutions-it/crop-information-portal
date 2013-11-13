@@ -64,12 +64,11 @@ import org.geotools.coverage.grid.GridGeometry2D;
 import org.geotools.coverage.processing.utils.FeatureAggregation;
 import org.geotools.data.DataStore;
 import org.geotools.data.DataStoreFinder;
-import org.geotools.data.FeatureSource;
 import org.geotools.data.shapefile.ShapefileDataStore;
 import org.geotools.data.simple.SimpleFeatureCollection;
 import org.geotools.data.simple.SimpleFeatureIterator;
+import org.geotools.data.simple.SimpleFeatureSource;
 import org.geotools.factory.Hints;
-import org.geotools.feature.FeatureCollection;
 import org.geotools.gce.geotiff.GeoTiffReader;
 import org.geotools.geometry.jts.JTS;
 import org.geotools.image.jai.Registry;
@@ -103,9 +102,7 @@ private static ROIGeometry defaultROIMask;
 
 private NDVIStatsConfiguration configuration;
 private DataStore dbStore = null;
-private DataStore defaultCropMaskStore;
-@SuppressWarnings("rawtypes")
-private FeatureCollection defaultMaskFeaturecollection;
+private SimpleFeatureCollection defaultMaskFeaturecollection;
 
 /**
  * Static block to register JAI components
@@ -189,8 +186,6 @@ public boolean checkConfiguration() {
     } catch (Exception e) {
         LOGGER.equals(e);
     } finally {
-        if (defaultCropMaskStore != null)
-            defaultCropMaskStore.dispose();
         if(dbStore != null){
             dbStore.dispose();
         }
@@ -206,26 +201,39 @@ public boolean checkConfiguration() {
  * 
  * @throws IOException
  */
-@SuppressWarnings("rawtypes")
 public SimpleFeatureCollection getDefaultMaskFeaturecollection() throws IOException {
 
-    try {
-        if (defaultMaskFeaturecollection == null) { // only need to load once
-            final URL url= new URL(configuration.getDefaultMaskUrl());
-            defaultCropMaskStore = new ShapefileDataStore(url);
-            String typeName = defaultCropMaskStore.getTypeNames()[0];
-
-            FeatureSource source = defaultCropMaskStore
-                    .getFeatureSource(typeName);
-
-            defaultMaskFeaturecollection = source.getFeatures();
-        }
-    } finally {
-        if (defaultCropMaskStore != null)
-            defaultCropMaskStore.dispose();
+    if (defaultMaskFeaturecollection == null) { // only need to load once
+        defaultMaskFeaturecollection = getMaskFeatureCollection(configuration.getDefaultMaskUrl());
     }
 
-    return (SimpleFeatureCollection)defaultMaskFeaturecollection;
+    return defaultMaskFeaturecollection;
+}
+
+/**
+ * Obtain mask features collection
+ * 
+ * @param maskUrl url to the mask
+ * 
+ * @return collection of feature in the mask
+ * 
+ * @throws IOException
+ */
+public SimpleFeatureCollection getMaskFeatureCollection(String maskUrl) throws IOException {
+    DataStore maskStore = null;
+    try {
+        final URL url= new URL(maskUrl);
+        maskStore = new ShapefileDataStore(url);
+        String typeName = maskStore.getTypeNames()[0];
+
+        SimpleFeatureSource source = maskStore
+                .getFeatureSource(typeName);
+
+        return  source.getFeatures();
+    } finally {
+        if (maskStore != null)
+            maskStore.dispose();
+    }
 }
 
 /**
@@ -275,7 +283,7 @@ private void processXMLFile(File file) throws Exception {
     GridCoverage2D coverage = null;
     try {
         coverage = getNdviTiff(ndviFileName);
-        generateCSV(coverage, fc, classifier, mask, ndviFileName, configuration.getCsvSeparator());
+        generateCSV(coverage, fc, classifier, mask, ndviFileName, configuration.getCsvSeparator(), sb.getForestMaskFullPath());
     } finally {
         if (coverage != null) {
             disposeCoverage(coverage);
@@ -310,12 +318,13 @@ private String getCSVFullPath(CLASSIFIER_TYPE classifier, MASK_TYPE mask,
  * @param mask
  * @param ndviFileName
  * @param csvSeparator
+ * @param maskFullPath
  * 
  * @throws Exception
  */
 private void generateCSV(GridCoverage2D coverage, SimpleFeatureCollection fc,
         CLASSIFIER_TYPE classifier, MASK_TYPE mask, String ndviFileName,
-        String csvSeparator) throws Exception {
+        String csvSeparator, String maskFullPath) throws Exception {
 
     // Prepare for CSV generation
     String csvPath = getCSVFullPath(classifier, mask, ndviFileName);
@@ -360,7 +369,7 @@ private void generateCSV(GridCoverage2D coverage, SimpleFeatureCollection fc,
 
     
     // ROI for the MASK in raster space
-    final ROIGeometry maskROI = getROIMask(mask, worldToGrid,rasterCRS);
+    final ROIGeometry maskROI = getROIMask(mask, worldToGrid,rasterCRS, maskFullPath);
 
     // getting the ROI in raster space for the zones
     final List<ROI> zonesROI = new ArrayList<ROI>();
@@ -456,22 +465,60 @@ private void generateCSV(GridCoverage2D coverage, SimpleFeatureCollection fc,
  * @param mask
  * @param worldToGrid
  * @param rasterCRS 
+ * @param maskUrl
  * @return
  * @throws MismatchedDimensionException
  * @throws TransformException
  * @throws Exception
  */
-private ROIGeometry getROIMask(MASK_TYPE mask, MathTransform worldToGrid, CoordinateReferenceSystem rasterCRS)
+private ROIGeometry getROIMask(MASK_TYPE mask, MathTransform worldToGrid, CoordinateReferenceSystem rasterCRS, String maskUrl)
         throws Exception {
 
     if (MASK_TYPE.STANDARD.equals(mask)) {
         return getDefaultROIMask(worldToGrid,rasterCRS);
     } else if (MASK_TYPE.CUSTOM.equals(mask)) {
-        // TODO: CUSTOM MASK
+        return getROIMask(worldToGrid, rasterCRS, getMaskFeatureCollection(maskUrl));
     }
     // if(MASK_TYPE.DISABLED.equals(mask)){ return null!!}
 
     return null;
+}
+
+/**
+ * Obtain a ROIGeometry
+ * 
+ * @param worldToGrid
+ * @param rasterCRS 
+ * @param maskFeaturecollection
+ * @return
+ * @throws Exception
+ */
+private ROIGeometry getROIMask(MathTransform worldToGrid, CoordinateReferenceSystem rasterCRS, SimpleFeatureCollection maskFeaturecollection)
+        throws Exception {
+    final CoordinateReferenceSystem featureCollectionCRS=maskFeaturecollection.getSchema().getCoordinateReferenceSystem();
+    if(featureCollectionCRS==null){
+        throw new IllegalArgumentException(" The input ROI needs a CRS");
+    }
+    // do we need to reproject?
+    if(!CRS.equalsIgnoreMetadata(rasterCRS, featureCollectionCRS)){
+        // create a transformation
+        final MathTransform transform = CRS.findMathTransform(featureCollectionCRS, rasterCRS,true);// lenient tranformation
+        if(!transform.isIdentity()){
+            // reproject
+            maskFeaturecollection= new ReprojectProcess().execute(
+                    maskFeaturecollection, 
+                    featureCollectionCRS, 
+                    rasterCRS);
+            
+        }
+    }
+    
+    // Transformation from the Model space to the Raster space
+    ROIGeometry mask = new ROIGeometry(
+            JTS.transform(
+                    collectGeometries(maskFeaturecollection),
+                    worldToGrid));
+    return mask;
 }
 
 /**
@@ -485,31 +532,8 @@ private ROIGeometry getROIMask(MASK_TYPE mask, MathTransform worldToGrid, Coordi
 private ROIGeometry getDefaultROIMask(MathTransform worldToGrid, CoordinateReferenceSystem rasterCRS)
         throws Exception {
     if (defaultROIMask == null) {
-        // get the feature collection
-        SimpleFeatureCollection defaultMaskFeaturecollection = getDefaultMaskFeaturecollection();
-        final CoordinateReferenceSystem featureCollectionCRS=defaultMaskFeaturecollection.getSchema().getCoordinateReferenceSystem();
-        if(featureCollectionCRS==null){
-            throw new IllegalArgumentException(" The input ROI needs a CRS");
-        }
-        // do we need to reproject?
-        if(!CRS.equalsIgnoreMetadata(rasterCRS, featureCollectionCRS)){
-            // create a transformation
-            final MathTransform transform = CRS.findMathTransform(featureCollectionCRS, rasterCRS,true);// lenient tranformation
-            if(!transform.isIdentity()){
-                // reproject
-                defaultMaskFeaturecollection= new ReprojectProcess().execute(
-                        defaultMaskFeaturecollection, 
-                        featureCollectionCRS, 
-                        rasterCRS);
-                
-            }
-        }
-        
-        // Transformation from the Model space to the Raster space
-        defaultROIMask = new ROIGeometry(
-                JTS.transform(
-                        collectGeometries(defaultMaskFeaturecollection),
-                        worldToGrid));
+        // get default ROI mask
+        defaultROIMask = getROIMask(worldToGrid, rasterCRS, getDefaultMaskFeaturecollection());
     }
     return defaultROIMask;
 }
@@ -573,7 +597,7 @@ private SimpleFeatureCollection getClassifiers(String featureSource)
     return getDbStore().getFeatureSource(featureSource).getFeatures();
 }
 
-private Geometry collectGeometries(FeatureCollection maskCollection) {
+private Geometry collectGeometries(SimpleFeatureCollection maskCollection) {
     if (maskCollection != null && !maskCollection.isEmpty()) {
         if (LOGGER.isTraceEnabled()) {
             LOGGER.trace("Mask flag is set on true");

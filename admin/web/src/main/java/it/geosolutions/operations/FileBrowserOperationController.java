@@ -45,7 +45,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class FileBrowserOperationController implements ApplicationContextAware, Operation{
-    private final static Logger LOGGER = Logger.getLogger(FileBrowserOperationController.class);
+    protected final static Logger LOGGER = Logger.getLogger(FileBrowserOperationController.class);
 	
 	private ApplicationContext applicationContext;
 
@@ -55,7 +55,7 @@ public class FileBrowserOperationController implements ApplicationContextAware, 
 
 	private String operationJSP = "files";
 
-	private String defaultBaseDir;
+	protected String defaultBaseDir;
 	
 	private Boolean canNavigate;
 	

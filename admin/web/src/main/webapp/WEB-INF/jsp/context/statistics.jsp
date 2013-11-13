@@ -1,5 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <script src="<c:url value="/js/bootstrap-datepicker.js"/>"></script>
 <link href="<c:url value="/css/datepicker.css"/>" media="all"
 	type="text/css" rel="stylesheet">
@@ -37,20 +38,23 @@
 					</label>
 				</c:forEach>
 				<label class="radio"> <input type="radio" name="mask"
-						value="disabled" checked="checked">Disabled
+						value="disabled">Disabled
 					</label>
-				<!-- Disable custom mask
-				<c:if test="${not empty masks.fileBrowser }">
+				<!-- Disable custom mask -->
+				<c:if test="${not empty fileBrowser }">
 					<label class="radio"> <input class="custom-selector"
 						type="radio" name="mask" value="file">Custom
 					</label>
 					<select name="mask_file" id="mask_file" class="input-block-level"
 						disabled>
-						<c:forEach items="${masks.fileBrowser.fileNames}" var="file">
+						<c:forEach items="${fileBrowser.fileNames}" var="file">
+							<c:if test="${fn:endsWith(file, 'shp')}">
 							<option value="${file}">${file}</option>
+							</c:if>
 						</c:forEach>
 					</select>
-				</c:if>-->
+				</c:if>
+				<a class="btn" href="<c:url value="/operationManager/NDVIStatistics?fileBrowser=true"/>">Crop Mask file browser</a>
 			</div>
 		</div>
 		<div class="control-group">
@@ -115,7 +119,10 @@
 	$("#statistics_form").submit(function() {
 		var options = {
 			success: function(html) {
-				$("#ndvi .modal-body").replaceWith($('.modal-body', $(html)));
+				var modalBody = $(".message-body", $(html));
+				modalBody[0].className = modalBody[0].className.replace("message-body", "modal-body");
+				$("#ndvi .modal-body").replaceWith(modalBody);
+				// $("#ndvi .modal-body").replaceWith($('.modal-body', $(html)));
 				var link =  $('#ndvi .modal-body a')[0];
 				if(link){
 					var url =  link.href;

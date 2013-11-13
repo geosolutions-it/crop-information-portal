@@ -43,7 +43,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
-public class NDVIStatisticsOperation implements LocalOperation {
+public class NDVIStatisticsOperation extends FileBrowserOperationController implements LocalOperation {
 
 /**
  * The name of this Operation
@@ -84,15 +84,25 @@ private final static Logger LOGGER = LoggerFactory
 @Override
 public String getJsp(ModelMap model, HttpServletRequest request,
         List<MultipartFile> files) {
-
-    System.out.println("getJSP di NDVIStatistics");
-
-    // TODO: How make this config? parametric xml or request parameters?
-    setRegions("regions", model);
-    setMask("masks", model);
-    // setGranule(granule,model);
-
-    return "statistics";
+    
+    // Copy file browser files
+    String fileBrowser = super.getJsp(model, request, files);
+    
+    if(request.getParameter("fileBrowser") != null 
+            || request.getAttribute("fileBrowser") != null){
+        // just common fileBrowser
+        return fileBrowser;
+    }else{
+        // Common form
+        System.out.println("getJSP di NDVIStatistics");
+    
+        // TODO: How make this config? parametric xml or request parameters?
+        setRegions("regions", model);
+        setMask("masks", model);
+        // setGranule(granule,model);
+    
+        return "statistics";
+    }
 
 }
 
@@ -128,8 +138,6 @@ public Object getBlob(Object inputParam, HttpServletRequest request) {
                     sb.setForestMask(StatsBean.MASK_TYPE.STANDARD);
                 } else if (vals[0].equalsIgnoreCase("file")) {
                     sb.setForestMask(StatsBean.MASK_TYPE.CUSTOM);
-                    // TODO: get the file from the values
-                    sb.setForestMaskFullPath("/a/full/path/for/forest/mask");
                 } else {
                     sb.setForestMask(StatsBean.MASK_TYPE.DISABLED);
                 }
@@ -139,6 +147,9 @@ public Object getBlob(Object inputParam, HttpServletRequest request) {
                 year = vals[0];
             } else if (key.equalsIgnoreCase("dekad")) {
                 granule_dekad = vals[0];
+            }else if (key.equalsIgnoreCase("mask_file")) {
+                // Get the file from the values and default baseDir
+                sb.setForestMaskFullPath("file:" + defaultBaseDir + vals[0]);
             }
         }
 
