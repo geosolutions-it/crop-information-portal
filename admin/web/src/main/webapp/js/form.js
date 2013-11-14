@@ -100,7 +100,7 @@ function postData(targetId){
  * (default replacement is remove 'modal hide fade' because it's 
  * usally launched inside a modal window @see csv.jsp)
  **/
-function ajaxRequest(targetId, url, method, oldString, replaceWith){
+function ajaxRequest(targetId, url, method, oldString, replaceWith, data){
 
     if(url){
         // default str to replace
@@ -108,13 +108,23 @@ function ajaxRequest(targetId, url, method, oldString, replaceWith){
         var newStr = replaceWith ? replaceWith : "";
 
         var targetUrl = url ? url : location.href;
+        var sendData = data ? data: null;
+
+        if(targetUrl.indexOf("#") == 0){
+            // is the form id to obtain action
+            targetUrl = $(url)[0].action;
+            // obtain data from the form
+            if(sendData == null){
+                sendData = $(url).serialize();
+            }
+        }
 
          var config = {
             async: true,
             type: method ? method: "POST",
             url: targetUrl,
             processData: false,
-            data: null,
+            data: sendData,
             timeout: 70000,
             cache: false
         };

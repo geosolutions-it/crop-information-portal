@@ -54,7 +54,8 @@
 						</c:forEach>
 					</select>
 				</c:if>
-				<a class="btn" href="<c:url value="/operationManager/NDVIStatistics?fileBrowser=true"/>">Crop Mask file browser</a>
+				<a class="btn" href="<c:url value="/operationManager/fileBrowserOpCropMask/SHP"/>">Crop Mask file browser</a>
+
 			</div>
 		</div>
 		<div class="control-group">
