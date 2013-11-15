@@ -34,8 +34,8 @@
 	 **/
 	$.fn.jqueryNDVISelector = function(idYear, idMonth, idDekad, serverUrl, selectedName){
 
-		var capabilitiesUrl = serverUrl ? serverUrl : "/geoserver/ows?service=WMS&request=getCapabilities";
-		var layerName = selectedName ? selectedName: "ndvi:ndvi";
+		var capabilitiesUrl = serverUrl ? serverUrl : "/geoserver/ndvi/ows?service=WMS&request=getCapabilities";
+		var layerName = selectedName ? selectedName: "ndvi";
 
 		var dimensions = [];
 		var monthShortNames = {01: 'Jan', 02: 'Feb', 03: 'Mar', 04: 'Apr', 05: 'May', 06: 'Jun', 07: 'Jul', 08: 'Aug', 09: 'Sep', 10: 'Oct', 11: 'Nov', 12: 'Dec'};
@@ -52,7 +52,7 @@
 	            url: url,
 	            dataType: "xml",
 	            timeout: 70000,
-	            cache: true
+	            cache: false
 	        };
 
 	        $.ajax(config)
