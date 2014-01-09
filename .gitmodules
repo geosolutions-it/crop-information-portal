@@ -1,0 +1,3 @@
+[submodule "mapstore"]
+	path = mapstore
+	url = git@github.com:geosolutions-it/mapstore.git
