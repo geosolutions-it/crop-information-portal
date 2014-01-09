@@ -19,16 +19,20 @@
  */
 package it.geosolutions.geobatch.nrl.csvingest.processor;
 
-import au.com.bytecode.opencsv.CSVReader;
 import it.geosolutions.nrl.model.CropDescriptor;
 import it.geosolutions.nrl.persistence.dao.AgrometDAO;
 import it.geosolutions.nrl.persistence.dao.CropDataDAO;
 import it.geosolutions.nrl.persistence.dao.CropDescriptorDAO;
+import it.geosolutions.nrl.persistence.dao.CropStatusDAO;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import au.com.bytecode.opencsv.CSVReader;
 
 /**
  *
@@ -41,8 +45,9 @@ public abstract class CSVProcessor {
     protected CropDataDAO cropDataDAO;
     private CropDescriptorDAO cropDescriptorDAO;
     protected AgrometDAO agrometDAO;
+    protected CropStatusDAO cropStatusDAO;
 
-    public abstract List<String> getHeaders();
+	public abstract List<String> getHeaders();
 
     public boolean canProcess(List<String> ingestHeaders) {
         if (ingestHeaders == null) {
@@ -89,5 +94,12 @@ public abstract class CSVProcessor {
         this.agrometDAO = agrometDAO;
     }
 
+    public CropStatusDAO getCropStatusDAO() {
+		return cropStatusDAO;
+	}
+
+	public void setCropStatusDAO(CropStatusDAO cropStatusDAO) {
+		this.cropStatusDAO = cropStatusDAO;
+	}
 
 }

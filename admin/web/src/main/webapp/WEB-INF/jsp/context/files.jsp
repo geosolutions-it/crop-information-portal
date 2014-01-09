@@ -43,8 +43,8 @@
 								<c:set var="fileext" value=".${entry.key}" /> 
 								<c:if test="${fn:endsWith(file.name, fileext)}">
 								<c:forEach items="${entry.value}" var="op">
-									<a data-toggle="modal" class="btn ${fn:toLowerCase(op.name)}" data-target="#${fn:toLowerCase(op.name)}"
-										data-fileid="${file.name}" href="../../operation/${op.RESTPath}/${file.name}?d=${directory == '/'?'': osdim:encodeURIComponent(directory)}">${op.name}</a>
+									<button data-toggle="modal" class="btn ${fn:toLowerCase(op.name)}" data-target="#${fn:toLowerCase(op.name)}"
+										data-fileid="${file.name}" href="../../operation/${op.RESTPath}/${file.name}?d=${directory == '/'?'': osdim:encodeURIComponent(directory)}">${op.name}</button>
 									</c:forEach>
 								</c:if>
 							</c:forEach>

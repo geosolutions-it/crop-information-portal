@@ -37,7 +37,8 @@ public class StatsBean {
 
     public static enum MASK_TYPE {
         STANDARD,
-        CUSTOM;
+        CUSTOM,
+        DISABLED;
     }
 
     private String ndviFileName;

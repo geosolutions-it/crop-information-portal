@@ -48,6 +48,9 @@
     <bean id="agrometDao" class="it.geosolutions.nrl.persistence.dao.impl.AgrometDAOImpl" >
         <property name="searchProcessor" ref="searchProcessor" />
     </bean>
+    <bean id="cropStatusDao" class="it.geosolutions.nrl.persistence.dao.impl.CropStatusDAOImpl" >
+        <property name="searchProcessor" ref="searchProcessor" />
+    </bean>
     
 
 </beans>
