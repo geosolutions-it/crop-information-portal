@@ -3,9 +3,13 @@
 
 .. _cippak.admin.arch:
 
-Components 
-==========
+Architecture 
+============
 
+The portal is composed of several web applications that interact with each other. Some of them are used directly by the users (MapStore, Administration Interface). 
+
+Components
+^^^^^^^^^^
 The following are the components of the architecture of the Crop Information Portal. 
    
 * **MapStore**: The main frontend to generate charts, maps and reports inferring Agrometereological data. Interacts with GeoServer to allow this kind of processing.
@@ -16,7 +20,7 @@ The following are the components of the architecture of the Crop Information Por
 
 
 General Architecture 
-====================
+^^^^^^^^^^^^^^^^^^^^
    
 .. figure:: img/arch.png
 
@@ -39,4 +43,10 @@ There are other small web applications non present in the schema:
 *  **http_proxy** : A secure proxy that can allow *MapStore* to get maps from other qualified WMS sources.
 *  **xmlJsonTranslate** : a container of services required by *MapStore* grouped in a separated application.
 
+A more detailed description about the model is available here:
 
+
+.. toctree::
+   :maxdepth: 1
+
+   model <model>
