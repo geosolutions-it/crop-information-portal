@@ -1,3 +1,6 @@
 [submodule "mapstore"]
 	path = mapstore
 	url = git@github.com:geosolutions-it/mapstore.git
+[submodule "OpenSDI-Manager"]
+	path = OpenSDI-Manager
+	url = git@github.com:geosolutions-it/OpenSDI-Manager.git
