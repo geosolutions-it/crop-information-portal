@@ -3,12 +3,14 @@
 
 .. _cippak.admin.conf:
 
-MapStore Configuration 
-======================
+Configuration 
+=============
+This section shows how to modify configuration files and apply some simple changes to the GUI.
 
-TODO
+.. toctree::
+   :maxdepth: 3
 
-Admin Application Configuration
-===============================
+   MapStore <mapstore/index>
+   Administration Interface <admin/index>
+   
 
-TODO
