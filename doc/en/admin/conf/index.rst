@@ -8,9 +8,9 @@ Configuration
 This section shows how to modify configuration files and apply some simple changes to the GUI.
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    MapStore <mapstore/index>
-   Architecture <admin>
+   Administration Interface <admin/index>
    
 

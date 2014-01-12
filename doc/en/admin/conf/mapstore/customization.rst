@@ -66,7 +66,7 @@ Before the line ``285`` add this code to create a new button::
                     window.open('http://google.com/', '_blank');
                 }
             });  
-            
+                
 and add the ``link`` button to the ``bbar`` array of the ``appViewport``::
 
             var appViewport = new Ext.Viewport({
@@ -94,3 +94,4 @@ You can see the new button at the bottom right of the page.
 .. figure:: img/custom_link.png
 
 			The new button.
+

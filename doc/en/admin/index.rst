@@ -10,12 +10,12 @@ This section illustrates how manage users and keep updated the portal.
 
 .. toctree::
    :maxdepth: 1
-
-   Introduction <introduction>
+   
+   Introduction to the Administration Interface <introduction>
    Architecture <arch/index>
-   Configuration <conf/index>
    Crops and Agrometeorological factors <crop_agro/index>
    CSV Browser <csv/index>
    NDVI Browser <ndvi/index>
    Statistics generation <stats/index>
    misc <misc/index>
+   Configuration of the system <conf/index>
