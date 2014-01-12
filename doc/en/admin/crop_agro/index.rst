@@ -37,6 +37,26 @@ The new crop will be shown in the Crops list.
     
 Anyway the new crop will not be available in MapStore until some data about the crop is ingested.
 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+How to allow map generation for new Crops
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To generate maps you **must** add 6 new styles to geoserver with a specific name::
+
+    <province|district>_<crop_id_lower_case>_<area|prod|yield>_style
+
+In the case above the styles to add will have the following names:
+
+* ``province_soybean_area_style``
+* ``province_soybean_prod_style``
+* ``province_soybean_yield_style``
+* ``district_soybean_area_style``
+* ``district_soybean_prod_style``
+* ``district_soybean_yield_style``
+
+TODO (create and test these files when the sample data is added)
+
+
 -----------------
 Edit/Delete Crops
 -----------------
