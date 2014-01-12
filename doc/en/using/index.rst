@@ -6,11 +6,17 @@
 Using Crop Information Portal
 =============================
 
-This section illustrates how you can use MapStore.
+This section illustrates how you can use Crop Information Portal.
 
 .. toctree::
    :maxdepth: 1
 
-   
+   Table of Content (TOC) <toc/index>
+   Generic Tools <gen_tools/index>
+   NDVI Tool <ndvi_tool/index>
+   Crop Data Tool <crop_data_tool/index>
+   Crop Status Tool <crop_status_tool/index>
+   Agromet Tool <agromet_tool/index>
+   Reporting Tool <reporting_tool/index>
 
 
