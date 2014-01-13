@@ -1,5 +1,5 @@
 .. module:: cippak.admin
-   :synopsis: Learn on how to develop in MapStore.
+   :synopsis: Learn how to administrate the CROP Portal platform.
 
 .. _cippak.admin:
 
