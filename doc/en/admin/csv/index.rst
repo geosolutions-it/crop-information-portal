@@ -21,7 +21,7 @@ To access to this module you need to click on the navigation bar button 'File Br
 
    CSV Browser on navigation bar.
 
-Now you can upload your files te make the ingestion. The file operation and the target table depends on the CSV files you upload.
+Now you can upload your files to launch the ingestion. The file operation and the target table depends on the CSV files you upload.
 
 Known CSV formats
 -----------------
@@ -50,7 +50,7 @@ The first column is ignored, the columns 'distr', 'prov', 'year', 'mon', 'dec' a
 Crop Data
 +++++++++
 
-The header for an agromet operation must be::
+The header for a crop data operation must be::
 
 	*,crop,distr,prov,year,years,area,prod,yield
 
@@ -64,7 +64,7 @@ The first column is ignored and the other columns are the cropdata table columns
 Crop status
 +++++++++++
 
-The header for an agromet operation must be::
+The header for a crop status operation must be::
 
 	*,factor,crop,month,dec,max,min,opt,
 
@@ -79,7 +79,7 @@ The first column is ignored and the other columns are the cropdata table columns
 Operations
 ----------
 
-For the each file operation you need to know what is the primary key columns of the table to be updated. The run of the ingestion is equals on the three known operations:
+To apply changes to the data (insert, update, delete) you have do run the CSV operation to a csv file :
 
 1. **Upload the file**: Select a file from your file system and click on *Upload*
 
@@ -127,7 +127,7 @@ Then the log of the execution will be shown in the page. If the message is '*SUC
 	* Falied records: 0
 	***************************************************
 
-We have attached an example for each operation for each table.
+We have attached examples for each operation and for each table.
 
 Create
 ++++++
@@ -136,9 +136,9 @@ You need to create a CSV file with the new entry inside.
 
 Examples:
 
-* `Agromet <https://github.com/geosolutions-it/OpenSDI-Manager/raw/c3c5ffac7789b428b552d7e021bd763b80456557/geobatch/csvingest/src/test/resources/testdata/pak_NDVI_insert.csv/>`_
-* `Crop data <https://github.com/geosolutions-it/OpenSDI-Manager/raw/c3c5ffac7789b428b552d7e021bd763b80456557/geobatch/csvingest/src/test/resources/testdata/cropdata_insert.csv/>`_
-* `Crop status <https://github.com/geosolutions-it/OpenSDI-Manager/raw/c3c5ffac7789b428b552d7e021bd763b80456557/geobatch/csvingest/src/test/resources/testdata/pak_cropstatus_insert_fake.csv/>`_
+* `Agromet <https://github.com/geosolutions-it/OpenSDI-Manager/raw/c3c5ffac7789b428b552d7e021bd763b80456557/geobatch/csvingest/src/test/resources/testdata/pak_NDVI_insert.csv>`_
+* `Crop data <https://github.com/geosolutions-it/OpenSDI-Manager/raw/c3c5ffac7789b428b552d7e021bd763b80456557/geobatch/csvingest/src/test/resources/testdata/cropdata_insert.csv>`_
+* `Crop status <https://github.com/geosolutions-it/OpenSDI-Manager/raw/c3c5ffac7789b428b552d7e021bd763b80456557/geobatch/csvingest/src/test/resources/testdata/pak_cropstatus_insert_fake.csv>`_
 
 Update
 ++++++
@@ -147,17 +147,17 @@ You need to create a CSV file with the primary key of the row to be updated and 
 
 Examples:
 
-* `Agromet <https://github.com/geosolutions-it/OpenSDI-Manager/blob/c3c5ffac7789b428b552d7e021bd763b80456557/geobatch/csvingest/src/test/resources/testdata/pak_NDVI_modify.csv/>`_
-* `Crop data <https://github.com/geosolutions-it/OpenSDI-Manager/raw/c3c5ffac7789b428b552d7e021bd763b80456557/geobatch/csvingest/src/test/resources/testdata/cropdata_mod.csv/>`_
-* `Crop status <https://github.com/geosolutions-it/OpenSDI-Manager/raw/c3c5ffac7789b428b552d7e021bd763b80456557/geobatch/csvingest/src/test/resources/testdata/pak_cropstatus_mod_fake.csv/>`_
+* `Agromet <https://github.com/geosolutions-it/OpenSDI-Manager/blob/c3c5ffac7789b428b552d7e021bd763b80456557/geobatch/csvingest/src/test/resources/testdata/pak_NDVI_modify.csv>`_
+* `Crop data <https://github.com/geosolutions-it/OpenSDI-Manager/raw/c3c5ffac7789b428b552d7e021bd763b80456557/geobatch/csvingest/src/test/resources/testdata/cropdata_mod.csv>`_
+* `Crop status <https://github.com/geosolutions-it/OpenSDI-Manager/raw/c3c5ffac7789b428b552d7e021bd763b80456557/geobatch/csvingest/src/test/resources/testdata/pak_cropstatus_mod_fake.csv>`_
 
 Delete
 ++++++
 
-You need to create a CSV file with the primary key of the row to be deleted and put all the other columns to null. 
+You need to create a CSV file with the primary key of the row to be deleted and **leave all the other columns empty**. 
 
 Examples:
 
-* `Agromet <https://github.com/geosolutions-it/OpenSDI-Manager/raw/c3c5ffac7789b428b552d7e021bd763b80456557/geobatch/csvingest/src/test/resources/testdata/pak_NDVI_rm.csv/>`_
-* `Crop data <https://github.com/geosolutions-it/OpenSDI-Manager/raw/c3c5ffac7789b428b552d7e021bd763b80456557/geobatch/csvingest/src/test/resources/testdata/cropdata_rm.csv/>`_
-* `Crop status <https://github.com/geosolutions-it/OpenSDI-Manager/raw/c3c5ffac7789b428b552d7e021bd763b80456557/geobatch/csvingest/src/test/resources/testdata/pak_cropstatus_remove_fake.csv/>`_
+* `Agromet <https://github.com/geosolutions-it/OpenSDI-Manager/raw/c3c5ffac7789b428b552d7e021bd763b80456557/geobatch/csvingest/src/test/resources/testdata/pak_NDVI_rm.csv>`_
+* `Crop data <https://github.com/geosolutions-it/OpenSDI-Manager/raw/c3c5ffac7789b428b552d7e021bd763b80456557/geobatch/csvingest/src/test/resources/testdata/cropdata_rm.csv>`_
+* `Crop status <https://github.com/geosolutions-it/OpenSDI-Manager/raw/c3c5ffac7789b428b552d7e021bd763b80456557/geobatch/csvingest/src/test/resources/testdata/pak_cropstatus_remove_fake.csv>`_
