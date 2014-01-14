@@ -54,7 +54,45 @@ In the case above the styles to add will have the following names:
 * ``district_soybean_prod_style``
 * ``district_soybean_yield_style``
 
-TODO (create and test these files when the sample data is added)
++++++++++++++++
+Add a SLD style
++++++++++++++++
+
+You can access to the style layer descriptor (SLD) definition page on GeoServer with `this link <http://localhost:8080/geoserver/web/?wicket:bookmarkablePage=:org.geoserver.wms.web.data.StyleNewPage>`_ or selecting *Styles* module on GeoServer:
+
+.. figure:: img/styles.png
+
+    Styles module on GeoServer
+
+and press on *add a new style*
+
+.. figure:: img/styles_add.png
+
+    Add a new style button
+
+Now, you have to fill the form with the new name, 
+
+for this exercise you can copy a style from the existing ones. :
+
+.. figure:: img/styles_copy.png
+
+    Copy *province_cotton_area_style*
+
+change the style with the new name and modify filters as you want:
+
+copy from one of the present one:
+
+.. figure:: img/styles_edit.png
+
+    Edit the style
+
+validate and submit the new style:
+
+.. figure:: img/styles_submit.png
+
+    Styles submit
+
+To see a complete example of how to add a crop see :ref:`cippak.admin.crop_agro.complete`.
 
 
 -----------------

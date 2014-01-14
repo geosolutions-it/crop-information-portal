@@ -22,7 +22,7 @@ File format
 
 The name of the Geotiff file must have this format: `dvYYMMD_*.tif` with:
 
-* **YY**: Year of the image: two last digits of the year: 1998 --> 98; 2000 --> 00.
+* **YY**: Year of the image: two last digits of the year. *e.g.1998 becomes 98; 2000 becomes 00*.
 * **MM**: Month of the image: between 01 (January) and 12 (December)
 * **D**: Dekad of the image: 1, 2 or 3
 
@@ -47,7 +47,7 @@ The execution flow for this operation is:
 
    Get status after execution.
 
-but if the file is big, you won't be able to view the resume before the ingestion will be finished. In this case, you will be able to update the file browser status and wait for a '*SUCCESS*' or '*FAIL*' message on the file.
+.. note:: If the file is too big, you will not be able to resume the status of the ingestion flow until the ingestion is finished. In this case, you will have to update the file browser status and wait for a '*SUCCESS*' or '*FAIL*' message about the ingested file.
 
 .. figure::  resources/update.png	
    :align:   center
