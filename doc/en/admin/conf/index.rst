@@ -11,6 +11,7 @@ This section shows how to modify configuration files and apply some simple chang
    :maxdepth: 3
 
    MapStore <mapstore/index>
+   GeoBatch <geobatch/index>
    Administration Interface <admin/index>
    
 
