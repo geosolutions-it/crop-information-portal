@@ -5,6 +5,7 @@
 
 Configuration 
 =============
+
 This section shows how to modify configuration files and apply some simple changes to the GUI.
 
 .. toctree::
