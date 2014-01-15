@@ -15,5 +15,6 @@ extract statistics and detect conditions affecting production of major Rabi and 
    overview/index
    using/index
    admin/index
+   maintenance/index
    
 
