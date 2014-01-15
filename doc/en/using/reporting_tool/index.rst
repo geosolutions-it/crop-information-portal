@@ -69,7 +69,7 @@ In both options, the zone will be added into the AoI grid
 
    Balochistan province selected as AoI.
 
-If you select ´Pakistan´, you could'nt select any AoI:
+If you select ´Pakistan´, you don't have to select any AoI:
 
 .. figure::  resources/pakistan.png	
    :align:   center
@@ -136,6 +136,16 @@ and wait for the report generation.
 .. figure::  resources/wait.png	
    :align:   center
 
-   Wait.
+   Wait for the report generation.
 
 We process a lot of data and render it on a PDF document. When the report will be finished, your browser will ask you if you want to download the PDF file.
+
+.. figure::  resources/report_cover.png	
+   :align:   center
+   
+   The PDF cover
+   
+.. figure::  resources/report_pdf2.png	
+   :align:   center
+   
+   The PDF content
