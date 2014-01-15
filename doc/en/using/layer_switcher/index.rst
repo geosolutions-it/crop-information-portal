@@ -4,16 +4,20 @@
 .. _cippak.using.layer_switcher:
 
 Layer Switcher
-=======================
+==============
 
 Layer Switcher lists all the layers on the map and shows what the features in each layer represent.
 The layers at the top of the table of contents draw on top of those below them.
 In CROP Information Portal's Layer Switcher there are two types of layers: base layers and overlays.
 
+.. figure:: img/switcher.png
+    :align:   center
+    
+    the Layer Switcher.
+
 ************
 Base Layers
 ************
-
 
 Base Layers are mutually exclusive layers, meaning only one can be enabled at any given time.
 Base Layers always display below overlay layers.
@@ -84,7 +88,7 @@ Hydrology group
     +==========================+=============+
     | Indus River              | Indus River |
     +--------------------------+-------------+
-    | Rovers                   | Rovers      |
+    | Rivers                   | Rivers      |
     +--------------------------+-------------+
 
 Land Cover group

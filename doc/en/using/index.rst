@@ -6,8 +6,14 @@
 Using Crop Information Portal
 =============================
 
-This section illustrates how you can use Crop Information Portal.
+The Crop Information Portal provides almost all of its fuctionalities using the framework called MapStore.
 
+In this section you can learn how to use all the available tools.
+
+.. figure:: img/mapstore1.png
+
+			MapStore version for the Crop Information Portal.
+            
 .. toctree::
    :maxdepth: 1
 
