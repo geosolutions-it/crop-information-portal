@@ -1,7 +1,7 @@
-.. module:: cippak.admin.conf.admin
+.. module:: cippak.admin.conf.admin.configuration
    :synopsis: Learn about how to configure Crop Information Portal Components.
 
-.. _cippak.admin.conf.admin:
+.. _cippak.admin.conf.admin.configuration:
 
 =============================================
 Configuration of the Administration Interface 

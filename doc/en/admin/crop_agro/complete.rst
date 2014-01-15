@@ -23,10 +23,9 @@ We have attached data and styles for a complete proccess to add a new crop with 
 * ``district_soybean_prod_style.xml``
 * ``district_soybean_yield_style.xml``
 
-After this step you will have the new styles published on GeoServer::
+After this step you will have the new styles published on GeoServer:
 
 .. figure:: img/styles_search.png
-        
 
     Example's styles
 
@@ -35,12 +34,11 @@ After this step you will have the new styles published on GeoServer::
 
 4. **Test data**: Follow the instructions on `crop data tool <../../using/crop_data_tool/index.html>`_ section to use the new crop:
 
-* `As map <../../using/crop_data_tool/index.html#output-type-map>`_. You must select a correct year in the range (2010-2012). The map should be something like that::
+* `As map <../../using/crop_data_tool/index.html#output-type-map>`_. You must select a correct year in the range (2010-2012). The map should be something like that:
 
 .. figure:: img/result_map.png
   
-
-    Expected map (Soybean 2010 - Yield)
+	Expected map (Soybean 2010 - Yield)
 
 * `As chart <../../using/crop_data_tool/index.html#output-type-chart>`_: You must select the correct interval (2010-2012) and district or provinces with data.
 
