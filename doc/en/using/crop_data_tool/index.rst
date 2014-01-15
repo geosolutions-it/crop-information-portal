@@ -186,7 +186,7 @@ After clicking on the button will open a grid where the information will be list
 Now you can export the data in CSV format and save them on your PC.
 
 If you have selected one or more provinces, you can export the data for only one province or districts belonging to the province.
-If you have selected a district you can export only the data for the district.
+If you have selected a district can export only the data for the district.
 
     .. figure:: img/export_data_buttons.png
 

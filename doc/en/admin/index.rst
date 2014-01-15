@@ -19,3 +19,4 @@ This section illustrates how manage users and keep updated the portal.
    Statistics generation <stats/index>
    misc <misc/index>
    Configuration of the system <conf/index>
+   User Management page <use_man/index>
