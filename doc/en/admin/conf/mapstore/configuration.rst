@@ -555,6 +555,7 @@ Adds the Login button to the toolbar.::
 
         ]
     }
+    
 References Tool
 ===============
 

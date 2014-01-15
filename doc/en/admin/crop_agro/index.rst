@@ -138,8 +138,13 @@ Edit/Delete Factors
 You can edit/delete the factor clicking on the **Edit** and **Delete** buttons on the right of each row.
 
 
-    
+================
+Complete example
+================
 
+You can follow a complete example adding the data and styles and testing it on mapstore
 
+.. toctree::
+   :maxdepth: 1
 
-
+   complete example <complete>
