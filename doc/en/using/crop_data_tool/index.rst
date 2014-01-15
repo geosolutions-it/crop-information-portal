@@ -147,3 +147,47 @@ If the credentials are ok the option Data is enable in the Output Type radio but
 
                 Output type Data.
 
+To generate tabular data and download it as Comma Separated Value (CSV) of the rice production choose "Data" as output type and select the Season, the Area of interest and the range of years in which you are interested.
+
+    .. figure:: img/season_choice_map.png
+
+                Choose Season.
+
+    .. figure:: img/aoi_choice_data.png
+
+                Choose Area Of Interest.
+                
+    .. figure:: img/output_map_choices_highlight.png
+
+                Area Of Interest selection.
+
+    .. figure:: img/commodity_choice_map.png
+
+                Choose Commodity.
+
+    .. figure:: img/range_year_choice.png
+
+                Choose Years Range.
+
+    .. figure:: img/variable_choice_map.png
+
+                Choose Variable.                
+
+    .. figure:: img/generate_data_button.png
+
+                Generate Data Button.
+                
+After clicking on the button will open a grid where the information will be listed in tabular form.
+
+    .. figure:: img/generate_tabular_data_grid.png
+
+                Tabular Data Grid.
+                
+Now you can export the data in CSV format and save them on your PC.
+
+If you have selected one or more provinces, you can export the data for only one province or districts belonging to the province.
+If you have selected a district you can export only the data for the district.
+
+    .. figure:: img/export_data_buttons.png
+
+                Export Data Buttons.
