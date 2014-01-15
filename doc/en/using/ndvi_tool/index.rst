@@ -18,7 +18,7 @@ Tab to interact with NDVI tool
 
                 NDVI tool.
 
-The images are produced for decades and the choice can be made by means of three drop-down menu.
+The images are produced for dekad and the choice can be made by means of three drop-down menu.
 
 ************
 Select Dekad
@@ -37,7 +37,7 @@ The first drop-down allows you to choose the year, the second allows you to choo
 Add NDVI layer to the map
 *************************
 
-Once you have selected a decade you can add the image to the map by clicking on the button **"Add NDVI layer"**.
+Once you have selected a dekad you can add the image to the map by clicking on the button **"Add NDVI layer"**.
 Now you can also query the layer.
 
     .. figure:: img/ndvi_added_img.png

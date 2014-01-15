@@ -11,7 +11,8 @@ This section illustrates how you can use Crop Information Portal.
 .. toctree::
    :maxdepth: 1
 
-   Table of Content (TOC) <toc/index>
+   Layer Switcher <layer_switcher/index>
+   Legend Panel <legend_panel/index>
    Generic Tools <gen_tools/index>
    NDVI Tool <ndvi_tool/index>
    Crop Data Tool <crop_data_tool/index>
