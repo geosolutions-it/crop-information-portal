@@ -4,10 +4,10 @@
 .. _cippak.admin.intro:
 
 The Administration Interface
-===========================
+============================
     
 The portal provides a lot of data to facilitate the analysis of the state of the crops in Pakistan.These data must be continuously updated, and, where possible, automatically.
-To allow this the Portal has an administration interface accessible at 
+To allow mantainence operations, the portal has an administration interface accessible at 
 
 http://localhost:8080/admin
 
@@ -19,8 +19,10 @@ The default credentials for this application are
 
     * **user**:admin
     * **password**:admin
-    
-Once you login you will be automatically redirected to the Users List. Only the users with the ADMIN role can access to the administration interface.
+
+.. note:: Only the users with the ADMIN role can access to the administration interface.
+
+Once you login you will be automatically redirected to the Users List.
 
 .. figure:: img/first_access.png
 

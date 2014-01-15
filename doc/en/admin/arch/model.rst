@@ -66,19 +66,19 @@ populated ingesting the csv files.
 
 Sample Content 
 ^^^^^^^^^^^^^^
-here some sample rows from the *cropdata* table
+here some sample rows from the **cropdata** table
 
- ====== ============== =========== ====== =========== ======= ============ ======= ======== 
-  crop     district     province    year     years     area    production   yield     id     
- ====== ============== =========== ====== =========== ======= ============ ======= ======== 
-  rice   Bahawalnagar   PUNJAB      2010   2010-11     63.13       127.35    2017    73930  
-  rice   Bahawalpur     PUNJAB      2010   2010-11      6.07        10.34    1703    73931  
-  rice   Bhakkar        PUNJAB      2010   2010-11      1.21         1.83    1512    73932  
-  rice   Chiniot        PUNJAB      2010   2010-11     32.37        63.55    1963    73934  
- ====== ============== =========== ====== =========== ======= ============ ======= ======== 
+====== ============== =========== ====== =========== ======= ============ ======= 
+ crop     district     province    year     years     area    production   yield   
+====== ============== =========== ====== =========== ======= ============ ======= 
+ rice   Bahawalnagar   PUNJAB      2010   2010-11     63.13       127.35    2017  
+ rice   Bahawalpur     PUNJAB      2010   2010-11      6.07        10.34    1703  
+ rice   Bhakkar        PUNJAB      2010   2010-11      1.21         1.83    1512  
+ rice   Chiniot        PUNJAB      2010   2010-11     32.37        63.55    1963  
+====== ============== =========== ====== =========== ======= ============ ======= 
 
-The crop column have to be the same of the id in *cropdescriptor* table.
-*district* and *province* columns must match with district and province fields in the *district_crop* and *province_crop* tables.
+The crop column have to be the same of the id in **cropdescriptor** table.
+*district* and *province* columns must match with district and province fields in the **district_crop** and **province_crop** tables.
 Yield column is redoundant for compatibility reasons. the yield is calculated at runtime getting values from *area* and *production* fields.
 
 .. note:: Unit of measure are not uniform to mantain the original format of the CSV files.
@@ -108,7 +108,7 @@ schema
 Sample Content 
 ^^^^^^^^^^^^^^
  
-here some sample rows from the *agrometdescriptor* table
+here some sample rows from the **agrometdescriptor** table
 
  
 ============ ================= ============= ======
@@ -160,8 +160,8 @@ here some sample rows from the *agromet* table
 =========== ========== ====== ======= ===== ========== ========= ====== =======
 
 .. note::
-    * The *factor* column have to be the same of the id in *agrometdescriptor* table.
-    * *district* and *province* columns must match with *district* and *province* columns in the *district_boundary* and *province_boundary* tables.
+    * The *factor* column have to be the same of the id in **agrometdescriptor** table.
+    * *district* and *province* columns must match with *district* and *province* columns in the **district_boundary** and **province_boundary** tables.
     * s_dec and s_yr are redoundant field used to simplify queries to the database and make them faster.
 
 

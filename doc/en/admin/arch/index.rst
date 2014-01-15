@@ -12,12 +12,11 @@ Components
 ^^^^^^^^^^
 The following are the components of the architecture of the Crop Information Portal. 
    
-* **MapStore**: The main frontend to generate charts, maps and reports inferring Agrometereological data. Interacts with GeoServer to allow this kind of processing.
-* **Administration Interface**: The administrator frontend to update published data and generate statistics from raster images interacting with GeoBatch. Provides also a Graphical User interface to manage users.
-* **GeoStore**: a non-sql REST access database used for user related data. Manages the user roles and the log of their operations.
-* **GeoServer** is an open source software server written in Java that allows users to share and edit geospatial data. Designed for interoperability, it publishes data from any major spatial data source using open standards.
-* **GeoBatch** is an Open Source Java enterprise application for the collection, processing and publication of geospatial data in real time.
-
+* **MapStore**: The main front-end to generate charts, maps and reports inferring agro-metereological data. Interacts with GeoServer to allow this kind of processing.
+* **Administration Interface**: The administrator front-end to update published data and generate statistics from raster images interacting with GeoBatch. Provides also user management functionalities.
+* **GeoStore**: a non-sql REST access database used to store users data and to log their operations.
+* **GeoServer** is an open source software server that allows users to share and edit geospatial data. Designed for interoperability, it publishes data from any major spatial data source using open standards.
+* **GeoBatch** is an Open Source application for the collection, processing and publication of geospatial data in real time.
 
 General Architecture 
 ^^^^^^^^^^^^^^^^^^^^
