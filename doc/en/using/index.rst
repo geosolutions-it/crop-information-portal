@@ -17,9 +17,9 @@ In this section you can learn how to use all the available tools.
 .. toctree::
    :maxdepth: 1
 
+   Generic Tools <gen_tools/index>
    Layer Switcher <layer_switcher/index>
    Legend Panel <legend_panel/index>
-   Generic Tools <gen_tools/index>
    NDVI Tool <ndvi_tool/index>
    Crop Data Tool <crop_data_tool/index>
    Crop Status Tool <crop_status_tool/index>
