@@ -52,6 +52,10 @@ and search the zone to add:
    :align:   center
 
    Search autocomplete.
+                
+.. raw:: latex
+
+  \newpage % hard pagebreak at exactly this position
 
 or ``Add from the map``
 
@@ -61,6 +65,10 @@ or ``Add from the map``
    Add from the map.
 
 and click on the map on the zone to be added.
+                
+.. raw:: latex
+
+  \newpage % hard pagebreak at exactly this position
 
 In both options, the zone will be added into the AoI grid
 
@@ -68,6 +76,10 @@ In both options, the zone will be added into the AoI grid
    :align:   center
 
    Balochistan province selected as AoI.
+                
+.. raw:: latex
+
+  \newpage % hard pagebreak at exactly this position
 
 If you select ´Pakistan´, you don't have to select any AoI:
 

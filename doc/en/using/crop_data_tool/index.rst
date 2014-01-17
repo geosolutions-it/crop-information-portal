@@ -23,92 +23,159 @@ Generate a Chart
 
 To generate charts that describes the trend of the wheat production choose "Chart" as output type and select the Season, the Area of interest and the range of years in which you are interested.
 
-    .. figure:: img/output_chart.png
+Choose Output Type Chart:
 
-                Choose Output Type Chart.
+.. figure:: img/output_chart.png
 
-    .. figure:: img/season_choice.png
+    Choose Output Type Chart.
 
-                Choose Season.
+Choose Season:
+
+.. figure:: img/season_choice.png
+
+    Choose Season.
                 
-    .. figure:: img/aoi_choice.png
+Choose Area Of Interest: 
 
-                Choose Area Of Interest.
-                
-    .. figure:: img/output_chart_choices_highlight.png
+.. figure:: img/aoi_choice.png
 
-                Area Of Interest selection.                
+    Choose Area Of Interest.
 
-    .. figure:: img/commodity_choice.png
+.. raw:: latex
 
-                Choose Commodity.
-
-    .. figure:: img/range_year_choice.png
-
-                Choose Years Range. 
-
-    .. figure:: img/generate_chart_button.png
-
-                Generate Chart Button.
-
-    .. figure:: img/output_chart_viewchart.png
-
-                Generated Charts.
-
-    .. figure:: img/output_chart_viewchart_legend.png
-
-                Charts Legend.                 
+  \newpage % hard pagebreak at exactly this position
 
 
+Area Of Interest selection:
+
+.. figure:: img/output_chart_choices_highlight.png
+
+    Area Of Interest selection.
+    
+Choose Commodity: 
+
+.. figure:: img/commodity_choice.png
+
+    Choose Commodity.
+
+Choose Years Range: 
+
+.. figure:: img/range_year_choice.png
+
+    Choose Years Range.
+
+.. raw:: latex
+
+  \newpage % hard pagebreak at exactly this position
+
+Generate Chart Button: 
+
+.. figure:: img/generate_chart_button.png
+
+    Generate Chart Button.
+
+Generated Charts: 
+
+.. figure:: img/output_chart_viewchart.png
+
+    Generated Charts.
+
+.. raw:: latex
+
+  \newpage % hard pagebreak at exactly this position
+
+Charts Legend: 
+
+.. figure:: img/output_chart_viewchart_legend.png
+
+    Charts Legend.                 
 
 Generate a Map
 ^^^^^^^^^^^^^^
 
 To generate a map that describes the trend of the rice production choose "Map" as output type and select the Season, the Area of interest and the range of years in which you are interested.
 
-    .. figure:: img/output_map.png
+Choose Output Type Map:
 
-                Choose Output Type Map.
+.. figure:: img/output_map.png
+
+    Choose Output Type Map.
+
+Choose Season:
                 
-    .. figure:: img/season_choice_map.png
+.. figure:: img/season_choice_map.png
 
-                Choose Season.
+    Choose Season.
 
-    .. figure:: img/aoi_choice_map.png
+.. raw:: latex
 
-                Choose Area Of Interest.
+  \newpage % hard pagebreak at exactly this position
+
+Choose Area Of Interest:
+
+.. figure:: img/aoi_choice_map.png
+
+    Choose Area Of Interest.
                 
-    .. figure:: img/output_map_choices_highlight.png
+.. raw:: latex
 
-                Area Of Interest selection.
+  \newpage % hard pagebreak at exactly this position
 
-    .. figure:: img/commodity_choice_map.png
-
-                Choose Commodity.
-
-    .. figure:: img/range_year_choice.png
-
-                Choose Years Range.
-
-    .. figure:: img/variable_choice_map.png
-
-                Choose Variable.                
-
-    .. figure:: img/generate_map_button.png
-
-                Generate Map Button.
-
-    .. figure:: img/output_map_viewmap_layer.png
-
-                Generated Map Layer.
-
-    .. figure:: img/output_map_viewmap.png
-
-                Generated Map.
+Area Of Interest selection:
                 
-    .. figure:: img/smart_map_legend.png
+.. figure:: img/output_map_choices_highlight.png
 
-                Generated Map Legend.
+    Area Of Interest selection.
+
+Choose Commodity:
+
+.. figure:: img/commodity_choice_map.png
+
+    Choose Commodity.
+
+Choose Years Range:
+
+.. figure:: img/range_year_choice.png
+
+    Choose Years Range.
+                
+.. raw:: latex
+
+  \newpage % hard pagebreak at exactly this position
+
+Choose Variable:
+
+.. figure:: img/variable_choice_map.png
+
+    Choose Variable.   
+
+Generate Map Button:
+
+.. figure:: img/generate_map_button.png
+
+    Generate Map Button.
+
+Generated Map Layer:
+
+.. figure:: img/output_map_viewmap_layer.png
+
+    Generated Map Layer.
+                
+.. raw:: latex
+
+  \newpage % hard pagebreak at exactly this position
+
+Generated Map:
+
+.. figure:: img/output_map_viewmap.png
+
+    Generated Map.
+
+Generated Map Legend:
+                
+.. figure:: img/smart_map_legend.png
+
+    Generated Map Legend.
 
 Smart Identification tool
 """""""""""""""""""""""""
