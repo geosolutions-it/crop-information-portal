@@ -23,7 +23,6 @@ Generate a Chart
 
 To generate charts that describes the trend of the wheat production choose "Chart" as output type and select the Season, the Area of interest and the range of years in which you are interested.
 
-
 Choose Output Type Chart:
 
 .. figure:: img/output_chart.png
@@ -42,12 +41,16 @@ Choose Area Of Interest:
 
     Choose Area Of Interest.
 
+.. raw:: latex
+
+  \newpage % hard pagebreak at exactly this position
+
+
 Area Of Interest selection:
 
 .. figure:: img/output_chart_choices_highlight.png
 
-    Area Of Interest selection.                
-
+    Area Of Interest selection.
     
 Choose Commodity: 
 
@@ -61,6 +64,10 @@ Choose Years Range:
 
     Choose Years Range.
 
+.. raw:: latex
+
+  \newpage % hard pagebreak at exactly this position
+
 Generate Chart Button: 
 
 .. figure:: img/generate_chart_button.png
@@ -73,13 +80,15 @@ Generated Charts:
 
     Generated Charts.
 
+.. raw:: latex
+
+  \newpage % hard pagebreak at exactly this position
+
 Charts Legend: 
 
 .. figure:: img/output_chart_viewchart_legend.png
 
     Charts Legend.                 
-
-
 
 Generate a Map
 ^^^^^^^^^^^^^^
@@ -97,37 +106,49 @@ Choose Season:
 .. figure:: img/season_choice_map.png
 
     Choose Season.
-                
+
+.. raw:: latex
+
+  \newpage % hard pagebreak at exactly this position
+
 Choose Area Of Interest:
 
 .. figure:: img/aoi_choice_map.png
 
     Choose Area Of Interest.
                 
+.. raw:: latex
+
+  \newpage % hard pagebreak at exactly this position
+
 Area Of Interest selection:
                 
 .. figure:: img/output_map_choices_highlight.png
 
     Area Of Interest selection.
-                
+
 Choose Commodity:
 
 .. figure:: img/commodity_choice_map.png
 
     Choose Commodity.
-                
+
 Choose Years Range:
 
 .. figure:: img/range_year_choice.png
 
     Choose Years Range.
                 
+.. raw:: latex
+
+  \newpage % hard pagebreak at exactly this position
+
 Choose Variable:
 
 .. figure:: img/variable_choice_map.png
 
     Choose Variable.   
-                
+
 Generate Map Button:
 
 .. figure:: img/generate_map_button.png
@@ -140,12 +161,16 @@ Generated Map Layer:
 
     Generated Map Layer.
                 
+.. raw:: latex
+
+  \newpage % hard pagebreak at exactly this position
+
 Generated Map:
 
 .. figure:: img/output_map_viewmap.png
 
     Generated Map.
-                
+
 Generated Map Legend:
                 
 .. figure:: img/smart_map_legend.png
