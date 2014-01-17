@@ -147,6 +147,8 @@ and wait for the report generation.
 
 .. figure::  resources/wait.png	
    :align:   center
+   :height: 200 pt
+   
 
    Wait for the report generation.
 
