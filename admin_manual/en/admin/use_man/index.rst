@@ -19,8 +19,8 @@ By clicking on the section **Users** the administrators of the system can access
                 User Manage page.
 
 From this page you can see the list of users and their **ROLE**.
-The users with ROLE **ADMIN** can manage users and can access to this page.
-The users with ROLE **USER** can access to some additionals tool from the Crop Information Portal.
+The users with ROLE **ADMIN** can access to the administration interface.
+The users with ROLE **USER** are only allowed to use ``Data`` output type in the tools in mapstore (See tabular data and download aggregated data in CSV format). 
 
 .. raw:: latex
 
