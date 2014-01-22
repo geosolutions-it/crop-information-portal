@@ -56,6 +56,18 @@ In the case above the styles to add will have the following names:
 * ``district_soybean_prod_style``
 * ``district_soybean_yield_style``
 
+.. note:: This styles are needed to generate maps in the *Crop Data* module of *MapStore*.
+
+        * Area Type: National(Province)
+            * ``province_soybean_area_style.xml``:  style to generate maps for area.
+            * ``province_soybean_prod_style.xml``:  style to generate maps for production.
+            * ``province_soybean_yield_style.xml``: style to generate maps for yield.
+        
+        * Area Type: National(District) or Province(District)
+            * ``district_soybean_area_style.xml``:  style to generate maps for area .
+            * ``district_soybean_prod_style.xml``:  style to generate maps for production.
+            * ``district_soybean_yield_style.xml``: style to generate maps for yield.
+            
 +++++++++++++++
 Add a SLD style
 +++++++++++++++
