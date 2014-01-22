@@ -11,7 +11,7 @@ Manage Crops
 ============
 To manage Crops you can click on the **Crops** link in the navigation bar or click on this link:
 
-http://localhost:8080/admin/crops
+http://localhost:8083/admin/crops
 
 .. figure:: img/crop_list.png
 
@@ -105,7 +105,7 @@ Manage Agrometeorological Factors
 =================================
 To manage Agrometeorological Factors you can click on the **Agromet Factors** link in the navigation bar or click on this link:
 
-http://localhost:8080/admin/agromet/
+http://localhost:8083/admin/agromet/
 
 .. figure:: img/factor_list.png
 
@@ -137,6 +137,8 @@ Edit/Delete Factors
 
 You can edit/delete the factor clicking on the **Edit** and **Delete** buttons on the right of each row.
 
+.. note:: ``NDVI_avg`` is used in a special way from the system, so it should never be deleted. otherwise the ingestion of
+          generated statistics from the NDVI statistics module will not work. 
 
 ================
 Complete example
