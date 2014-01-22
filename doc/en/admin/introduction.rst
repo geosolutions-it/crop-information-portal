@@ -9,7 +9,7 @@ The Administration Interface
 The portal provides a lot of data to facilitate the analysis of the state of the crops in Pakistan.These data must be continuously updated, and, where possible, automatically.
 To allow mantainence operations, the portal has an administration interface accessible at 
 
-http://localhost:8080/admin
+http://localhost:8083/admin
 
 .. figure:: img/login.png
 
