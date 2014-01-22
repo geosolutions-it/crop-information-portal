@@ -16,7 +16,7 @@ This section explain how to use CSV Browser to allow:
 * Update
 * Delete
 
-records on agromet, crop data and crop status tables.
+records on agromet, crop data and crop status tables. This allows to publish dekadal values for *Agromet* module, yearly values for *Crop Data* module and thresholds to use in the *Crop Status* module. 
 
 To access to this module you need to click on the navigation bar button 'File Browser CSV'
 
@@ -49,6 +49,8 @@ and the values must be correct values for the database. For example::
 	,Bolan,BALOCHISTAN,2013,Jan,1,fake_arg,100
 	2,Bolan,BALOCHISTAN,2013,Feb,1,fake_arg,200
 
+.. note:: The **value** element is the measured value in that region during the period of time indicated expressed in the unit of measurement provided in the ``agromet_descriptor``
+
 The first column is ignored, the columns 'distr', 'prov', 'year', 'mon', 'dec' and 'factor' are the composed primary key of the database and the last column is the value of the agromet factor.
 
 Crop Data
@@ -62,6 +64,10 @@ and the values must be correct values for the database. For example::
 
 	id,crop,distr,prov,year,years,area,prod,yield
 	dummy,rice,fake_dist,fake_prov,2000,2000-2005,1,1,1
+
+.. note::   * *area*: planted area for that region during the year and for the commodity indicated
+            * *prod*: production for that region during the year and for the commodity indicated
+            * *yield*: yield of the crop for that region during the year
 
 The first column is ignored and the other columns are the cropdata table columns. The primary key is composed by columns: 'crop', 'district', 'province' and 'year'.
 
@@ -77,6 +83,10 @@ and the values must be correct values for the database. For example::
 	rowid,factor,crop,month,dec,max,min,opt,
 	1,"Tmax_avg","fake_crop_2","Apr",1,16,42,15,20
 	1,"Tmax_avg","fake_crop_2","May",1,16,42,15,20
+
+.. note::   * *max*: the maximum value to show in Crop Status module for the dekad and the crop
+            * *min*: the minimum value to show in Crop Status module for the dekad and the crop
+            * *opt*: optimal value (dashed in Crop Status charts)
 
 The first column is ignored and the other columns are the cropdata table columns. The primary key of this table is composed by: 'crop', 'month', 'factor' and 'dec' columns.
 
