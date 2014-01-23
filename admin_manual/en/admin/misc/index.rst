@@ -62,6 +62,11 @@ If you have saved a *Consumer ID* and you want to see the log, you have to
 
 The log will appear again on your browser.   
 
+.. raw:: latex
+
+  \newpage % hard pagebreak at exactly this position   
+
+
 Operation List
 ==============
 
