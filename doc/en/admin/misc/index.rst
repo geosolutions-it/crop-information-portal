@@ -3,6 +3,10 @@
 
 .. _cippak.admin.misc:
 
+.. raw:: latex
+
+  \newpage % hard pagebreak at exactly this position   
+
 Flow Status
 ===========
 
@@ -15,7 +19,7 @@ When you execute CSV ingestion, NDVI publishing or statistics generation, you st
 
 Clicking on the link (*here*), you will be redirected to the *Flow Status* page. You can see the *Consumer ID* in the textbox and the *Get Status* button.
 
-.. figure::  resources/get_status.png	
+.. figure::  resources/get_status.png  
    :align:   center
 
    Get status button.
@@ -37,21 +41,21 @@ If you have saved a *Consumer ID* and you want to see the log, you have to
 
 1. press on ``Check Flow Status`` on the navigation bar, 
 
-.. figure::  resources/get_status_module.png	
+.. figure::  resources/get_status_module.png 
    :align:   center
 
    Get status module.
 
 2. paste the *Consumer ID* in the textbox
 
-.. figure::  resources/consumer_id.png	
+.. figure::  resources/consumer_id.png 
    :align:   center
 
    Consumer ID parameter.
 
-3. press on *Get Status* button.
+3. Press on *Get Status* button.
 
-.. figure::  resources/get_status.png	
+.. figure::  resources/get_status.png  
    :align:   center
 
    Get status button.
@@ -63,7 +67,7 @@ Operation List
 
 The Operation List module is available clicking on *Operation List* in the navigation bar.
 
-.. figure::  resources/op_list_module.png	
+.. figure::  resources/op_list_module.png 
    :align:   center
 
    Operation list module.

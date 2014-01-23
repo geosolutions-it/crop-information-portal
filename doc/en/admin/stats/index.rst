@@ -3,6 +3,10 @@
 
 .. _cippak.admin.stats:
 
+.. raw:: latex
+
+  \newpage % hard pagebreak at exactly this position   
+
 NDVI Statistics
 ===============
 
@@ -42,6 +46,10 @@ Then you must press on `Generate statistics`. When the the process will succeed,
 
 * `pak_NDVI_${region}_${crop mask}_${start date}_${end date}`
 
+.. raw:: latex
+
+  \newpage % hard pagebreak at exactly this position   
+
 You can ingest as a `CSV browser operation <../csv/index.html#operations>`_ or simply download it to check the data.
 
 .. figure::  resources/result.png	
@@ -54,16 +62,20 @@ Crop mask file browser
 
 If you want to use a custom crop mask, it's probably that you need to upload it before execute the NDVI statistics action. Please follow this instructions:
 
-1. **Open 'Crop Mask file browser'**: Press on this button
+**Open 'Crop Mask file browser'**: Press on this button
 
-.. figure::  resources/crop_mask_fb.png	
+.. figure::  resources/crop_mask_fb.png   
    :align:   center
 
    Crop mask file browser button.
 
-2. **Upload shp files**: Upload the shape file and it dependencies one by one with the file uploader.
+.. raw:: latex
 
-.. figure::  resources/crop_mask_fb_upload.png	
+  \newpage % hard pagebreak at exactly this position   
+  
+**Upload shp files**: Upload the shape file and it dependencies one by one with the file uploader.
+
+.. figure::  resources/crop_mask_fb_upload.png  
    :align:   center
 
    Crop mask file browser upload.

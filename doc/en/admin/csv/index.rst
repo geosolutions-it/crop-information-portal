@@ -3,6 +3,10 @@
 
 .. _cippak.admin.csv:
 
+.. raw:: latex
+
+  \newpage % hard pagebreak at exactly this position   
+
 CSV Browser 
 ===========
 
@@ -87,38 +91,50 @@ and the values must be correct values for the database. For example::
 
 The first column is ignored and the other columns are the cropdata table columns. The primary key of this table is composed by: 'crop', 'month', 'factor' and 'dec' columns.
 
+.. raw:: latex
+
+  \newpage % hard pagebreak at exactly this position   
+
 Operations
 ----------
 
 To apply changes to the data (insert, update, delete) you have do run the CSV operation to a csv file :
 
-1. **Upload the file**: Select a file from your file system and click on *Upload*
+1). **Upload the file**: Select a file from your file system and click on *Upload*
 
 .. figure::  resources/upload.png	
    :align:   center
 
    Upload a file.
 
-2. **Execute the ingestion**: Click on *CSV* button.
+2). **Execute the ingestion**: Click on *CSV* button.
 
 .. figure::  resources/CSV_click.png	
    :align:   center
 
    CSV button.
 
-3. **Update the file browser status**: If you want, you can see the ingestion status, but if the file is big, you won't be able to view the resume before the ingestion will be finished. In this case, you will be able to update the file browser status and wait for a '*SUCCESS*' or '*FAIL*' message on the file.
+3). **Update the file browser status**: If you want, you can see the ingestion status, but if the file is big, you won't be able to view the resume before the ingestion will be finished. In this case, you will be able to update the file browser status and wait for a '*SUCCESS*' or '*FAIL*' message on the file.
 
 .. figure::  resources/update.png	
    :align:   center
 
    Update button.
 
-4. **See the log**: Click on '*SUCCESS*' or '*FAIL*' message on the file 
+.. raw:: latex
+
+  \newpage % hard pagebreak at exactly this position   
+
+4). **See the log**: Click on '*SUCCESS*' or '*FAIL*' message on the file 
 
 .. figure::  resources/success.png	
    :align:   center
 
    SUCCESS button.
+
+.. raw:: latex
+
+  \newpage % hard pagebreak at exactly this position   
 
 and on '*Get status*' button on the next page. 
 
@@ -135,7 +151,7 @@ Then the log of the execution will be shown in the page. If the message is '*SUC
 	* Records inserted: 1
 	* Records updated: 0
 	* Records removed: 0
-	* Falied records: 0
+	* Failed records: 0
 	***************************************************
 
 We have attached examples for each operation and for each table.
@@ -143,9 +159,7 @@ We have attached examples for each operation and for each table.
 Create
 ++++++
 
-You need to create a CSV file with the new entry inside.
-
-Examples:
+You need to create a CSV file with the new entry inside. Examples:
 
 * `Agromet insert <https://github.com/geosolutions-it/OpenSDI-Manager/raw/c3c5ffac7789b428b552d7e021bd763b80456557/geobatch/csvingest/src/test/resources/testdata/pak_NDVI_insert.csv>`_
 * `Crop data insert <https://github.com/geosolutions-it/OpenSDI-Manager/raw/c3c5ffac7789b428b552d7e021bd763b80456557/geobatch/csvingest/src/test/resources/testdata/cropdata_insert.csv>`_
@@ -154,9 +168,7 @@ Examples:
 Update
 ++++++
 
-You need to create a CSV file with the primary key of the row to be updated and change the value to be updated. 
-
-Examples:
+You need to create a CSV file with the primary key of the row to be updated and change the value to be updated.  Examples:
 
 * `Agromet update <https://github.com/geosolutions-it/OpenSDI-Manager/blob/c3c5ffac7789b428b552d7e021bd763b80456557/geobatch/csvingest/src/test/resources/testdata/pak_NDVI_modify.csv>`_
 * `Crop data update <https://github.com/geosolutions-it/OpenSDI-Manager/raw/c3c5ffac7789b428b552d7e021bd763b80456557/geobatch/csvingest/src/test/resources/testdata/cropdata_mod.csv>`_
@@ -165,9 +177,7 @@ Examples:
 Delete
 ++++++
 
-You need to create a CSV file with the primary key of the row to be deleted and **leave all the other columns empty**. 
-
-Examples:
+You need to create a CSV file with the primary key of the row to be deleted and **leave all the other columns empty**.  Examples:
 
 * `Agromet delete <https://github.com/geosolutions-it/OpenSDI-Manager/raw/c3c5ffac7789b428b552d7e021bd763b80456557/geobatch/csvingest/src/test/resources/testdata/pak_NDVI_rm.csv>`_
 * `Crop data delete <https://github.com/geosolutions-it/OpenSDI-Manager/raw/c3c5ffac7789b428b552d7e021bd763b80456557/geobatch/csvingest/src/test/resources/testdata/cropdata_rm.csv>`_

@@ -3,6 +3,10 @@
 
 .. _cippak.admin.ndvi:
 
+.. raw:: latex
+
+  \newpage % hard pagebreak at exactly this position   
+
 NDVI Browser
 ============
 
@@ -60,6 +64,10 @@ The execution flow for this operation is:
    :align:   center
 
    SUCCESS button.
+
+.. raw:: latex
+
+  \newpage % hard pagebreak at exactly this position   
 
 and on '*Get status*' button on the next page. 
 

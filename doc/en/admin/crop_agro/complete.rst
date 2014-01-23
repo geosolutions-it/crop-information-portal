@@ -3,6 +3,10 @@
 
 .. _cippak.admin.crop_agro.complete:
 
+.. raw:: latex
+
+  \newpage % hard pagebreak at exactly this position   
+
 ================
 Complete example
 ================
@@ -34,13 +38,17 @@ After this step you will have the new styles published on GeoServer:
 
 4. **Test data**: Follow the instructions on `crop data tool <../../using/crop_data_tool/index.html>`_ section to use the new crop:
 
-* `As map <../../using/crop_data_tool/index.html#output-type-map>`_. You must select a correct year in the range (2010-2012). The map should be something like that:
+.. raw:: latex
+
+  \newpage % hard pagebreak at exactly this position   
+
+`As map <../../using/crop_data_tool/index.html#output-type-map>`_. You must select a correct year in the range (2010-2012). The map should be something like that:
 
 .. figure:: img/result_map.png
   
 	Expected map (Soybean 2010 - Yield)
 
-* `As chart <../../using/crop_data_tool/index.html#output-type-chart>`_: You must select the correct interval (2010-2012) and district or provinces with data.
+`As chart <../../using/crop_data_tool/index.html#output-type-chart>`_: You must select the correct interval (2010-2012) and district or provinces with data.
 
 5. **Delete the test data**: Follow the instructions on `CSV ingestion <../csv/index.html#operations>`_ section with the file ``soybean_10-12_del.csv`` and change the zoom level. You should see the same color on all province/districts.
 

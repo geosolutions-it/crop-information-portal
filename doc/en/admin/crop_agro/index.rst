@@ -37,6 +37,10 @@ The new crop will be shown in the Crops list.
     
 Anyway the new crop will not be available in MapStore until some data about the crop is ingested.
 
+.. raw:: latex
+
+  \newpage % hard pagebreak at exactly this position
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 How to allow map generation for new Crops
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -66,6 +70,10 @@ In the case above the styles to add will have the following names:
             * ``district_soybean_prod_style.xml``:  style to generate maps for production.
             * ``district_soybean_yield_style.xml``: style to generate maps for yield.
 
+.. raw:: latex
+
+  \newpage % hard pagebreak at exactly this position
+
 +++++++++++++++
 Add a SLD style
 +++++++++++++++
@@ -75,6 +83,10 @@ You can access to the style layer descriptor (SLD) definition page on GeoServer 
 .. figure:: img/styles.png
 
     Styles module on GeoServer
+
+.. raw:: latex
+
+  \newpage % hard pagebreak at exactly this position
 
 and press on *add a new style*
 
@@ -97,6 +109,10 @@ copy from one of the present one:
 .. figure:: img/styles_edit.png
 
     Edit the style
+
+.. raw:: latex
+
+  \newpage % hard pagebreak at exactly this position
 
 validate and submit the new style:
 
