@@ -4,3 +4,6 @@
 [submodule "OpenSDI-Manager"]
 	path = OpenSDI-Manager
 	url = git@github.com:geosolutions-it/OpenSDI-Manager.git
+[submodule "OpenSDI-Manager2"]
+	path = OpenSDI-Manager2
+	url = git@github.com:geosolutions-it/OpenSDI-Manager2.git
