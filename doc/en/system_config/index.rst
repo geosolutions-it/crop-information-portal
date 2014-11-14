@@ -105,8 +105,12 @@ To solve the issue you have replace the following dll files
 #. msvcp100.dll
 
 in the directory ``<training-root>/postgres/bin/``. You can find the dll files in your windows installation at 
-c:\windows\syswow64 
+
+     c:\windows\syswow64 
+
 or if you don't have the directory above you can get them from the directory below: 
-c:\windows\system32 
+
+    c:\windows\system32 
+
 
 As the old files are replaced with the ones from your windows installation you can run the training as usual. 
