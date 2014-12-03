@@ -1,0 +1,70 @@
+{
+  "count": 7, 
+  "data": [
+    {
+      "cls": "area", 
+      "coefficient": 0.404678363, 
+      "description": "1000 acres ( 1 acre = 0.404678363 hectares)", 
+      "filter": "", 
+      "id": "000_acres", 
+      "name": "000 acres", 
+      "shortname": "000 a"
+    }, 
+    {
+      "cls": "yield", 
+      "coefficient": 1000.0, 
+      "description": "kg/ha", 
+      "filter": "", 
+      "id": "kg_ha", 
+      "name": "kg/ha", 
+      "shortname": "kg/ha"
+    }, 
+    {
+      "cls": "area", 
+      "coefficient": 1.0, 
+      "description": "1000 hectares", 
+      "filter": "", 
+      "id": "000_ha", 
+      "name": "000 hectares", 
+      "shortname": "000 ha"
+    }, 
+    {
+      "cls": "production", 
+      "coefficient": 1.0, 
+      "description": "1000 tons", 
+      "filter": "", 
+      "id": "000_tons", 
+      "name": "000 tons", 
+      "shortname": "000 tons"
+    }, 
+    {
+      "cls": "production", 
+      "coefficient": 0.04, 
+      "description": "1000 maunds (1 maund = 40kg)", 
+      "filter": "cotton", 
+      "id": "000_maunds", 
+      "name": "000 maunds", 
+      "shortname": "000 m"
+    }, 
+    {
+      "cls": "production", 
+      "coefficient": 0.17, 
+      "description": "1000 bales (1 bale = 170 kg)", 
+      "filter": "cotton", 
+      "id": "000_bales", 
+      "name": "000 bales", 
+      "shortname": "000_bales"
+    }, 
+    {
+      "cls": "yield", 
+      "coefficient": 1.0, 
+      "description": "tons / ha", 
+      "filter": "", 
+      "id": "tons_ha", 
+      "name": "t/ha", 
+      "shortname": "t/ha"
+    }
+  ], 
+  "totalCount": 7
+}
+

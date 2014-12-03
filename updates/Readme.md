@@ -1,0 +1,64 @@
+# Update from Crop Information 1 to Crop Information Portal 2
+
+
+## Update GeoStore
+
+
+1. Build the new version of GeoStore
+```
+git clone git@github.com:geosolutions-it/geostore.git
+cd geostore/server
+mvn install -Ppostgres,extjs
+```
+
+2. Update GeoStore web application
+
+* Stop the running GeoStore: `sudo service geostore stop`
+* Check if is stopped (`ps aux | grep geostore`)
+* Backup the old `geostore_datasource.ovr.properties` (located in /opt/tomcat_geostore/webapps/geostore/WEB-INF/classes)
+* Replace the generated war file `geostore/server/web/app/target/geostore.war with the current in `/opt/tomcat_geostore/webapps`
+* Start and Stop GeoStore Tomcat instance (`sudo service geostore stop; sudo service geostore start`)
+* Edit  `/opt/tomcat_geostore/geostore/WEB-INF/classes/geostore-ovr.properties` and uncomment the line: `geostoreInitializer.allowPasswordRecoding=true`
+* Replace `/opt/tomcat_geostore/geostore/WEB-INF/classes/geostore_datasource.ovr.properties` the with the old `geostore_datasource.ovr.properties`
+* Login to the database and execute the [migration script](https://github.com/geosolutions-it/geostore/blob/master/doc/sql/migration/postgresql/postgresql-migration-from-v1.1.1-to-1.2.sql).
+  *note*: if you login as geoserver you have to set search path fist, in order
+  to execute the script on the geostore schema
+* Start GeoStore again
+
+
+## Crop Data
+
+
+### Update MetaData
+
+Installing the new manager,wou will have new entities available 
+(unit of measure and so on).
+So you will have to update the database executing the sql script `units_of_measure.sql`
+
+### Update Data
+
+Data on DB use the following units of measure: 
+* Production: 000 tons for all except cotton that is saved as 000 bales. You can import uom_dump.json that contains the correct values.
+* Area: 000 ha
+* Yield: kg/ha 
+
+The new version need a uniform units of measure:
+* Production: 000 tons 
+* Area: 000 ha 
+* Yield: tons/ha 
+
+So you have to execute a script to convert all the current values from the old 
+to the new base ( *TODO* )
+
+## Agromet
+
+Agromet needs to be updated executing `agromet.sql`
+This will add additional column and remove obsolete ones (TODO remove obsolete) in order to increase search capabilities 
+New columns are:
+* dek_in_year : the dekad in the year. 1 to 36
+* absolute_dek : the absolute value of the dekad: year*36+dekad_in_year
+* 
+Formula: dek_in_year = MOD(absolute_dek -1,36)+1
+
+The ingestion flow in geobatch have needs to be updated (TODO)
+
