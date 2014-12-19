@@ -47,8 +47,9 @@ The new version need a uniform units of measure:
 * Area: 000 ha 
 * Yield: tons/ha 
 
-So you have to execute a script to convert all the current values from the old 
-to the new base ( *TODO* )
+Crop Data unit of measure for cotton have to be updated executing the following sql scripts: 
+* ``align_uom_cotton.sql`` : this script align cotton production values to the latest values.
+* (TODO/optional): update yield. (Yield is not used in queries. Changing this values should not have any result on the global system)
 
 ## Agromet
 
@@ -57,8 +58,29 @@ This will add additional column and remove obsolete ones (TODO remove obsolete) 
 New columns are:
 * dek_in_year : the dekad in the year. 1 to 36
 * absolute_dek : the absolute value of the dekad: year*36+dekad_in_year
-* 
+
 Formula: dek_in_year = MOD(absolute_dek -1,36)+1
 
 The ingestion flow in geobatch have needs to be updated (TODO)
+
+## GeoServer
+GeoServer needs the following additional components:
+### Layers
+agromet_aggregated2
+CropDataMap2
+CropData
+CropDataDistrict (TODO align this with the new crop data (With unit of measures))
+measure_units_for_crops
+cropdata_ranges
+cropdescriptor
+agromet_descriptor
+
+### Styles
+Crop Map Data have been updated to support unit of measure and dynamic styles.
+* new: **difference_style**: crop difference. 
+The district and province styles have to be replaced. All the styles starting with district or province have to be replaced : 
+district_*
+province_*
+
+
 
