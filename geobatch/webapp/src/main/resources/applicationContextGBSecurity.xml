@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  - Sample namespace-based configuration
+  -
+  -->
+
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.3.xsd">
+
+    <http>
+
+		<!-- All the others -->
+        <intercept-url pattern="/**" filters="none" />
+
+		<!-- Login/Logout Options -->
+        <form-login login-page="/login.jsp" authentication-failure-url="/login.jsp?login_error=1" default-target-url="/index.html"/>
+    	  <logout invalidate-session="true" logout-success-url="/index.html"/>
+        <remember-me />
+    </http>
+
+	<!--
+	  Authentication Manager and Providers 
+	 -->
+	 
+ <!-- #####################################################################
+      JDBC Security
+      ##################################################################### -->  
+     <authentication-manager alias="authenticationManager">
+		 <authentication-provider>
+			<jdbc-user-service data-source-ref="dataSource-gb-users"
+				users-by-username-query="SELECT USER_NAME AS username, USER_PASSWORD AS password, USER_ENABLED AS enabled FROM GBUser WHERE USER_NAME = ?"
+				authorities-by-username-query="SELECT USER_NAME AS username, USER_ROLE AS authority FROM GBUser WHERE USER_NAME = ?" />
+		 </authentication-provider> 
+     </authentication-manager>
+        	
+</beans:beans>
