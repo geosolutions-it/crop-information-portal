@@ -25,7 +25,9 @@ package it.geosolutions.geobatch.opensdi.csvingest.processor;
  */
 public class CSVProcessException extends Exception {
 
-    public CSVProcessException() {
+	private static final long serialVersionUID = 1L;
+
+	public CSVProcessException() {
     }
 
     public CSVProcessException(String message) {

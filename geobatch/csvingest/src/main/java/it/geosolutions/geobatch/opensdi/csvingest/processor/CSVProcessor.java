@@ -25,6 +25,7 @@ import it.geosolutions.opensdi.persistence.dao.AgrometDAO;
 import it.geosolutions.opensdi.persistence.dao.CropDataDAO;
 import it.geosolutions.opensdi.persistence.dao.CropDescriptorDAO;
 import it.geosolutions.opensdi.persistence.dao.CropStatusDAO;
+import it.geosolutions.opensdi.service.UnitOfMeasureService;
 
 import java.util.HashMap;
 import java.util.List;
@@ -47,6 +48,7 @@ public abstract class CSVProcessor {
     private CropDescriptorDAO cropDescriptorDAO;
     protected AgrometDAO agrometDAO;
     protected CropStatusDAO cropStatusDAO;
+    protected UnitOfMeasureService unitOfMeasureService;
 
 	public abstract List<String> getHeaders();
 
@@ -110,6 +112,12 @@ public abstract class CSVProcessor {
 
 	public void setCropStatusDAO(CropStatusDAO cropStatusDAO) {
 		this.cropStatusDAO = cropStatusDAO;
+	}
+
+	public void setUnitOfMeasureService(
+			UnitOfMeasureService unitOfMeasureService) {
+		this.unitOfMeasureService = unitOfMeasureService;
+		
 	}
 	
 	

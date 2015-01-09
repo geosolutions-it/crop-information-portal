@@ -119,8 +119,10 @@ public void process(CSVReader reader,ProgressListenerForwarder progress,long row
         failCount = 0;
         
         while ((nextLine = reader.readNext()) != null) {
+        	//progress estimation
 			if (progress != null) {
 				float progressPercent = progress.getProgress();
+				//if wrong estimation, it grows. TODO 10 is constant for now. do it better.
 				if (line > rowEstimation) {
 					rowEstimation += line + 10;
 				}
@@ -168,8 +170,10 @@ public void process(CSVReader reader,ProgressListenerForwarder progress,long row
                     getDao().removeByPK(keys);
                     removeCount++;
                 } else {
+                	
                     T old = getDao().searchByPK(keys);
                     T updatedOrCreated = merge(old, properties);
+                    preProcess(updatedOrCreated);
                     if (old != null) {
                         save(updatedOrCreated);
                         updateCount++;
@@ -193,6 +197,15 @@ public void process(CSVReader reader,ProgressListenerForwarder progress,long row
     }
 
     LOGGER.info("CSV ingestion -- managed " + ok + " entities");
+}
+/**
+ * Preprocess the data before save. It doesn't do anything by default. 
+ * Can be overriddien with other operation (unit of measure conversions and so on).
+ * @param updatedOrCreated
+ */
+protected void preProcess(T updatedOrCreated) {
+	// do nothing as default implementation
+	
 }
 
 /**

@@ -21,6 +21,7 @@ package it.geosolutions.geobatch.opensdi.csvingest.processor;
 
 import it.geosolutions.geobatch.opensdi.csvingest.utils.CSVPropertyType;
 import it.geosolutions.opensdi.model.CropData;
+import it.geosolutions.opensdi.model.UnitOfMeasure;
 import it.geosolutions.opensdi.persistence.dao.GenericNRLDAO;
 
 import java.util.Arrays;
@@ -28,11 +29,21 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * @author ETj (etj at geo-solutions.it)
  * @author adiaz refactor to use GenericCSVProcessor
+ * @author Lorenzo natali, GeoSolutions
+ * Processor for import of CropData. This processor suppose to receive data
+ * from the CSV file in the default unit of measure configured in the system
+ * for each crop.
  */
 public class CSVCropProcessor extends GenericCSVProcessor<CropData, Long> {
+	
+	private final static Logger LOGGER = LoggerFactory
+	        .getLogger(CSVCropProcessor.class);
 
 private final static List<String> HEADERS = Collections.unmodifiableList(Arrays
         .asList("*", "crop", "distr", "prov", "year", "years", "area", "prod",
@@ -121,7 +132,38 @@ public void save(CropData entity) {
 public void persist(CropData entity) {
     cropDataDAO.persist(entity);
 }
+@Override protected void preProcess(CropData entity){
+	/**
+	 * Convert using default unit of measure
+	 */
+	if(unitOfMeasureService!=null){
+		UnitOfMeasure areaUnit = unitOfMeasureService.getDefaultAreaUnitOfMeasure(entity.getCropDescriptor());
+		UnitOfMeasure prodUnit = unitOfMeasureService.getDefaultProductionUnitOfMeasure(entity.getCropDescriptor());
+		UnitOfMeasure yieldUnit = unitOfMeasureService.getDefaultYieldUnitOfMeasure(entity.getCropDescriptor());
+		if(areaUnit != null){
+			double areaFactor = areaUnit.getCoefficient();
+			entity.setArea(entity.getArea()*areaFactor);
+		}
+		if(prodUnit != null){
+			double prodFactor = prodUnit.getCoefficient();
+			entity.setProduction(entity.getProduction()*prodFactor);
 
+		}
+		if(yieldUnit != null){
+			double yieldFactor = yieldUnit.getCoefficient();
+			entity.setYield(entity.getYield()*yieldFactor);		
+		}
+		if(areaUnit == null || prodUnit == null || yieldUnit == null){
+			LOGGER.warn("The units of measure for crop" + entity.getCropDescriptor().getId() + " are not defined. Supposing a conversion is not needed");
+		}
+		
+		
+		
+		
+	}else{
+		throw new IllegalArgumentException("couldn't update crops before the unit of measure is not well configured");
+	}
+}
 
 
 }

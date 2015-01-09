@@ -23,10 +23,13 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import it.geosolutions.filesystemmonitor.monitor.FileSystemEvent;
 import it.geosolutions.filesystemmonitor.monitor.FileSystemEventType;
+import it.geosolutions.geobatch.opensdi.csvingest.processor.CSVCropProcessor;
 import it.geosolutions.opensdi.model.CropDescriptor;
 import it.geosolutions.opensdi.model.Season;
+import it.geosolutions.opensdi.model.UnitOfMeasure;
 
 import java.io.File;
+import java.io.Serializable;
 import java.util.EventObject;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -47,6 +50,7 @@ public class CSVIngestActionTest extends BaseDAOTest {
     public void loadAll() throws Exception {
 
         createCropDescriptors();
+        createUnitOfMeasures();
 
         Queue<EventObject> events = new LinkedList<EventObject>();
         File dir = loadFile("all");
@@ -58,6 +62,7 @@ public class CSVIngestActionTest extends BaseDAOTest {
         action.setCropDescriptorDao(cropDescriptorDAO);
         action.setAgrometDao(agrometDAO);
         action.setCropStatusDao(cropStatusDAO);
+        action.setUnitOfMeasureService(unitOfMeasureService);
         action.afterPropertiesSet();
 
 
@@ -68,10 +73,27 @@ public class CSVIngestActionTest extends BaseDAOTest {
             action.addListener(new DummyProgressListener());
             action.execute(events);
         }
+        checkSampleData();
 
     }
 
-    private void createCropDescriptors() {
+    private void checkSampleData() {
+    	checkCropDataConversion();
+	}
+
+	private void checkCropDataConversion() {
+    	//TODO check conversions
+	}
+
+	private void createUnitOfMeasures() {
+		createUom("000_tons", "production", 1);
+		createUom("000_bales", "production",170);
+		createUom("000_ha","area",1);
+		createUom("kg_ha","yield",1);
+		
+	}
+
+	private void createCropDescriptors() {
             cropDescriptorDAO.persist(createCropDescriptor("Rice",  "rice", Season.KHARIF));
             cropDescriptorDAO.persist(createCropDescriptor("Maize", "maize", Season.RABI));
             cropDescriptorDAO.persist(createCropDescriptor("Wheat", "wheat", Season.RABI));
@@ -88,12 +110,23 @@ public class CSVIngestActionTest extends BaseDAOTest {
      */
     private CropDescriptor createCropDescriptor (String label,String id,Season season){
     	CropDescriptor c = new CropDescriptor(label,id,season);
-    	c.setArea_default_unit("000_area");
-    	c.setProd_default_unit("cotton".equals(id) ? "000_bales":"000_tons");
+    	c.setArea_default_unit("000_ha");
+    	c.setProd_default_unit("Cotton".equals(id) ? "000_bales":"000_tons");
     	c.setYield_default_unit("kg_ha");
     	return c;
     	
     }
+    protected UnitOfMeasure createUom(String id, String cls, double factor) {
+		UnitOfMeasure u = new UnitOfMeasure();
+		u.setCls(cls);
+		u.setDescription("Test unit of measure for unit tests");
+		u.setId(id);
+		u.setName(id);
+		u.setShortname(id);
+		u.setCoefficient(factor);
+		unitOfMeasureService.persist(u);
+		return unitOfMeasureService.get(id);
+	}
 
 
 }

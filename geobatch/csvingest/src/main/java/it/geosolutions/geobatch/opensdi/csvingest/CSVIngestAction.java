@@ -35,6 +35,7 @@ import it.geosolutions.opensdi.persistence.dao.AgrometDAO;
 import it.geosolutions.opensdi.persistence.dao.CropDataDAO;
 import it.geosolutions.opensdi.persistence.dao.CropDescriptorDAO;
 import it.geosolutions.opensdi.persistence.dao.CropStatusDAO;
+import it.geosolutions.opensdi.service.UnitOfMeasureService;
 
 import java.io.File;
 import java.io.FileReader;
@@ -57,7 +58,7 @@ import au.com.bytecode.opencsv.CSVReader;
 @Action(configurationClass=CSVIngestConfiguration.class)
 public class CSVIngestAction extends BaseAction<EventObject> implements InitializingBean {
 
-    private final static Logger LOGGER = LoggerFactory.getLogger(CSVIngestAction.class);
+    protected final static Logger LOGGER = LoggerFactory.getLogger(CSVIngestAction.class);
 
     @Autowired
     private CropDescriptorDAO cropDescriptorDao;
@@ -70,8 +71,13 @@ public class CSVIngestAction extends BaseAction<EventObject> implements Initiali
 
     @Autowired
     private CropStatusDAO cropStatusDao;
+    
+    @Autowired
+	private UnitOfMeasureService unitOfMeasureService;
 
 	private List<CSVProcessor> processors;
+	
+	
     
     private static final long AVG_ROW_BYTE_SIZE = 50;
 
@@ -94,6 +100,8 @@ public class CSVIngestAction extends BaseAction<EventObject> implements Initiali
             throw new IllegalStateException("agrometDao is null");
         if(cropStatusDao == null)
             throw new IllegalStateException("cropStatusDao is null");
+        if(unitOfMeasureService == null)
+            throw new IllegalStateException("unitOfMeasureService is null");
     }
 
     /**
@@ -207,6 +215,7 @@ public class CSVIngestAction extends BaseAction<EventObject> implements Initiali
         proc.setCropDescriptorDAO(cropDescriptorDao);
         proc.setAgrometDAO(agrometDao);
         proc.setCropStatusDAO(cropStatusDao);
+        proc.setUnitOfMeasureService(unitOfMeasureService);
         processors.add(proc);
     }
 
@@ -229,7 +238,9 @@ public class CSVIngestAction extends BaseAction<EventObject> implements Initiali
 	public void setCropStatusDao(CropStatusDAO cropStatusDao) {
 		this.cropStatusDao = cropStatusDao;
 	}
-
+	public void setUnitOfMeasureService(UnitOfMeasureService unitOfMeasureService){
+		this.unitOfMeasureService = unitOfMeasureService;
+	}
 
     private List<String> sanitizeHeaders(String[] headers) throws ActionException {
 

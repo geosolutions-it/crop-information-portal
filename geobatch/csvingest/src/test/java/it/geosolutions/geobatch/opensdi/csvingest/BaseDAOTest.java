@@ -24,6 +24,7 @@ import it.geosolutions.opensdi.persistence.dao.AgrometDAO;
 import it.geosolutions.opensdi.persistence.dao.CropDataDAO;
 import it.geosolutions.opensdi.persistence.dao.CropDescriptorDAO;
 import it.geosolutions.opensdi.persistence.dao.CropStatusDAO;
+import it.geosolutions.opensdi.service.UnitOfMeasureService;
 
 import java.util.List;
 import org.junit.Test;
@@ -45,13 +46,16 @@ public abstract class BaseDAOTest extends BaseContextTest {
     protected static CropDataDAO cropDataDAO;
     protected static AgrometDAO agrometDAO;
     protected static CropStatusDAO cropStatusDAO;
+    protected static UnitOfMeasureService unitOfMeasureService;
 
-    public BaseDAOTest() {
+   
+	public BaseDAOTest() {
 
         cropDescriptorDAO = ctx.getBean("cropDescriptorDao", CropDescriptorDAO.class);
         cropDataDAO = ctx.getBean("cropDataDao", CropDataDAO.class);
         agrometDAO = ctx.getBean("agrometDao", AgrometDAO.class);
         cropStatusDAO = ctx.getBean("cropStatusDao",CropStatusDAO.class);
+        unitOfMeasureService = ctx.getBean("unitOfMeasureService",UnitOfMeasureService.class);
     }
 
     @Before
@@ -85,6 +89,7 @@ public abstract class BaseDAOTest extends BaseContextTest {
         assertNotNull(cropDataDAO);
         assertNotNull(agrometDAO);
         assertNotNull(cropStatusDAO);
+        assertNotNull(unitOfMeasureService);
     }
 
 //    protected final static String MULTIPOLYGONWKT = "MULTIPOLYGON(((48.6894038 62.33877482, 48.7014874 62.33877482, 48.7014874 62.33968662, 48.6894038 62.33968662, 48.6894038 62.33877482)))";
