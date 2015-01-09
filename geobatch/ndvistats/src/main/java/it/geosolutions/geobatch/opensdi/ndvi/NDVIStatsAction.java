@@ -393,6 +393,8 @@ private void generateCSV(GridCoverage2D coverage, SimpleFeatureCollection fc,
     // Cycle on the features for creating a list of geometries
     try {
         iterator = fc.features();
+        listenerForwarder.progressing(1f,"Classifing zones...");
+        
         while (iterator.hasNext()) {
             SimpleFeature feature = iterator.next();        
             
@@ -423,6 +425,7 @@ private void generateCSV(GridCoverage2D coverage, SimpleFeatureCollection fc,
                     parameters, header, ",", true);
             result.add(featureAgregation);
         }
+        listenerForwarder.progressing(10f,("Found " + result.size() + " zones for statistic generation"));
     } finally {
         if (iterator != null)
             iterator.close();
@@ -431,6 +434,7 @@ private void generateCSV(GridCoverage2D coverage, SimpleFeatureCollection fc,
         }
     }
     // Definition of the ZonalStats operation
+    listenerForwarder.progressing(15f,"Zonal statistics");
     RenderedOp op = ZonalStatsDescriptor.create(coverage.getRenderedImage(),
             null, null, zonesROI, null, maskROI, false, bands, stats, null,
             null, null, null, false, null);
@@ -439,6 +443,7 @@ private void generateCSV(GridCoverage2D coverage, SimpleFeatureCollection fc,
     List<ZoneGeometry> statsResult = (List<ZoneGeometry>) op
             .getProperty(ZonalStatsDescriptor.ZS_PROPERTY);
     int index = 0;
+    listenerForwarder.progressing(90f,"Result Post Processing");
     for (ZoneGeometry statResult : statsResult) {
         FeatureAggregation featureAgregation = result.get(index++);
         Double mean = (Double) statResult.getStatsPerBandNoClassifierNoRange(0)[0]
@@ -460,7 +465,9 @@ private void generateCSV(GridCoverage2D coverage, SimpleFeatureCollection fc,
     }
 
     File csv = new File(csvPath);
+    listenerForwarder.progressing(95f,"writing output file...");
     CSVWriter.writeCsv(LOGGER, data, csv, csvSeparator, true);
+    listenerForwarder.progressing(100f,"output file "+ csvPath + " generated successfully!");
 }
 
 /**

@@ -88,7 +88,7 @@ public class NDVIIngestAction extends BaseAction<EventObject>  {
      */
     public Queue<EventObject> execute(Queue<EventObject> events) throws ActionException {
 
-        listenerForwarder.setTask("Check config");
+        listenerForwarder.progressing(1f,"Check config");
         
         listenerForwarder.started();
 
@@ -122,7 +122,7 @@ public class NDVIIngestAction extends BaseAction<EventObject>  {
                 throw new ActionException(this, "EventObject not handled " + event);
             }
         }
-
+        listenerForwarder.progressing(10f,"Process file");
         ImageMosaicCommand imc = processFiles(inputFiles);
 
         LinkedList<EventObject> ret = new LinkedList<EventObject>();
