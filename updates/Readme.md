@@ -61,7 +61,7 @@ New columns are:
 
 Formula: `dek_in_year = MOD(absolute_dek - 1,36) + 1`
 
-The ingestion flow in geobatch have needs to be updated (TODO)
+The ingestion flow in geobatch has been updated to add also this parameter.
 
 ## GeoServer
 GeoServer needs the following additional components:
