@@ -38,7 +38,7 @@ So you will have to update the database executing the sql script `units_of_measu
 ### Update Data
 
 Data on DB use the following units of measure: 
-* Production: 000 tons for all except cotton that is saved as 000 bales. You can import uom_dump.json that contains the correct values.
+* Production: 000 tons for all except cotton that is saved as 000 bales. You can import `uom_dump.json` that contains the correct values.
 * Area: 000 ha
 * Yield: kg/ha 
 
@@ -57,30 +57,31 @@ Agromet needs to be updated executing `agromet.sql`
 This will add additional column and remove obsolete ones (TODO remove obsolete) in order to increase search capabilities 
 New columns are:
 * dek_in_year : the dekad in the year. 1 to 36
-* absolute_dek : the absolute value of the dekad: year*36+dekad_in_year
+* absolute_dek : the absolute value of the dekad: `year * 36 + dekad_in_year`
 
-Formula: dek_in_year = MOD(absolute_dek -1,36)+1
+Formula: `dek_in_year = MOD(absolute_dek - 1,36) + 1`
 
-The ingestion flow in geobatch have needs to be updated (TODO)
+The ingestion flow in geobatch has been updated to add also this parameter.
 
 ## GeoServer
 GeoServer needs the following additional components:
 ### Layers
-agromet_aggregated2
-CropDataMap2
-CropData
-CropDataDistrict (TODO align this with the new crop data (With unit of measures))
-measure_units_for_crops
-cropdata_ranges
-cropdescriptor
-agromet_descriptor
+* agromet_aggregated2
+* CropDataMap2
+* CropData
+* CropData2
+* CropDataDistrict (TODO align this with the new crop data (With unit of measures))
+* measure_units_for_crops
+* cropdata_ranges
+* cropdescriptor
+* agromet_descriptor
 
 ### Styles
 Crop Map Data have been updated to support unit of measure and dynamic styles.
 * new: **difference_style**: crop difference. 
 The district and province styles have to be replaced. All the styles starting with district or province have to be replaced : 
-district_*
-province_*
+  * district_*
+  * province_*
 
 
 
