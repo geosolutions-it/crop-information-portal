@@ -142,24 +142,21 @@ public void persist(CropData entity) {
 		UnitOfMeasure yieldUnit = unitOfMeasureService.getDefaultYieldUnitOfMeasure(entity.getCropDescriptor());
 		if(areaUnit != null){
 			double areaFactor = areaUnit.getCoefficient();
-			entity.setArea(entity.getArea()*areaFactor);
+			entity.setArea(entity.getArea()/areaFactor);
 		}
 		if(prodUnit != null){
 			double prodFactor = prodUnit.getCoefficient();
-			entity.setProduction(entity.getProduction()*prodFactor);
+			entity.setProduction(entity.getProduction()/prodFactor);
 
 		}
 		if(yieldUnit != null){
 			double yieldFactor = yieldUnit.getCoefficient();
-			entity.setYield(entity.getYield()*yieldFactor);		
+			entity.setYield(entity.getYield()/yieldFactor);		
 		}
 		if(areaUnit == null || prodUnit == null || yieldUnit == null){
 			LOGGER.warn("The units of measure for crop" + entity.getCropDescriptor().getId() + " are not defined. Supposing a conversion is not needed");
 		}
-		
-		
-		
-		
+
 	}else{
 		throw new IllegalArgumentException("couldn't update crops before the unit of measure is not well configured");
 	}
