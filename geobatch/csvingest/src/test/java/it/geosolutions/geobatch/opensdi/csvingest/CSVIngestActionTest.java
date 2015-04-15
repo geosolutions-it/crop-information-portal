@@ -23,13 +23,11 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import it.geosolutions.filesystemmonitor.monitor.FileSystemEvent;
 import it.geosolutions.filesystemmonitor.monitor.FileSystemEventType;
-import it.geosolutions.geobatch.opensdi.csvingest.processor.CSVCropProcessor;
 import it.geosolutions.opensdi.model.CropDescriptor;
 import it.geosolutions.opensdi.model.Season;
 import it.geosolutions.opensdi.model.UnitOfMeasure;
 
 import java.io.File;
-import java.io.Serializable;
 import java.util.EventObject;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -58,10 +56,10 @@ public class CSVIngestActionTest extends BaseDAOTest {
         assertTrue(dir.isDirectory());
 
         CSVIngestAction action = new CSVIngestAction(new CSVIngestConfiguration(null, null, null));
-        action.setCropDataDao(cropDataDAO);
-        action.setCropDescriptorDao(cropDescriptorDAO);
-        action.setAgrometDao(agrometDAO);
-        action.setCropStatusDao(cropStatusDAO);
+//        action.setCropDataDao(cropDataDAO);
+//        action.setCropDescriptorDao(cropDescriptorDAO);
+//        action.setAgrometDao(agrometDAO);
+//        action.setCropStatusDao(cropStatusDAO);
         action.setUnitOfMeasureService(unitOfMeasureService);
         action.afterPropertiesSet();
 

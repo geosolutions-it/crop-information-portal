@@ -19,9 +19,8 @@
  */
 package it.geosolutions.geobatch.opensdi.csvingest.utils;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import it.geosolutions.geobatch.opensdi.csvingest.processor.CSVProcessException;
-import it.geosolutions.geobatch.opensdi.csvingest.utils.CSVIngestUtils;
 
 import org.junit.Test;
 

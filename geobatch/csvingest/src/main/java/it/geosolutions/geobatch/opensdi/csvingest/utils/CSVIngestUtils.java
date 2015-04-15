@@ -21,6 +21,10 @@ package it.geosolutions.geobatch.opensdi.csvingest.utils;
 
 import it.geosolutions.geobatch.opensdi.csvingest.processor.CSVProcessException;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.ParseException;
+
 import org.springframework.util.StringUtils;
 
 /**
@@ -101,11 +105,34 @@ public static DecMonth getDecMonth(String month) throws CSVProcessException {
 public static Double getDoubleValue(String doubleString)
         throws CSVProcessException {
     try {
-        return doubleString != null && StringUtils.hasText(doubleString) ? Double
-                .parseDouble(doubleString) : null;
-    } catch (NumberFormatException nfe) {
+        return doubleString != null && StringUtils.hasText(doubleString) ? parseDouble(doubleString) : null;
+    } catch (ParseException nfe) {
         throw new CSVProcessException("Incorrect double=" + doubleString);
     }
+}
+
+
+/**
+ * Checks the locale of the provided number: 
+ * checks for exactly one occurrence of comma "," or one of dot "." or if a number has no decimal (so it is only composed of digits) 
+ * if more occurencies of one of the two symbols are found, throw NumberFormatException
+ * 
+ * @param numberToParse
+ * @return
+ * @throws ParseException 
+ */
+public static Double parseDouble(String numberToParse) throws ParseException{
+    
+    char separator = '.';
+    if(numberToParse.split(",").length > 0){
+        separator = ',';
+    }
+    DecimalFormatSymbols symbols = new DecimalFormatSymbols();
+    symbols.setDecimalSeparator(separator);
+    DecimalFormat format = new DecimalFormat("#.#");
+    format.setMinimumFractionDigits(0);
+    format.setDecimalFormatSymbols(symbols);
+    return format.parse(numberToParse).doubleValue();
 }
 
 /**
@@ -116,10 +143,11 @@ public static Double getDoubleValue(String doubleString)
  * @return
  * @throws Exception
  */
-public static Object parse(String origin, CSVPropertyType type)
+public static Object parse(String origin, CSVPropertyType type, boolean emptyFieldsAsZero)
         throws Exception {
     switch (type) {
     case INTEGER:
+        origin=(origin!=null && emptyFieldsAsZero && origin.isEmpty())?"0":origin;
         return Integer.parseInt(origin);
     case DOUBLE:
         return CSVIngestUtils.getDoubleValue(origin);

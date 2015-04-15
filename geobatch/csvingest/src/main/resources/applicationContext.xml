@@ -1,6 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+                           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd">
 
-<beans>
+	<util:list id="processors" list-class="java.util.ArrayList">
+		<ref bean="agrometProcessor" />
+		<ref bean="cropProcessor" />
+		<ref bean="cropStatusProcessor" />
+		<ref bean="fertilizerDistrictsProcessor" />
+		<ref bean="fertilizerProvincesProcessor" />
+		<ref bean="irrigationProcessor" />
+		<ref bean="marketPriceProcessor100" />
+		<ref bean="marketPriceProcessor40" />
+	</util:list>
 
+	<!-- cropDescriptorService
+	agrometDescriptorService
+	unitOfMeasureService -->
+
+
+	<bean id="agrometProcessor"
+		class="it.geosolutions.geobatch.opensdi.csvingest.processor.CSVAgrometProcessor">
+		<!-- <property name="dao" ref="agrometDao" /> -->
+	</bean>
+	<bean id="cropProcessor"
+		class="it.geosolutions.geobatch.opensdi.csvingest.processor.CSVCropProcessor">
+		<!-- <property name="dao" ref="cropDataDao" /> -->
+	</bean>
+	<bean id="cropStatusProcessor"
+		class="it.geosolutions.geobatch.opensdi.csvingest.processor.CSVCropStatusProcessor">
+		<!-- <property name="dao" ref="cropStatusDao" /> -->
+    </bean>
+	<bean id="fertilizerDistrictsProcessor"
+		class="it.geosolutions.geobatch.opensdi.csvingest.processor.CSVDistrictsFertilizerProcessor">
+		<!-- <property name="dao" ref="fertilizerDao" /> -->
+	</bean>
+	<bean id="fertilizerProvincesProcessor"
+		class="it.geosolutions.geobatch.opensdi.csvingest.processor.CSVProvincesFertilizerProcessor">
+		<!-- <property name="dao" ref="fertilizerDao" /> -->
+	</bean>
+	
+	<bean id="marketPriceProcessor100"
+		class="it.geosolutions.geobatch.opensdi.csvingest.processor.CSVMarketPricesProcessor100">
+		<!-- <property name="dao" ref="marketPriceDao" /> -->
+	</bean>
+	
+	<bean id="marketPriceProcessor40"
+		class="it.geosolutions.geobatch.opensdi.csvingest.processor.CSVMarketPricesProcessor40">
+		<!-- <property name="dao" ref="marketPriceDao" /> -->
+	</bean>
+	
+	<bean id="irrigationProcessor"
+		class="it.geosolutions.geobatch.opensdi.csvingest.processor.CSVIrrigationProcessor">
+		<!-- <property name="dao" ref="irrigationDao" /> -->
+	</bean>
+	
 </beans>
