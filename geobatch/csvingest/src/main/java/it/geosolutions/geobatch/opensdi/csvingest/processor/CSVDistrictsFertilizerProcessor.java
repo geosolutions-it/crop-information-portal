@@ -25,7 +25,9 @@ import it.geosolutions.opensdi.model.Fertilizer;
 import it.geosolutions.opensdi.persistence.dao.FertilizerDAO;
 import it.geosolutions.opensdi.persistence.dao.GenericNRLDAO;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,6 +40,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class CSVDistrictsFertilizerProcessor extends GenericCSVProcessor<Fertilizer, Long> {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(CSVDistrictsFertilizerProcessor.class);
+    
+    public static Map<String, Integer> monthMapping;
+    
+    static{
+        monthMapping = new HashMap<String, Integer>();
+        monthMapping.put("jan", 1);
+        monthMapping.put("feb", 2);
+        monthMapping.put("mar", 3);
+        monthMapping.put("apr", 4);
+        monthMapping.put("may", 5);
+        monthMapping.put("jun", 6);
+        monthMapping.put("jul", 7);
+        monthMapping.put("aug", 8);
+        monthMapping.put("sep", 9);
+        monthMapping.put("oct", 10);
+        monthMapping.put("nov", 11);
+        monthMapping.put("dec", 12);        
+    }
     
     @Autowired
     private FertilizerDAO dao;
@@ -83,6 +103,7 @@ public class CSVDistrictsFertilizerProcessor extends GenericCSVProcessor<Fertili
         fertilizer.setMonth((String) properties[idx++]);
         fertilizer.setNutrient((String) properties[idx++]);
         fertilizer.setOfftakeTons((Double) properties[idx++]);
+        fertilizer.setMonthNum(CSVDistrictsFertilizerProcessor.monthMapping.get(fertilizer.getMonth().toLowerCase()));
         return fertilizer;
     }
 

@@ -22,6 +22,7 @@ package it.geosolutions.geobatch.opensdi.csvingest;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import it.geosolutions.geobatch.opensdi.csvingest.processor.CSVProcessor;
 import it.geosolutions.opensdi.model.CropData;
 import it.geosolutions.opensdi.persistence.dao.AgrometDAO;
 import it.geosolutions.opensdi.persistence.dao.CropDataDAO;
@@ -29,6 +30,7 @@ import it.geosolutions.opensdi.persistence.dao.CropDescriptorDAO;
 import it.geosolutions.opensdi.persistence.dao.CropStatusDAO;
 import it.geosolutions.opensdi.service.UnitOfMeasureService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
@@ -49,6 +51,7 @@ public abstract class BaseDAOTest extends BaseContextTest {
     protected static AgrometDAO agrometDAO;
     protected static CropStatusDAO cropStatusDAO;
     protected static UnitOfMeasureService unitOfMeasureService;
+    protected static List<CSVProcessor> processors;
 
    
 	public BaseDAOTest() {
@@ -58,6 +61,7 @@ public abstract class BaseDAOTest extends BaseContextTest {
         agrometDAO = ctx.getBean("agrometDao", AgrometDAO.class);
         cropStatusDAO = ctx.getBean("cropStatusDao",CropStatusDAO.class);
         unitOfMeasureService = ctx.getBean("unitOfMeasureService",UnitOfMeasureService.class);
+        processors = ctx.getBean("processors",ArrayList.class);
     }
 
     @Before

@@ -118,10 +118,8 @@ public abstract class GenericCSVProcessor<T, ID extends Serializable> extends CS
             schemaHandler.reload();
         }
         //Load config from the flow configuration file
-        Boolean emptyFieldsAsZero = (flowConfig != null) ? flowConfig.getEmptyFieldsAsZero(): false;
-        emptyFieldsAsZero = (emptyFieldsAsZero != null) ? emptyFieldsAsZero : false;
-        Boolean configRowByRow = (flowConfig != null) ? flowConfig.getRowByRow(): false;
-        rowByRow = (configRowByRow != null) ? configRowByRow : false; 
+        Boolean emptyFieldsAsZero = (flowConfig != null && flowConfig.getEmptyFieldsAsZero() != null) ? flowConfig.getEmptyFieldsAsZero(): false;
+        rowByRow = (flowConfig != null && flowConfig.getRowByRow() != null) ? flowConfig.getRowByRow(): false;
         
         
         String nextLine[];

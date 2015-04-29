@@ -198,6 +198,10 @@ public class CSVIngestAction extends BaseAction<EventObject> implements Initiali
     public void setUnitOfMeasureService(UnitOfMeasureService unitOfMeasureService) {
         this.unitOfMeasureService = unitOfMeasureService;
     }
+    
+    public void setProcessors(List<CSVProcessor> processors) {
+        this.processors = processors;
+    }
 
     /**
      * Check if null header fields are present and trim trailing and leading whitespaces

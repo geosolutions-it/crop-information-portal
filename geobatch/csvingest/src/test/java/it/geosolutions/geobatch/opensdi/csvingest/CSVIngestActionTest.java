@@ -23,13 +23,16 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import it.geosolutions.filesystemmonitor.monitor.FileSystemEvent;
 import it.geosolutions.filesystemmonitor.monitor.FileSystemEventType;
+import it.geosolutions.geobatch.opensdi.csvingest.processor.CSVProcessor;
 import it.geosolutions.opensdi.model.CropDescriptor;
 import it.geosolutions.opensdi.model.Season;
 import it.geosolutions.opensdi.model.UnitOfMeasure;
 
 import java.io.File;
 import java.util.EventObject;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.Queue;
 
 import org.apache.commons.io.FileUtils;
@@ -39,7 +42,7 @@ import org.junit.Test;
  *
  * @author ETj (etj at geo-solutions.it)
  */
-public class CSVIngestActionTest extends BaseDAOTest {
+public class CSVIngestActionTest extends BaseDAOTest{
 
     public CSVIngestActionTest() {
     }
@@ -56,13 +59,15 @@ public class CSVIngestActionTest extends BaseDAOTest {
         assertTrue(dir.isDirectory());
 
         CSVIngestAction action = new CSVIngestAction(new CSVIngestConfiguration(null, null, null));
-//        action.setCropDataDao(cropDataDAO);
-//        action.setCropDescriptorDao(cropDescriptorDAO);
-//        action.setAgrometDao(agrometDAO);
-//        action.setCropStatusDao(cropStatusDAO);
         action.setUnitOfMeasureService(unitOfMeasureService);
+        action.setProcessors(processors);
         action.afterPropertiesSet();
 
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("src", "testSrc");
+        for(CSVProcessor p : processors){
+            p.setFlowExecutionParametersMap(map);
+        }
 
         for(File file : FileUtils.listFiles(dir, new String[]{"csv"}, true)) {
             LOGGER.info("Loading " + file);

@@ -83,6 +83,7 @@ public class CSVProvincesFertilizerProcessor extends GenericCSVProcessor<Fertili
         fertilizer.setMonth((String) properties[idx++]);
         fertilizer.setNutrient((String) properties[idx++]);
         fertilizer.setOfftakeTons((Double) properties[idx++]);
+        fertilizer.setMonthNum(CSVDistrictsFertilizerProcessor.monthMapping.get(fertilizer.getMonth().toLowerCase()));
         return fertilizer;
     }
 
