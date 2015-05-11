@@ -75,6 +75,11 @@ GeoServer needs the following additional components:
 * cropdata_ranges
 * cropdescriptor
 * agromet_descriptor
+* fertilizer_data
+* fertilizers_metadata
+* marketprices_data
+* marketprices_data_pakistan
+* marketprices_metadata
 
 ### Styles
 Crop Map Data have been updated to support unit of measure and dynamic styles.
