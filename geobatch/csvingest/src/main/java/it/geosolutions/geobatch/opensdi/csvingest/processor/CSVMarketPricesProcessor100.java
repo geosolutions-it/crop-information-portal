@@ -113,7 +113,7 @@ public class CSVMarketPricesProcessor100 extends GenericCSVProcessor<MarketPrice
         marketPrice.setMarketPriceUSD(marketPriceDollars);
         marketPrice.setMarketPriceKPR(marketPriceRupiee);
         try {
-            marketPrice.setDecadeYear(CSVIngestUtils.getDecad(marketPrice.getMonth(), marketPrice.getDecade()));
+            marketPrice.setDecadeYear(CSVIngestUtils.getDecadJanDec(marketPrice.getMonth(), marketPrice.getDecade()));
             marketPrice.setDecadeAbsolute(marketPrice.getYear()*36 + marketPrice.getDecadeYear());            
         } catch (CSVProcessException e) {
             LOGGER.error(e.getMessage(), e);

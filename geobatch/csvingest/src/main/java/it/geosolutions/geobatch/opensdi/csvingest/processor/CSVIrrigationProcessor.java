@@ -92,7 +92,7 @@ public class CSVIrrigationProcessor extends GenericCSVProcessor<Irrigation, Long
         irrigation.setWaterflow(waterflowInteger);
         
         try {
-            irrigation.setDecadeYear(CSVIngestUtils.getDecad(irrigation.getMonth(), irrigation.getDecade()));
+            irrigation.setDecadeYear(CSVIngestUtils.getDecadJanDec(irrigation.getMonth(), irrigation.getDecade()));
             irrigation.setDecadeAbsolute(irrigation.getYear()*36 + irrigation.getDecadeYear());            
         } catch (CSVProcessException e) {
             LOGGER.error(e.getMessage(), e);

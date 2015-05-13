@@ -34,6 +34,10 @@ import org.springframework.util.StringUtils;
  */
 public class CSVIngestUtils {
 
+public enum MonthsJanToDec {
+        JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC 
+}
+    
 /**
  * Obtain the s_dec in the year.<br />
  * The s_dec is 1 -- 36 , 1 is the first decade in November 36 is the 3th decad
@@ -69,6 +73,34 @@ public static Integer getDecad(DecMonth month, Integer decadInMonth)
         return decadInMonth + month.ordinal() * 3;
     } else {
         throw new CSVProcessException("Incorrect decad [month=" + month
+                + ", decad=" + decadInMonth + "]");
+    }
+}
+
+/**
+ * This method compute the dekad value within a year where the months are ordered in the standard way. (First month January last month December)
+ * 
+ * @param month
+ * @param decadInMonth must be 1, 2 or 3
+ * @return return the dekad value 
+ * @throws CSVProcessException
+ */
+public static Integer getDecadJanDec(String month, Integer decadInMonth)
+        throws CSVProcessException {
+    
+    MonthsJanToDec monthsJanToDec = null;
+    try{
+        monthsJanToDec = MonthsJanToDec.valueOf(month.toString().toUpperCase());
+    }
+    catch(Exception e){
+        throw new CSVProcessException("Incorrect month passed [month='" + month + "']");
+    }
+    
+    if (monthsJanToDec != null && decadInMonth != null && decadInMonth > 0
+            && decadInMonth < 4) {
+        return decadInMonth + monthsJanToDec.ordinal() * 3;
+    } else {
+        throw new CSVProcessException("Incorrect decad [month=" + monthsJanToDec
                 + ", decad=" + decadInMonth + "]");
     }
 }

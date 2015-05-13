@@ -19,9 +19,9 @@
  */
 package it.geosolutions.geobatch.opensdi.csvingest.utils;
 
-import static org.junit.Assert.assertEquals;
 import it.geosolutions.geobatch.opensdi.csvingest.processor.CSVProcessException;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 /**
@@ -30,7 +30,7 @@ import org.junit.Test;
  * @author adiaz
  *
  */
-public class CSVIngestUtilsTest {
+public class CSVIngestUtilsTest extends Assert{
 	
 	/**
 	 * Last decad must be 36 (Oct, 3)
@@ -52,6 +52,23 @@ public class CSVIngestUtilsTest {
 	public void firstDecadTest() throws CSVProcessException{
 		Integer decad = CSVIngestUtils.getDecad("Nov", 1);
 		assertEquals(decad, new Integer(1));
+	}
+	
+	@Test
+	public void decadJanDectest() throws CSVProcessException{
+	    assertEquals(new Integer(22), CSVIngestUtils.getDecadJanDec(DecMonth.AUG.toString(), 1));
+	    assertEquals(new Integer(24), CSVIngestUtils.getDecadJanDec(DecMonth.AUG.toString(), 3));
+	    assertEquals(new Integer(1), CSVIngestUtils.getDecadJanDec("jAn", 1));
+            assertEquals(new Integer(2), CSVIngestUtils.getDecadJanDec(DecMonth.JAN.toString(), 2));
+            assertEquals(new Integer(32), CSVIngestUtils.getDecadJanDec(DecMonth.NOV.toString(), 2));
+            assertEquals(new Integer(36), CSVIngestUtils.getDecadJanDec(DecMonth.DEC.toString(), 3));
+            try{
+                assertEquals(new Integer(1), CSVIngestUtils.getDecadJanDec("jen", 1));
+            }
+            catch(Exception e){
+                return;
+            }
+            fail();
 	}
 
 }
