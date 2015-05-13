@@ -74,16 +74,19 @@ public class CSVMarketPricesProcessor100 extends GenericCSVProcessor<MarketPrice
     public MarketPrice merge(MarketPrice old, Object[] properties) {
         
         int denominator = 0;
-        int exchangeRate = 0;
+        double exchangeRate = 0;
         try{
             String denominatorString = flowExecutionParametersMap.get(DENOMINATOR);
             String exchangeRateString = flowExecutionParametersMap.get(EXCHANGE_RATE);
             denominator = Integer.parseInt(denominatorString);
-            exchangeRate = Integer.parseInt(exchangeRateString);
+            if(denominator<=0){
+                throw new IllegalArgumentException("The provided denominator is equals or less than 0 and it's not a valid value..");
+            }
+            exchangeRate = Double.parseDouble(exchangeRateString);
         }
         catch(Exception e){
             LOGGER.error(e.getMessage(), e);
-            return null;
+            throw new IllegalArgumentException("A parsing error occurred while parsing exchange rate or denominator");
         }
         
         MarketPrice marketPrice;
@@ -105,10 +108,10 @@ public class CSVMarketPricesProcessor100 extends GenericCSVProcessor<MarketPrice
         double value = (Double)properties[idx++];
         
         double marketPriceDollars = (100*value/denominator)*exchangeRate; //Compute it in dollars per 100kg
-        double unitPriceDollars = marketPriceDollars/100; 
+        double marketPriceRupiee = (100*value/denominator); 
         
-        marketPrice.setMarketPrice(marketPriceDollars);
-        marketPrice.setMarketPriceUnit(unitPriceDollars);
+        marketPrice.setMarketPriceUSD(marketPriceDollars);
+        marketPrice.setMarketPriceKPR(marketPriceRupiee);
         try {
             marketPrice.setDecadeYear(CSVIngestUtils.getDecad(marketPrice.getMonth(), marketPrice.getDecade()));
             marketPrice.setDecadeAbsolute(marketPrice.getYear()*36 + marketPrice.getDecadeYear());            
