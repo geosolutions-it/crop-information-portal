@@ -73,7 +73,6 @@
 		<dependency>
 			<groupId>it.geosolutions.geobatch</groupId>
 			<artifactId>gb-action-ds2ds</artifactId>
-			<version>${project.version}</version>
 		</dependency>
 
 		<!-- ============================== -->
