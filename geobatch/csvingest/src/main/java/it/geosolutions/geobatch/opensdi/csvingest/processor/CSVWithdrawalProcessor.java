@@ -22,9 +22,9 @@ package it.geosolutions.geobatch.opensdi.csvingest.processor;
 import it.geosolutions.geobatch.opensdi.csvingest.utils.CSVIngestUtils;
 import it.geosolutions.geobatch.opensdi.csvingest.utils.CSVPropertyType;
 import it.geosolutions.geobatch.opensdi.csvingest.utils.CSVSchemaHandler;
-import it.geosolutions.opensdi.model.Irrigation;
+import it.geosolutions.opensdi.model.Withdrawal;
 import it.geosolutions.opensdi.persistence.dao.GenericNRLDAO;
-import it.geosolutions.opensdi.persistence.dao.IrrigationDAO;
+import it.geosolutions.opensdi.persistence.dao.WithdrawalDAO;
 
 import java.util.List;
 
@@ -36,19 +36,19 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @author DamianoG
  * 
  */
-public class CSVIrrigationProcessor extends GenericCSVProcessor<Irrigation, Long> {
+public class CSVWithdrawalProcessor extends GenericCSVProcessor<Withdrawal, Long> {
 
-    private final static Logger LOGGER = LoggerFactory.getLogger(CSVIrrigationProcessor.class);
+    private final static Logger LOGGER = LoggerFactory.getLogger(CSVWithdrawalProcessor.class);
 
     @Autowired
-    private IrrigationDAO dao;
+    private WithdrawalDAO dao;
 
-    public CSVIrrigationProcessor() {
-        schemaHandler = new CSVSchemaHandler("irrigation");
+    public CSVWithdrawalProcessor() {
+        schemaHandler = new CSVSchemaHandler("withdrawal");
     }
 
     @Override
-    public GenericNRLDAO<Irrigation, Long> getGenericDao() {
+    public GenericNRLDAO<Withdrawal, Long> getGenericDao() {
         return dao;
     }
 
@@ -68,54 +68,50 @@ public class CSVIrrigationProcessor extends GenericCSVProcessor<Irrigation, Long
     }
 
     @Override
-    public Irrigation merge(Irrigation old, Object[] properties) {
-        Irrigation irrigation;
+    public Withdrawal merge(Withdrawal old, Object[] properties) {
+        Withdrawal withdrawal;
         if (old != null) {
-            irrigation = (Irrigation) old;
+            withdrawal = (Withdrawal) old;
         } else {
-            irrigation = new Irrigation();
+            withdrawal = new Withdrawal();
         }
         int idx = 1;
         
-        irrigation.setYear((Integer)properties[idx++]);        
-        irrigation.setMonth((String)properties[idx++]);
-        irrigation.setDecade((Integer)properties[idx++]);
-        irrigation.setProvince((String)properties[idx++]);
-        irrigation.setDistrict((String)properties[idx++]);
-        irrigation.setRiver((String)properties[idx++]);
+        withdrawal.setProvince((String)properties[idx++]);
+        withdrawal.setDistrict((String)properties[idx++]);
+        withdrawal.setYear((Integer)properties[idx++]);        
+        withdrawal.setMonth((String)properties[idx++]);
+        withdrawal.setDecade((Integer)properties[idx++]);
         
-        Object withdrawal = properties[idx++];
-        Object waterflow = properties[idx++];
-        Integer withdrawalInteger=(withdrawal == null || ((String)withdrawal).isEmpty() || ((String)withdrawal).trim().length()==0)?null:Integer.parseInt((String)withdrawal);
-        Integer waterflowInteger=(waterflow == null || ((String)waterflow).isEmpty() || ((String)waterflow).trim().length()==0)?null:Integer.parseInt((String)waterflow);
-        irrigation.setWithdrawal(withdrawalInteger);
-        irrigation.setWaterflow(waterflowInteger);
+        Object withdrawalValue = properties[idx++];
+        Double withdrawalDouble=(withdrawal == null)?null:(Double)withdrawalValue;
+        withdrawal.setWithdrawal(withdrawalDouble);
         
         try {
-            irrigation.setDecadeYear(CSVIngestUtils.getDecadJanDec(irrigation.getMonth(), irrigation.getDecade()));
-            irrigation.setDecadeAbsolute(irrigation.getYear()*36 + irrigation.getDecadeYear());            
+            withdrawal.setDecadeYear(CSVIngestUtils.getDecadJanDec(withdrawal.getMonth(), withdrawal.getDecade()));
+            withdrawal.setDecadeAbsolute(withdrawal.getYear()*36 + withdrawal.getDecadeYear());            
         } catch (CSVProcessException e) {
             LOGGER.error(e.getMessage(), e);
             return null;
         }
-        return irrigation;
+        return withdrawal;
     }
 
     @Override
-    public void save(Irrigation entity) {
+    public void save(Withdrawal entity) {
         dao.merge(entity);
     }
 
     @Override
-    public void persist(Irrigation entity) {
+    public void persist(Withdrawal entity) {
         dao.persist(entity);
     }
 
-    public IrrigationDAO getDao() {
+    public WithdrawalDAO getDao() {
         return dao;
     }
     
-    public void setDao(IrrigationDAO dao) {
+    public void setDao(WithdrawalDAO dao) {
         this.dao = dao;
     }
 }

@@ -10,9 +10,10 @@
 		<ref bean="cropStatusProcessor" />
 		<ref bean="fertilizerDistrictsProcessor" />
 		<ref bean="fertilizerProvincesProcessor" />
-		<ref bean="irrigationProcessor" />
 		<ref bean="marketPriceProcessor100" />
 		<ref bean="marketPriceProcessor40" />
+		<ref bean="waterflowProcessor" />
+		<ref bean="withdrawalProcessor" />
 	</util:list>
 
 	<!-- cropDescriptorService
@@ -51,9 +52,12 @@
 		<!-- <property name="dao" ref="marketPriceDao" /> -->
 	</bean>
 	
-	<bean id="irrigationProcessor"
-		class="it.geosolutions.geobatch.opensdi.csvingest.processor.CSVIrrigationProcessor">
-		<!-- <property name="dao" ref="irrigationDao" /> -->
+	<bean id="waterflowProcessor"
+		class="it.geosolutions.geobatch.opensdi.csvingest.processor.CSVWaterflowProcessor">
+	</bean>
+	
+	<bean id="withdrawalProcessor"
+		class="it.geosolutions.geobatch.opensdi.csvingest.processor.CSVWithdrawalProcessor">
 	</bean>
 	
 </beans>
