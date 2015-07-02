@@ -36,9 +36,9 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @author DamianoG
  *
  */
-public class CSVMarketPricesProcessor100 extends GenericCSVProcessor<MarketPrice, Long> {
+public class CSVMarketPricesProcessor extends GenericCSVProcessor<MarketPrice, Long> {
 
-    private final static Logger LOGGER = LoggerFactory.getLogger(CSVMarketPricesProcessor100.class);
+    private final static Logger LOGGER = LoggerFactory.getLogger(CSVMarketPricesProcessor.class);
     
     protected final static String DENOMINATOR = "denominator";
     protected final static String EXCHANGE_RATE = "exchangeRate";
@@ -46,8 +46,8 @@ public class CSVMarketPricesProcessor100 extends GenericCSVProcessor<MarketPrice
     @Autowired
     private MarketPriceDAO dao;
 
-    public CSVMarketPricesProcessor100() {
-        schemaHandler = new CSVSchemaHandler("marketprices100");
+    public CSVMarketPricesProcessor() {
+        schemaHandler = new CSVSchemaHandler("marketprices");
     }
     
     @Override

@@ -10,8 +10,7 @@
 		<ref bean="cropStatusProcessor" />
 		<ref bean="fertilizerDistrictsProcessor" />
 		<ref bean="fertilizerProvincesProcessor" />
-		<ref bean="marketPriceProcessor100" />
-		<ref bean="marketPriceProcessor40" />
+		<ref bean="marketPriceProcessor" />
 		<ref bean="waterflowProcessor" />
 		<ref bean="withdrawalProcessor" />
 	</util:list>
@@ -23,33 +22,22 @@
 
 	<bean id="agrometProcessor"
 		class="it.geosolutions.geobatch.opensdi.csvingest.processor.CSVAgrometProcessor">
-		<!-- <property name="dao" ref="agrometDao" /> -->
 	</bean>
 	<bean id="cropProcessor"
 		class="it.geosolutions.geobatch.opensdi.csvingest.processor.CSVCropProcessor">
-		<!-- <property name="dao" ref="cropDataDao" /> -->
 	</bean>
 	<bean id="cropStatusProcessor"
 		class="it.geosolutions.geobatch.opensdi.csvingest.processor.CSVCropStatusProcessor">
-		<!-- <property name="dao" ref="cropStatusDao" /> -->
     </bean>
 	<bean id="fertilizerDistrictsProcessor"
 		class="it.geosolutions.geobatch.opensdi.csvingest.processor.CSVDistrictsFertilizerProcessor">
-		<!-- <property name="dao" ref="fertilizerDao" /> -->
 	</bean>
 	<bean id="fertilizerProvincesProcessor"
 		class="it.geosolutions.geobatch.opensdi.csvingest.processor.CSVProvincesFertilizerProcessor">
-		<!-- <property name="dao" ref="fertilizerDao" /> -->
 	</bean>
 	
-	<bean id="marketPriceProcessor100"
-		class="it.geosolutions.geobatch.opensdi.csvingest.processor.CSVMarketPricesProcessor100">
-		<!-- <property name="dao" ref="marketPriceDao" /> -->
-	</bean>
-	
-	<bean id="marketPriceProcessor40"
-		class="it.geosolutions.geobatch.opensdi.csvingest.processor.CSVMarketPricesProcessor40">
-		<!-- <property name="dao" ref="marketPriceDao" /> -->
+	<bean id="marketPriceProcessor"
+		class="it.geosolutions.geobatch.opensdi.csvingest.processor.CSVMarketPricesProcessor">
 	</bean>
 	
 	<bean id="waterflowProcessor"

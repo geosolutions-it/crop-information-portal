@@ -134,8 +134,11 @@ public static DecMonth getDecMonth(String month) throws CSVProcessException {
  * @return Double value
  * @throws CSVProcessException if <code>doubleString</code> it's not a double
  */
-public static Double getDoubleValue(String doubleString)
+public static Double getDoubleValue(String doubleString, boolean emptyFieldsAsZero)
         throws CSVProcessException {
+    if(emptyFieldsAsZero && doubleString != null && doubleString.isEmpty()){
+        return 0d;
+    }
     try {
         return doubleString != null && StringUtils.hasText(doubleString) ? parseDouble(doubleString) : null;
     } catch (ParseException nfe) {
@@ -143,6 +146,15 @@ public static Double getDoubleValue(String doubleString)
     }
 }
 
+
+public static Integer getIntegerValue(String integerString, boolean emptyFieldsAsZero) 
+        throws CSVProcessException {
+    integerString=(integerString!=null && emptyFieldsAsZero && integerString.isEmpty())?"0":integerString;
+    if(integerString==null || integerString.isEmpty()){
+        return null;
+    }
+    return Integer.parseInt(integerString);
+}
 
 /**
  * Checks the locale of the provided number: 
@@ -179,10 +191,9 @@ public static Object parse(String origin, CSVPropertyType type, boolean emptyFie
         throws Exception {
     switch (type) {
     case INTEGER:
-        origin=(origin!=null && emptyFieldsAsZero && origin.isEmpty())?"0":origin;
-        return Integer.parseInt(origin);
+        return getIntegerValue(origin, emptyFieldsAsZero);
     case DOUBLE:
-        return CSVIngestUtils.getDoubleValue(origin);
+        return getDoubleValue(origin, emptyFieldsAsZero);
     case IGNORE:
         return null;
     default:
