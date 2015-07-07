@@ -72,7 +72,6 @@ public class CSVIngestActionTest extends BaseDAOTest{
         assertFalse(list.isEmpty());        
         runFlow(list, true);
         assertEquals(52,waterflowDAO.findAll().size());
-        System.out.println("------------------waterflow-" + waterflowDAO.findAll().size());
     }
     
     @Test
@@ -117,7 +116,7 @@ public class CSVIngestActionTest extends BaseDAOTest{
         assertNotNull(list);
         assertFalse(list.isEmpty());        
         runFlow(list, false);
-        assertEquals(350,fertilizerDAO.findAll().size());
+        assertEquals(284,fertilizerDAO.findAll().size());
     }
     
     @Test

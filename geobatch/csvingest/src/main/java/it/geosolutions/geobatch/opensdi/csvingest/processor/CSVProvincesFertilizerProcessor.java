@@ -77,8 +77,10 @@ public class CSVProvincesFertilizerProcessor extends GenericCSVProcessor<Fertili
         int idx = 1;
         // pk
         //prov;year;mon;factor;value;(offtake tons)
-        fertilizer.setDistrict(null);
-        fertilizer.setProvince((String) properties[idx++]);
+        fertilizer.setDistrict("");
+        String prov = (String) properties[idx++];
+        prov = (prov!=null && prov.trim().isEmpty())?"":prov;
+        fertilizer.setProvince(prov);
         fertilizer.setYear((Integer) properties[idx++]);
         fertilizer.setMonth((String) properties[idx++]);
         fertilizer.setNutrient((String) properties[idx++]);
