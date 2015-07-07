@@ -24,10 +24,15 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import it.geosolutions.geobatch.opensdi.csvingest.processor.CSVProcessor;
 import it.geosolutions.opensdi.model.CropData;
+import it.geosolutions.opensdi.model.Waterflow;
 import it.geosolutions.opensdi.persistence.dao.AgrometDAO;
 import it.geosolutions.opensdi.persistence.dao.CropDataDAO;
 import it.geosolutions.opensdi.persistence.dao.CropDescriptorDAO;
 import it.geosolutions.opensdi.persistence.dao.CropStatusDAO;
+import it.geosolutions.opensdi.persistence.dao.FertilizerDAO;
+import it.geosolutions.opensdi.persistence.dao.MarketPriceDAO;
+import it.geosolutions.opensdi.persistence.dao.WaterflowDAO;
+import it.geosolutions.opensdi.persistence.dao.WithdrawalDAO;
 import it.geosolutions.opensdi.service.UnitOfMeasureService;
 
 import java.util.ArrayList;
@@ -52,16 +57,24 @@ public abstract class BaseDAOTest extends BaseContextTest {
     protected static CropStatusDAO cropStatusDAO;
     protected static UnitOfMeasureService unitOfMeasureService;
     protected static List<CSVProcessor> processors;
-
+    
+    protected static MarketPriceDAO marketPriceDAO;
+    protected static FertilizerDAO fertilizerDAO;
+    protected static WaterflowDAO waterflowDAO; 
+    protected static WithdrawalDAO withdrawalDAO;
    
-	public BaseDAOTest() {
-
+    public BaseDAOTest() {
         cropDescriptorDAO = ctx.getBean("cropDescriptorDao", CropDescriptorDAO.class);
         cropDataDAO = ctx.getBean("cropDataDao", CropDataDAO.class);
         agrometDAO = ctx.getBean("agrometDao", AgrometDAO.class);
         cropStatusDAO = ctx.getBean("cropStatusDao",CropStatusDAO.class);
         unitOfMeasureService = ctx.getBean("unitOfMeasureService",UnitOfMeasureService.class);
         processors = ctx.getBean("processors",ArrayList.class);
+        
+        marketPriceDAO = ctx.getBean("marketPriceDao",MarketPriceDAO.class);
+        fertilizerDAO = ctx.getBean("fertilizerDao",FertilizerDAO.class);
+        waterflowDAO = ctx.getBean("waterflowDao",WaterflowDAO.class);
+        withdrawalDAO = ctx.getBean("withdrawalDao",WithdrawalDAO.class);
     }
 
     @Before
