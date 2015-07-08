@@ -125,7 +125,7 @@ public class CSVIngestActionTest extends BaseDAOTest{
         assertNotNull(list);
         assertFalse(list.isEmpty());        
         runFlow(list, false);
-        assertEquals(27,marketPriceDAO.findAll().size());
+        assertEquals(40,marketPriceDAO.findAll().size());
     }
     
     private List<File> gatherTestInputCSVFile(String directory){

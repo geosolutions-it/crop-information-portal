@@ -103,8 +103,6 @@ public class CSVMarketPricesProcessor extends GenericCSVProcessor<MarketPrice, L
         marketPrice.setMonth((String)properties[idx++]);
         marketPrice.setDecade((Integer)properties[idx++]);
         marketPrice.setCrop((String)properties[idx++]);
-        
-        idx+=2;
         double value = (Double)properties[idx++];
         
         double marketPriceDollars = (100*value/denominator)*exchangeRate; //Compute it in dollars per 100kg

@@ -1,0 +1,52 @@
+ID_pri,distr,prov,year,mon,dec,commodity,price
+1,PUNJAB,Bahawalpur,2012,Jan,1,wheat,28.344
+2,KPK,Bannu,2012,Jan,1,wheat,28.344
+3,PUNJAB,Faisalabad,2012,Jan,1,wheat,27.75
+4,PUNJAB,Gujranwala,2012,Jan,1,wheat,27.25
+5,SINDH,Hyderabad,2012,Jan,1,wheat,27.656
+6,PUNJAB,Islamabad,2012,Jan,1,wheat,26.594
+7,SINDH,Karachi,2012,Jan,1,wheat,25.788
+8,BALOCHISTAN,Khuzdar,2012,Jan,1,wheat,26.313
+9,PUNJAB,Lahore,2012,Jan,1,wheat,25.938
+10,SINDH,Larkana,2012,Jan,1,wheat,28.5
+11,PUNJAB,Multan,2012,Jan,1,wheat,26.5
+12,KPK,Peshawar,2012,Jan,1,wheat,28.5
+13,BALOCHISTAN,Quetta,2012,Jan,1,wheat,25
+14,PUNJAB,Rawalpindi,2012,Jan,1,wheat,29
+15,PUNJAB,Sargodha,2012,Jan,1,wheat,26.75
+16,PUNJAB,Sialkot,2012,Jan,1,wheat,30
+17,SINDH,Sukkur,2012,Jan,1,wheat,28
+1,PUNJAB,Bahawalpur,2012,Jan,1,rice irri-6,48.67
+2,KPK,Bannu,2012,Jan,1,rice irri-6,50
+3,PUNJAB,Faisalabad,2012,Jan,1,rice irri-6,47.5
+4,PUNJAB,Gujranwala,2012,Jan,1,rice irri-6,47.5
+5,SINDH,Hyderabad,2012,Jan,1,rice irri-6,55.64
+6,PUNJAB,Islamabad,2012,Jan,1,rice irri-6,50
+7,SINDH,Karachi,2012,Jan,1,rice irri-6,47.5
+8,BALOCHISTAN,Khuzdar,2012,Jan,1,rice irri-6,37
+9,PUNJAB,Lahore,2012,Jan,1,rice irri-6,45
+10,SINDH,Larkana,2012,Jan,1,rice irri-6,48.62
+11,PUNJAB,Multan,2012,Jan,1,rice irri-6,42.5
+12,KPK,Peshawar,2012,Jan,1,rice irri-6,37.5
+13,BALOCHISTAN,Quetta,2012,Jan,1,rice irri-6,35
+14,PUNJAB,Rawalpindi,2012,Jan,1,rice irri-6,47
+15,PUNJAB,Sargodha,2012,Jan,1,rice irri-6,46.5
+16,PUNJAB,Sialkot,2012,Jan,1,rice irri-6,40
+17,SINDH,Sukkur,2012,Jan,1,rice irri-6,45
+1,PUNJAB,Bahawalpur,2012,Jan,1,rice basmati,65.67
+2,KPK,Bannu,2012,Jan,1,rice basmati,70
+3,PUNJAB,Faisalabad,2012,Jan,1,rice basmati,52.5
+4,PUNJAB,Gujranwala,2012,Jan,1,rice basmati,62.5
+5,SINDH,Hyderabad,2012,Jan,1,rice basmati,60.29
+6,PUNJAB,Islamabad,2012,Jan,1,rice basmati,64.5
+7,SINDH,Karachi,2012,Jan,1,rice basmati,53.5
+8,BALOCHISTAN,Khuzdar,2012,Jan,1,rice basmati,61
+9,PUNJAB,Lahore,2012,Jan,1,rice basmati,57.5
+10,SINDH,Larkana,2012,Jan,1,rice basmati,59.39
+11,PUNJAB,Multan,2012,Jan,1,rice basmati,57.5
+12,KPK,Peshawar,2012,Jan,1,rice basmati,57.5
+13,BALOCHISTAN,Quetta,2012,Jan,1,rice basmati,60
+14,PUNJAB,Rawalpindi,2012,Jan,1,rice basmati,66.33
+15,PUNJAB,Sargodha,2012,Jan,1,rice basmati,47
+16,PUNJAB,Sialkot,2012,Jan,1,rice basmati,59
+17,SINDH,Sukkur,2012,Jan,1,rice basmati,51.25
