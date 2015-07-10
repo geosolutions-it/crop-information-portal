@@ -76,9 +76,9 @@ public class CSVWithdrawalProcessor extends GenericCSVProcessor<Withdrawal, Long
             withdrawal = new Withdrawal();
         }
         int idx = 1;
-        
-        withdrawal.setProvince((String)properties[idx++]);
+
         withdrawal.setDistrict((String)properties[idx++]);
+        withdrawal.setProvince((String)properties[idx++]);
         withdrawal.setYear((Integer)properties[idx++]);        
         withdrawal.setMonth((String)properties[idx++]);
         withdrawal.setDecade((Integer)properties[idx++]);

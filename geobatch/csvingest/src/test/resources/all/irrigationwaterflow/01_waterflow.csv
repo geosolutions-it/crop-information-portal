@@ -1,4 +1,4 @@
-id,RIM station,year,mon,dec,value
+id_wf,RIM station,year,mon,dec,value
 1,Chashma at Indus River,2015,Jan,1,21.00
 2,Jhelum at Mangla,2015,Jan,1,6.00
 3,Marala at Chenab River,2015,Jan,1,6.00

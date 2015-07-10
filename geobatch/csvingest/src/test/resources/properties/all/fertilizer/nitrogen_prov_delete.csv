@@ -1,6 +1,6 @@
-ID_fer,prov,year,mon,factor,value,  (offtake tons),order
-3,GILGIT BALTISTAN,2014,Oct,Nitrogen,,,
-6,PUNJAB,2014,Oct,Nitrogen,,,
-7,SINDH,2014,Oct,Nitrogen,,,
-8,KPK,2014,Oct,Nitrogen,,,
-9,BALOCHISTAN,2014,Oct,Nitrogen,,,
+ID_fer,prov,year,mon,factor,value
+3,GILGIT BALTISTAN,2014,Oct,Nitrogen,
+6,PUNJAB,2014,Oct,Nitrogen,
+7,SINDH,2014,Oct,Nitrogen,
+8,KPK,2014,Oct,Nitrogen,
+9,BALOCHISTAN,2014,Oct,Nitrogen,

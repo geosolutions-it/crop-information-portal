@@ -1,5 +1,5 @@
-ID_fer,distr,prov,year,mon,factor,value,  (offtake tons),order
-58,Bannu,KPK,2011,Jan,Nitrogen,,,
-60,Buner,KPK,2011,Jan,Nitrogen,,,
-61,Charsadda,KPK,2011,Jan,Nitrogen,,,
-63,Dera Ismail Khan,KPK,2011,Jan,Nitrogen,,,
+ID_fer,distr,prov,year,mon,factor,value
+58,Bannu,KPK,2011,Jan,Nitrogen,
+60,Buner,KPK,2011,Jan,Nitrogen,
+61,Charsadda,KPK,2011,Jan,Nitrogen,
+63,Dera Ismail Khan,KPK,2011,Jan,Nitrogen,

@@ -1,254 +1,254 @@
-ID_fer,distr,prov,year,mon,factor,value,  (offtake tons),order
-58,Bannu,KPK,2011,Jan,Nitrogen,1519.76,,1
-60,Buner,KPK,2011,Jan,Nitrogen,22.88,,1
-61,Charsadda,KPK,2011,Jan,Nitrogen,816.07,,1
-63,Dera Ismail Khan,KPK,2011,Jan,Nitrogen,0.00,,1
-65,Haripur,KPK,2011,Jan,Nitrogen,529.88,,1
-69,Lakki Marwat,KPK,2011,Jan,Nitrogen,194.45,,1
-71,Malakand,KPK,2011,Jan,Nitrogen,87.77,,1
-73,Mardan,KPK,2011,Jan,Nitrogen,2651.37,,1
-74,Nowshera,KPK,2011,Jan,Nitrogen,360.30,,1
-75,Peshawar,KPK,2011,Jan,Nitrogen,5210.86,,1
-77,Swabi,KPK,2011,Jan,Nitrogen,339.16,,1
-82,Attock,PUNJAB,2011,Jan,Nitrogen,717.91,,1
-83,Bahawalnagar,PUNJAB,2011,Jan,Nitrogen,6097.38,,1
-84,Bahawalpur,PUNJAB,2011,Jan,Nitrogen,8275.89,,1
-85,Bhakkar,PUNJAB,2011,Jan,Nitrogen,2797.00,,1
-86,Chakwal,PUNJAB,2011,Jan,Nitrogen,1233.84,,1
-88,Dera Ghazi Khan,PUNJAB,2011,Jan,Nitrogen,3932.25,,1
-89,Faisalabad,PUNJAB,2011,Jan,Nitrogen,13992.60,,1
-90,Gujranwala,PUNJAB,2011,Jan,Nitrogen,9641.86,,1
-91,Gujrat,PUNJAB,2011,Jan,Nitrogen,6348.91,,1
-92,Hafizabad,PUNJAB,2011,Jan,Nitrogen,3519.37,,1
-93,Jhang,PUNJAB,2011,Jan,Nitrogen,10055.89,,1
-94,Jhelum,PUNJAB,2011,Jan,Nitrogen,463.41,,1
-95,Kasur,PUNJAB,2011,Jan,Nitrogen,11870.41,,1
-96,Khanewal,PUNJAB,2011,Jan,Nitrogen,8911.07,,1
-97,Khushab,PUNJAB,2011,Jan,Nitrogen,1278.93,,1
-98,Lahore,PUNJAB,2011,Jan,Nitrogen,4459.74,,1
-99,Layyah,PUNJAB,2011,Jan,Nitrogen,2941.01,,1
-100,Lodhran,PUNJAB,2011,Jan,Nitrogen,5363.45,,1
-101,Mandi Bahauddin,PUNJAB,2011,Jan,Nitrogen,2758.36,,1
-102,Mianwali,PUNJAB,2011,Jan,Nitrogen,2146.64,,1
-103,Multan,PUNJAB,2011,Jan,Nitrogen,8265.32,,1
-104,Muzaffargarh,PUNJAB,2011,Jan,Nitrogen,6773.02,,1
-106,Narowal,PUNJAB,2011,Jan,Nitrogen,5933.72,,1
-107,Okara,PUNJAB,2011,Jan,Nitrogen,13399.05,,1
-108,Pakpattan,PUNJAB,2011,Jan,Nitrogen,6999.77,,1
-109,Rahim Yar Khan,PUNJAB,2011,Jan,Nitrogen,10434.09,,1
-110,Rajanpur,PUNJAB,2011,Jan,Nitrogen,3181.31,,1
-111,Rawalpindi,PUNJAB,2011,Jan,Nitrogen,2312.45,,1
-112,Sahiwal,PUNJAB,2011,Jan,Nitrogen,7890.93,,1
-113,Sargodha,PUNJAB,2011,Jan,Nitrogen,7817.93,,1
-114,Sheikhupura,PUNJAB,2011,Jan,Nitrogen,8923.62,,1
-115,Sialkot,PUNJAB,2011,Jan,Nitrogen,6289.95,,1
-116,Toba Tek Singh,PUNJAB,2011,Jan,Nitrogen,5455.11,,1
-117,Vehari,PUNJAB,2011,Jan,Nitrogen,7413.64,,1
-118,Badin,SINDH,2011,Jan,Nitrogen,4867.12,,1
-119,Dadu,SINDH,2011,Jan,Nitrogen,2529.87,,1
-120,Ghotki,SINDH,2011,Jan,Nitrogen,2623.62,,1
-121,Hyderabad,SINDH,2011,Jan,Nitrogen,5773.48,,1
-122,Jacobabad,SINDH,2011,Jan,Nitrogen,7077.99,,1
-129,Khairpur,SINDH,2011,Jan,Nitrogen,3929.83,,1
-130,Larkana,SINDH,2011,Jan,Nitrogen,2112.73,,1
-133,Mirpur Khas,SINDH,2011,Jan,Nitrogen,5077.03,,1
-134,Naushahro Feroze,SINDH,2011,Jan,Nitrogen,3278.19,,1
-136,Sanghar,SINDH,2011,Jan,Nitrogen,6467.98,,1
-137,Shaheed Benazirabad,SINDH,2011,Jan,Nitrogen,5497.34,,1
-138,Shikarpur,SINDH,2011,Jan,Nitrogen,777.30,,1
-139,Sukkur,SINDH,2011,Jan,Nitrogen,1628.62,,1
-143,Thatta,SINDH,2011,Jan,Nitrogen,1376.83,,1
-144,Umerkot,SINDH,2011,Jan,Nitrogen,783.14,,1
-162,Jafarabad,BALOCHISTAN,2011,Feb,Nitrogen,456.27,,2
-173,Nasirabad,BALOCHISTAN,2011,Feb,Nitrogen,0.00,,2
-202,Bannu,KPK,2011,Feb,Nitrogen,6823.08,,2
-204,Buner,KPK,2011,Feb,Nitrogen,461.86,,2
-205,Charsadda,KPK,2011,Feb,Nitrogen,1600.01,,2
-207,Dera Ismail Khan,KPK,2011,Feb,Nitrogen,66.40,,2
-209,Haripur,KPK,2011,Feb,Nitrogen,516.32,,2
-213,Lakki Marwat,KPK,2011,Feb,Nitrogen,164.42,,2
-215,Malakand,KPK,2011,Feb,Nitrogen,302.45,,2
-217,Mardan,KPK,2011,Feb,Nitrogen,6642.08,,2
-218,Nowshera,KPK,2011,Feb,Nitrogen,456.19,,2
-219,Peshawar,KPK,2011,Feb,Nitrogen,6819.97,,2
-221,Swabi,KPK,2011,Feb,Nitrogen,510.72,,2
-226,Attock,PUNJAB,2011,Feb,Nitrogen,607.35,,2
-227,Bahawalnagar,PUNJAB,2011,Feb,Nitrogen,11893.48,,2
-228,Bahawalpur,PUNJAB,2011,Feb,Nitrogen,15860.47,,2
-229,Bhakkar,PUNJAB,2011,Feb,Nitrogen,4627.60,,2
-230,Chakwal,PUNJAB,2011,Feb,Nitrogen,862.49,,2
-232,Dera Ghazi Khan,PUNJAB,2011,Feb,Nitrogen,8975.11,,2
-233,Faisalabad,PUNJAB,2011,Feb,Nitrogen,13063.88,,2
-234,Gujranwala,PUNJAB,2011,Feb,Nitrogen,23253.50,,2
-235,Gujrat,PUNJAB,2011,Feb,Nitrogen,6657.43,,2
-236,Hafizabad,PUNJAB,2011,Feb,Nitrogen,6541.66,,2
-237,Jhang,PUNJAB,2011,Feb,Nitrogen,16062.64,,2
-238,Jhelum,PUNJAB,2011,Feb,Nitrogen,229.95,,2
-239,Kasur,PUNJAB,2011,Feb,Nitrogen,11092.71,,2
-240,Khanewal,PUNJAB,2011,Feb,Nitrogen,12821.29,,2
-241,Khushab,PUNJAB,2011,Feb,Nitrogen,2089.18,,2
-242,Lahore,PUNJAB,2011,Feb,Nitrogen,5616.17,,2
-243,Layyah,PUNJAB,2011,Feb,Nitrogen,10374.72,,2
-244,Lodhran,PUNJAB,2011,Feb,Nitrogen,14734.02,,2
-245,Mandi Bahauddin,PUNJAB,2011,Feb,Nitrogen,5264.40,,2
-246,Mianwali,PUNJAB,2011,Feb,Nitrogen,3179.50,,2
-247,Multan,PUNJAB,2011,Feb,Nitrogen,21298.36,,2
-248,Muzaffargarh,PUNJAB,2011,Feb,Nitrogen,9336.02,,2
-250,Narowal,PUNJAB,2011,Feb,Nitrogen,10176.19,,2
-251,Okara,PUNJAB,2011,Feb,Nitrogen,24278.82,,2
-252,Pakpattan,PUNJAB,2011,Feb,Nitrogen,9071.76,,2
-253,Rahim Yar Khan,PUNJAB,2011,Feb,Nitrogen,22242.14,,2
-254,Rajanpur,PUNJAB,2011,Feb,Nitrogen,10163.06,,2
-255,Rawalpindi,PUNJAB,2011,Feb,Nitrogen,1737.23,,2
-256,Sahiwal,PUNJAB,2011,Feb,Nitrogen,13013.25,,2
-257,Sargodha,PUNJAB,2011,Feb,Nitrogen,8641.60,,2
-258,Sheikhupura,PUNJAB,2011,Feb,Nitrogen,9228.87,,2
-259,Sialkot,PUNJAB,2011,Feb,Nitrogen,5777.93,,2
-260,Toba Tek Singh,PUNJAB,2011,Feb,Nitrogen,5994.18,,2
-261,Vehari,PUNJAB,2011,Feb,Nitrogen,16646.58,,2
-262,Badin,SINDH,2011,Feb,Nitrogen,1591.51,,2
-263,Dadu,SINDH,2011,Feb,Nitrogen,1721.69,,2
-264,Ghotki,SINDH,2011,Feb,Nitrogen,17667.41,,2
-265,Hyderabad,SINDH,2011,Feb,Nitrogen,7005.48,,2
-266,Jacobabad,SINDH,2011,Feb,Nitrogen,4288.73,,2
-273,Khairpur,SINDH,2011,Feb,Nitrogen,7307.23,,2
-274,Larkana,SINDH,2011,Feb,Nitrogen,4347.34,,2
-277,Mirpur Khas,SINDH,2011,Feb,Nitrogen,9753.71,,2
-278,Naushahro Feroze,SINDH,2011,Feb,Nitrogen,5528.96,,2
-280,Sanghar,SINDH,2011,Feb,Nitrogen,6380.45,,2
-281,Shaheed Benazirabad,SINDH,2011,Feb,Nitrogen,5894.63,,2
-282,Shikarpur,SINDH,2011,Feb,Nitrogen,1804.10,,2
-283,Sukkur,SINDH,2011,Feb,Nitrogen,4711.73,,2
-287,Thatta,SINDH,2011,Feb,Nitrogen,909.61,,2
-288,Umerkot,SINDH,2011,Feb,Nitrogen,781.79,,2
-306,Jafarabad,BALOCHISTAN,2011,Mar,Nitrogen,3108.07,,3
-317,Nasirabad,BALOCHISTAN,2011,Mar,Nitrogen,0.00,,3
-346,Bannu,KPK,2011,Mar,Nitrogen,3164.16,,3
-348,Buner,KPK,2011,Mar,Nitrogen,150.88,,3
-349,Charsadda,KPK,2011,Mar,Nitrogen,1022.60,,3
-351,Dera Ismail Khan,KPK,2011,Mar,Nitrogen,113.60,,3
-353,Haripur,KPK,2011,Mar,Nitrogen,244.75,,3
-357,Lakki Marwat,KPK,2011,Mar,Nitrogen,286.80,,3
-359,Malakand,KPK,2011,Mar,Nitrogen,225.15,,3
-361,Mardan,KPK,2011,Mar,Nitrogen,5428.85,,3
-362,Nowshera,KPK,2011,Mar,Nitrogen,1614.60,,3
-363,Peshawar,KPK,2011,Mar,Nitrogen,5158.00,,3
-365,Swabi,KPK,2011,Mar,Nitrogen,422.60,,3
-370,Attock,PUNJAB,2011,Mar,Nitrogen,193.84,,3
-371,Bahawalnagar,PUNJAB,2011,Mar,Nitrogen,7142.32,,3
-372,Bahawalpur,PUNJAB,2011,Mar,Nitrogen,8678.89,,3
-373,Bhakkar,PUNJAB,2011,Mar,Nitrogen,4325.29,,3
-374,Chakwal,PUNJAB,2011,Mar,Nitrogen,190.67,,3
-376,Dera Ghazi Khan,PUNJAB,2011,Mar,Nitrogen,7573.49,,3
-377,Faisalabad,PUNJAB,2011,Mar,Nitrogen,8646.66,,3
-378,Gujranwala,PUNJAB,2011,Mar,Nitrogen,22090.40,,3
-379,Gujrat,PUNJAB,2011,Mar,Nitrogen,2873.29,,3
-380,Hafizabad,PUNJAB,2011,Mar,Nitrogen,3844.85,,3
-381,Jhang,PUNJAB,2011,Mar,Nitrogen,15027.88,,3
-382,Jhelum,PUNJAB,2011,Mar,Nitrogen,385.00,,3
-383,Kasur,PUNJAB,2011,Mar,Nitrogen,5575.55,,3
-384,Khanewal,PUNJAB,2011,Mar,Nitrogen,8158.26,,3
-385,Khushab,PUNJAB,2011,Mar,Nitrogen,2370.74,,3
-386,Lahore,PUNJAB,2011,Mar,Nitrogen,4228.05,,3
-387,Layyah,PUNJAB,2011,Mar,Nitrogen,5446.21,,3
-388,Lodhran,PUNJAB,2011,Mar,Nitrogen,10992.97,,3
-389,Mandi Bahauddin,PUNJAB,2011,Mar,Nitrogen,4642.26,,3
-390,Mianwali,PUNJAB,2011,Mar,Nitrogen,1581.53,,3
-391,Multan,PUNJAB,2011,Mar,Nitrogen,16843.86,,3
-392,Muzaffargarh,PUNJAB,2011,Mar,Nitrogen,4264.24,,3
-394,Narowal,PUNJAB,2011,Mar,Nitrogen,9483.34,,3
-395,Okara,PUNJAB,2011,Mar,Nitrogen,19542.83,,3
-396,Pakpattan,PUNJAB,2011,Mar,Nitrogen,6804.40,,3
-397,Rahim Yar Khan,PUNJAB,2011,Mar,Nitrogen,15668.66,,3
-398,Rajanpur,PUNJAB,2011,Mar,Nitrogen,4412.79,,3
-399,Rawalpindi,PUNJAB,2011,Mar,Nitrogen,636.09,,3
-400,Sahiwal,PUNJAB,2011,Mar,Nitrogen,5411.01,,3
-401,Sargodha,PUNJAB,2011,Mar,Nitrogen,6928.80,,3
-402,Sheikhupura,PUNJAB,2011,Mar,Nitrogen,6798.80,,3
-403,Sialkot,PUNJAB,2011,Mar,Nitrogen,2988.43,,3
-404,Toba Tek Singh,PUNJAB,2011,Mar,Nitrogen,5362.87,,3
-405,Vehari,PUNJAB,2011,Mar,Nitrogen,9654.74,,3
-406,Badin,SINDH,2011,Mar,Nitrogen,2105.51,,3
-407,Dadu,SINDH,2011,Mar,Nitrogen,3843.72,,3
-408,Ghotki,SINDH,2011,Mar,Nitrogen,8205.41,,3
-409,Hyderabad,SINDH,2011,Mar,Nitrogen,5849.10,,3
-410,Jacobabad,SINDH,2011,Mar,Nitrogen,1819.03,,3
-417,Khairpur,SINDH,2011,Mar,Nitrogen,3948.44,,3
-418,Larkana,SINDH,2011,Mar,Nitrogen,3410.78,,3
-421,Mirpur Khas,SINDH,2011,Mar,Nitrogen,6601.12,,3
-422,Naushahro Feroze,SINDH,2011,Mar,Nitrogen,4127.31,,3
-424,Sanghar,SINDH,2011,Mar,Nitrogen,7698.21,,3
-425,Shaheed Benazirabad,SINDH,2011,Mar,Nitrogen,3933.91,,3
-426,Shikarpur,SINDH,2011,Mar,Nitrogen,4249.67,,3
-427,Sukkur,SINDH,2011,Mar,Nitrogen,2374.18,,3
-431,Thatta,SINDH,2011,Mar,Nitrogen,1276.74,,3
-432,Umerkot,SINDH,2011,Mar,Nitrogen,281.23,,3
-450,Jafarabad,BALOCHISTAN,2011,Apr,Nitrogen,1786.46,,4
-461,Nasirabad,BALOCHISTAN,2011,Apr,Nitrogen,796.97,,4
-490,Bannu,KPK,2011,Apr,Nitrogen,587.31,,4
-492,Buner,KPK,2011,Apr,Nitrogen,133.05,,4
-493,Charsadda,KPK,2011,Apr,Nitrogen,1270.74,,4
-495,Dera Ismail Khan,KPK,2011,Apr,Nitrogen,91.53,,4
-497,Haripur,KPK,2011,Apr,Nitrogen,476.62,,4
-501,Lakki Marwat,KPK,2011,Apr,Nitrogen,503.60,,4
-503,Malakand,KPK,2011,Apr,Nitrogen,84.39,,4
-505,Mardan,KPK,2011,Apr,Nitrogen,5500.84,,4
-506,Nowshera,KPK,2011,Apr,Nitrogen,1702.20,,4
-507,Peshawar,KPK,2011,Apr,Nitrogen,4741.26,,4
-509,Swabi,KPK,2011,Apr,Nitrogen,572.68,,4
-514,Attock,PUNJAB,2011,Apr,Nitrogen,203.06,,4
-515,Bahawalnagar,PUNJAB,2011,Apr,Nitrogen,8725.36,,4
-516,Bahawalpur,PUNJAB,2011,Apr,Nitrogen,9532.51,,4
-517,Bhakkar,PUNJAB,2011,Apr,Nitrogen,1754.85,,4
-518,Chakwal,PUNJAB,2011,Apr,Nitrogen,369.67,,4
-520,Dera Ghazi Khan,PUNJAB,2011,Apr,Nitrogen,8578.88,,4
-521,Faisalabad,PUNJAB,2011,Apr,Nitrogen,7294.29,,4
-522,Gujranwala,PUNJAB,2011,Apr,Nitrogen,18303.93,,4
-523,Gujrat,PUNJAB,2011,Apr,Nitrogen,2854.67,,4
-524,Hafizabad,PUNJAB,2011,Apr,Nitrogen,5145.93,,4
-525,Jhang,PUNJAB,2011,Apr,Nitrogen,12232.73,,4
-526,Jhelum,PUNJAB,2011,Apr,Nitrogen,187.44,,4
-527,Kasur,PUNJAB,2011,Apr,Nitrogen,6669.29,,4
-528,Khanewal,PUNJAB,2011,Apr,Nitrogen,10254.67,,4
-529,Khushab,PUNJAB,2011,Apr,Nitrogen,1250.84,,4
-530,Lahore,PUNJAB,2011,Apr,Nitrogen,6054.95,,4
-531,Layyah,PUNJAB,2011,Apr,Nitrogen,5354.51,,4
-532,Lodhran,PUNJAB,2011,Apr,Nitrogen,10895.88,,4
-533,Mandi Bahauddin,PUNJAB,2011,Apr,Nitrogen,5173.72,,4
-534,Mianwali,PUNJAB,2011,Apr,Nitrogen,921.46,,4
-535,Multan,PUNJAB,2011,Apr,Nitrogen,15655.01,,4
-536,Muzaffargarh,PUNJAB,2011,Apr,Nitrogen,7669.44,,4
-538,Narowal,PUNJAB,2011,Apr,Nitrogen,9393.72,,4
-539,Okara,PUNJAB,2011,Apr,Nitrogen,15632.78,,4
-540,Pakpattan,PUNJAB,2011,Apr,Nitrogen,7917.50,,4
-541,Rahim Yar Khan,PUNJAB,2011,Apr,Nitrogen,15702.08,,4
-542,Rajanpur,PUNJAB,2011,Apr,Nitrogen,6694.73,,4
-543,Rawalpindi,PUNJAB,2011,Apr,Nitrogen,765.38,,4
-544,Sahiwal,PUNJAB,2011,Apr,Nitrogen,5062.06,,4
-545,Sargodha,PUNJAB,2011,Apr,Nitrogen,6788.03,,4
-546,Sheikhupura,PUNJAB,2011,Apr,Nitrogen,6181.50,,4
-547,Sialkot,PUNJAB,2011,Apr,Nitrogen,3337.81,,4
-548,Toba Tek Singh,PUNJAB,2011,Apr,Nitrogen,4937.09,,4
-549,Vehari,PUNJAB,2011,Apr,Nitrogen,11226.38,,4
-550,Badin,SINDH,2011,Apr,Nitrogen,1957.10,,4
-551,Dadu,SINDH,2011,Apr,Nitrogen,2242.54,,4
-552,Ghotki,SINDH,2011,Apr,Nitrogen,8420.55,,4
-553,Hyderabad,SINDH,2011,Apr,Nitrogen,6435.74,,4
-554,Jacobabad,SINDH,2011,Apr,Nitrogen,2928.16,,4
-565,Mirpur Khas,SINDH,2011,Apr,Nitrogen,4970.52,,4
-566,Naushahro Feroze,SINDH,2011,Apr,Nitrogen,4503.56,,4
-568,Sanghar,SINDH,2011,Apr,Nitrogen,6312.64,,4
-569,Shaheed Benazirabad,SINDH,2011,Apr,Nitrogen,6079.58,,4
-570,Shikarpur,SINDH,2011,Apr,Nitrogen,1838.47,,4
-571,Sukkur,SINDH,2011,Apr,Nitrogen,3460.82,,4
-575,Thatta,SINDH,2011,Apr,Nitrogen,947.59,,4
-576,Umerkot,SINDH,2011,Apr,Nitrogen,444.21,,4
-594,Jafarabad,BALOCHISTAN,2011,May,Nitrogen,806.28,,5
-605,Nasirabad,BALOCHISTAN,2011,May,Nitrogen,0.00,,5
-634,Bannu,KPK,2011,May,Nitrogen,519.63,,5
-636,Buner,KPK,2011,May,Nitrogen,48.63,,5
-637,Charsadda,KPK,2011,May,Nitrogen,193.79,,5
-639,Dera Ismail Khan,KPK,2011,May,Nitrogen,16.56,,5
-641,Haripur,KPK,2011,May,Nitrogen,60.79,,5
-645,Lakki Marwat,KPK,2011,May,Nitrogen,97.68,,5
-647,Malakand,KPK,2011,May,Nitrogen,55.97,,5
+ID_fer,distr,prov,year,mon,factor,value
+58,Bannu,KPK,2011,Jan,Nitrogen,"1519,76"
+60,Buner,KPK,2011,Jan,Nitrogen,"22,88"
+61,Charsadda,KPK,2011,Jan,Nitrogen,"816,07"
+63,Dera Ismail Khan,KPK,2011,Jan,Nitrogen,0
+65,Haripur,KPK,2011,Jan,Nitrogen,"529,88"
+69,Lakki Marwat,KPK,2011,Jan,Nitrogen,"194,45"
+71,Malakand,KPK,2011,Jan,Nitrogen,"87,77"
+73,Mardan,KPK,2011,Jan,Nitrogen,"2651,37"
+74,Nowshera,KPK,2011,Jan,Nitrogen,"360,3"
+75,Peshawar,KPK,2011,Jan,Nitrogen,"5210,86"
+77,Swabi,KPK,2011,Jan,Nitrogen,"339,16"
+82,Attock,PUNJAB,2011,Jan,Nitrogen,"717,91"
+83,Bahawalnagar,PUNJAB,2011,Jan,Nitrogen,"6097,38"
+84,Bahawalpur,PUNJAB,2011,Jan,Nitrogen,"8275,89"
+85,Bhakkar,PUNJAB,2011,Jan,Nitrogen,2797
+86,Chakwal,PUNJAB,2011,Jan,Nitrogen,"1233,84"
+88,Dera Ghazi Khan,PUNJAB,2011,Jan,Nitrogen,"3932,25"
+89,Faisalabad,PUNJAB,2011,Jan,Nitrogen,"13992,6"
+90,Gujranwala,PUNJAB,2011,Jan,Nitrogen,"9641,86"
+91,Gujrat,PUNJAB,2011,Jan,Nitrogen,"6348,91"
+92,Hafizabad,PUNJAB,2011,Jan,Nitrogen,"3519,37"
+93,Jhang,PUNJAB,2011,Jan,Nitrogen,"10055,89"
+94,Jhelum,PUNJAB,2011,Jan,Nitrogen,"463,41"
+95,Kasur,PUNJAB,2011,Jan,Nitrogen,"11870,41"
+96,Khanewal,PUNJAB,2011,Jan,Nitrogen,"8911,07"
+97,Khushab,PUNJAB,2011,Jan,Nitrogen,"1278,93"
+98,Lahore,PUNJAB,2011,Jan,Nitrogen,"4459,74"
+99,Layyah,PUNJAB,2011,Jan,Nitrogen,"2941,01"
+100,Lodhran,PUNJAB,2011,Jan,Nitrogen,"5363,45"
+101,Mandi Bahauddin,PUNJAB,2011,Jan,Nitrogen,"2758,36"
+102,Mianwali,PUNJAB,2011,Jan,Nitrogen,"2146,64"
+103,Multan,PUNJAB,2011,Jan,Nitrogen,"8265,32"
+104,Muzaffargarh,PUNJAB,2011,Jan,Nitrogen,"6773,02"
+106,Narowal,PUNJAB,2011,Jan,Nitrogen,"5933,72"
+107,Okara,PUNJAB,2011,Jan,Nitrogen,"13399,05"
+108,Pakpattan,PUNJAB,2011,Jan,Nitrogen,"6999,77"
+109,Rahim Yar Khan,PUNJAB,2011,Jan,Nitrogen,"10434,09"
+110,Rajanpur,PUNJAB,2011,Jan,Nitrogen,"3181,31"
+111,Rawalpindi,PUNJAB,2011,Jan,Nitrogen,"2312,45"
+112,Sahiwal,PUNJAB,2011,Jan,Nitrogen,"7890,93"
+113,Sargodha,PUNJAB,2011,Jan,Nitrogen,"7817,93"
+114,Sheikhupura,PUNJAB,2011,Jan,Nitrogen,"8923,62"
+115,Sialkot,PUNJAB,2011,Jan,Nitrogen,"6289,95"
+116,Toba Tek Singh,PUNJAB,2011,Jan,Nitrogen,"5455,11"
+117,Vehari,PUNJAB,2011,Jan,Nitrogen,"7413,64"
+118,Badin,SINDH,2011,Jan,Nitrogen,"4867,12"
+119,Dadu,SINDH,2011,Jan,Nitrogen,"2529,87"
+120,Ghotki,SINDH,2011,Jan,Nitrogen,"2623,62"
+121,Hyderabad,SINDH,2011,Jan,Nitrogen,"5773,48"
+122,Jacobabad,SINDH,2011,Jan,Nitrogen,"7077,99"
+129,Khairpur,SINDH,2011,Jan,Nitrogen,"3929,83"
+130,Larkana,SINDH,2011,Jan,Nitrogen,"2112,73"
+133,Mirpur Khas,SINDH,2011,Jan,Nitrogen,"5077,03"
+134,Naushahro Feroze,SINDH,2011,Jan,Nitrogen,"3278,19"
+136,Sanghar,SINDH,2011,Jan,Nitrogen,"6467,98"
+137,Shaheed Benazirabad,SINDH,2011,Jan,Nitrogen,"5497,34"
+138,Shikarpur,SINDH,2011,Jan,Nitrogen,"777,3"
+139,Sukkur,SINDH,2011,Jan,Nitrogen,"1628,62"
+143,Thatta,SINDH,2011,Jan,Nitrogen,"1376,83"
+144,Umerkot,SINDH,2011,Jan,Nitrogen,"783,14"
+162,Jafarabad,BALOCHISTAN,2011,Feb,Nitrogen,"456,27"
+173,Nasirabad,BALOCHISTAN,2011,Feb,Nitrogen,0
+202,Bannu,KPK,2011,Feb,Nitrogen,"6823,08"
+204,Buner,KPK,2011,Feb,Nitrogen,"461,86"
+205,Charsadda,KPK,2011,Feb,Nitrogen,"1600,01"
+207,Dera Ismail Khan,KPK,2011,Feb,Nitrogen,"66,4"
+209,Haripur,KPK,2011,Feb,Nitrogen,"516,32"
+213,Lakki Marwat,KPK,2011,Feb,Nitrogen,"164,42"
+215,Malakand,KPK,2011,Feb,Nitrogen,"302,45"
+217,Mardan,KPK,2011,Feb,Nitrogen,"6642,08"
+218,Nowshera,KPK,2011,Feb,Nitrogen,"456,19"
+219,Peshawar,KPK,2011,Feb,Nitrogen,"6819,97"
+221,Swabi,KPK,2011,Feb,Nitrogen,"510,72"
+226,Attock,PUNJAB,2011,Feb,Nitrogen,"607,35"
+227,Bahawalnagar,PUNJAB,2011,Feb,Nitrogen,"11893,48"
+228,Bahawalpur,PUNJAB,2011,Feb,Nitrogen,"15860,47"
+229,Bhakkar,PUNJAB,2011,Feb,Nitrogen,"4627,6"
+230,Chakwal,PUNJAB,2011,Feb,Nitrogen,"862,49"
+232,Dera Ghazi Khan,PUNJAB,2011,Feb,Nitrogen,"8975,11"
+233,Faisalabad,PUNJAB,2011,Feb,Nitrogen,"13063,88"
+234,Gujranwala,PUNJAB,2011,Feb,Nitrogen,"23253,5"
+235,Gujrat,PUNJAB,2011,Feb,Nitrogen,"6657,43"
+236,Hafizabad,PUNJAB,2011,Feb,Nitrogen,"6541,66"
+237,Jhang,PUNJAB,2011,Feb,Nitrogen,"16062,64"
+238,Jhelum,PUNJAB,2011,Feb,Nitrogen,"229,95"
+239,Kasur,PUNJAB,2011,Feb,Nitrogen,"11092,71"
+240,Khanewal,PUNJAB,2011,Feb,Nitrogen,"12821,29"
+241,Khushab,PUNJAB,2011,Feb,Nitrogen,"2089,18"
+242,Lahore,PUNJAB,2011,Feb,Nitrogen,"5616,17"
+243,Layyah,PUNJAB,2011,Feb,Nitrogen,"10374,72"
+244,Lodhran,PUNJAB,2011,Feb,Nitrogen,"14734,02"
+245,Mandi Bahauddin,PUNJAB,2011,Feb,Nitrogen,"5264,4"
+246,Mianwali,PUNJAB,2011,Feb,Nitrogen,"3179,5"
+247,Multan,PUNJAB,2011,Feb,Nitrogen,"21298,36"
+248,Muzaffargarh,PUNJAB,2011,Feb,Nitrogen,"9336,02"
+250,Narowal,PUNJAB,2011,Feb,Nitrogen,"10176,19"
+251,Okara,PUNJAB,2011,Feb,Nitrogen,"24278,82"
+252,Pakpattan,PUNJAB,2011,Feb,Nitrogen,"9071,76"
+253,Rahim Yar Khan,PUNJAB,2011,Feb,Nitrogen,"22242,14"
+254,Rajanpur,PUNJAB,2011,Feb,Nitrogen,"10163,06"
+255,Rawalpindi,PUNJAB,2011,Feb,Nitrogen,"1737,23"
+256,Sahiwal,PUNJAB,2011,Feb,Nitrogen,"13013,25"
+257,Sargodha,PUNJAB,2011,Feb,Nitrogen,"8641,6"
+258,Sheikhupura,PUNJAB,2011,Feb,Nitrogen,"9228,87"
+259,Sialkot,PUNJAB,2011,Feb,Nitrogen,"5777,93"
+260,Toba Tek Singh,PUNJAB,2011,Feb,Nitrogen,"5994,18"
+261,Vehari,PUNJAB,2011,Feb,Nitrogen,"16646,58"
+262,Badin,SINDH,2011,Feb,Nitrogen,"1591,51"
+263,Dadu,SINDH,2011,Feb,Nitrogen,"1721,69"
+264,Ghotki,SINDH,2011,Feb,Nitrogen,"17667,41"
+265,Hyderabad,SINDH,2011,Feb,Nitrogen,"7005,48"
+266,Jacobabad,SINDH,2011,Feb,Nitrogen,"4288,73"
+273,Khairpur,SINDH,2011,Feb,Nitrogen,"7307,23"
+274,Larkana,SINDH,2011,Feb,Nitrogen,"4347,34"
+277,Mirpur Khas,SINDH,2011,Feb,Nitrogen,"9753,71"
+278,Naushahro Feroze,SINDH,2011,Feb,Nitrogen,"5528,96"
+280,Sanghar,SINDH,2011,Feb,Nitrogen,"6380,45"
+281,Shaheed Benazirabad,SINDH,2011,Feb,Nitrogen,"5894,63"
+282,Shikarpur,SINDH,2011,Feb,Nitrogen,"1804,1"
+283,Sukkur,SINDH,2011,Feb,Nitrogen,"4711,73"
+287,Thatta,SINDH,2011,Feb,Nitrogen,"909,61"
+288,Umerkot,SINDH,2011,Feb,Nitrogen,"781,79"
+306,Jafarabad,BALOCHISTAN,2011,Mar,Nitrogen,"3108,07"
+317,Nasirabad,BALOCHISTAN,2011,Mar,Nitrogen,0
+346,Bannu,KPK,2011,Mar,Nitrogen,"3164,16"
+348,Buner,KPK,2011,Mar,Nitrogen,"150,88"
+349,Charsadda,KPK,2011,Mar,Nitrogen,"1022,6"
+351,Dera Ismail Khan,KPK,2011,Mar,Nitrogen,"113,6"
+353,Haripur,KPK,2011,Mar,Nitrogen,"244,75"
+357,Lakki Marwat,KPK,2011,Mar,Nitrogen,"286,8"
+359,Malakand,KPK,2011,Mar,Nitrogen,"225,15"
+361,Mardan,KPK,2011,Mar,Nitrogen,"5428,85"
+362,Nowshera,KPK,2011,Mar,Nitrogen,"1614,6"
+363,Peshawar,KPK,2011,Mar,Nitrogen,5158
+365,Swabi,KPK,2011,Mar,Nitrogen,"422,6"
+370,Attock,PUNJAB,2011,Mar,Nitrogen,"193,84"
+371,Bahawalnagar,PUNJAB,2011,Mar,Nitrogen,"7142,32"
+372,Bahawalpur,PUNJAB,2011,Mar,Nitrogen,"8678,89"
+373,Bhakkar,PUNJAB,2011,Mar,Nitrogen,"4325,29"
+374,Chakwal,PUNJAB,2011,Mar,Nitrogen,"190,67"
+376,Dera Ghazi Khan,PUNJAB,2011,Mar,Nitrogen,"7573,49"
+377,Faisalabad,PUNJAB,2011,Mar,Nitrogen,"8646,66"
+378,Gujranwala,PUNJAB,2011,Mar,Nitrogen,"22090,4"
+379,Gujrat,PUNJAB,2011,Mar,Nitrogen,"2873,29"
+380,Hafizabad,PUNJAB,2011,Mar,Nitrogen,"3844,85"
+381,Jhang,PUNJAB,2011,Mar,Nitrogen,"15027,88"
+382,Jhelum,PUNJAB,2011,Mar,Nitrogen,385
+383,Kasur,PUNJAB,2011,Mar,Nitrogen,"5575,55"
+384,Khanewal,PUNJAB,2011,Mar,Nitrogen,"8158,26"
+385,Khushab,PUNJAB,2011,Mar,Nitrogen,"2370,74"
+386,Lahore,PUNJAB,2011,Mar,Nitrogen,"4228,05"
+387,Layyah,PUNJAB,2011,Mar,Nitrogen,"5446,21"
+388,Lodhran,PUNJAB,2011,Mar,Nitrogen,"10992,97"
+389,Mandi Bahauddin,PUNJAB,2011,Mar,Nitrogen,"4642,26"
+390,Mianwali,PUNJAB,2011,Mar,Nitrogen,"1581,53"
+391,Multan,PUNJAB,2011,Mar,Nitrogen,"16843,86"
+392,Muzaffargarh,PUNJAB,2011,Mar,Nitrogen,"4264,24"
+394,Narowal,PUNJAB,2011,Mar,Nitrogen,"9483,34"
+395,Okara,PUNJAB,2011,Mar,Nitrogen,"19542,83"
+396,Pakpattan,PUNJAB,2011,Mar,Nitrogen,"6804,4"
+397,Rahim Yar Khan,PUNJAB,2011,Mar,Nitrogen,"15668,66"
+398,Rajanpur,PUNJAB,2011,Mar,Nitrogen,"4412,79"
+399,Rawalpindi,PUNJAB,2011,Mar,Nitrogen,"636,09"
+400,Sahiwal,PUNJAB,2011,Mar,Nitrogen,"5411,01"
+401,Sargodha,PUNJAB,2011,Mar,Nitrogen,"6928,8"
+402,Sheikhupura,PUNJAB,2011,Mar,Nitrogen,"6798,8"
+403,Sialkot,PUNJAB,2011,Mar,Nitrogen,"2988,43"
+404,Toba Tek Singh,PUNJAB,2011,Mar,Nitrogen,"5362,87"
+405,Vehari,PUNJAB,2011,Mar,Nitrogen,"9654,74"
+406,Badin,SINDH,2011,Mar,Nitrogen,"2105,51"
+407,Dadu,SINDH,2011,Mar,Nitrogen,"3843,72"
+408,Ghotki,SINDH,2011,Mar,Nitrogen,"8205,41"
+409,Hyderabad,SINDH,2011,Mar,Nitrogen,"5849,1"
+410,Jacobabad,SINDH,2011,Mar,Nitrogen,"1819,03"
+417,Khairpur,SINDH,2011,Mar,Nitrogen,"3948,44"
+418,Larkana,SINDH,2011,Mar,Nitrogen,"3410,78"
+421,Mirpur Khas,SINDH,2011,Mar,Nitrogen,"6601,12"
+422,Naushahro Feroze,SINDH,2011,Mar,Nitrogen,"4127,31"
+424,Sanghar,SINDH,2011,Mar,Nitrogen,"7698,21"
+425,Shaheed Benazirabad,SINDH,2011,Mar,Nitrogen,"3933,91"
+426,Shikarpur,SINDH,2011,Mar,Nitrogen,"4249,67"
+427,Sukkur,SINDH,2011,Mar,Nitrogen,"2374,18"
+431,Thatta,SINDH,2011,Mar,Nitrogen,"1276,74"
+432,Umerkot,SINDH,2011,Mar,Nitrogen,"281,23"
+450,Jafarabad,BALOCHISTAN,2011,Apr,Nitrogen,"1786,46"
+461,Nasirabad,BALOCHISTAN,2011,Apr,Nitrogen,"796,97"
+490,Bannu,KPK,2011,Apr,Nitrogen,"587,31"
+492,Buner,KPK,2011,Apr,Nitrogen,"133,05"
+493,Charsadda,KPK,2011,Apr,Nitrogen,"1270,74"
+495,Dera Ismail Khan,KPK,2011,Apr,Nitrogen,"91,53"
+497,Haripur,KPK,2011,Apr,Nitrogen,"476,62"
+501,Lakki Marwat,KPK,2011,Apr,Nitrogen,"503,6"
+503,Malakand,KPK,2011,Apr,Nitrogen,"84,39"
+505,Mardan,KPK,2011,Apr,Nitrogen,"5500,84"
+506,Nowshera,KPK,2011,Apr,Nitrogen,"1702,2"
+507,Peshawar,KPK,2011,Apr,Nitrogen,"4741,26"
+509,Swabi,KPK,2011,Apr,Nitrogen,"572,68"
+514,Attock,PUNJAB,2011,Apr,Nitrogen,"203,06"
+515,Bahawalnagar,PUNJAB,2011,Apr,Nitrogen,"8725,36"
+516,Bahawalpur,PUNJAB,2011,Apr,Nitrogen,"9532,51"
+517,Bhakkar,PUNJAB,2011,Apr,Nitrogen,"1754,85"
+518,Chakwal,PUNJAB,2011,Apr,Nitrogen,"369,67"
+520,Dera Ghazi Khan,PUNJAB,2011,Apr,Nitrogen,"8578,88"
+521,Faisalabad,PUNJAB,2011,Apr,Nitrogen,"7294,29"
+522,Gujranwala,PUNJAB,2011,Apr,Nitrogen,"18303,93"
+523,Gujrat,PUNJAB,2011,Apr,Nitrogen,"2854,67"
+524,Hafizabad,PUNJAB,2011,Apr,Nitrogen,"5145,93"
+525,Jhang,PUNJAB,2011,Apr,Nitrogen,"12232,73"
+526,Jhelum,PUNJAB,2011,Apr,Nitrogen,"187,44"
+527,Kasur,PUNJAB,2011,Apr,Nitrogen,"6669,29"
+528,Khanewal,PUNJAB,2011,Apr,Nitrogen,"10254,67"
+529,Khushab,PUNJAB,2011,Apr,Nitrogen,"1250,84"
+530,Lahore,PUNJAB,2011,Apr,Nitrogen,"6054,95"
+531,Layyah,PUNJAB,2011,Apr,Nitrogen,"5354,51"
+532,Lodhran,PUNJAB,2011,Apr,Nitrogen,"10895,88"
+533,Mandi Bahauddin,PUNJAB,2011,Apr,Nitrogen,"5173,72"
+534,Mianwali,PUNJAB,2011,Apr,Nitrogen,"921,46"
+535,Multan,PUNJAB,2011,Apr,Nitrogen,"15655,01"
+536,Muzaffargarh,PUNJAB,2011,Apr,Nitrogen,"7669,44"
+538,Narowal,PUNJAB,2011,Apr,Nitrogen,"9393,72"
+539,Okara,PUNJAB,2011,Apr,Nitrogen,"15632,78"
+540,Pakpattan,PUNJAB,2011,Apr,Nitrogen,"7917,5"
+541,Rahim Yar Khan,PUNJAB,2011,Apr,Nitrogen,"15702,08"
+542,Rajanpur,PUNJAB,2011,Apr,Nitrogen,"6694,73"
+543,Rawalpindi,PUNJAB,2011,Apr,Nitrogen,"765,38"
+544,Sahiwal,PUNJAB,2011,Apr,Nitrogen,"5062,06"
+545,Sargodha,PUNJAB,2011,Apr,Nitrogen,"6788,03"
+546,Sheikhupura,PUNJAB,2011,Apr,Nitrogen,"6181,5"
+547,Sialkot,PUNJAB,2011,Apr,Nitrogen,"3337,81"
+548,Toba Tek Singh,PUNJAB,2011,Apr,Nitrogen,"4937,09"
+549,Vehari,PUNJAB,2011,Apr,Nitrogen,"11226,38"
+550,Badin,SINDH,2011,Apr,Nitrogen,"1957,1"
+551,Dadu,SINDH,2011,Apr,Nitrogen,"2242,54"
+552,Ghotki,SINDH,2011,Apr,Nitrogen,"8420,55"
+553,Hyderabad,SINDH,2011,Apr,Nitrogen,"6435,74"
+554,Jacobabad,SINDH,2011,Apr,Nitrogen,"2928,16"
+565,Mirpur Khas,SINDH,2011,Apr,Nitrogen,"4970,52"
+566,Naushahro Feroze,SINDH,2011,Apr,Nitrogen,"4503,56"
+568,Sanghar,SINDH,2011,Apr,Nitrogen,"6312,64"
+569,Shaheed Benazirabad,SINDH,2011,Apr,Nitrogen,"6079,58"
+570,Shikarpur,SINDH,2011,Apr,Nitrogen,"1838,47"
+571,Sukkur,SINDH,2011,Apr,Nitrogen,"3460,82"
+575,Thatta,SINDH,2011,Apr,Nitrogen,"947,59"
+576,Umerkot,SINDH,2011,Apr,Nitrogen,"444,21"
+594,Jafarabad,BALOCHISTAN,2011,May,Nitrogen,"806,28"
+605,Nasirabad,BALOCHISTAN,2011,May,Nitrogen,0
+634,Bannu,KPK,2011,May,Nitrogen,"519,63"
+636,Buner,KPK,2011,May,Nitrogen,"48,63"
+637,Charsadda,KPK,2011,May,Nitrogen,"193,79"
+639,Dera Ismail Khan,KPK,2011,May,Nitrogen,"16,56"
+641,Haripur,KPK,2011,May,Nitrogen,"60,79"
+645,Lakki Marwat,KPK,2011,May,Nitrogen,"97,68"
+647,Malakand,KPK,2011,May,Nitrogen,"55,97"
