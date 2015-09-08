@@ -22,13 +22,13 @@ package it.geosolutions.geobatch.opensdi.csvingest;
 import java.io.File;
 import java.net.URISyntaxException;
 import java.net.URL;
-import org.apache.commons.io.FilenameUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
+import org.apache.commons.io.FilenameUtils;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.rules.TestName;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *

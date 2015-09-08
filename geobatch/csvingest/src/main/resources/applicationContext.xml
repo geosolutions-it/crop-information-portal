@@ -1,6 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+                           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd">
 
-<beans>
+	<util:list id="processors" list-class="java.util.ArrayList">
+		<ref bean="agrometProcessor" />
+		<ref bean="cropProcessor" />
+		<ref bean="cropStatusProcessor" />
+		<ref bean="fertilizerDistrictsProcessor" />
+		<ref bean="fertilizerProvincesProcessor" />
+		<ref bean="marketPriceProcessor" />
+		<ref bean="waterflowProcessor" />
+		<ref bean="withdrawalProcessor" />
+	</util:list>
 
+	<!-- cropDescriptorService
+	agrometDescriptorService
+	unitOfMeasureService -->
+
+
+	<bean id="agrometProcessor"
+		class="it.geosolutions.geobatch.opensdi.csvingest.processor.CSVAgrometProcessor">
+	</bean>
+	<bean id="cropProcessor"
+		class="it.geosolutions.geobatch.opensdi.csvingest.processor.CSVCropProcessor">
+	</bean>
+	<bean id="cropStatusProcessor"
+		class="it.geosolutions.geobatch.opensdi.csvingest.processor.CSVCropStatusProcessor">
+    </bean>
+	<bean id="fertilizerDistrictsProcessor"
+		class="it.geosolutions.geobatch.opensdi.csvingest.processor.CSVDistrictsFertilizerProcessor">
+	</bean>
+	<bean id="fertilizerProvincesProcessor"
+		class="it.geosolutions.geobatch.opensdi.csvingest.processor.CSVProvincesFertilizerProcessor">
+	</bean>
+	
+	<bean id="marketPriceProcessor"
+		class="it.geosolutions.geobatch.opensdi.csvingest.processor.CSVMarketPricesProcessor">
+	</bean>
+	
+	<bean id="waterflowProcessor"
+		class="it.geosolutions.geobatch.opensdi.csvingest.processor.CSVWaterflowProcessor">
+	</bean>
+	
+	<bean id="withdrawalProcessor"
+		class="it.geosolutions.geobatch.opensdi.csvingest.processor.CSVWithdrawalProcessor">
+	</bean>
+	
 </beans>

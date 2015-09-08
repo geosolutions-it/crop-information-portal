@@ -1,0 +1,12 @@
+ID_pri,distr,prov,year,mon,dec,commodity,price
+1,Bahawalpur,PUNJAB,2012,Jan,1,wheat,
+2,Bannu,KPK,2012,Jan,1,wheat,
+3,Faisalabad,PUNJAB,2012,Jan,1,wheat,
+4,Gujranwala,PUNJAB,2012,Jan,1,wheat,
+5,Hyderabad,SINDH,2012,Jan,1,wheat,
+6,Islamabad,PUNJAB,2012,Jan,1,wheat,
+7,Karachi,SINDH,2012,Jan,1,wheat,
+8,Khuzdar,BALOCHISTAN,2012,Jan,1,wheat,
+9,Lahore,PUNJAB,2012,Jan,1,wheat,
+10,Larkana,SINDH,2012,Jan,1,wheat,
+11,Multan,PUNJAB,2012,Jan,1,wheat,

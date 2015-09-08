@@ -1,0 +1,13 @@
+id;year;month;decade;province;district;river;withdrawal;waterFlow
+4;2014;dec;1;PUNJAB;Multan;plate;45;
+6;2014;apr;2;PUNJAB;Gujranwala;tucson;;7
+8;2014;jan;3;PUNJAB;Sahiwal;mendelson;87;
+4235;2014;jun;1;PUNJAB;Dera Ghazi Khan;volga;;67
+54;2014;aug;2;KPK;Faisalabad;unuarhai;;54
+345;2000;dec;3;KPK;Mirpur;unuarhai;;23
+67;2000;apr;1;KPK;Badin;unuarhai;87;
+234356;2000;jan;2;KPK;Naushahro Feroze;mendelson;44;
+234;2000;jun;3;SINDH;Shaheed Benazirabad;mendelson;45;
+234234;2000;aug;1;SINDH;Thatta;mendelson;;45
+234234;2000;mar;2;SINDH;Dera Ismail Khan;mendelson;87;
+34;2000;feb;3;SINDH;Dera Ismail Khan;plate;44;

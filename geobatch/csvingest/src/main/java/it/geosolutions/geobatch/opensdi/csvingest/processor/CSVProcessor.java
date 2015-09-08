@@ -20,19 +20,15 @@
 package it.geosolutions.geobatch.opensdi.csvingest.processor;
 
 import it.geosolutions.geobatch.flow.event.ProgressListenerForwarder;
-import it.geosolutions.opensdi.model.CropDescriptor;
-import it.geosolutions.opensdi.persistence.dao.AgrometDAO;
-import it.geosolutions.opensdi.persistence.dao.CropDataDAO;
-import it.geosolutions.opensdi.persistence.dao.CropDescriptorDAO;
-import it.geosolutions.opensdi.persistence.dao.CropStatusDAO;
+import it.geosolutions.geobatch.opensdi.csvingest.CSVIngestConfiguration;
 import it.geosolutions.opensdi.service.UnitOfMeasureService;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import au.com.bytecode.opencsv.CSVReader;
 
@@ -44,12 +40,11 @@ public abstract class CSVProcessor {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(CSVProcessor.class);
 
-    protected CropDataDAO cropDataDAO;
-    private CropDescriptorDAO cropDescriptorDAO;
-    protected AgrometDAO agrometDAO;
-    protected CropStatusDAO cropStatusDAO;
+    @Autowired
     protected UnitOfMeasureService unitOfMeasureService;
-
+    protected CSVIngestConfiguration flowConfig;
+    protected Map<String, String> flowExecutionParametersMap;
+    
 	public abstract List<String> getHeaders();
 
     public boolean canProcess(List<String> ingestHeaders) {
@@ -81,45 +76,23 @@ public abstract class CSVProcessor {
     public abstract int getRemoveCount();
     public abstract int getUpdateCount();
 
-    protected Map<String, CropDescriptor> getCropDescriptors() {
-        List<CropDescriptor> descList = cropDescriptorDAO.findAll();
-        Map<String, CropDescriptor> ret = new HashMap<String, CropDescriptor>();
-        for (CropDescriptor cropDescriptor : descList) {
-            ret.put(cropDescriptor.getId(), cropDescriptor);
+    public void setUnitOfMeasureService(UnitOfMeasureService unitOfMeasureService) {
+        this.unitOfMeasureService = unitOfMeasureService;
+    }
+
+    public CSVIngestConfiguration getFlowConfig() {
+        return flowConfig;
+    }
+
+    public void setFlowConfig(CSVIngestConfiguration flowConfig) {
+        this.flowConfig = flowConfig;
+    }
+
+    public void setFlowExecutionParametersMap(Map<String, String> flowExecutionParametersMap) {
+        if(this.flowExecutionParametersMap == null || flowExecutionParametersMap.size() != 0 ){
+            this.flowExecutionParametersMap = flowExecutionParametersMap;
         }
-        return ret;
     }
     
-    protected CropDescriptor getCropDescriptor(String id){
-    	return cropDescriptorDAO.find(id);
-    }
-
-    public void setCropDataDAO(CropDataDAO cropDataDAO) {
-        this.cropDataDAO = cropDataDAO;
-    }
-
-    public void setCropDescriptorDAO(CropDescriptorDAO cropDescriptorDAO) {
-        this.cropDescriptorDAO = cropDescriptorDAO;
-    }
-
-    public void setAgrometDAO(AgrometDAO agrometDAO) {
-        this.agrometDAO = agrometDAO;
-    }
-
-    public CropStatusDAO getCropStatusDAO() {
-		return cropStatusDAO;
-	}
-
-	public void setCropStatusDAO(CropStatusDAO cropStatusDAO) {
-		this.cropStatusDAO = cropStatusDAO;
-	}
-
-	public void setUnitOfMeasureService(
-			UnitOfMeasureService unitOfMeasureService) {
-		this.unitOfMeasureService = unitOfMeasureService;
-		
-	}
-	
-	
-
+    
 }

@@ -21,16 +21,22 @@ package it.geosolutions.geobatch.opensdi.csvingest.processor;
 
 import it.geosolutions.geobatch.opensdi.csvingest.utils.CSVPropertyType;
 import it.geosolutions.opensdi.model.CropData;
+import it.geosolutions.opensdi.model.CropDescriptor;
 import it.geosolutions.opensdi.model.UnitOfMeasure;
+import it.geosolutions.opensdi.persistence.dao.CropDataDAO;
+import it.geosolutions.opensdi.persistence.dao.CropDescriptorDAO;
 import it.geosolutions.opensdi.persistence.dao.GenericNRLDAO;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @author ETj (etj at geo-solutions.it)
@@ -41,13 +47,21 @@ import org.slf4j.LoggerFactory;
  * for each crop.
  */
 public class CSVCropProcessor extends GenericCSVProcessor<CropData, Long> {
-	
+
+    @Autowired
+    private CropDescriptorDAO cropDescriptorDAO;
+    
 	private final static Logger LOGGER = LoggerFactory
 	        .getLogger(CSVCropProcessor.class);
-
+	
+	protected final static String SRC = "src";
+	
 private final static List<String> HEADERS = Collections.unmodifiableList(Arrays
         .asList("*", "crop", "distr", "prov", "year", "years", "area", "prod",
                 "yield"));
+
+@Autowired
+private CropDataDAO dao;
 
 static List<CSVPropertyType> TYPES;
 static {
@@ -93,8 +107,10 @@ public List<String> getHeaders() {
 }
 
 @Override
-public GenericNRLDAO<CropData, Long> getDao() {
-    return cropDataDAO;
+public GenericNRLDAO<CropData, Long> getGenericDao() {
+    String src = flowExecutionParametersMap.get(SRC);
+    dao.setSrc(src);
+    return dao;
 }
 
 @Override
@@ -122,17 +138,19 @@ public CropData merge(CropData old, Object[] properties) {
     cropData.setArea((Double) properties[idx++]);
     cropData.setProduction((Double) properties[idx++]);
     cropData.setYield((Double) properties[idx++]);
+    cropData.setSrc(flowExecutionParametersMap.get(SRC));
     return cropData;
 }
 
 public void save(CropData entity) {
-    cropDataDAO.merge(entity);
+    dao.merge(entity);
 }
 
 public void persist(CropData entity) {
-    cropDataDAO.persist(entity);
+    dao.persist(entity);
 }
-@Override protected void preProcess(CropData entity){
+@Override 
+protected void preProcess(CropData entity){
 	/**
 	 * Convert using default unit of measure
 	 */
@@ -162,5 +180,25 @@ public void persist(CropData entity) {
 	}
 }
 
+protected CropDescriptor getCropDescriptor(String id){
+    return cropDescriptorDAO.find(id);
+}
+
+public CropDataDAO getDao() {
+    return dao;
+}
+
+public void setDao(CropDataDAO dao) {
+    this.dao = dao;
+}
+
+protected Map<String, CropDescriptor> getCropDescriptors() {
+    List<CropDescriptor> descList = cropDescriptorDAO.findAll();
+    Map<String, CropDescriptor> ret = new HashMap<String, CropDescriptor>();
+    for (CropDescriptor cropDescriptor : descList) {
+        ret.put(cropDescriptor.getId(), cropDescriptor);
+    }
+    return ret;
+}
 
 }
