@@ -95,6 +95,7 @@ public class CSVIngestActionTest extends BaseDAOTest{
     @Test
     public void cropdataIngestionFlowTest() throws Exception{
         List<File> list = gatherTestInputCSVFile("all\\cropdata");
+        Collections.sort(list);
         assertNotNull(list);
         assertFalse(list.isEmpty());
         runFlow(list, true);
@@ -114,7 +115,7 @@ public class CSVIngestActionTest extends BaseDAOTest{
     public void fertilizerIngestionFlowTest() throws Exception{
         List<File> list = gatherTestInputPropertiesFile("properties\\all\\fertilizer");
         assertNotNull(list);
-        assertFalse(list.isEmpty());        
+        assertFalse(list.isEmpty());       
         runFlow(list, false);
         assertEquals(284,fertilizerDAO.findAll().size());
     }

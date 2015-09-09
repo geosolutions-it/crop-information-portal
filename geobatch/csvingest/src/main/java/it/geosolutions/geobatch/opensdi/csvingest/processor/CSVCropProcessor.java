@@ -158,6 +158,10 @@ protected void preProcess(CropData entity){
 		UnitOfMeasure areaUnit = unitOfMeasureService.getDefaultAreaUnitOfMeasure(entity.getCropDescriptor());
 		UnitOfMeasure prodUnit = unitOfMeasureService.getDefaultProductionUnitOfMeasure(entity.getCropDescriptor());
 		UnitOfMeasure yieldUnit = unitOfMeasureService.getDefaultYieldUnitOfMeasure(entity.getCropDescriptor());
+		if(entity.getArea() == null || entity.getProduction() == null || entity.getYield() == null){
+		    LOGGER.info("area, production and yeld values are NULL so we are in DELETE mode, skipping the UOM management...");
+		    return;
+		}
 		if(areaUnit != null){
 			double areaFactor = areaUnit.getCoefficient();
 			entity.setArea(entity.getArea()/areaFactor);
