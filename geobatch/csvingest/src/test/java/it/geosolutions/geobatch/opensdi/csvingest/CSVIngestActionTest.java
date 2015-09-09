@@ -95,7 +95,6 @@ public class CSVIngestActionTest extends BaseDAOTest{
     @Test
     public void cropdataIngestionFlowTest() throws Exception{
         List<File> list = gatherTestInputCSVFile("all\\cropdata");
-        Collections.sort(list);
         assertNotNull(list);
         assertFalse(list.isEmpty());
         runFlow(list, true);

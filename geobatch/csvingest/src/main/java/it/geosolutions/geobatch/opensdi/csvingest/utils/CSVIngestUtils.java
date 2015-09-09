@@ -168,7 +168,7 @@ public static Integer getIntegerValue(String integerString, boolean emptyFieldsA
 public static Double parseDouble(String numberToParse) throws ParseException{
     
     char separator = '.';
-    if(numberToParse.split(",").length > 0){
+    if(numberToParse.split(",").length > 1){
         separator = ',';
     }
     DecimalFormatSymbols symbols = new DecimalFormatSymbols();
