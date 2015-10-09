@@ -1,0 +1,100 @@
+#!/bin/bash
+
+function show_help {
+cat << EOF
+USAGE
+    ${0##*/} [-h] -d|-p OLD_NAME NEW_NAME -l LOGIN_OPT
+
+OPTIONS
+    -h|--help
+        display this help
+
+    -d|--district
+        to update district name
+
+    -p|--province
+        to update province name
+
+    -l|--login
+        to specify login options for 'psql'
+
+    OLD_NAME    name of the province/district to update
+    NEW_NAME    the new name for the province/district
+
+    LOGIN_OPT    a string of login option for psql (see 'man psql')
+EOF
+}
+
+target=""
+loginopt=""
+
+function checkparams {
+    if [ "$target" = "" -o "$loginopt" = "" -o $nArgs -lt 2 ]; then
+        show_help
+        exit 1
+    fi
+}
+
+args=`getopt -o hdpl: --long help,province,district,login: -n "$0" -- "$@"`
+if [ $? != 0 ] ; then
+    show_help
+    exit 1
+fi
+
+eval set -- "$args"
+while true ; do
+    case "$1" in
+        -h | --help)
+            show_help
+            exit 0
+        ;;
+        -d | --district)
+            target="district"
+            shift
+        ;;
+        -p | --province)
+            target="province"
+            shift
+        ;;
+        -l | --login)
+            loginopt="$2"
+            shift 2
+        ;;
+        --)
+            shift
+            break
+        ;;
+    esac
+done
+
+nArgs=$#
+
+sql="update-$target.sql"
+oldName="$1"
+newName="$2"
+
+checkparams
+
+cmd="psql -v oldName=\"'$oldName'\" -v newName=\"'$newName'\" $loginopt < $sql"
+
+echo "Do you want update $target:"
+echo "  $oldName --> $newName"
+echo "?"
+echo ""
+
+menu="Update Canel"
+select reply in $menu; do
+    case "$reply" in
+        Update)
+            echo $cmd
+            eval "$cmd"
+            exit
+        ;;
+        Canel)
+            echo "Update aborted"
+            exit
+        ;;
+    esac
+done
+
+exit 0
