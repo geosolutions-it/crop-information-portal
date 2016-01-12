@@ -31,7 +31,7 @@ maps, charts and user defined reports.
 
    The various output formats.
 
-It Provides also a SITS( *Satellite Image Time Series* ) of the the NDVI( *Normalized Difference Vegetation Index* ) at 10 days interval ( *dekad* ).
+It provides also a SITS( *Satellite Image Time Series* ) of the the NDVI( *Normalized Difference Vegetation Index* ) at 10 days interval ( *dekad* ).
 
 .. figure::  img/ndvi.png  
    :align:   center
@@ -40,7 +40,7 @@ It Provides also a SITS( *Satellite Image Time Series* ) of the the NDVI( *Norma
 
 The Portal provides also an administration interface to allow the administrators to update the information available on the server and process satellite images to obtain some statistical data.
 
-.. figure::  img/admin.png  
+.. figure::  img/admin_workflows.png  
    :align:   center
 
    The administration interface.

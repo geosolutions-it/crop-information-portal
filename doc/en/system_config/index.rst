@@ -16,7 +16,7 @@ Conventions used in this documentation
 
 The training pages often reference resources contained in the package. Since the package can be extracted anywhere in the filesystem that location will be referred as **ROOT**.
 
-example:
+Example:
 
 If the package is extracted in the FileSystem location ``c:\CROP_Portal_training`` and a section of the training refers the resource contained in ``ROOT\training\data`` the absolute path of that resource will be ``c:\CROP_Portal_training\training\data``.
 

@@ -39,7 +39,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Pakistan Crop Information Portal'
-copyright = u'2014, GeoSolutions'
+copyright = u'2014 - 2016, GeoSolutions'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
