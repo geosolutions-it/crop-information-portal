@@ -11,9 +11,9 @@ This section illustrates how manage users and keep updated the portal.
 .. toctree::
    :maxdepth: 1
    
-   Introduction to the Administration Interface <introduction>
+   Introduction to the Administration Page <introduction>
    Architecture <arch/index>
-   User Management page <use_man/index>
+   User Management <use_man/index>
    Crops and Agrometeorological factors <crop_agro/index>
    CSV Browser <csv/index>
    NDVI Browser <ndvi/index>
