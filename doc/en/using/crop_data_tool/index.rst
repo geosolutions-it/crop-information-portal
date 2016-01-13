@@ -265,7 +265,15 @@ the selected zones are highlighted on the map:
 
                 Area Of Interest selection.
 
-Note that the red disk icon allows to remove item(s) from the list. Also re-clicking on a shape makes the same shape to be deselected. Additional note, if you want a specific area you do not know where it is but you know its name, you can use the Add (+)  button: an input box for searching the DB pops up. 
+| Note that the red disk icon allows to remove item(s) from the list.
+| Also re-clicking on a shape makes the same shape to be deselected.
+| Additional note, if you want a specific area you do not know where it is but you know its name, you can use the Add (+) button: an input box for searching the DB pops up. 
+
+Select at least one data source
+
+    .. figure:: img/crop_data_sources_select.png
+
+                Sources list.
 
 Select a commodity:
 
@@ -289,17 +297,17 @@ Select the factor to analyze.
 
                 Choose Variable.                
 
-Click on the ``Generate Data Button`` button
+Click on the ``Generate Table`` button
 
     .. figure:: img/generate_data_button.png
 
-                Generate Data Button.
+                Generate Table Button.
 
 .. raw:: latex
 
   \newpage % hard pagebreak at exactly this position
 
-The result is a formatted table (AgroMet Tables near the View tab) of source values.
+The result is a formatted table (''Crop Data'' near the View tab) of source values.
                 
 After clicking on the button will open a grid where the information will be listed in tabular form.
 
@@ -307,12 +315,14 @@ After clicking on the button will open a grid where the information will be list
 
                 Tabular Data Grid.
                 
-Factor values (e.g. NDVI) are listed by dekad and month. Three columns provide data for reference year, previous and selected time interval (average).  All factors are included in the same table.
+| Factor values (e.g. NDVI) are listed by dekad and month.
+| Three columns provide data for reference year, previous and selected time interval (average).
+| All factors are included in the same table.
 
 Now you can export the data in CSV format and save them on your PC.
 
-If you have selected one or more provinces, you can export the data for only one province or districts belonging to the province.
-If you have selected a district can export only the data for the district.
+| If you have selected one or more provinces, you can export the data for only one province or districts belonging to the province.
+| If you have selected a district can export only the data for the district.
 
 The icon at the bottom right corner  allows the data to be exported as CSV file.
 
