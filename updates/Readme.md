@@ -7,8 +7,8 @@
 1. Build the new version of GeoStore
 ```
 git clone git@github.com:geosolutions-it/geostore.git
-cd geostore/server
-mvn install -Ppostgres,extjs
+cd geostore/src/server
+mvn clean install -Ppostgres,extjs
 ```
 
 2. Update GeoStore web application
@@ -16,12 +16,12 @@ mvn install -Ppostgres,extjs
 * Stop the running GeoStore: `sudo service geostore stop`
 * Check if is stopped (`ps aux | grep geostore`)
 * Backup the old `geostore_datasource.ovr.properties` (located in /opt/tomcat_geostore/webapps/geostore/WEB-INF/classes)
-* Replace the generated war file `geostore/server/web/app/target/geostore.war with the current in `/opt/tomcat_geostore/webapps`
-* Start and Stop GeoStore Tomcat instance (`sudo service geostore stop; sudo service geostore start`)
+* Replace the generated war file `geostore/src/server/web/app/target/geostore.war with the current in `/opt/tomcat_geostore/webapps` (this will replace the geostore folder with a new one)
+* Stop GeoStore Tomcat instance (`sudo service geostore stop`)
 * Edit  `/opt/tomcat_geostore/geostore/WEB-INF/classes/geostore-ovr.properties` and uncomment the line: `geostoreInitializer.allowPasswordRecoding=true`
 * Replace `/opt/tomcat_geostore/geostore/WEB-INF/classes/geostore_datasource.ovr.properties` the with the old `geostore_datasource.ovr.properties`
-* Login to the database and execute the [migration script](https://github.com/geosolutions-it/geostore/blob/master/doc/sql/migration/postgresql/postgresql-migration-from-v1.1.1-to-1.2.sql).
-  *note*: if you login as geoserver you have to set search path fist, in order
+* Login to the database and execute the [GeoStore Database migration script](https://github.com/geosolutions-it/geostore/blob/master/doc/sql/migration/postgresql/postgresql-migration-from-v1.1.1-to-1.2.sql).
+  *note*: if you login as geoserver you have to set search path first, in order
   to execute the script on the geostore schema
 * Start GeoStore again
 
