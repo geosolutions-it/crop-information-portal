@@ -76,13 +76,3 @@ WITH (
 ALTER TABLE market_price
   OWNER TO geoserver;
 
-  
--- *************************
--- *  Table: cropdata      *
--- *************************
-
-ALTER TABLE cropdata ADD COLUMN src character varying(255);
-ALTER TABLE cropdata DROP CONSTRAINT cropdata_pkey;
-ALTER TABLE cropdata ADD CONSTRAINT cropdata_pkey PRIMARY KEY (id);
-ALTER TABLE cropdata ADD CONSTRAINT cropdata_crop_key UNIQUE (crop, district, province, year, src);
-UPDATE cropdata SET src='Official';

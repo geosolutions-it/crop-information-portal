@@ -44,21 +44,3 @@ INSERT INTO measure_units VALUES ('000_bales', '000 bales', '000_bales', '1000 b
 INSERT INTO measure_units VALUES ('tons_ha', 't/ha', 't/ha', 'tons / ha', 'yield', 1, '');
 -- INSERT INTO measure_units VALUES ('kg', 'Kilograms', 'kg', 'Kilograms', 'production', 0.001, '');
 
--- *************************************************
--- Modify the CROPDESCRIPTOR tables to declare unit class and
--- unit
--- *************************************************
-ALTER TABLE cropdescriptor
---The base unit 
-ADD COLUMN prod_default_unit varchar(20),
-ADD COLUMN area_default_unit varchar(20),
-ADD COLUMN yield_default_unit varchar(20) ;
--- TODO evaluate if a unit class for each value is needed
-
---associate the unit with the units
-UPDATE cropdescriptor SET prod_default_unit = '000_tons' where id <> 'cotton';
-UPDATE cropdescriptor SET prod_default_unit = '000_bales' where id = 'cotton';
-UPDATE cropdescriptor SET area_default_unit = '000_ha';
-UPDATE cropdescriptor SET yield_default_unit = 'kg_ha' ;
-
-

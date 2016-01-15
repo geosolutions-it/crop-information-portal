@@ -8,4 +8,4 @@ update cropdata
 set production = x.value
 from (
 select *,  production * 170 /1000 as value from cropdata  where crop = 'cotton' ) as x
-where cropdata.id = x.id
+where cropdata.id = x.id;

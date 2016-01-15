@@ -31,9 +31,9 @@ mvn install -Ppostgres,extjs
 
 ### Update MetaData
 
-Installing the new manager,wou will have new entities available 
+Installing the new manager, you will have new entities available 
 (unit of measure and so on).
-So you will have to update the database executing the sql script `units_of_measure.sql`
+So you will have to update the database executing the sql script `02_units_of_measure.sql`
 
 ### Update Data
 
@@ -47,19 +47,19 @@ The new version need a uniform units of measure:
 * Area: 000 ha 
 * Yield: tons/ha 
 
-Crop Data unit of measure for cotton have to be updated executing the following sql scripts: 
-* ``align_uom_cotton.sql`` : this script align cotton production values to the latest values.
+Crop Data cotton  values have to be updated executing the following sql scripts: 
+* ``03_align_cotton_values.sql`` : this script align cotton production values to the latest values.
 * (TODO/optional): update yield. (Yield is not used in queries. Changing this values should not have any result on the global system)
 
 ## Agromet
 
-Agromet needs to be updated executing `agromet.sql`
+Agromet needs to be updated executing `01_agromet.sql`
 This will add additional column and remove obsolete ones (TODO remove obsolete) in order to increase search capabilities 
 New columns are:
 * dek_in_year : the dekad in the year. 1 to 36
 * absolute_dek : the absolute value of the dekad: `year * 36 + dekad_in_year`
 
-Formula: `dek_in_year = MOD(absolute_dek - 1,36) + 1`
+Formula: `dek_in_year = MOD(absolute_dek - 1 , 36) + 1`
 
 The ingestion flow in geobatch has been updated to add also this parameter.
 
