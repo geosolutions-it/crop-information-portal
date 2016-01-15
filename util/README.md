@@ -1,5 +1,6 @@
 # Update districts and provinces
-The fallowing scripts assume that the `psql` command has been installed.
+The following scripts can be used to update districts names and provinces names.  
+The `psql` command is required to run the scripts.
 
 ## The scripts
 There are three scripts, two `sql` scripts and one `bash` script.
