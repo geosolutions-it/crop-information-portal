@@ -3,56 +3,64 @@
 
 .. _cippak.admin.use_man:
 
-User Management page
+User Management Page
 ====================
 
 This section illustrates how manage users from the User management page.
 
-By clicking on the section **Users** the administrators of the system can access to the User management page
+By clicking on the section **User Manager** the administrators of the system can access to the User management page
 
-    .. figure:: img/access_user_int.png
+    .. figure:: ../img/admin_04.jpg
 
                 Access to User Management page.
                 
-    .. figure:: img/admin_user_interface.png
+    .. figure:: ../img/admin_07.jpg
 
-                User Manage page.
+                User Management page.
 
-From this page you can see the list of users and their **ROLE**.
-The users with ROLE **ADMIN** can access to the administration interface.
-The users with ROLE **USER** are only allowed to use ``Data`` output type in the tools in mapstore
+| From this page you can see the list of users and their **ROLE**.
+| The users with ROLE **ADMIN** can access to the administration interface.
+| The users with ROLE **USER** are only allowed to use ``Data`` output type in the tools in mapstore.
 
-By clicking on **Create User** button you can create new users.
+By clicking on **Add User** button you can create new users.
+
+    .. figure:: ../img/admin_add_user_button.png
+
+                Add User button.
+
 From the form shown below you must insert an User Name, its ROLE (USER or ADMIN) and a password for the created user.
 
-    .. figure:: img/create_user_button.png
+    .. figure:: ../img/admin_user_man1.png
 
-                Create User button.
+                Create User form, General tab.
 
-By clicking on **Create** button you submit the creation of new user. If ok an alert like shown below appears.
+You can optionally fill other user details, as e-mail address, company name and other notes.
 
-    .. figure:: img/create_user_interface.png
+    .. figure:: ../img/admin_user_man2.png
 
-                Create User form.
+                Create User form, Attributes tab.
+
+Each user can be part of different groups.
+
+    .. figure:: ../img/admin_user_man3.png
+
+                Create User form, Groups tab.          
                 
-    .. figure:: img/success_user_added.png
+| By clicking on **Save** button you submit the creation of new user.
+| Now the list of users shows the new user.
 
-                Success User creation alert.
-
-Now the list of users shows the new user
-
-    .. figure:: img/added_user_test.png
+    .. figure:: ../img/admin_user_man4.png
 
                 User added.
 
-You can also edit or delete the users as shown by the forms below.
-From the Edit User form you can only change the ROLE and the password of the user.
+| Using the icons on the right of each user row you can edit or delete the users as shown by the forms below.
+| From the Edit User form you can change every user attribute (password, role and other attributes), but the username cannot be changed.
 
-    .. figure:: img/edit_user.png
+    .. figure:: ../img/admin_user_man5.png
 
                 User edit.
                 
-    .. figure:: img/user_delete.png
+    .. figure:: ../img/admin_user_man6.png
 
                 User delete.
 
