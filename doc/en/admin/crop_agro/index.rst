@@ -1,37 +1,34 @@
 .. module:: cippak.admin.crop_agro
-   :synopsis: Learn about how to manage Crops and Agromet factors.
+   :synopsis: Learn about how to manage Crops, Agromet Variables and Units of Measure.
 
 .. _cippak.admin.crop_agro:
 
-=========================
-Crops and Agromet factors 
-=========================
+=============================================
+Crops, Agromet Variables and Units of Measure 
+=============================================
+
+To manage Crops, Agromet Variables and Units of Measure you can use the **Entities manager** tool in the Administration Page
+
+.. figure:: ../img/admin_09.jpg
+
+    Entities Manager tool
 
 Manage Crops
 ============
-To manage Crops you can click on the **Crops** link in the navigation bar or click on this link:
-
-http://localhost:8083/admin/crops
-
-.. figure:: img/crop_list.png
-
-    The list of available crops
-
 -----------------
 Create a new Crop
 -----------------
 
-To create a new crop, click on the **Create** button. 
-A form with the information to set will be displayed. 
-complete the form as follows:
+| To create a new crop, click on the **Create** button. A form with the information to set will be displayed. 
+| Complete the form as follows:
 
-.. figure:: img/create_win.png
+.. figure:: img/crop_agro_create_crop.png
 
     Sample Soybean crop
     
 The new crop will be shown in the Crops list.
 
-.. figure:: img/crop_list2.png
+.. figure:: img/crop_agro_soybean.png
 
     The new crop is added to the list
     
@@ -94,9 +91,7 @@ and press on *add a new style*
 
     Add a new style button
 
-Now, you have to fill the form with the new name, 
-
-for this exercise you can copy a style from the existing ones. :
+Now, you have to fill the form with the new name, for this exercise you can copy a style from the existing ones.
 
 .. figure:: img/styles_copy.png
 
@@ -120,7 +115,7 @@ validate and submit the new style:
 
     Styles submit
 
-To see a complete example of how to add a crop see :ref:`cippak.admin.crop_agro.complete`.
+To see a complete example of how to add a crop see :ref:`Complete Example<cippak.admin.crop_agro.complete>` .
 
 
 -----------------
@@ -129,41 +124,32 @@ Edit/Delete Crops
 
 You can edit/delete the crops clicking on the **Edit** and **Delete** buttons on the right of each row.
 
-Manage Agrometeorological Factors
-=================================
-To manage Agrometeorological Factors you can click on the **Agromet Factors** link in the navigation bar or click on this link:
+Manage Agrometeorological Variables
+===================================
+---------------------
+Create a new Variable
+---------------------
 
-http://localhost:8083/admin/agromet/
+| To create a new variable, click on the **Create** button. A form with the information to set will be displayed. 
+| Complete the form as follows:
 
-.. figure:: img/factor_list.png
+.. figure:: img/admin_factor_create.png
 
-    The list of available factors
-
--------------------
-Create a new Factor
--------------------
-
-To create a new factor, click on the **Create** button. 
-A form with the information to set will be displayed. 
-complete the form as follows:
-
-.. figure:: img/factor_create.png
-
-    Sample Evapotranspiration factor
+    Sample Evapotranspiration variable
     
-The new factor will be shown in the Crops list.
+The new variable will be shown in the Crops list.
 
-.. figure:: img/factor_list2.png
+.. figure:: img/admin_agromet_variables.png
 
-    The new factor is added to the list
+    The new variable is added to the list
     
-Anyway the new factor will not be available in MapStore until some data about the factor is ingested.
+Anyway the new variable will not be available in MapStore until some data about the variable is ingested.
 
--------------------
-Edit/Delete Factors
--------------------
+---------------------
+Edit/Delete Variables
+---------------------
 
-You can edit/delete the factor clicking on the **Edit** and **Delete** buttons on the right of each row.
+You can edit/delete the variable clicking on the **Edit** and **Delete** buttons on the right of each row.
 
 .. note:: ``NDVI_avg`` is used in a special way from the system, so it should never be deleted. otherwise the ingestion of
           generated statistics from the NDVI statistics module will not work. 
@@ -177,4 +163,4 @@ You can follow a complete example adding the data and styles and testing it on m
 .. toctree::
    :maxdepth: 1
 
-   complete example <complete>
+   Complete Example <complete>
