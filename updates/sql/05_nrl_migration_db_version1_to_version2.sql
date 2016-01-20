@@ -23,33 +23,6 @@ ALTER TABLE fertilizer
   OWNER TO geoserver;
 
   
--- ***********************
--- *  Table: irrigation  *
--- ***********************
-
-CREATE TABLE irrigation
-(
-  id serial NOT NULL,
-  decade integer NOT NULL,
-  decade_absolute integer NOT NULL,
-  decade_year integer NOT NULL,
-  district character varying(255) NOT NULL,
-  month character varying(255) NOT NULL,
-  province character varying(255) NOT NULL,
-  river character varying(255) NOT NULL,
-  waterflow integer,
-  withdrawal integer,
-  year integer NOT NULL,
-  CONSTRAINT irrigation_pkey PRIMARY KEY (id),
-  CONSTRAINT irrigation_year_key UNIQUE (year, month, decade, province, district, river)
-)
-WITH (
-  OIDS=FALSE
-);
-ALTER TABLE irrigation
-  OWNER TO geoserver;
-
-  
 -- *************************
 -- *  Table: market_price  *
 -- *************************

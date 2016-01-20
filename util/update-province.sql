@@ -12,7 +12,6 @@ UPDATE withdrawal        SET province = :newName WHERE province = :oldName;
 UPDATE market_price      SET province = :newName WHERE province = :oldName;
 UPDATE fertilizer        SET province = :newName WHERE province = :oldName;
 UPDATE district_crop_map SET province = :newName WHERE province = :oldName;
-UPDATE irrigation        SET province = :newName WHERE province = :oldName;
 UPDATE district_select   SET province = :newName WHERE province = :oldName;
 UPDATE district_boundary SET province = :newName WHERE province = :oldName;
 UPDATE agromet           SET province = :newName WHERE province = :oldName;

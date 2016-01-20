@@ -82,7 +82,7 @@ echo "  $oldName --> $newName"
 echo "?"
 echo ""
 
-menu="Update Canel"
+menu="Update Cancel"
 select reply in $menu; do
     case "$reply" in
         Update)
@@ -90,7 +90,7 @@ select reply in $menu; do
             eval "$cmd"
             exit
         ;;
-        Canel)
+        Cancel)
             echo "Update aborted"
             exit
         ;;
