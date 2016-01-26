@@ -18,9 +18,6 @@ function check_exists(){
     fi
 }
 
-# TODAY
-TODAY=$(date +%Y%m%d)
-
 # Check startup scripts
 check_exists "/etc/init.d/geobatch"
 check_exists "/etc/init.d/geoserver"
@@ -49,16 +46,9 @@ check_exists "/opt/tomcat_geostore/webapps/geostore.war"
 # Check tomcat logrotate
 check_exists "/etc/logrotate.d/tomcat"
 
-# Backup wars
+# Check directory sizes
 df -h
 du -h /opt/tomcat_* -s -c
-read -rsp $'Press enter to backup existing WARS...\n'
-eval "mkdir -p bkp_wars_${TODAY}/{gui,geobatch,geoserver,geostore}"
-
-cp -rv "/opt/tomcat_gui/webapps" "./bkp_wars_${TODAY}/gui"
-cp -rv "/opt/tomcat_geobatch/webapps" "./bkp_wars_${TODAY}/geobatch"
-cp -rv "/opt/tomcat_geoserver/webapps" "./bkp_wars_${TODAY}/geoserver"
-cp -rv "/opt/tomcat_geostore/webapps" "./bkp_wars_${TODAY}/geostore"
 
 
 # TODO: Update logrotate

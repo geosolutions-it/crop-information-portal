@@ -8,11 +8,9 @@ function ko_print(){
 
 # Make sure only root can run our script
 if [[ $EUID -ne 0 ]]; then
-   ko_print "Only root can restore database"
+   ko_print "Only root can restore data_dirs"
    exit 1
 fi
 
 echo "Have you run the sql scripts?"
 read -p "$*"
-
-psql -U postgres -f 06_20160121_geo.sql NRL

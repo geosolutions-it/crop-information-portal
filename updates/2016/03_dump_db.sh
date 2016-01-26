@@ -12,4 +12,10 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 
-pg_dumpall -U postgres -c -f 20160125_old.dump
+# TODAY
+TODAY=$(date +%Y%m%d)
+
+read -rsp $'Press enter to backup database...\n'
+eval "mkdir -p 01_db_bkp/"
+
+pg_dumpall -U postgres -c -f 01_db_bkp/${TODAY}_old.dump
