@@ -16,5 +16,4 @@ service gui stop
 service geoserver stop
 service geobatch stop
 service geostore stop
-
-
+service geonetwork stop

@@ -12,5 +12,17 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 
-echo "Have you run the sql scripts?"
+echo "Upgrade GeoServer data dir?"
 read -p "$*"
+
+cp -R 04_data_dirs/gs_data_dir/. /opt/gs_data_dir/
+
+echo "Upgrade GeoBatch data dir?"
+read -p "$*"
+
+cp -R 04_data_dirs/GEOBATCH_CONFIG_DIR/. /opt/GEOBATCH_CONFIG_DIR/
+
+echo "Create symbolic link to MapStore configuration directory?"
+read -p "$*"
+
+ln -s /opt/tomcat_gui/webapps/MapStore/WEB-INF/app/static/config/ /opt/admin_dir/mapstoreConfigurations

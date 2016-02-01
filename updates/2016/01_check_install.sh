@@ -18,6 +18,14 @@ function check_exists(){
     fi
 }
 
+function check_dir_exists(){
+    if [ -d $1 ]; then
+            ok_print "Directory $1 exists."
+    else
+            ko_print "Directory $1 does not exist."
+    fi
+}
+
 # Check startup scripts
 check_exists "/etc/init.d/geobatch"
 check_exists "/etc/init.d/geoserver"
@@ -43,13 +51,20 @@ check_exists "/opt/tomcat_geobatch/webapps/geobatch.war"
 check_exists "/opt/tomcat_geoserver/webapps/geoserver.war"
 check_exists "/opt/tomcat_geostore/webapps/geostore.war"
 
+# Check data_dirs
+check_dir_exists "/opt/gs_data_dir"
+check_dir_exists "/opt/GEOBATCH_CONFIG_DIR"
+check_dir_exists "/opt/admin_dir"
+
 # Check tomcat logrotate
 check_exists "/etc/logrotate.d/tomcat"
 
 # Check directory sizes
 df -h
 du -h /opt/tomcat_* -s -c
-
+du -h /opt/gs_data_dir -s 
+du -h /opt/GEOBATCH_CONFIG_DIR -s 
+du -h /opt/admin_dir -s 
 
 # TODO: Update logrotate
 

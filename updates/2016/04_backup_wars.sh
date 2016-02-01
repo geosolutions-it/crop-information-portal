@@ -32,10 +32,12 @@ df -h
 du -h /opt/tomcat_* -s -c
 
 # Backup wars
-read -rsp $'Press enter to backup existing WARS...\n'
-eval "mkdir -p bkp_wars_${TODAY}/{gui,geobatch,geoserver,geostore}"
+read -rsp $'Press enter to create backup dirs...\n'
+eval "mkdir -p bkp_wars_${TODAY}/{gui,geobatch,geoserver,geostore,geonetwork}"
 
+read -rsp $'Press enter to backup existing WARS...\n'
 cp -rv "/opt/tomcat_gui/webapps" "./bkp_wars_${TODAY}/gui"
 cp -rv "/opt/tomcat_geobatch/webapps" "./bkp_wars_${TODAY}/geobatch"
 cp -rv "/opt/tomcat_geoserver/webapps" "./bkp_wars_${TODAY}/geoserver"
 cp -rv "/opt/tomcat_geostore/webapps" "./bkp_wars_${TODAY}/geostore"
+cp -rv "/opt/tomcat_geonetwork/webapps" "./bkp_wars_${TODAY}/geonetwork"
