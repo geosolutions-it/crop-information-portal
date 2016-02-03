@@ -20,7 +20,7 @@ cp -R 04_data_dirs/gs_data_dir/. /opt/gs_data_dir/
 echo "Upgrade GeoBatch data dir?"
 read -p "$*"
 
-cp -R 04_data_dirs/GEOBATCH_CONFIG_DIR/. /opt/GEOBATCH_CONFIG_DIR/
+cp -R 04_data_dirs/gb_config_dir/. /opt/GEOBATCH_CONFIG_DIR/
 
 echo "Create symbolic link to MapStore configuration directory?"
 read -p "$*"

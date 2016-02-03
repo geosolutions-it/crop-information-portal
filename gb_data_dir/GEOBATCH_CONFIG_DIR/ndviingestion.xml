@@ -37,7 +37,7 @@
             <name>NDVI file preparation</name>
             <description>Prepare time interval in TIF filenames </description>
 
-            <destinationDir>G:\\work\\NRL\\gb_tmp\\ndvi</destinationDir>
+            <destinationDir>/opt/mosaics/ndvi</destinationDir>
         </NDVIIngestConfiguration>
 
         <ImageMosaicActionConfiguration>

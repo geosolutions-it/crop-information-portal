@@ -26,7 +26,7 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 
-if [ -f "/opt/tomcat_gui/webapps/admin.war"]; then
+if [ -f "/opt/tomcat_gui/webapps/admin.war" ]; then
     read -p "Remove admin.war (y/n)?" answer
     case ${answer:0:1} in
         y|Y )
