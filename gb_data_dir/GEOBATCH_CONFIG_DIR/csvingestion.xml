@@ -7,11 +7,25 @@
 
 	<autorun>true</autorun>
 
+
+	<EventGeneratorConfiguration>
+		<serviceID>fsEventGeneratorService</serviceID>
+		<wildCard>*.*</wildCard>
+		<watchDirectory>csvingestion/in</watchDirectory>
+		<osType>OS_UNDEFINED</osType>
+		<eventType>FILE_ADDED</eventType>
+	</EventGeneratorConfiguration>
+
+
+
 	<EventConsumerConfiguration>
 		<CSVIngestConfiguration>
 			<id>csv</id>
 			<name>CSVIngestion</name>
 			<description>Ingest cropdata, cropdescriptor, agromet</description>
+                        <csvSeparator>,</csvSeparator>
+			<emptyFieldsAsZero>false</emptyFieldsAsZero>
+			<rowByRow>false</rowByRow>
 			<!-- Listeners -->
 			<listenerId>ConsumerLogger0</listenerId>
 			<listenerId>Cumulator</listenerId>

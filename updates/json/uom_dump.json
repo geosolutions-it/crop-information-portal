@@ -1,70 +1,202 @@
 {
-  "count": 7, 
-  "data": [
-    {
-      "cls": "area", 
-      "coefficient": 0.404678363, 
-      "description": "1000 acres ( 1 acre = 0.404678363 hectares)", 
-      "filter": "", 
-      "id": "000_acres", 
-      "name": "000 acres", 
-      "shortname": "000 a"
-    }, 
-    {
-      "cls": "yield", 
-      "coefficient": 1000.0, 
-      "description": "kg/ha", 
-      "filter": "", 
-      "id": "kg_ha", 
-      "name": "kg/ha", 
-      "shortname": "kg/ha"
-    }, 
-    {
-      "cls": "area", 
-      "coefficient": 1.0, 
-      "description": "1000 hectares", 
-      "filter": "", 
-      "id": "000_ha", 
-      "name": "000 hectares", 
-      "shortname": "000 ha"
-    }, 
-    {
-      "cls": "production", 
-      "coefficient": 1.0, 
-      "description": "1000 tons", 
-      "filter": "", 
-      "id": "000_tons", 
-      "name": "000 tons", 
-      "shortname": "000 tons"
-    }, 
-    {
-      "cls": "production", 
-      "coefficient": 0.04, 
-      "description": "1000 maunds (1 maund = 40kg)", 
-      "filter": "cotton", 
-      "id": "000_maunds", 
-      "name": "000 maunds", 
-      "shortname": "000 m"
-    }, 
-    {
-      "cls": "production", 
-      "coefficient": 0.17, 
-      "description": "1000 bales (1 bale = 170 kg)", 
-      "filter": "cotton", 
-      "id": "000_bales", 
-      "name": "000 bales", 
-      "shortname": "000_bales"
-    }, 
-    {
-      "cls": "yield", 
-      "coefficient": 1.0, 
-      "description": "tons / ha", 
-      "filter": "", 
-      "id": "tons_ha", 
-      "name": "t/ha", 
-      "shortname": "t/ha"
-    }
-  ], 
-  "totalCount": 7
+	"data": [{
+		"id": "000_ha",
+		"name": "000 hectares",
+		"shortname": "000 ha",
+		"description": "1000 hectares",
+		"cls": "area",
+		"coefficient": 1.0,
+		"filter": ""
+	},
+	{
+		"id": "000_tons",
+		"name": "000 tons",
+		"shortname": "000 tons",
+		"description": "1000 tons",
+		"cls": "production",
+		"coefficient": 1.0,
+		"filter": ""
+	},
+	{
+		"id": "tons_ha",
+		"name": "t/ha",
+		"shortname": "t/ha",
+		"description": "tons / ha",
+		"cls": "yield",
+		"coefficient": 1.0,
+		"filter": ""
+	},
+	{
+		"id": "kg_ha",
+		"name": "kg/ha",
+		"shortname": "kg/ha",
+		"description": "kg/ha",
+		"cls": "yield",
+		"coefficient": 1000.0,
+		"filter": ""
+	},
+	{
+		"id": "kg",
+		"name": "Kilograms",
+		"shortname": "kg",
+		"description": "Kilograms",
+		"cls": "production",
+		"coefficient": 1000000.0,
+		"filter": ""
+	},
+	{
+		"id": "tons",
+		"name": "tons",
+		"shortname": "tons",
+		"description": "tonnes ",
+		"cls": "production",
+		"coefficient": 1000.0,
+		"filter": ""
+	},
+	{
+		"id": "ha",
+		"name": "ha",
+		"shortname": "ha",
+		"description": "hectare = 10000 sqm",
+		"cls": "area",
+		"coefficient": 1000.0,
+		"filter": ""
+	},
+	{
+		"id": "flow_cubicfeetsec",
+		"name": "000 Cubic Feet per Second",
+		"shortname": "000 Cusec",
+		"description": "1 [000 Cusec] = 0.0283168467 [000 cubic meter/sec]",
+		"cls": "waterflow",
+		"coefficient": 1.0,
+		"filter": "irrigation"
+	},
+	{
+		"id": "000_acres",
+		"name": "000 acres",
+		"shortname": "000 a",
+		"description": "1000 acres ( 1 a = 0.404678363 ha)",
+		"cls": "area",
+		"coefficient": 2.471098263,
+		"filter": ""
+	},
+	{
+		"id": "acres",
+		"name": "acres",
+		"shortname": "acres",
+		"description": "acres = 404.678363 (000 ha)",
+		"cls": "area",
+		"coefficient": 2471.09823,
+		"filter": ""
+	},
+	{
+		"id": "flow_cubicmsec",
+		"name": "000 Cubic Meters per Second",
+		"shortname": "000 cubic meter/sec",
+		"description": "1 [000 Cusec] = 0.0283168467 [000 cubic meter/sec]",
+		"cls": "waterflow",
+		"coefficient": 0.0283168467,
+		"filter": "irrigation"
+	},
+	{
+		"id": "currency_1kg",
+		"name": "1 Kg",
+		"shortname": "1",
+		"description": "",
+		"cls": "denominator",
+		"coefficient": 0.01,
+		"filter": ""
+	},
+	{
+		"id": "supply_maf",
+		"name": "Million Acre Foot",
+		"shortname": "million acre foot",
+		"description": "1 [MAF] = 1233.481855 [million cubic meter]",
+		"cls": "watersupply",
+		"coefficient": 1.0,
+		"filter": "irrigation"
+	},
+	{
+		"id": "supply_cubicm",
+		"name": "Million Cubic Meter",
+		"shortname": "million cubic meter",
+		"description": "1 [MAF] = 1233.481855 [million cubic meter]",
+		"cls": "watersupply",
+		"coefficient": 1233.481855,
+		"filter": "irrigation"
+	},
+	{
+		"id": "000_bales",
+		"name": "000 bales",
+		"shortname": "000_bales",
+		"description": "1000 bales (1 bale = 170 kg)",
+		"cls": "production",
+		"coefficient": 5.882352941,
+		"filter": "cotton"
+	},
+	{
+		"id": "000_maunds",
+		"name": "000 maunds",
+		"shortname": "000 m",
+		"description": "1000 maunds (1 maund = 37.324kg)",
+		"cls": "production",
+		"coefficient": 26.79241239,
+		"filter": "cotton"
+	},
+	{
+		"id": "mds_acr",
+		"name": "m/a",
+		"shortname": "m/a",
+		"description": "maunds/acres",
+		"cls": "yield",
+		"coefficient": 10.84232395,
+		"filter": "cotton"
+	},
+	{
+		"id": "ton_acre",
+		"name": "t/a",
+		"shortname": "t/a",
+		"description": "Tons / acres",
+		"cls": "yield",
+		"coefficient": 0.404678079,
+		"filter": ""
+	},
+	{
+		"id": "USD",
+		"name": "US Dollars",
+		"shortname": "USD",
+		"description": "dollars",
+		"cls": "currency",
+		"coefficient": 1.0,
+		"filter": ""
+	},
+	{
+		"id": "currency_100kg",
+		"name": "100 Kg",
+		"shortname": "100",
+		"description": "factor to compute price for a unit of 100 kg weight",
+		"cls": "denominator",
+		"coefficient": 1.0,
+		"filter": ""
+	},
+	{
+		"id": "currency_40kg",
+		"name": "40 Kg",
+		"shortname": "40",
+		"description": "factor to compute price for a unit of 40 kg weight",
+		"cls": "denominator",
+		"coefficient": 0.4,
+		"filter": ""
+	},
+	{
+		"id": "pkr_usd",
+		"name": "0.009829 [PKR/USD]",
+		"shortname": "0.009829",
+		"description": "1 PRK = 0.009829 USD",
+		"cls": "exchangerate",
+		"coefficient": 0.009829,
+		"filter": ""
+	}],
+	"count": 22,
+	"totalCount": 22
 }
-

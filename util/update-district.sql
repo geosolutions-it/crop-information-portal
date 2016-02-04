@@ -12,7 +12,6 @@ UPDATE withdrawal        SET district = :newName WHERE district = :oldName;
 UPDATE market_price      SET district = :newName WHERE district = :oldName;
 UPDATE fertilizer        SET district = :newName WHERE district = :oldName;
 UPDATE district_crop_map SET district = :newName WHERE district = :oldName;
-UPDATE irrigation        SET district = :newName WHERE district = :oldName;
 UPDATE district_select   SET district = :newName WHERE district = :oldName;
 UPDATE district_boundary SET district = :newName WHERE district = :oldName;
 UPDATE agromet           SET district = :newName WHERE district = :oldName;

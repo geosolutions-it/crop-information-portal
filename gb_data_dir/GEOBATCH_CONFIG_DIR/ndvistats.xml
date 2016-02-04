@@ -19,7 +19,7 @@
         <watchDirectory>ndvistats/in</watchDirectory>
         <osType>OS_UNDEFINED</osType>
         <eventType>FILE_ADDED</eventType>
-        <interval>0 0/15 4-6 * * ?</interval>
+        <interval>* * * * * ?</interval>
     </EventGeneratorConfiguration>
 
 <EventConsumerConfiguration>
@@ -46,8 +46,8 @@
                         <dbName>NRL</dbName>
                         <dbUser>geoserver</dbUser>
                         <dbPasswd>1geosolutions2</dbPasswd>
-                        <tiffDirectory>/home/geosolutions/gbtemp/ndvi</tiffDirectory>
-                        <outputDirectory>/home/geosolutions/admin/test_csv/generated</outputDirectory>
+			<tiffDirectory>/opt/mosaics/ndvi</tiffDirectory>
+			<outputDirectory>/opt/admin_dir/</outputDirectory>
                         <csvSeparator>,</csvSeparator>
         </NDVIStatsConfiguration>
 
@@ -74,5 +74,4 @@
             <id>Status</id>
         </StatusProgressListener>
     </ListenerConfigurations>
-
 </FlowConfiguration>
