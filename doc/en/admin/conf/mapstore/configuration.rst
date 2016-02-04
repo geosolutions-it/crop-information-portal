@@ -9,15 +9,25 @@ MapStore Configuration
 
 MapStore Configuration File
 ===========================
+MapStore is the web application that provides the base view.
+
 You can find the MapStore configuration file at::
 
     WEB-INF/app/static/config/mapStoreConfig.js
 
+This is a :term:`JSON` file that implement the configuration of the viewer.
+
+When you log-in into the application as an administrator, you will be able to open the Administration Page. This is configured in another file called ``managerConfig.js``::
+
+    WEB-INF/app/static/config/mapStoreConfig.js
+
+The objects in theese to configurations are merged with the ``localConfig.js`` file that contain the options common to the map view and the administration page.::
+
+    WEB-INF/app/static/config/common/localConfig.js
 
 ----------------------------
 common configuration options
 ----------------------------
-
 
 the first elements of the configuration file are common for every version of MapStore::
 
