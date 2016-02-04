@@ -20,3 +20,9 @@ Glossary
     absolute dekad
       the absolute value of the :term:`dekad` from the year 0.
       Formula: `absolute_dekad = year * 36 + dekad_in_year`.
+
+    GeoCoder
+    Geocoding
+      Geocoding (sometimes called forward geocoding) uses a description of a location, most typically
+      a postal address or place name, to find geographic coordinates. The GeoCoder of the application use
+      Google and Nominatim services to find the address. 
