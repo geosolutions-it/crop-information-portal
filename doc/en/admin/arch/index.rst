@@ -15,8 +15,9 @@ The following are the components of the architecture of the Crop Information Por
 * **MapStore**: The main front-end to generate charts, maps and reports inferring agro-metereological data. Interacts with GeoServer to allow this kind of processing.
 * **Administration Interface**: The administrator front-end to update published data and generate statistics from raster images interacting with GeoBatch. Provides also user management functionalities.
 * **GeoStore**: a non-sql REST access database used to store users data and to log their operations.
-* **GeoServer** is an open source software server that allows users to share and edit geospatial data. Designed for interoperability, it publishes data from any major spatial data source using open standards.
+* **GeoServer** is an Open Source software server that allows users to share and edit geospatial data. Designed for interoperability, it publishes data from any major spatial data source using open standards.
 * **GeoBatch** is an Open Source application for the collection, processing and publication of geospatial data in real time.
+* **GeoNetwork** is an Open Source catalog application to manage spatially referenced resources.
 
 General Architecture 
 ^^^^^^^^^^^^^^^^^^^^
