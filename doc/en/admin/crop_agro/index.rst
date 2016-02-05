@@ -75,7 +75,7 @@ In the case above the styles to add will have the following names:
 Add a SLD style
 +++++++++++++++
 
-You can access to the style layer descriptor (SLD) definition page on GeoServer with `this link <http://localhost:8080/geoserver/web/?wicket:bookmarkablePage=:org.geoserver.wms.web.data.StyleNewPage>`_ or selecting *Styles* module on GeoServer:
+You can access to the style layer descriptor (SLD) definition page on GeoServer with `this link <http://localhost:8888/geoserver/web/?wicket:bookmarkablePage=:org.geoserver.wms.web.data.StyleNewPage>`_ or selecting *Styles* module on GeoServer:
 
 .. figure:: img/styles.png
 
