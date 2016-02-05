@@ -32,11 +32,11 @@ Glossary
       JSON (JavaScript Object Notation) is an open standard format that uses human-readable text to transmit data objects consisting of attribute–value pairs. It is the most common data format used for asynchronous browser/server communication (AJAJ), largely replacing XML which is used by AJAX.
 
     CRUD
-      CRUD ()**C**reate **R**ead **U**pdate **D**elete) are the four basic functions of a persist storage.
+      CRUD (\ **C**\ reate \ **R**\ ead \ **U**\ pdate \ **D**\ elete) are the four basic functions of a persist storage.
 
     ReST
     REST
-      **Re**presentational **S**tate **T**ransfer (ReST) is the software architectural style of the World Wide Web. (`ref <https://en.wikipedia.org/wiki/Representational_state_transfer>`)
+      \ **Re**\ presentational \ **S**\ tate \ **T**\ ransfer (ReST) is the software architectural style of the World Wide Web. (`ref <https://en.wikipedia.org/wiki/Representational_state_transfer>`)
 
     shape file
     shapefile

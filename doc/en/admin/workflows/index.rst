@@ -1,7 +1,7 @@
 .. module:: cippak.admin.workflows
    :synopsis: Introduction to the Workflows
 
-.. _cippak.admin.intro:
+.. _cippak.admin.workflows:
 
 ***********************
 The Workflows Tool
