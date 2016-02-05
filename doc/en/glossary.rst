@@ -37,3 +37,14 @@ Glossary
     ReST
     REST
       **Re**presentational **S**tate **T**ransfer (ReST) is the software architectural style of the World Wide Web. (`ref <https://en.wikipedia.org/wiki/Representational_state_transfer>`)
+
+    shape file
+    shapefile
+      The The shapefile format is a popular geospatial vector data format for
+      geographic information system (GIS) software. It is developed and
+      regulated by Esri as a (mostly) open specification for data
+      interoperability among Esri and other GIS software products.
+      The shapefile format can spatially describe vector features like:
+        * points
+        * lines
+        * polygons

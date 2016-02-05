@@ -12,6 +12,7 @@ This section illustrates how manage users and keep updated the portal.
    :maxdepth: 1
 
    Introduction to the Administration Page <introduction>
+   Work Flows <workflows/index>
    User Management <use_man/index>
    Crops, Agromet Variables and Units of Measure <crop_agro/index>
    Architecture <arch/index>
