@@ -16,8 +16,9 @@ Also, you need a version of this products:
 * GeoStore
 * Http-proxy
 * GeoServer
+* GeoNetwork
 
-and more infraestructure applications:
+and more infrastructure applications:
 
 * Apache Tomcat 6.0.37
 * Apache Httpd (Web server)

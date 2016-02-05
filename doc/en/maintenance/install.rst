@@ -7,7 +7,8 @@
 Install
 =======
 
-In this section we're going to learn how to install the platform in a new server. The platform for this training doc is a CentOS 6.
+| In this section we're going to learn how to install the platform in a new server.
+| The platform for this training doc is a CentOS 6.
 
 ------------
 Dependencies
@@ -36,7 +37,7 @@ When you will finished you must have something like that:
 Tomcat GeoServer          /opt/tomcat_geoserver               gs_port 	   /geoserver
 Tomcat GeoBatch           /opt/tomcat_geobatch	              gb_port	   /geobatch
 Tomcat GeoStore           /opt/tomcat_geostore	              gst_port     /geostore
-Tomcat GUI                /opt/tomcat_gui                     gui_port     /MapStore, /admin
+Tomcat GUI                /opt/tomcat_gui                     gui_port     /MapStore, /opensdi2-manager, /geonetwork
 PostgreSQL/PostGIS        /usr/local/postgres                 pg_port      NO
 ========================= ================================= ============= =======================
 
@@ -326,7 +327,7 @@ Platform install
 
 You need to `compile <compile.html>`_ the platform. Then you will have:
 
-* OpenSDI-Manager war (admin.war)
+* OpenSDI-Manager2 war (opensdi2-manager.war)
 * GeoBatch war (geobatch.war)
 * MapStore war (mapcomposer.war)
 
@@ -335,6 +336,7 @@ Also, you need a version of this products:
 * GeoStore
 * Http-proxy
 * GeoServer
+* GeoNetwork
 
 
 ++++++++

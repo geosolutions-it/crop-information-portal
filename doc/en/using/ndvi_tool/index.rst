@@ -4,7 +4,7 @@
 .. _cippak.using.ndvi_tool:
 
 NDVI Tool
-===========================
+=========
 
 This section illustrates how you can use **NDVI Tool**.
 

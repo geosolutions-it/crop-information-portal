@@ -33,7 +33,7 @@ OpenSDI-Manager
 
 4. Remove old war and content::
 
-	$ rm -r /opt/tomcat_gui/webapps/admin**
+	$ rm -r /opt/tomcat_gui/webapps/opensdi2-manager**
 
 5. Copy war to ``/opt/tomcat_gui/webapps`` folder
 
@@ -52,7 +52,7 @@ GeoBatch
 ********
 
 1. `Compile GeoBatch <compile.html#geobatch>`_
-2. Stop geobatch seervice::
+2. Stop geobatch service::
 
 	$ service geobatch stop
 
@@ -74,7 +74,7 @@ MapStore
 
 1. `Compile MapStore <compile.html#mapstore>`_
 2. Backup your previous configuration present on ``/opt/tomcat_gui/webapps/MapStore/WEB-INF/app/static/config/mapStoreConfig.js``
-3. Stop gui seervice (sometimes it isn't necceary)::
+3. Stop gui service (sometimes it isn't necceary)::
 
 	$ service gui stop
 

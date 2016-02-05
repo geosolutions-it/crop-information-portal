@@ -188,3 +188,83 @@ here a sample ``gdalinfo`` output of a compatible file::
     Lower Right (  80.4330354,  23.0669642) ( 80d25'58.93"E, 23d 4' 1.07"N)
     Center      (  70.1026783,  30.3794642) ( 70d 6' 9.64"E, 30d22'46.07"N)
     Band 1 Block=64x64 Type=Byte, ColorInterp=Gray
+    
+    
+Delete NDVI
+===========
+
+To delete an NDVI granule follow this instructions:
+Using rest interface a user should use curl to get the id of the granule he want to remove.
+
+.. sourcecode:: bash
+
+    curl `GET /geoserver/rest/workspaces/ndvi/coveragestores/ndvi/coverages/ndvi/index/granules.json` 
+
+    Response: 
+    {  
+       "type":"FeatureCollection",
+       "bbox":[  
+          59.7633927459,
+          23.0580358005,
+          80.4419634523,
+          37.6919644531
+       ],
+       "crs":{  
+          "type":"name",
+          "properties":{  
+             "name":"EPSG:4326"
+          }
+       },
+       "features":[  
+          {  
+             "type":"Feature",
+             "geometry":{  
+                "type":"Polygon",
+                "coordinates":[  
+                   [  
+                      [  
+                         59.7723,
+                         23.067
+                      ],
+                      [  
+                         59.7723,
+                         37.692
+                      ],
+                      [  
+                         80.433,
+                         37.692
+                      ],
+                      [  
+                         80.433,
+                         23.067
+                      ],
+                      [  
+                         59.7723,
+                         23.067
+                      ]
+                   ]
+                ]
+             },
+            "properties":{  
+                "location":"dv_20130101_20130110.tif",
+                "time":"2013-01-01T00:00:00.000+0000",
+                "endtime":"2013-01-10T00:00:00.000+0000"
+             },
+             "id":"ndvi.1"
+          },
+       [...]
+      ]
+    }
+
+    
+| You can find the granule you want to delete checking the date `properties.time` that is the start time of the granule.
+| For instance, if you want the 2016, Jan, 1st 10-day period, you have to look for the `2016-01-01T00:00:00.000+0000` 
+
+Then he can use the same interface to remove the granule by id : 
+.. sourcecode:: bash
+
+    curl `DELETE /geoserver/rest/workspaces/ndvi/coveragestores/ndvi/coverages/ndvi/index/granules/<granuleId>.json`
+
+    E.g. : 
+    `DELETE /geoserver/rest/workspaces/ndvi/coveragestores/ndvi/coverages/ndvi/index/granules/ndvi.1.json`
+

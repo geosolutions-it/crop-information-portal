@@ -16,18 +16,18 @@ Please, follow the instructions in the link before continue.
 
 The code of the project is divided in three different applications:
 
-* OpenSDI-Manager
+* OpenSDI-Manager2
 * GeoBatch
 * MapStore
 
-OpenSDI-Manager and GeoBatch costumizations use Maven to compile it and MapStore uses Ant.
+OpenSDI-Manager2 and GeoBatch costumizations use Maven to compile it and MapStore uses Ant.
 
-OpenSDI-Manager
----------------
+OpenSDI-Manager2
+----------------
 
 To compile the OpenSDI-Manager application::
 
-	crop-information-portal/OpenSDI-Manager/admin$ mvn clean install -Dmaven.test.skip
+	crop-information-portal/OpenSDI-Manager/src$ mvn clean install -Dmaven.test.skip
 	...
 	[INFO] Reactor Summary:
 	[INFO] 
@@ -43,20 +43,18 @@ To compile the OpenSDI-Manager application::
 	[INFO] OpenSDI Manager - Crop Information Portal - core .. SUCCESS [1.093s]
 	[INFO] OpenSDI Manager - Crop Information Portal - MVC extension  SUCCESS [1.053s]
 	[INFO] OpenSDI Manager - Crop Information Portal - webapp extension  SUCCESS [4.636s]
-	[INFO] OpenSDI Manager - Destination ..................... SUCCESS [0.167s]
-	[INFO] OpenSDI Manager - Destination - core .............. SUCCESS [0.956s]
-	[INFO] OpenSDI Manager - Destination - web extension ..... SUCCESS [8.330s]
 	[INFO] ------------------------------------------------------------------------
 	[INFO] BUILD SUCCESS
 	[INFO] ------------------------------------------------------------------------
 	[INFO] Total time: 35.109s
 	[INFO] Finished at: Fri Jan 10 16:20:45 CET 2014
 	[INFO] Final Memory: 52M/147M
-	crop-information-portal/OpenSDI-Manager/admin$
+	crop-information-portal/OpenSDI-Manager/src$
 
-Now you have a ``admin`` application to be deployed on `crop-information-portal/OpenSDI-Manager/admin/nrl-modules/nrl-web-extension/target/admin.war`. 
+Now you have a ``opensdi2-manager`` application to be deployed on `crop-information-portal/OpenSDI-Manager/src/web/target/opensdi2-manager.war`. 
 
-You can deploy it on your web container and change the configuration as you need. Please, read the `Configuration of the Administration Interface training <../admin/conf/admin/configuration.html>`_
+| You can deploy it on your web container and change the configuration as you need.
+| Please, read the `Configuration of the Administration Interface training <../admin/conf/admin/configuration.html>`_
 
 GeoBatch
 --------
@@ -83,7 +81,8 @@ To compile the GeoBatch application::
 
 Now you have a ``GeoBatch`` application to be deployed on `crop-information-portal/OpenSDI-Manager/geobatch/webapp/target/geobatch.war`. 
 
-You can deploy it on your web container and change the configuration as you need. Please, read the `GeoBatch configuration training <../admin/conf/geobatch/index.html>`_
+| You can deploy it on your web container and change the configuration as you need.
+| Please, read the `GeoBatch configuration training <../admin/conf/geobatch/index.html>`_
 
 
 Mapstore
@@ -128,4 +127,5 @@ To compile the MapStore application:
 
 Now you have a ``MapStore`` application to be deployed on `crop-information-portal/mapstore/mapcomposer/build/mapcomposer.war`. 
 
-You can deploy it on your web container and change the configuration as you need. Please, read the `MapStore Configuration training <../admin/conf/mapstore/configuration.html>`_
+| You can deploy it on your web container and change the configuration as you need.
+| Please, read the `MapStore Configuration training <../admin/conf/mapstore/configuration.html>`_

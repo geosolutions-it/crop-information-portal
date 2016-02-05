@@ -15,4 +15,4 @@ The *Actions* and *Event Generators* that composes a *Flow* are selected and con
 .. figure:: images/KeyConcepts.png
    :align: center
    
-You can find more GeoBatch information visiting the `official GeoBatch website <http://geobatch.geo-solutions.it/>`_
+You can find more GeoBatch information visiting the `official GeoBatch documentation <http://demo.geo-solutions.it/share/github/geobatch/download/latest/doc/>`_
