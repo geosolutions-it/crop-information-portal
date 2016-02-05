@@ -49,7 +49,7 @@ To add a simple content to the help window you can simply edit the ``help.jsp`` 
             });
     </script>
 
-You can refresh the Administration Interface page  (http://localhost:8083/admin/) and click on the help button to see the result.
+You can refresh the Administration Interface page  (http://localhost:8888/admin/) and click on the help button to see the result.
 
 .. figure:: img/help_window.png
 
