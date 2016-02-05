@@ -154,7 +154,7 @@ You can edit/delete the variable clicking on the **Edit** and **Delete** buttons
 .. note:: ``NDVI_avg`` is used in a special way from the system, so it should never be deleted. otherwise the ingestion of
           generated statistics from the NDVI statistics module will not work.
 
-================
+
 Complete example
 ================
 
@@ -165,7 +165,7 @@ You can follow a complete example adding the data and styles and testing it on m
 
    Complete Example <complete>
 
-===============
+
 Unit of Measure
 ===============
 

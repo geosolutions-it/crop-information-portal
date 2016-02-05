@@ -13,10 +13,6 @@ This section illustrates how manage users and keep updated the portal.
 
    Introduction to the Administration Page <introduction>
    User Management <use_man/index>
-   Crops and Agrometeorological factors <crop_agro/index>
-   CSV Browser <csv/index>
-   NDVI Browser <ndvi/index>
-   Statistics generation <stats/index>
-   misc <misc/index>
+   Crops, Agromet Variables and Units of Measure <crop_agro/index>
    Architecture <arch/index>
    Configuration of the system <conf/index>
