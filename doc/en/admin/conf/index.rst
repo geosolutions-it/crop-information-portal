@@ -3,7 +3,7 @@
 
 .. _cippak.admin.conf:
 
-Configuration 
+Configuration
 =============
 
 This section shows how to modify configuration files and apply some simple changes to the GUI.
@@ -13,6 +13,3 @@ This section shows how to modify configuration files and apply some simple chang
 
    MapStore <mapstore/index>
    GeoBatch <geobatch/index>
-   Administration Interface <admin/index>
-   
-

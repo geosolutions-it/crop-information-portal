@@ -19,7 +19,7 @@ This is a :term:`JSON` file that implement the configuration of the viewer.
 
 When you log-in into the application as an administrator, you will be able to open the Administration Page. This is configured in another file called ``managerConfig.js``::
 
-    WEB-INF/app/static/config/mapStoreConfig.js
+    WEB-INF/app/static/config/managerConfig.js
 
 The objects in theese to configurations are merged with the ``localConfig.js`` file that contain the options common to the map view and the administration page.::
 

@@ -12,5 +12,4 @@ This section shows how to modify the MapStore configuration and apply some simpl
 
    Configuration <configuration>
    Customization <customization>
-   
-
+   Administration Page Configuration <manager>
