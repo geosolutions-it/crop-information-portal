@@ -9,126 +9,127 @@ NDVI ingestion flow
 
 .. sourcecode:: xml
 
-	<?xml version="1.0" encoding="UTF-8"?>
-	<FlowConfiguration>
+    <?xml version="1.0" encoding="UTF-8"?>
+    <FlowConfiguration>
 
-		<id>ndviingestion</id>
-		<name>NDVI file ingestion</name>
-		<description>Ingest geotiff file and add them to a NDVI mosaic</description>
-		
-		<corePoolSize>2</corePoolSize>
-		<maximumPoolSize>2</maximumPoolSize>
-		<keepAliveTime>1500</keepAliveTime>
-		<workQueueSize>100</workQueueSize>
-		
-		<autorun>true</autorun>
-		
-		<EventGeneratorConfiguration>
-			<id>ndvi_event_gen</id>
-			<serviceID>fsEventGeneratorService</serviceID>
-			<wildCard>*.tif</wildCard>
-			<watchDirectory>ndviingestion/in</watchDirectory>
-			<osType>OS_UNDEFINED</osType>
-			<eventType>FILE_ADDED</eventType>
-			<interval>0 0/15 4-6 * * ?</interval>
-		</EventGeneratorConfiguration>
+        <id>ndviingestion</id>
+        <name>NDVI file ingestion</name>
+        <description>Ingest geotiff file and add them to a NDVI mosaic</description>
+        
+        <corePoolSize>2</corePoolSize>
+        <maximumPoolSize>2</maximumPoolSize>
+        <keepAliveTime>1500</keepAliveTime>
+        <workQueueSize>100</workQueueSize>
+        
+        <autorun>true</autorun>
+        
+        <EventGeneratorConfiguration>
+            <id>ndvi_event_gen</id>
+            <serviceID>fsEventGeneratorService</serviceID>
+            <wildCard>*.tif</wildCard>
+            <watchDirectory>ndviingestion/in</watchDirectory>
+            <osType>OS_UNDEFINED</osType>
+            <eventType>FILE_ADDED</eventType>
+            <interval>0 0/15 4-6 * * ?</interval>
+        </EventGeneratorConfiguration>
 
-		<EventConsumerConfiguration>
-			<id>ndvi_consumer</id>
-			
-			<listenerId>LoggingListener</listenerId>
-			<listenerId>CumulatingListener</listenerId>
+        <EventConsumerConfiguration>
+            <id>ndvi_consumer</id>
+            
+            <listenerId>LoggingListener</listenerId>
+            <listenerId>CumulatingListener</listenerId>
 
-			<performBackup>false</performBackup>
-			<preserveInput>true</preserveInput>
+            <performBackup>false</performBackup>
+            <preserveInput>true</preserveInput>
 
 
-			<NDVIIngestConfiguration>
-				<id>NDVIIngestConfiguration</id>
-				<name>NDVI file preparation</name>
-				<description>Prepare time interval in TIF filenames </description>
+            <NDVIIngestConfiguration>
+                <id>NDVIIngestConfiguration</id>
+                <name>NDVI file preparation</name>
+                <description>Prepare time interval in TIF filenames </description>
 
-				<destinationDir>/home/geosolutions/gbtemp/ndvi</destinationDir>
-			</NDVIIngestConfiguration>
+                <destinationDir>/opt/mosaics/ndvi</destinationDir>
+            </NDVIIngestConfiguration>
 
-			<ImageMosaicActionConfiguration>
+            <ImageMosaicActionConfiguration>
 
-				<id>ImageMosaicService</id>
+                <id>ImageMosaicService</id>
 
-				<name>NDVI image mosaic</name>
-				<description>Add geotiff to the NDVI mosaic</description>
+                <name>NDVI image mosaic</name>
+                <description>Add geotiff to the NDVI mosaic</description>
 
-				<listenerId>LoggingListener</listenerId>
-				<listenerId>CumulatingListener</listenerId>
-				<listenerId>StatusListener</listenerId>
+                <listenerId>LoggingListener</listenerId>
+                <listenerId>CumulatingListener</listenerId>
+                <listenerId>StatusListener</listenerId>
 
-				<crs>EPSG:4326</crs>
-				<envelope/>
+                <crs>EPSG:4326</crs>
+                <envelope/>
 
-				<dataTransferMethod>EXTERNAL</dataTransferMethod>
+                <dataTransferMethod>EXTERNAL</dataTransferMethod>
 
-				<geoserverUID>admin</geoserverUID>
-				<geoserverPWD>************</geoserverPWD>
-				<geoserverURL>http://localhost/geoserver</geoserverURL>
+                <geoserverUID>admin</geoserverUID>
+                <geoserverPWD>*****</geoserverPWD>
+                <geoserverURL>http://localhost/geoserver</geoserverURL>
 
-				<defaultNamespace>ndvi</defaultNamespace>
-				<defaultStyle>raster</defaultStyle>
+                <defaultNamespace>ndvi</defaultNamespace>
+                <defaultStyle>raster</defaultStyle>
 
-				<wmsPath>/</wmsPath>
-				<backgroundValue>NaN</backgroundValue>
-				<outputTransparentColor/>
-				<inputTransparentColor/>
-				<allowMultithreading>true</allowMultithreading>
-				<useJaiImageRead>false</useJaiImageRead>
+                <wmsPath>/</wmsPath>
+                <backgroundValue>NaN</backgroundValue>
+                <outputTransparentColor/>
+                <inputTransparentColor/>
+                <allowMultithreading>true</allowMultithreading>
+                <useJaiImageRead>false</useJaiImageRead>
 
-				<tileSizeH>256</tileSizeH>
-				<tileSizeW>256</tileSizeW>
-				<NativeMinBoundingBoxX>-30</NativeMinBoundingBoxX>
-				<NativeMinBoundingBoxY>25</NativeMinBoundingBoxY>
-				<NativeMaxBoundingBoxX>45</NativeMaxBoundingBoxX>
-				<NativeMaxBoundingBoxY>70</NativeMaxBoundingBoxY>
+                <tileSizeH>256</tileSizeH>
+                <tileSizeW>256</tileSizeW>
+                <NativeMinBoundingBoxX>-30</NativeMinBoundingBoxX>
+                <NativeMinBoundingBoxY>25</NativeMinBoundingBoxY>
+                <NativeMaxBoundingBoxX>45</NativeMaxBoundingBoxX>
+                <NativeMaxBoundingBoxY>70</NativeMaxBoundingBoxY>
 
-				<latLonMinBoundingBoxX>-30</latLonMinBoundingBoxX>
-				<latLonMinBoundingBoxY>25</latLonMinBoundingBoxY>
-				<latLonMaxBoundingBoxX>45</latLonMaxBoundingBoxX>
-				<latLonMaxBoundingBoxY>70</latLonMaxBoundingBoxY>
+                <latLonMinBoundingBoxX>-30</latLonMinBoundingBoxX>
+                <latLonMinBoundingBoxY>25</latLonMinBoundingBoxY>
+                <latLonMaxBoundingBoxX>45</latLonMaxBoundingBoxX>
+                <latLonMaxBoundingBoxY>70</latLonMaxBoundingBoxY>
 
-				<!--NONE, REPROJECT_TO_DECLARED, FORCE_DECLARED-->
-				<projectionPolicy>NONE</projectionPolicy>
+                <!--NONE, REPROJECT_TO_DECLARED, FORCE_DECLARED-->
+                <projectionPolicy>NONE</projectionPolicy>
 
-				<!-- ref dir is GB_CONF_DIR/FLOWID/ACTIONID -->
-				<datastorePropertiesPath>../datastore.properties</datastorePropertiesPath>
+                <!-- ref dir is GB_CONF_DIR/FLOWID/ACTIONID -->
+                <datastorePropertiesPath>../datastore.properties</datastorePropertiesPath>
 
-				<!-- METADATA -->
-				<!-- file name is file_20130201_20130210.tif -->
-				<DomainAttribute>
-					<dimensionName>time</dimensionName>
-					<attribName>time</attribName>
-					<regEx><![CDATA[(\?<=dv_)[0-9]{8}(\?=_.\*)]]></regEx>
-					<endRangeAttribName>endtime</endRangeAttribName>
-					<endRangeRegEx><![CDATA[(\?<=dv_[0-9]{8}_)[0-9]{8}(\?=.\*)]]></endRangeRegEx>
-				</DomainAttribute>
+                <!-- METADATA -->
+                <!-- file name is file_20130201_20130210.tif -->
+                <DomainAttribute>
+                    <dimensionName>time</dimensionName>
+                    <attribName>time</attribName>
+                    <regEx><![CDATA[(\?<=dv_)[0-9]{8}(\?=_.\*)]]></regEx>
+                    <endRangeAttribName>endtime</endRangeAttribName>
+                    <endRangeRegEx><![CDATA[(\?<=dv_[0-9]{8}_)[0-9]{8}(\?=.\*)]]></endRangeRegEx>
+                </DomainAttribute>
 
-			</ImageMosaicActionConfiguration>
+            </ImageMosaicActionConfiguration>
 
-		</EventConsumerConfiguration>
+        </EventConsumerConfiguration>
 
-		<ListenerConfigurations>
-			<LoggingProgressListener>
-				<serviceID>loggingListenerService</serviceID>
-				<id>LoggingListener</id>
-				<loggerName>it.geosolutions.geobatch</loggerName>
-			</LoggingProgressListener>
-			<CumulatingProgressListener>
-				<serviceID>cumulatingListenerService</serviceID>
-				<id>CumulatingListener</id>
-			</CumulatingProgressListener>
-			<StatusProgressListener>
-				<serviceID>statusListenerService</serviceID>
-				<id>StatusListener</id>
-			</StatusProgressListener>
-		</ListenerConfigurations>
-	</FlowConfiguration>
+        <ListenerConfigurations>
+            <LoggingProgressListener>
+                <serviceID>loggingListenerService</serviceID>
+                <id>LoggingListener</id>
+                <loggerName>it.geosolutions.geobatch</loggerName>
+            </LoggingProgressListener>
+            <CumulatingProgressListener>
+                <serviceID>cumulatingListenerService</serviceID>
+                <id>CumulatingListener</id>
+            </CumulatingProgressListener>
+            <StatusProgressListener>
+                <serviceID>statusListenerService</serviceID>
+                <id>StatusListener</id>
+            </StatusProgressListener>
+        </ListenerConfigurations>
+    </FlowConfiguration>
+
 
 
 The action automatially do a *retiling* and generate the overviews to increase performances for web usage.

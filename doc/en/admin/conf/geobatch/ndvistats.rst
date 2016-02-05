@@ -6,7 +6,9 @@
 NDVI stats flow
 ===============
 
-The **NDVI stats flow** is responsible for compute statistics over a raster using a vector layer to determine a Region Of Interest in which the computation will be performed. The output format of the statistics is CSV. The Statistics are internally computed using the ZonalStats operators of the `JaiTools project <http://jaitools.org/>`_ project.
+| The **NDVI stats flow** is responsible for compute statistics over a raster using a vector layer to determine a Region Of Interest in which the computation will be performed.
+| The output format of the statistics is CSV.
+| The Statistics are internally computed using the ZonalStats operators of the `JaiTools project <http://jaitools.org/>`_ project.
 
 The flow is composed by a single Action called **NDVIStatsAction** that perform all the operations needed. 
 
@@ -51,9 +53,7 @@ Generate the input XML using the Crop Portal administration webapp
 
 The Crop Information Portal has its own Administration interface that allow the user to run the flow without dealing with XML files and FileSystem directly usage. 
 
-open the browser and navigate to URL
-
-``http://localhost:8083/admin/operationManager/NDVIStatistics``
+Refer to the Administration Page documentation for more details.
 
 Through that web interface is it possible to run the flow directly from the browser. The Crop Portal administration application will create the xml and will place it in the flow watch dir.
 
@@ -72,8 +72,12 @@ EventGenerator Configuration
 .. sourcecode:: xml
 		
 		<interval>0 0/15 4-6 * * ?</interval>
+		<interval>* * * * * ?</interval>
+		<interval>SEC MIN HR DOM MON DOW</interval>
 
-* **interval** in this field is possible to specify the GeoBatch frequency to checks for new files in the flow's watch directory. The format to use is the `Quartz syntax <http://quartz-scheduler.org/documentation/quartz-2.1.x/tutorials/crontrigger>` that basically is an evolution of the Linux Crontab syntax.
+* **interval** in this field is possible to specify the GeoBatch frequency to checks for new files in the flow's watch directory.
+The format to use is the `Quartz syntax <http://quartz-scheduler.org/documentation/quartz-2.1.x/tutorials/crontrigger>` that basically is an evolution of the Linux Crontab syntax.
+
 		
 Action Configuration
 --------------------
@@ -98,13 +102,13 @@ Action Configuration
 
 .. sourcecode:: xml		
 
-		<tiffDirectory>/home/geosolutions/gbtemp/ndvi</tiffDirectory>
+		<tiffDirectory>/opt/mosaics/ndvi</tiffDirectory>
 
 * **tiffDirectory** The directory ehere the NDVI rasters are stored (That is the Mosaic Directory used by geoserver)
 		
 .. sourcecode:: xml		
 
-		<outputDirectory>/home/geosolutions/admin/test_csv/generated</outputDirectory>
+		<outputDirectory>/opt/admin_dir/</outputDirectory>
 
 * **outputDirectory** The directory where the output csv will be stored.
 		
@@ -113,71 +117,81 @@ The whole Flow Configuration
 				
 .. sourcecode:: xml
 
-	<?xml version="1.0" encoding="UTF-8"?>
-	<FlowConfiguration>
+    <?xml version="1.0" encoding="UTF-8"?>
+    <FlowConfiguration>
 
-		<id>ndvistats</id>
-		<name>NDVI stats generation</name>
-		<description>Generate a CSV file with a geotiff mask and a zone filter</description>
-		<corePoolSize>2</corePoolSize>
-		<maximumPoolSize>2</maximumPoolSize>
-		<keepAliveTime>1500</keepAliveTime>
-		<workQueueSize>100</workQueueSize>
+        <id>ndvistats</id>
+        <name>NDVI stats generation</name>
+        <description>Generate a CSV file with a geotiff mask and a zone filter</description>
+        
+        <corePoolSize>2</corePoolSize>
+        <maximumPoolSize>2</maximumPoolSize>
+        <keepAliveTime>1500</keepAliveTime>
+        <workQueueSize>100</workQueueSize>
+        
+        <autorun>true</autorun>
+        
+        <EventGeneratorConfiguration>
+            <id>ndvistats_event_gen</id>
+            <serviceID>fsEventGeneratorService</serviceID>
+            <wildCard>*.xml</wildCard>
+            <watchDirectory>ndvistats/in</watchDirectory>
+            <osType>OS_UNDEFINED</osType>
+            <eventType>FILE_ADDED</eventType>
+            <interval>* * * * * ?</interval>
+        </EventGeneratorConfiguration>
 
-		<autorun>true</autorun>
-		
-		<EventGeneratorConfiguration>
-			<id>ndvistats_event_gen</id>
-			<serviceID>fsEventGeneratorService</serviceID>
-			<wildCard>*.xml</wildCard>
-			<watchDirectory>ndvistats/in</watchDirectory>
-			<osType>OS_UNDEFINED</osType>
-			<eventType>FILE_ADDED</eventType>
-			<interval>0 0/15 4-6 * * ?</interval>
-		</EventGeneratorConfiguration>
+        <EventConsumerConfiguration>
+            <id>ndvistats_consumer</id>
+            
+        <listenerId>Logger0</listenerId>
 
-		<EventConsumerConfiguration>
-			<id>ndvistats_consumer</id>
-			
-			<listenerId>Logger</listenerId>
-			<listenerId>Cumulator</listenerId>
-			<listenerId>Status</listenerId>
+            <listenerId>Cumulator</listenerId>
+            <performBackup>false</performBackup>
+            <preserveInput>true</preserveInput>
+            
+            <NDVIStatsConfiguration>
+        <listenerId>Logger</listenerId>
+            <listenerId>Cumulator</listenerId>
+            <listenerId>Status</listenerId>
+                <id>NDVIIngestConfiguration</id>
+                <name>NDVI CSV stats preparation</name>
+                <description>Prepare time interval in TIF filenames </description>
+                <defaultMaskUrl>file:/opt/gs_data_dir/data/spatial/CROPMASKS/crop_mask_pak_2012.shp</defaultMaskUrl>
+                <dbType>postgis</dbType>
+                <dbHost>localhost</dbHost>
+                <dbPort>5432</dbPort>
+                <dbSchema>public</dbSchema>
+                <dbName>NRL</dbName>
+                <dbUser>geoserver</dbUser>
+                <dbPasswd>*********</dbPasswd>
+                <tiffDirectory>/opt/mosaics/ndvi</tiffDirectory>
+                <outputDirectory>/opt/admin_dir/</outputDirectory>
+                <csvSeparator>,</csvSeparator>
+            </NDVIStatsConfiguration>
 
-			<performBackup>false</performBackup>
-			<preserveInput>true</preserveInput>
-			
-			<NDVIStatsConfiguration>
-				<id>NDVIIngestConfiguration</id>
-				<name>NDVI CSV stats preparation</name>
-				<description>Prepare time interval in TIF filenames </description>
-				<defaultMaskUrl>file:/opt/gs_data_dir/data/spatial/CROPMASKS/crop_mask_pak_2012.shp</defaultMaskUrl>
-				<dbType>postgis</dbType>
-				<dbHost>localhost</dbHost>
-				<dbPort>5432</dbPort>
-				<dbSchema>public</dbSchema>
-				<dbName>NRL</dbName>
-				<dbUser>geoserver</dbUser>
-				<dbPasswd>**********</dbPasswd>
-				<tiffDirectory>/home/geosolutions/gbtemp/ndvi</tiffDirectory>
-				<outputDirectory>/home/geosolutions/admin/test_csv/generated</outputDirectory>
-				<csvSeparator>,</csvSeparator>
-			</NDVIStatsConfiguration>
+        </EventConsumerConfiguration>
 
-		</EventConsumerConfiguration>
+        <ListenerConfigurations>
+            <LoggingProgressListener>
+                <serviceID>loggingListenerService</serviceID>
+                <id>Logger0</id>
+                <loggerName>it.geosolutions.geobatch</loggerName>
+            </LoggingProgressListener>
+            <LoggingProgressListener>
+                <serviceID>loggingListenerService</serviceID>
+                <id>Logger</id>
+                <loggerName>it.geosolutions.geobatch</loggerName>
+            </LoggingProgressListener>
+            <CumulatingProgressListener>
+                <serviceID>cumulatingListenerService</serviceID>
+            <appendToListenerForwarder>true</appendToListenerForwarder>
+                <id>Cumulator</id>
+            </CumulatingProgressListener>
+            <StatusProgressListener>
+                <serviceID>statusListenerService</serviceID>
+                <id>Status</id>
+            </StatusProgressListener>
+        </ListenerConfigurations>
+    </FlowConfiguration>
 
-		<ListenerConfigurations>
-			<LoggingProgressListener>
-				<serviceID>loggingListenerService</serviceID>
-				<id>Logger</id>
-				<loggerName>it.geosolutions.geobatch</loggerName>
-			</LoggingProgressListener>
-			<CumulatingProgressListener>
-				<serviceID>cumulatingListenerService</serviceID>
-				<id>Cumulator</id>
-			</CumulatingProgressListener>
-			<StatusProgressListener>
-				<serviceID>statusListenerService</serviceID>
-				<id>Status</id>
-			</StatusProgressListener>
-		</ListenerConfigurations>
-	</FlowConfiguration>
