@@ -3,33 +3,37 @@ The following scripts can be used to update districts names and provinces names.
 The `psql` command is required to run the scripts.
 
 ## The scripts
-There are three scripts, two `sql` scripts and one `bash` script.
+There are three scripts, two `sql` scripts and one `bash` script.  
+The update must be done on the server, so you must upload the scripts on the server machine:
 
-### SQL scripts
-- `update-district.sql`: to update districts for all table of the database
-- `update-province.sql`: to update provinces for all table of the database
-
-Each one of these script can be run like:
-
-```
-psql -v oldName="'OLD_NAME'" -v newName="'NEW_NAME'" [login options...] < update-district.sql
-
-```
-replacing `OLD_NAME` and `NEW_NAME` to the respectively old and new names of the
-district (or province).
-
-`login options` are the option to allow `psql` to connect database.
+- Connect with WinSCP
+- Upload the scripts (for example in a new directory `/root/utils`)
+  - region-update
+  - update-district.sql
+  - update-province.sql
+- Connect with Putty
+- Move into the scripts directory ( `cd /root/utils`)
+- Make the `region-update` script executable ( `chmod a+x region-update` )
 
 ### Bash script
-- `region-update`: to easily run the `sql` scripts
+Use the `region-update` script to update a district or a province:
 
 For example, the command:
 
 ```
-region-update -d lahore Lahore -l "-h localhost NRL geoserver"
+region-update -d lahore Lahore -l "-h localhost -U geoserver NRL "
 ```
 
-tells `psql` to connect to database `NRL` on `localhost` as user `geoserver` and it runs the script `update-district.sql` to update `lahore` to `Lahore`.
+updates the **district** `lahore` to `Lahore`.
+It tells `psql` to connect to database `NRL` on `localhost` as user `geoserver` and it runs the script `update-district.sql`.
+
+To update a **province** use the `-p` option instead of `-d`:
+
+```
+region-update -p SIND SINDH -l "-h localhost -U geoserver NRL "
+```
+
+## Help reference
 
 ```
 USAGE
@@ -53,3 +57,21 @@ OPTIONS
 
     LOGIN_OPT    a string of login option for psql (see 'man psql')
 ```
+
+### SQL scripts
+This section provides more details about the update scripts. 
+The update is performed by SQL scripts
+
+- `update-district.sql`: to update districts for all table of the database
+- `update-province.sql`: to update provinces for all table of the database
+
+Each one of these script can be run separately:
+
+```
+psql -v oldName="'OLD_NAME'" -v newName="'NEW_NAME'" [login options...] < update-district.sql
+psql -v oldName="'OLD_NAME'" -v newName="'NEW_NAME'" [login options...] < update-province.sql
+```
+replacing `OLD_NAME` and `NEW_NAME` to the respectively old and new names of the
+district (or province).
+
+`login options` are the option to allow `psql` to connect database.
