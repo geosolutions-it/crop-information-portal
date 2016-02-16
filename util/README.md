@@ -21,7 +21,7 @@ Use the `region-update` script to update a district or a province:
 For example, the command:
 
 ```
-region-update -d lahore Lahore -l "-h localhost -U geoserver NRL "
+./region-update -d lahore Lahore -l "-h localhost -U geoserver NRL "
 ```
 
 updates the **district** `lahore` to `Lahore`.
@@ -30,7 +30,7 @@ It tells `psql` to connect to database `NRL` on `localhost` as user `geoserver` 
 To update a **province** use the `-p` option instead of `-d`:
 
 ```
-region-update -p SIND SINDH -l "-h localhost -U geoserver NRL "
+./region-update -p SIND SINDH -l "-h localhost -U geoserver NRL "
 ```
 
 ## Help reference
