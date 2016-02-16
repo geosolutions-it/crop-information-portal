@@ -16,5 +16,5 @@ UPDATE district_select   SET district = :newName WHERE district = :oldName;
 UPDATE district_boundary SET district = :newName WHERE district = :oldName;
 UPDATE agromet           SET district = :newName WHERE district = :oldName;
 UPDATE cropdata          SET district = :newName WHERE district = :oldName;
-UPDATE district_view     SET district = :newName WHERE district = :oldName;
+UPDATE district_view     SET "DISTRICT" = :newName WHERE "DISTRICT" = :oldName;
 UPDATE district_crop     SET district = :newName WHERE district = :oldName;

@@ -16,7 +16,7 @@ UPDATE district_select   SET province = :newName WHERE province = :oldName;
 UPDATE district_boundary SET province = :newName WHERE province = :oldName;
 UPDATE agromet           SET province = :newName WHERE province = :oldName;
 UPDATE cropdata          SET province = :newName WHERE province = :oldName;
-UPDATE district_view     SET province = :newName WHERE province = :oldName;
+UPDATE district_view     SET "PROVINCE" = :newName WHERE "PROVINCE" = :oldName;
 UPDATE district_crop     SET province = :newName WHERE province = :oldName;
 UPDATE province_crop_map SET province = :newName WHERE province = :oldName;
 UPDATE province_crop     SET province = :newName WHERE province = :oldName;
