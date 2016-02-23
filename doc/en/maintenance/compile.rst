@@ -20,10 +20,17 @@ The code of the project is divided in three different applications:
 * GeoBatch
 * MapStore
 
-OpenSDI-Manager2 and GeoBatch costumizations use Maven to compile it and MapStore uses Ant.
+Prerequisites
+=============
+
+**Maven** is required to compile **OpenSDI-Manager2** and **GeoBatch**.
+https://maven.apache.org/
+
+**Ant** is required to compile **MapStore**.
+http://ant.apache.org/
 
 OpenSDI-Manager2
-----------------
+================
 
 To compile the OpenSDI-Manager application::
 
@@ -57,7 +64,7 @@ Now you have a ``opensdi2-manager`` application to be deployed on `crop-informat
 | Please, read the `Configuration of the Administration Interface training <../admin/conf/admin/configuration.html>`_
 
 GeoBatch
---------
+========
 
 To compile the GeoBatch application::
 
@@ -86,7 +93,7 @@ Now you have a ``GeoBatch`` application to be deployed on `crop-information-port
 
 
 Mapstore
---------
+========
 
 To compile the MapStore application:
 

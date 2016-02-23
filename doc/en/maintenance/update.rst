@@ -90,9 +90,9 @@ MapStore
 
 7. Configure it. Follow the instructions on `MapStore configuration page <../admin/conf/mapstore/configuration.html>`_. You can restore your olde configuration, but you must be carefull if there are new options on the new ``/opt/tomcat_gui/webapps/MapStore/WEB-INF/app/static/config/mapStoreConfig.js`` file and merge it.
 
-++++++++++++
+++++++++
 Database
-++++++++++++
+++++++++
 
 If you're going to execute an update, it's recommended to backup the database status before the update. Most updates will be attached as a SQL script.
 
@@ -108,9 +108,9 @@ NRL
 
 	pgsql NRL < update.sql
 
-***********
+********
 Geostore
-***********
+********
 
 It isn't common, but:
 
